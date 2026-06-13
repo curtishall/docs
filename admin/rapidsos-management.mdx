@@ -1,0 +1,222 @@
+---
+title: "Configure RapidSOS in Cadmus Web Admin"
+sidebarTitle: "RapidSOS"
+description: "Set up RapidSOS credentials for your organization so Dispatch CAD can receive emergency location data and track caller phones on the map."
+---
+
+RapidSOS integration gives your dispatchers real-time access to emergency location data, caller device positions, and phone lookup tools directly inside Dispatch CAD. Once you save valid credentials, the platform opens a persistent WebSocket connection for your organization, populates the **RapidSOS Locations** and **RapidSOS Breadcrumbs** map layers with live data, and unlocks the **Track Phone Number** and **RapidSOS Lookup** dialogs in the Dispatch CAD F4 menu. This page walks you through every step of credential setup, testing, and ongoing maintenance.
+
+---
+
+## Who Can Access
+
+Only org-level and platform-level administrators can view or edit RapidSOS credentials. Agency admins and dispatchers do not have access to this page.
+
+| Role | Access |
+|---|---|
+| **OrgAdmin** | Own organization |
+| **CadmusAdmin** | All organizations |
+| **AgencyAdmin** | No |
+| **Dispatcher** | No |
+
+If **RapidSOS Management** does not appear in your sidebar, your role does not include access. Contact a Cadmus administrator to have your role reviewed.
+
+---
+
+## Open RapidSOS Management
+
+In the Web Admin sidebar, select **RapidSOS Management**. The direct URL is `/rapidsos`.
+
+The page opens to a credentials table listing every organization you have permission to manage.
+
+---
+
+## Credentials Table
+
+The table shows one row per organization and surfaces the following columns at a glance:
+
+| Column | Description |
+|---|---|
+| **Organization name** | The Cadmus org display name |
+| **Sandbox config status** | Whether Sandbox credentials are saved and healthy |
+| **Production config status** | Whether Production credentials are saved and healthy |
+| **Created date** | When the credential record was first created |
+| **Client ID** | Truncated preview of the OAuth client ID |
+
+Use the search or filter bar to locate a specific organization when your table contains many rows. Summary cards above the table may also show a count of configured versus unconfigured tenants.
+
+---
+
+## Set Credentials
+
+<Steps>
+  <Step title="Select the organization">
+    If you manage more than one organization, identify the correct row in the credentials table before proceeding.
+  </Step>
+  <Step title="Open the Set Credentials form">
+    Select **Set Credentials** in the organization row, or open the row actions menu (**⋮**) and choose **Set Credentials** (or **Edit** if credentials already exist).
+  </Step>
+  <Step title="Complete the credential form">
+    Fill in all required fields. Use the table below as a reference:
+
+    | Field | Notes |
+    |---|---|
+    | **Environment** | Select **Sandbox** or **Production** |
+    | **Client ID** | Obtain from the RapidSOS portal |
+    | **Client Secret** | Stored securely; re-enter the full value when rotating |
+    | **Base URL** | Pre-filled per environment when available; override only if instructed by Cadmus |
+    | **Token Endpoint** | OAuth 2.0 token URL |
+    | **IRP Token Endpoint** | Optional; required only for IRP-specific authorization flows |
+
+    Refer to the default endpoint values below if the form fields are blank:
+
+    | Environment | API Base | WebSocket |
+    |---|---|---|
+    | **Sandbox** | `https://api-sandbox.rapidsos.com` | `wss://ws.edx-sandbox.rapidsos.com/v1` |
+    | **Production** | `https://api.rapidsos.com` | `wss://ws.edx.rapidsos.com/v1` |
+
+    <Note>
+      Your Cadmus implementer may supply custom WebSocket URLs for special network routing. Use those values if provided, and contact IT if phone lookups succeed but live location tracks fail.
+    </Note>
+  </Step>
+  <Step title="Test the credentials (recommended)">
+    Before saving, select **Test** to validate connectivity. See [Test Credentials](#test-credentials) for details.
+  </Step>
+  <Step title="Save credentials">
+    Select **Save**. Cadmus stores the secret securely and initiates the WebSocket connection immediately.
+  </Step>
+</Steps>
+
+---
+
+## Test Credentials
+
+Run **Test Credentials** at any time — before the initial save, after a secret rotation, or when troubleshooting map data gaps. The test checks three services:
+
+- **OAuth token generation** — verifies the client ID, secret, and token endpoint are valid.
+- **RAD-E API connection** — confirms Cadmus can reach the RapidSOS data exchange API.
+- **LEI API connection** — confirms Cadmus can reach the location intelligence endpoint.
+
+When prompted, enter a **test caller ID in E.164 format** (for example, `+15555550100`) to exercise phone-based lookups. The test dialog reports pass or fail for each check individually.
+
+<Warning>
+  Fix all test failures before putting Production credentials into service. A misconfigured Production credential can prevent dispatchers from receiving emergency location data during live 911 calls.
+</Warning>
+
+---
+
+## Edit and Delete
+
+Open the row actions menu (**⋮**) on any organization row to access:
+
+- **Edit** — update the client secret, base URL, or token endpoint.
+- **Test** — re-run the three-service connectivity check without changing any values.
+- **Delete** — remove the credential record for that environment. Dispatch CAD loses RapidSOS access for that organization immediately and until you add new credentials.
+
+---
+
+## What Happens After Save
+
+Once Cadmus validates the credentials and establishes services:
+
+1. The RapidSOS WebSocket connects for the organization and begins streaming location events.
+2. Emergency location alerts can automatically create or enrich incidents according to your deployment's incident rules.
+3. The **RapidSOS Locations** and **RapidSOS Breadcrumbs** map layers in Dispatch CAD become active and receive live data.
+4. The **Track Phone Number** and **RapidSOS Lookup** dialogs in the Dispatch CAD F4 menu become functional for dispatchers in that organization.
+
+---
+
+## Sandbox vs. Production
+
+<Tabs>
+  <Tab title="Sandbox">
+    Use Sandbox credentials for training sessions, demonstrations, go-live rehearsals, and any scenario where you need realistic-looking data without touching real 911 infrastructure. Sandbox returns synthetic test results and never generates real emergency responses.
+  </Tab>
+  <Tab title="Production">
+    Use Production credentials for your live 911 / emergency operations center. Production credentials connect to real RapidSOS emergency data and must only be saved on your live Cadmus organization — never on a training or sandbox org.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Never point a **Live** dispatch organization at Sandbox credentials. Dispatchers will receive synthetic test data instead of real emergency location information, which poses a direct risk to caller safety.
+</Warning>
+
+If you maintain separate Sandbox and Live Cadmus organizations, configure credentials in **both** environments and match each Cadmus org to its correct RapidSOS environment.
+
+---
+
+## API Reference
+
+Cadmus exposes the following endpoints for managing RapidSOS credentials programmatically. All paths are scoped to an organization and require an authenticated session with **OrgAdmin** or **CadmusAdmin** privileges.
+
+| Method | Path | Description |
+|---|---|---|
+| `GET` | `/admin/organizations/{orgId}/rapidsos/credentials` | List saved RapidSOS credentials for the organization |
+| `POST` | `/admin/organizations/{orgId}/rapidsos/credentials` | Save (create or update) RapidSOS credentials for the organization |
+| `POST` | `/admin/organizations/{orgId}/rapidsos/test` | Test saved RapidSOS credentials and return pass/fail results for each service check |
+
+Replace `{orgId}` with the numeric or UUID identifier for your organization, visible in the Web Admin URL when you navigate to your organization record.
+
+---
+
+## Troubleshooting
+
+<Accordion title="Page not in sidebar">
+  **Symptom:** The RapidSOS Management link does not appear in the Web Admin sidebar.
+
+  **Checks:**
+  - Confirm your role is **OrgAdmin** or **CadmusAdmin**. AgencyAdmin and Dispatcher roles do not have access.
+  - If your role appears correct, contact a CadmusAdmin to verify your role assignment in the system.
+</Accordion>
+
+<Accordion title="Test fails on token">
+  **Symptom:** The credential test reports a failure at the OAuth token step.
+
+  **Checks:**
+  - Re-enter the **Client ID** and **Client Secret** exactly as shown in the RapidSOS portal — leading and trailing spaces cause failures.
+  - Verify the **Token Endpoint** URL matches the environment (Sandbox vs. Production) and has no typos.
+  - Confirm the RapidSOS portal account has not expired or been suspended.
+</Accordion>
+
+<Accordion title="Test passes, no map data in Dispatch CAD">
+  **Symptom:** All three test checks pass, but the RapidSOS Locations layer shows no pins.
+
+  **Checks:**
+  - Verify the saved **Environment** matches the Cadmus org type. Sandbox credentials on a Live org return no real-world location events.
+  - Check WebSocket connectivity from the Cadmus server to the WebSocket endpoint. Firewalls or proxies that block `wss://` connections will silently drop the stream.
+  - Contact IT to confirm outbound WebSocket traffic is permitted on port 443.
+</Accordion>
+
+<Accordion title="Lookup works, no auto-incidents">
+  **Symptom:** The RapidSOS Lookup dialog returns data, but incoming location alerts do not automatically create or update incidents.
+
+  **Checks:**
+  - Auto-incident creation is governed by deployment-level incident rules, not credential configuration. Contact **Cadmus support** with your org ID to review your rule set.
+</Accordion>
+
+<Accordion title="Dispatchers see no F4 tools">
+  **Symptom:** The F4 header menu in Dispatch CAD does not show Track Phone Number or RapidSOS Lookup.
+
+  **Checks:**
+  - Verify credentials are saved for the **correct organization**. A dispatcher logged into Org A will not see tools if credentials are only saved for Org B.
+  - Confirm the dispatcher's user account is assigned to the correct org in Web Admin.
+</Accordion>
+
+---
+
+## Verification Checklist
+
+After completing setup, run through these steps before notifying dispatchers that RapidSOS is live:
+
+1. Credentials saved for the correct organization and environment.
+2. All three checks pass in the **Test Credentials** dialog (green indicators for token, RAD-E, and LEI).
+3. A dispatcher runs **RapidSOS Lookup** on a known Sandbox test number and receives data.
+4. The **RapidSOS Locations** map layer toggles on in Dispatch CAD and displays a pin when tracking a test number.
+5. Document the credential rotation date and the name of the RapidSOS portal account owner for future reference.
+
+---
+
+## Related Pages
+
+- [Integrations Overview](/admin/integrations-overview) — full map of org and agency integration settings
+- [Troubleshooting & Audit Checks](/admin/troubleshooting-audit) — resolve common admin issues and run quarterly reviews

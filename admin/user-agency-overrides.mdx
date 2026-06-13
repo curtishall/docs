@@ -1,0 +1,76 @@
+---
+title: "Per-User Agency Setting Overrides in Cadmus Web Admin"
+sidebarTitle: "Agency Overrides"
+description: "Grant or deny exceptions to agency-default settings for individual users — override NCIC access or traffic stop permissions with a full audit trail."
+---
+
+Agency settings establish baseline behavior for every officer and dispatcher in an agency — for example, disabling NCIC queries for everyone by default. User agency overrides let you punch a precise exception into that baseline for a single person, such as enabling NCIC for a newly certified operator or restricting traffic stops for a trainee until their FTO signs off. Every override is recorded with a required reason, creating the audit trail demanded by CJIS reviews and accreditation processes.
+
+## Override hierarchy
+
+When Cadmus determines what a user can do, it evaluates settings in the following order:
+
+1. **Agency default** — the setting value configured on the agency's Settings page.
+2. **User override** — an explicit exception set for this user in this agency.
+3. **Effective setting** — the value that actually controls field behavior.
+
+If no user override exists, the agency default is the effective setting.
+
+## Open the overrides panel
+
+In **Web Admin**, open the user's agency settings or navigate to the dedicated overrides screen if your deployment provides one.
+
+<Note>
+  The per-user override screen may not be linked directly from the Users list in all deployments. If you cannot locate it, contact your Cadmus administrator. The underlying API endpoints are `GET /agencies/{agencyId}/users/{userId}/settings` (read current overrides) and `POST /agencies/{agencyId}/users/{userId}/settings` (create or update an override).
+</Note>
+
+## Overridable settings
+
+| Setting | Agency default | Common override use |
+|---|---|---|
+| **Traffic Stops Allowed** | On | Disable for a trainee until FTO sign-off |
+| **State/NCIC Access** | Off | Enable for a newly certified operator |
+
+Only settings that are explicitly marked as overridable can be changed at the user level. Settings that are agency-wide (such as Separate RMS Report Numbers) cannot be overridden for individual users.
+
+## Required fields for an override
+
+Every override requires:
+
+- **Reason text** — a written justification stored in the audit log.
+- **AgencyAdmin** role or higher to save the override.
+- The target setting must be overridable at the user level.
+
+## Audit trail
+
+Cadmus records the following information for every override created or modified:
+
+- **Who** made the change (user account).
+- **When** the change occurred (timestamp).
+- **Reason** provided at the time of the change.
+
+Retrieve this history during accreditations and CJIS audits to demonstrate that each exception was authorized and documented.
+
+## Dispatch and mobile impact
+
+| Effective setting | Field behavior |
+|---|---|
+| NCIC on | Query actions enabled in Dispatch CAD and mobile |
+| NCIC off | Queries blocked or hidden |
+| Traffic stops off | Traffic stop and citation flows restricted |
+
+For information on the query commands available when NCIC access is enabled, see the Dispatch CAD **Query commands** documentation.
+
+## Common mistakes
+
+<Warning>
+  Enabling NCIC access via a user override does **not** make queries work if the organization's CJIS site is not configured. Set up CJIS routing at the org level first, or the queries will fail at runtime regardless of the override.
+</Warning>
+
+<Warning>
+  Overrides are fully auditable. Do not use them to grant informal exceptions outside your agency's written policy — every override appears in compliance reports.
+</Warning>
+
+- **Override without a documented reason** — always enter a meaningful justification; vague entries such as "requested" are difficult to defend during audits.
+- **Leaving an override after the user transfers agencies** — review and clean up overrides whenever a user moves to a different agency or leaves the organization.
+- **Enabling NCIC without verifying CJIS routing** — confirm org-level CJIS configuration before granting NCIC access to any user.

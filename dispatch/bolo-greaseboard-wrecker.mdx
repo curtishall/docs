@@ -1,0 +1,123 @@
+---
+title: "BOLOs, Greaseboard, and Wrecker Rotation in Cadmus"
+sidebarTitle: "BOLOs & Boards"
+description: "Broadcast BOLOs to field units, maintain the operational greaseboard for shift pass-on, manage wrecker rotation, and view static agency resources."
+---
+
+Cadmus centralizes your agency's operational awareness tools in one place — broadcast Be On the Lookout notices to all field units instantly, keep the greaseboard current for shift pass-on, manage wrecker rotation assignments, and reference static agency resources like utilities and emergency contacts without switching applications.
+
+## Create a BOLO
+
+<Steps>
+  <Step title="Open the BOLO dialog">
+    Click the **BOLO** button in the header to open the **Broadcast New BOLO** dialog.
+  </Step>
+  <Step title="Enter subject information">
+    Complete the **Subject Information** section with descriptive details about the person or situation — name, physical description, last known location, and any other relevant identifiers.
+  </Step>
+  <Step title="Enter vehicle information">
+    Complete the **Vehicle Information** section if the BOLO involves a vehicle. Include make, model, color, plate, and any distinguishing characteristics.
+  </Step>
+  <Step title="Attach an image (optional)">
+    Click **Select Image** to attach a photo. Images help field units make visual identifications.
+  </Step>
+  <Step title="Broadcast the BOLO">
+    Click **Broadcast BOLO** to publish the notice immediately to all field units.
+  </Step>
+</Steps>
+
+<Warning>
+  BOLO images may contain sensitive or graphic content. Follow your agency's dissemination policy before attaching or broadcasting images to field units.
+</Warning>
+
+## BOLOs Dashboard Tab
+
+After broadcasting, manage active BOLOs from the **BOLOs** tab on the main dashboard.
+
+- The tab displays a list of all currently active BOLOs.
+- Click **Refresh** to reload the list and confirm your new broadcast appears.
+- Click any BOLO to open its **BOLO Details** panel, where you can:
+  - **EDIT** — update subject or vehicle information.
+  - **DISMISS** — acknowledge the BOLO without canceling it.
+  - **CANCEL BOLO** — remove the BOLO from field visibility immediately.
+
+<Warning>
+  Canceling an active BOLO removes it from field unit displays immediately. Confirm with a supervisor before canceling a BOLO that may still be operationally relevant.
+</Warning>
+
+<Tip>
+  Refresh the BOLOs tab after broadcasting to verify the notice appears in the active list before moving on to other tasks.
+</Tip>
+
+## Operational Greaseboard
+
+The operational greaseboard is your agency's shared shift-to-shift information board. Access it from **Resources** tab → **Operational Board**.
+
+Items are organized into categories for quick scanning:
+
+| Category | Purpose |
+|---|---|
+| **Daily Operations** | Standing orders and routine operational notes |
+| **Burn Permits** | Active burn permit information for the jurisdiction |
+| **Repos** | Vehicle repossession orders and hold notices |
+| **Hazards** | Road, environmental, or structural hazards in the area |
+| **Wrecker Notes** | Wrecker-specific instructions or callout notes |
+| **Shift Pass-On** | Notes and handoff items for the incoming shift |
+
+**Pinned Alerts** appear at the top of the board regardless of category, ensuring critical information is always visible to every dispatcher.
+
+### Add or Edit Greaseboard Items
+
+<Steps>
+  <Step title="Open the add or edit dialog">
+    Click **Add Item** to create a new entry, or click an existing item and select **Edit Item** to modify it.
+  </Step>
+  <Step title="Fill in item details">
+    Enter the item content and select the appropriate **Category** from the dropdown to ensure it appears in the correct section.
+  </Step>
+  <Step title="Pin if critical">
+    Toggle the pin option to promote the item to the **Pinned Alerts** section at the top of the board. Use pinning for items that every dispatcher must see immediately upon starting a shift.
+  </Step>
+  <Step title="Save">
+    Click **Create** for new items or **Update** when editing an existing entry.
+  </Step>
+</Steps>
+
+<Tip>
+  Pin shift pass-on items that require immediate awareness — such as major ongoing incidents or supervisor directives — so incoming dispatchers see them before anything else on the board.
+</Tip>
+
+## Unit Greaseboard
+
+For a live grid view of all logged-in units and their current assignments, press **F5** to open the **Unit Greaseboard**. This view is separate from the operational greaseboard and reflects real-time unit status rather than shift notes.
+
+## Wrecker Rotation
+
+Manage agency-wide wrecker callouts from **Resources** tab → **Wrecker Rotation**.
+
+The **Wrecker Rotation (Agency-Wide)** panel lists available wreckers in rotation order. Use the filter buttons to narrow the list:
+
+<CardGroup cols={3}>
+  <Card title="All Wreckers" icon="truck-tow">
+    Displays every wrecker on the rotation regardless of capacity type.
+  </Card>
+  <Card title="Standard Only" icon="car">
+    Filters to passenger vehicle and light-duty wreckers.
+  </Card>
+  <Card title="Heavy Duty Only" icon="truck">
+    Filters to heavy-duty and commercial vehicle wreckers.
+  </Card>
+</CardGroup>
+
+<Note>
+  If your agency's SOP requires documenting wrecker rotation changes, record the callout in the shift log at the time of dispatch.
+</Note>
+
+## Static Reference Sections
+
+The **Resources** tab also provides read-only reference panels that your agency administrator populates:
+
+- **Utilities** — contact numbers and procedures for local utility companies.
+- **Emergency Contacts** — key agency and mutual-aid contacts for critical incidents.
+
+These sections do not require updates during a shift and serve as a quick reference without leaving the dispatch console.

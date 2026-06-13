@@ -1,0 +1,128 @@
+---
+title: "Log In Units and Manage Unit Assignments in Cadmus"
+sidebarTitle: "Unit Login"
+description: "How to log in field units using the Login User dialog (F2), manage crew assignments, and track active vs off-duty units in the sidebar."
+---
+
+The **Login User** function in Cadmus lets dispatchers log crews onto units at the start of a shift, assign individual officers to unit IDs, and manage the off-duty pool — all from a single dialog. Keeping unit login state accurate ensures the Active Units sidebar reflects real-world availability and that field MDTs stay in sync with the dispatch board.
+
+## Open the Login User Dialog
+
+You can open the **Unit Assignment** dialog two ways:
+
+- Press <kbd>F2</kbd> from anywhere in the Cadmus dispatch interface.
+- Click the **Login User** button in the top header bar.
+
+<Note>
+  Verify that the correct **Agency** is selected in the filter row at the top of the dialog before proceeding. If your console covers multiple agencies, selecting the wrong agency will show the wrong unit pool.
+</Note>
+
+## Log a Unit On Duty
+
+<Steps>
+  <Step title="Open the Unit Assignment dialog">
+    Press <kbd>F2</kbd> or click **Login User** in the header. The dialog lists all units available for login.
+  </Step>
+  <Step title="Filter the unit list (optional)">
+    Use the **All Beats**, **All Agencies**, and **All Unit Types** dropdowns to narrow the list. This is especially useful at multi-agency consoles or large-agency shift changes.
+  </Step>
+  <Step title="Select the unit">
+    Click the row for the unit you want to bring on duty.
+  </Step>
+  <Step title="Assign crew">
+    Click **Logon** and enter or select the officer's name or ID to associate them with the unit.
+  </Step>
+  <Step title="Confirm">
+    Submit the dialog. The unit moves from the Off Duty pool to the **Active Units** sidebar with an **Available** status.
+  </Step>
+</Steps>
+
+## Batch Login at Shift Start
+
+When multiple units are coming on duty simultaneously — such as at a major shift change — use **Batch Log In Units** instead of repeating the single-unit flow.
+
+1. Open the **Off Duty** section of the Active Units sidebar.
+2. Click **Batch Log In** (or **Batch Log In Units**).
+3. Select all units to bring on duty and confirm.
+
+<Tip>
+  Batch login saves significant time at peak shift changes. Coordinate with officers to confirm they are ready before you submit — logging a unit on triggers MDT login state on their device.
+</Tip>
+
+## Active Units Sidebar
+
+Once units are logged on, the **Active Units** sidebar gives you a live view of your deployment:
+
+- **Active units list** — shows every on-duty unit with its current status and color-coded indicator.
+- **Off Duty section** — lists units that are configured but not currently logged on, available for batch or individual login.
+- **Units list density** — toggle between **Compact** and **Comfortable** display density to match your screen layout.
+- **Status filter** — use the **All** dropdown to filter the sidebar to a specific status (e.g., show only Available units).
+
+For a full-screen grid view of all unit statuses, press <kbd>F5</kbd> to open the **Unit Greaseboard**. The greaseboard supports **Table view**, **Sort by Status**, and can be opened in a new window for a secondary monitor.
+
+## Unit Context Menu
+
+Right-click any unit row in the sidebar (or click the unit's action menu) to access quick actions without opening a call:
+
+| Action | Effect |
+|---|---|
+| **Create Call** | Opens a new CFS pre-tied to this unit |
+| **Off Duty** | Moves the unit to the Off Duty pool |
+| **Mark Available** | Returns unit to Available status |
+| **Logout User** | Removes one crew member without clearing the entire unit |
+| **Devices…** | Opens MDT device enrollment for the unit |
+
+<Note>
+  Some context menu items may display **Coming soon** depending on your agency configuration (for example, Traffic Stop from the sidebar and Memo Location).
+</Note>
+
+## Log Out a Single Officer
+
+To remove one crew member without taking the entire unit off duty:
+
+1. Open the unit context menu from the Active Units sidebar.
+2. Select **Logout User** from the unit's context menu.
+3. Confirm the officer to remove.
+
+The unit remains on duty with any remaining assigned crew.
+
+## Set a Unit Off Duty at Shift End
+
+<Steps>
+  <Step title="Confirm the unit is clear of all calls">
+    A unit cannot be set off duty while assigned to an active CFS. If you attempt this, Cadmus displays a **Cannot Set Unit Off Duty** error toast.
+  </Step>
+  <Step title="Open the unit context menu">
+    Right-click the unit row in the Active Units sidebar.
+  </Step>
+  <Step title="Select Off Duty">
+    Click **Off Duty** and confirm in the **Set Unit Off Duty** dialog.
+  </Step>
+</Steps>
+
+The unit moves from the Active Units list to the Off Duty pool.
+
+## MDT Device Enrollment
+
+If a field unit needs to enroll a new mobile device (MDT), open the **Devices** dialog from the unit context menu (**Devices…**):
+
+- Copy the activation code and send it to the officer for field device setup.
+- Use **Revoke device?** to decommission a retired or lost device.
+
+## Units and Agency Configuration
+
+Units and their agency associations are created and maintained in **Web Admin** under the Units pages. If units appear stale or a newly created unit does not appear in the Login User dialog, reload the page to refresh the unit list after any admin changes.
+
+<Note>
+  NCIC behavior and traffic-stop permissions are governed by agency-level settings in Web Admin, not the unit login configuration.
+</Note>
+
+## Common Mistakes to Avoid
+
+- **Logging a unit on without assigning to a call** — the call remains in a pending state until a unit is explicitly assigned.
+- **Setting a unit off duty while assigned to an open CFS** — Cadmus will block the action, but verify call assignments manually before ending a shift.
+- **Skipping batch login at a major shift change** — logging units on one at a time slows down shift start and can delay MDT availability for officers in the field.
+
+<Warning>
+  Logout and off-duty actions directly affect the field MDT login state for assigned officers. Always coordinate with officers before forcing a logout from the dispatch console — an unexpected MDT logout can disrupt an active officer in the field.
+</Warning>

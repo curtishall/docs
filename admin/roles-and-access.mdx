@@ -1,0 +1,123 @@
+---
+title: "Cadmus Web Admin: Roles, Access Levels, and Permissions"
+sidebarTitle: "Roles & Access"
+description: "A complete reference for Cadmus roles — what each role can do in Web Admin, Dispatch CAD, and Mobile CAD, with common assignment patterns."
+---
+
+Cadmus uses a tiered role system to control what each user can see and do across Web Admin, Dispatch CAD, and Mobile CAD. Roles are assigned per user in Web Admin, and your role determines which sidebar items appear, which settings pages you can open, and which operational features are available to you in dispatch. Assigning the right role to each person — no more access than their job requires — is the foundation of a secure, well-governed CAD deployment.
+
+## Role tiers
+
+| Tier | Roles | Scope |
+|---|---|---|
+| **Platform** | CadmusAdmin | All organizations |
+| **Organization** | OrgAdmin | One organization |
+| **Agency** | AgencyAdmin, AgencySupervisor, AgencyUser, Dispatcher, ExternalViewer | Agency operations |
+| **Restricted** | ReadOnly-Calls | Incidents only in admin sidebar |
+
+## Role descriptions
+
+### CadmusAdmin (platform)
+
+CadmusAdmin is the Cadmus platform-level role held by Cadmus staff. CadmusAdmins can access all organizations across the platform and perform tasks that no other role can — configuring CJIS sites, setting up RMS webhooks, and promoting a Sandbox org to Live. If your deployment requires CJIS integration or org promotion, work with your CadmusAdmin contact.
+
+<Warning>
+  CadmusAdmin actions affect every tenant on the platform. Always confirm the organization picker before saving changes.
+</Warning>
+
+### OrgAdmin
+
+OrgAdmins have full administrative control within their organization. Assign this role to your CAD director or the person responsible for your Cadmus deployment.
+
+**OrgAdmins can:**
+- Create and manage agencies within the org
+- Invite, deactivate, and manage all users
+- Configure org-wide incident types, tags, and common locations
+- Manage GIS settings and geographic service area
+- Open **Settings** (`/settings`) to adjust the org's geographic center, CFS sharing, and Clerk sync
+- Coordinate CJIS site configuration with a CadmusAdmin
+
+### AgencyAdmin
+
+AgencyAdmins manage the day-to-day configuration of a specific agency. Assign this role to dispatch supervisors or chiefs who need to control agency-level behavior without full org-wide access.
+
+**AgencyAdmins can:**
+- Manage units, vehicles, and crew assignments for their agency
+- Configure agency settings at `/agencies/{agencyId}/settings` — including NCIC access, traffic stop allowance, and report number formats
+- Apply per-user agency overrides (for example, granting or restricting NCIC access for a specific user)
+- They cannot modify org-level settings, other agencies, or user records outside their agency
+
+### AgencySupervisor and AgencyUser
+
+These roles provide operational access scoped to a single agency. They can see and interact with incidents, units, and agency data but have limited access to Web Admin configuration pages. Use these roles for supervisors or officers who need more visibility than a line dispatcher but should not manage admin settings.
+
+### Dispatcher
+
+The Dispatcher role is the standard role for line dispatchers. Dispatchers work primarily in **Dispatch CAD** — creating and managing calls for service, logging units, running queries (when NCIC is enabled), and managing the call board. Dispatchers have limited access to Web Admin and cannot change org or agency configuration settings.
+
+<Note>
+  If a dispatcher reports that a feature is missing (for example, no NCIC query button or no Quick Call shortcut), the issue is almost always a configuration setting in Web Admin — not the Dispatcher role itself. See [Troubleshoot Common Cadmus Dispatch CAD Issues](/dispatch/troubleshooting).
+</Note>
+
+### ExternalViewer
+
+ExternalViewer is used for system integrations rather than human users. An ExternalViewer account can generate and manage API keys via **Account → API Keys** (`/account/api-keys`). Assign this role to service accounts that need read access to Cadmus data for third-party integrations (for example, CAD-to-CAD feeds or records management systems).
+
+### ReadOnly-Calls
+
+ReadOnly-Calls is a restricted role that limits the user to the **Incidents** section of the Web Admin sidebar. Users with this role are redirected away from the dashboard root and cannot open organization settings, agency settings, or any other configuration area. This role is appropriate for records clerks or auditors who need to view incident history without any administrative access.
+
+## Sidebar visibility
+
+Web Admin filters the left-hand navigation menu to show only the sections your role can access. If a menu item is missing, your account does not have permission for that area — this is by design, not a bug. To request a temporary role change for training or testing, contact your Cadmus administrator.
+
+## Common role assignments
+
+| Person | Typical role |
+|---|---|
+| County CAD director | OrgAdmin |
+| Chief / sheriff (small agency) | OrgAdmin + AgencyAdmin |
+| Dispatch supervisor | AgencyAdmin or Dispatcher |
+| Line dispatcher | Dispatcher |
+| Records (view only) | ReadOnly-Calls |
+| Integration service account | ExternalViewer |
+
+<Note>
+  Small-agency leads — such as a chief who is also the sole dispatcher — commonly hold both OrgAdmin and AgencyAdmin. See the Small Agency Admin guide for a tailored setup walkthrough.
+</Note>
+
+## Settings scope reference
+
+Every settings page in Web Admin is scoped to a specific level. Use this table to understand what each scope controls:
+
+| Scope | Examples |
+|---|---|
+| **Organization** | Geographic center, CFS sharing, CJIS site, incident types |
+| **Agency** | Traffic stops allowed, State/NCIC access, report number format |
+| **User** | Notification preferences, per-user agency overrides |
+
+## Common mistakes and warnings
+
+<AccordionGroup>
+
+  <Accordion title="Expecting Dispatcher to edit agency NCIC toggles">
+    Dispatchers cannot change the State/NCIC Access setting — that requires AgencyAdmin. If a dispatcher needs NCIC access enabled, an AgencyAdmin must turn on the toggle in **Agency Settings** (and the org's CJIS site must already be configured by a CadmusAdmin).
+  </Accordion>
+
+  <Accordion title="Using a ReadOnly-Calls account for admin training">
+    ReadOnly-Calls accounts cannot access organization or agency settings pages, so they are unsuitable for admin training sessions. Use a Sandbox org with a properly scoped OrgAdmin or AgencyAdmin test account instead.
+  </Accordion>
+
+  <Accordion title="Changing the production org while intending Sandbox">
+    Before saving any settings change, confirm the organization name in the header picker. If your Live and Sandbox orgs have similar names, rename the Sandbox org to include a clear suffix such as `– Sandbox`.
+  </Accordion>
+
+  <Accordion title="Granting NCIC access without verifying CJIS certification">
+    State/NCIC Access must be granted only to users who hold current CJIS certification per your agency's CJIS Security Policy. Granting this access to uncertified users is a policy violation.
+
+    <Warning>
+      Grant NCIC-related access only to CJIS-certified users, as required by your agency policy and the FBI CJIS Security Policy.
+    </Warning>
+  </Accordion>
+
+</AccordionGroup>

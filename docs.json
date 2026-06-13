@@ -1,0 +1,145 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "almond",
+  "name": "Cadmus",
+  "description": "Documentation for Cadmus Dispatch CAD and Web Admin — public-safety dispatch software for telecommunicators, supervisors, and agency administrators.",
+  "colors": {
+    "primary": "#7c7c7c",
+    "light": "#131313",
+    "dark": "#c2c2c2"
+  },
+  "favicon": "https://media.brand.dev/bed30c3e-8d58-42f3-b3b7-33ceadc60776.png",
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "contextual": {
+    "options": ["copy", "view", "assistant"]
+  },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "icon": "house",
+          "href": "/"
+        }
+      ]
+    },
+    "tabs": [
+      {
+        "tab": "Dispatch CAD",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "expanded": true,
+            "pages": [
+              "dispatch/introduction",
+              "dispatch/getting-started",
+              "dispatch/dashboard-overview"
+            ]
+          },
+          {
+            "group": "Call Handling",
+            "icon": "phone-call",
+            "pages": [
+              "dispatch/create-cfs",
+              "dispatch/cfs-form-fields",
+              "dispatch/call-detail",
+              "dispatch/close-call",
+              "dispatch/find-a-call"
+            ]
+          },
+          {
+            "group": "Units & Dispatch",
+            "icon": "radio",
+            "pages": [
+              "dispatch/unit-login",
+              "dispatch/dispatching-units",
+              "dispatch/quick-calls-fkeys"
+            ]
+          },
+          {
+            "group": "Tools",
+            "icon": "wrench",
+            "pages": [
+              "dispatch/map-and-location",
+              "dispatch/chat-sms-comms",
+              "dispatch/queries-ncic",
+              "dispatch/bolo-greaseboard-wrecker"
+            ]
+          },
+          {
+            "group": "Support",
+            "icon": "life-buoy",
+            "pages": [
+              "dispatch/troubleshooting"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Web Admin",
+        "groups": [
+          {
+            "group": "Overview",
+            "icon": "layout-dashboard",
+            "expanded": true,
+            "pages": [
+              "admin/introduction",
+              "admin/organization-agency-basics",
+              "admin/roles-and-access"
+            ]
+          },
+          {
+            "group": "User Management",
+            "icon": "users",
+            "pages": [
+              "admin/users-lifecycle",
+              "admin/user-agency-overrides",
+              "admin/user-notification-preferences"
+            ]
+          },
+          {
+            "group": "Agency Configuration",
+            "icon": "settings",
+            "pages": [
+              "admin/agency-settings",
+              "admin/citation-report-settings",
+              "admin/small-agency-admin"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "plug",
+            "pages": [
+              "admin/integrations-overview",
+              "admin/rapidsos-management"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "icon": "triangle-alert",
+            "pages": [
+              "admin/troubleshooting-audit"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Sign In",
+      "href": "https://cadmus.app"
+    }
+  },
+  "footer": {
+    "socials": {}
+  }
+}

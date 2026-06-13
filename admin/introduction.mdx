@@ -1,0 +1,80 @@
+---
+title: "Cadmus Web Admin: Configure Your Agency and Organization"
+sidebarTitle: "Introduction"
+description: "Web Admin is where OrgAdmins and AgencyAdmins configure users, agencies, incident types, integrations, and settings that control Dispatch CAD behavior."
+---
+
+**Web Admin** is the configuration hub for Cadmus. Everything you configure here — incident types, agency toggles, user roles, integration credentials, notification templates — flows through Cadmus services and directly shapes what dispatchers see and can do in Dispatch CAD and what field responders experience in Mobile CAD. If a feature is missing in dispatch or a permission isn't working, the answer is almost always a setting in Web Admin.
+
+## Who this is for
+
+| Role | Typical tasks |
+|---|---|
+| **OrgAdmin** | Org settings, users, incident types, GIS configuration, RapidSOS, CJIS coordination |
+| **AgencyAdmin** | Agency settings (NCIC, traffic stops, report numbers), units, vehicles, per-user overrides |
+| **CadmusAdmin** | Cross-org tools, CJIS site configuration, RMS webhooks, org promotions |
+
+If you are unsure which role you hold, open **Web Admin** and note which items appear in the left sidebar — navigation is filtered to your permissions. See [Roles and Access](/admin/roles-and-access) for a full breakdown.
+
+## How settings reach the field
+
+Changes you save in Web Admin flow through Cadmus to dispatchers and field units:
+
+```
+Web Admin (org / agency / user settings)
+              ↓
+   Cadmus services (tenant-scoped config)
+              ↓
+   Dispatch CAD  ·  Mobile CAD
+```
+
+Most changes take effect after dispatchers select **Reload Data** in the Dispatch CAD header. Some changes — such as new CJIS credentials or org promotions — require CadmusAdmin action and a brief propagation window.
+
+## Start here
+
+If you are new to Web Admin, read the pages in this order:
+
+<Steps>
+  <Step title="Roles and Access">
+    Understand which roles exist, what each role can configure, and how sidebar visibility is filtered by role. This context makes every other page easier to follow.
+
+    → [Roles and Access](/admin/roles-and-access)
+  </Step>
+  <Step title="Organization and Agency Basics">
+    Learn the tenant hierarchy (Organization → Agency → Unit → User), how Live and Sandbox orgs pair, and where each type of setting lives.
+
+    → [Organization and Agency Basics](/admin/organization-agency-basics)
+  </Step>
+  <Step title="Users Lifecycle">
+    Invite dispatchers, assign roles and agency access, manage deactivation, and handle CJIS user overrides.
+
+    → [Users Lifecycle](/admin/users-lifecycle)
+  </Step>
+</Steps>
+
+## Key sections
+
+<CardGroup cols={2}>
+  <Card title="Organization & Agency Basics" icon="building" href="/admin/organization-agency-basics">
+    Tenant hierarchy, Live vs. Sandbox, and where to configure each type of setting.
+  </Card>
+  <Card title="Roles & Access" icon="shield-halved" href="/admin/roles-and-access">
+    Role tiers, sidebar permissions, common assignments, and NCIC access warnings.
+  </Card>
+  <Card title="Users Lifecycle" icon="users" href="/admin/users-lifecycle">
+    Invite, activate, assign, and deactivate dispatchers and admin users.
+  </Card>
+  <Card title="Agency Settings" icon="sliders" href="/admin/agency-settings">
+    NCIC, traffic stops, report number formats, and other per-agency toggles.
+  </Card>
+  <Card title="Integrations" icon="plug" href="/admin/integrations-overview">
+    RapidSOS, CJIS/RMS, ATAK, and API key management.
+  </Card>
+  <Card title="Troubleshooting & Audit" icon="magnifying-glass" href="/admin/troubleshooting-audit">
+    Admin-side diagnostic checks, audit log access, and escalation steps.
+  </Card>
+</CardGroup>
+
+<Note>
+  Always confirm which organization is selected in the header picker before saving any changes. Web Admin applies settings to the currently selected org — editing the Sandbox org when you intend the Live org (or vice versa) is one of the most common admin mistakes.
+</Note>

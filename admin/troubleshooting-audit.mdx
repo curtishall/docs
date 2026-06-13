@@ -1,0 +1,126 @@
+---
+title: "Troubleshoot Web Admin Issues and Run Audit Checks"
+sidebarTitle: "Troubleshooting"
+description: "Fix common Cadmus Web Admin configuration problems and run quarterly audit checks to ensure users, roles, and settings match your agency SOP."
+---
+
+Most Cadmus Web Admin problems trace back to one of three root causes: a setting at the wrong scope (org vs. agency), a user account that is inactive or misconfigured in Clerk, or a mismatch between the environment a credential was saved for and the environment a dispatcher is working in. Use the accordions below to diagnose and resolve the most common issues, then run the quarterly audit checklist to keep your configuration aligned with your agency's standard operating procedures before problems reach the dispatch floor.
+
+---
+
+## Common Issues
+
+<Accordion title="User cannot sign in">
+  Work through the following checks in order. Each check has a direct corrective action you can take in Web Admin or Clerk.
+
+  | Check | Action |
+  |---|---|
+  | Is the user account active in Cadmus? | Go to **Users**, find the account, and select **Reactivate** if the status is inactive. |
+  | Has the user accepted the Clerk invitation? | Open the user record and select **Resend Invite**. Ask the user to check spam folders. |
+  | Is the user trying to sign in at the wrong Clerk instance? | Compare the Clerk Organization ID shown in **Settings** against the login URL the user is visiting. |
+  | Does the user have a role assigned? | Open the user record and confirm a role (Dispatcher, AgencyAdmin, OrgAdmin, or CadmusAdmin) is set. |
+
+  If invitation links continue to fail after resending, ask IT to verify that Clerk's redirect URLs are configured correctly for your deployment domain.
+</Accordion>
+
+<Accordion title="User sees an empty call board">
+  An empty call board in Dispatch CAD almost always means the user's account is not properly connected to an agency, or they are pointed at the wrong org or environment.
+
+  | Check | Action |
+  |---|---|
+  | Is the correct organization selected in the Dispatch CAD header? | Ask the user to open the org switcher and select the right organization. |
+  | Is the user assigned to an agency? | Go to **Users** → select the user → review **Agency Access** and add the appropriate agency. |
+  | Is the deployment URL correct? | Ask IT to confirm the user's browser bookmark points to the production (or training) Cadmus URL, not a stale dev endpoint. |
+</Accordion>
+
+<Accordion title="NCIC queries fail">
+  NCIC failures have a strict dependency chain — each layer must be in place before the next one can work.
+
+  1. **Org CJIS site** — Open **Settings** and confirm the CJIS site card shows a valid target site. This requires CadmusAdmin. If the field is blank, the relay has no destination to send queries to.
+  2. **Agency State/NCIC Access** — Open the agency record and verify **State/NCIC Access** is toggled on. Enabling this at the agency without a valid org CJIS site produces errors.
+  3. **User effective access** — Review the user's NCIC access level in their user record. A denying override at the user level blocks queries even when org and agency settings are correct.
+  4. **CJIS relay online** — If all configuration looks correct, verify with IT that the on-premises CJIS relay service is running and reachable from the Cadmus application servers.
+
+  <Warning>
+    Never paste NCIC query responses or CJIS credentials into support tickets, email, or chat tools. These materials are criminal-justice sensitive and subject to CJIS Security Policy handling requirements.
+  </Warning>
+</Accordion>
+
+<Accordion title="Incident type missing in Dispatch CAD">
+  If dispatchers report that a call type or incident type is not available in the dropdown, check the following:
+
+  1. Go to **Organization** → **Incident Types** and confirm the type's status is **Active**. Inactive types are hidden from Dispatch CAD.
+  2. Confirm the incident type belongs to the same organization the dispatcher is signed into. Types do not cross org boundaries.
+  3. Ask the dispatcher to reload Dispatch CAD. Admin changes to incident types do not push to open sessions automatically — a full page reload picks up the latest configuration.
+</Accordion>
+
+<Accordion title="Quick call F-key does nothing">
+  When a dispatcher presses an F-key shortcut and nothing happens, the shortcut template may be missing or broken.
+
+  1. Navigate to the **Quick Call Shortcuts** page for the organization and confirm a template exists for the F-key the dispatcher is using.
+  2. Open the template and verify the assigned incident type is still **Active**. A template bound to a deactivated incident type silently fails.
+  3. Ask the dispatcher to restart Dispatch CAD or reload data using the application's data refresh option. Shortcut changes require a fresh data load to take effect.
+</Accordion>
+
+<Accordion title="Report numbers are in the wrong format">
+  Incorrect or unexpected RMS report number formats usually stem from one of three configuration points:
+
+  1. Check whether **Separate RMS Report Numbers** is toggled on or off as your SOP requires. This setting determines whether each agency generates its own independent sequence or shares the org-wide sequence.
+  2. Review the format string and confirm all tokens are valid. An unrecognized token renders literally in the output instead of being substituted.
+  3. Verify that the sequence seed has not been reset mid-year. Resetting the seed without records-management approval causes number collisions and can invalidate existing reports. If you suspect an accidental reset, contact Cadmus support before creating additional records.
+</Accordion>
+
+---
+
+## Quarterly Audit Checklist
+
+Run this checklist every quarter — or after any significant staffing change, software update, or agency reorganization — to catch configuration drift before it affects dispatchers or creates compliance gaps.
+
+1. **Review users with NCIC overrides.** Open each user record that has a non-default NCIC access setting and confirm the override is still authorized and documented.
+2. **Review deactivated users still active in Clerk.** Cross-reference your deactivated Cadmus users against Clerk membership. Remove departed personnel from Clerk to prevent stale sign-in attempts.
+3. **Confirm Sandbox and Live org names are distinct.** Ambiguously named organizations increase the risk of saving production credentials to a training org or vice versa. Ensure names clearly indicate environment type.
+4. **Verify agency settings match your written SOP.** Compare State/NCIC Access toggles, call-type configurations, and report number formats against your agency's current standard operating procedures.
+5. **Confirm notification templates match current statutes.** Review each active notification template for language that references legal codes or timeframes and update any that reflect superseded regulations.
+6. **Rotate API keys for departed integrators.** Any RMS webhook secret, RapidSOS credential, or API key associated with a staff member who has left must be rotated and re-documented with the new owner.
+7. **Check RMS webhook logs for repeated failures.** Navigate to your RMS and review delivery logs for the Cadmus webhook. Repeated 4xx or 5xx errors indicate a broken endpoint or expired secret that may be silently dropping incident updates.
+
+---
+
+## Route Availability Notes
+
+Not all Web Admin pages appear in the sidebar for every Cadmus deployment. If a page is missing, it may be availability-dependent rather than a permissions issue.
+
+| Page | Availability |
+|---|---|
+| **Groups** | Enabled per deployment |
+| **Roles** (dedicated page) | Enabled per deployment |
+| **Notification Policies** (organization-wide) | Enabled per deployment |
+
+Until these pages are available in your deployment, use **Users** for access management and **Notification Templates** for messaging configuration.
+
+---
+
+## When to Escalate to Cadmus Support
+
+Handle the issues above independently using Web Admin. Escalate to **Cadmus support** when you encounter:
+
+- **Clerk sync failure for an entire org** — individual invite resends do not help; the sync pipeline itself needs inspection.
+- **Promotion errors when moving a Sandbox org to Live** — data integrity checks during promotion require platform-level intervention.
+- **GIS import that corrupts beat or zone boundaries** — a bad import can affect every incident created after it; roll back before escalating.
+- **Widespread WebSocket failures across multiple orgs** — single-org WebSocket issues are usually credential or firewall problems; cross-org failures indicate a platform-level event.
+
+When you open a support ticket, collect the following information before contacting Cadmus:
+
+- Organization ID
+- Agency ID (if issue is agency-specific)
+- Affected user email address
+- Date and time the issue first occurred (include time zone)
+- Screenshots of error messages or unexpected behavior
+
+<Warning>
+  Do not include NCIC responses, CJIS credentials, client secrets, or any criminal-justice sensitive data in support tickets or screenshots. Redact sensitive fields before attaching images to any ticket or email.
+</Warning>
+
+<Warning>
+  Audit logs may be required for CJIS or agency compliance reviews. Follow your agency's offboarding procedure before deactivating user accounts — deactivation without documentation can create compliance gaps during an audit.
+</Warning>

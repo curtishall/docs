@@ -1,0 +1,107 @@
+---
+title: "How to Close a Call for Service in Cadmus Dispatch CAD"
+sidebarTitle: "Close Call"
+description: "How to finalize and close a CFS in Cadmus — complete the close dialog, handle report-to-follow, and understand the post-close state."
+---
+
+Closing a Call for Service finalizes the incident record and moves the call off the active dispatch board. Close a CFS when all assigned units have cleared the scene, required narratives are entered per your agency's SOP, and any report numbers have been assigned. Closing too early — before units are cleared or narratives are complete — creates gaps in the official record that are difficult to correct after the fact.
+
+<Warning>
+  Closing a call is difficult to undo. Verify the call number, location, and assigned units before confirming closure. Reopening a closed call may require supervisor approval and always creates an audit log entry.
+</Warning>
+
+## Before you close
+
+Confirm all three conditions are true before starting the close workflow:
+
+- All assigned units are **CLR** (cleared) or have been appropriately removed from the call.
+- Required narrative text has been entered per your agency's standard operating procedures.
+- If a **Report to Follow** applies, report and case numbers have been assigned to each relevant agency.
+
+<Tip>
+  If you have a duplicate CFS open for the same incident, use **Merge into…** in the app bar to consolidate the calls before closing. Merging is cleaner than closing both separately, since it preserves a unified history under one CFS number.
+</Tip>
+
+## Close workflow
+
+<Steps>
+  <Step title="Open call detail for the CFS">
+    Click the call card on the dispatch board, or use [Find a Call](/dispatch/find-a-call) if the call has scrolled off the board. Confirm you are on the correct CFS by checking the call number, incident type, and location in the call summary block.
+  </Step>
+
+  <Step title="Select Close Call">
+    Click **Close Call** in the app bar at the top of call detail, or use the **Close Call** button in the call summary block. The close dialog opens.
+  </Step>
+
+  <Step title="Complete the narrative fields">
+    Fill in both narrative fields in the close dialog:
+
+    | Field                | Purpose                                                                         |
+    |----------------------|---------------------------------------------------------------------------------|
+    | **Public Narrative** | The official record of the incident, suitable for general history and reports. Required by most agency SOPs — do not leave blank. |
+    | **Private Notes**    | Restricted notes visible only to authorized roles. Optional; use per agency policy. |
+
+    <Warning>
+      Closing with an empty **Public Narrative** when your agency SOP requires minimum text creates a compliance gap. Check your agency's minimum-narrative requirements before confirming.
+    </Warning>
+  </Step>
+
+  <Step title="Select the Primary Officer (if required)">
+    If your agency configuration requires a reporting officer, click the **Select Primary Officer** dropdown and choose the officer responsible for the incident report. This field may be mandatory or optional depending on incident type and agency settings.
+  </Step>
+
+  <Step title="Confirm close">
+    Review all fields, then click **Confirm** (or the equivalent close button). Cadmus validates the form, records the close timestamp, and moves the call to the **Recent** board tab.
+  </Step>
+</Steps>
+
+## Report to Follow (RTF)
+
+When a **Report to Follow** is applicable — for example, a crime requiring a case number — Cadmus can assign report and case numbers at close time based on your agency's settings.
+
+- Report and case number behavior is configured in **Web Admin → Citation and Report Settings**.
+- In multi-agency scenarios, each agency may receive its own report number.
+- If you need to assign a report number before closing, use **Assign Report Number** in the quick actions column of call detail.
+
+<Note>
+  Consult your agency administrator if you are unsure whether an incident type triggers automatic report number generation at close.
+</Note>
+
+## After the call is closed
+
+Once a CFS is closed:
+
+- The call moves to the **Recent** board tab and eventually drops from the active board view.
+- Adding new logs and images is restricted. The existing history remains intact and read-only.
+- The call is still searchable via [Find a Call](/dispatch/find-a-call) and remains in the full agency archive.
+
+### Reopening a closed call
+
+Use **Reopen Call** in the app bar only when your agency policy permits it and, in most cases, only with supervisor approval. Reopening creates an audit log entry recording who reopened the call, the timestamp, and any reason provided.
+
+<Warning>
+  Closed calls may block some operational updates for field units. Before reopening, confirm with field personnel that updates are still needed.
+</Warning>
+
+## Common mistakes to avoid
+
+- **Closing with units still assigned** — field units retain an open call on their MDT, causing status-tracking confusion. Clear all units before closing.
+- **Empty public narrative** — when agency SOP requires minimum text, a blank narrative fails compliance checks during quality review.
+- **Wrong primary agency on multi-agency calls** — if the primary agency is set incorrectly, the call may close under the wrong agency's numbering. Verify the primary agency in the Assigned Agencies block before closing.
+
+## Related guides
+
+<CardGroup cols={2}>
+  <Card title="Call Detail" icon="file-lines" href="/dispatch/call-detail">
+    Review every block in call detail — units, timers, notes, and app bar actions.
+  </Card>
+  <Card title="Create a CFS" icon="plus" href="/dispatch/create-cfs">
+    Start from the beginning: open a new Call for Service.
+  </Card>
+  <Card title="Find a Call" icon="magnifying-glass" href="/dispatch/find-a-call">
+    Locate a closed call in the full history archive.
+  </Card>
+  <Card title="New CFS Form Fields" icon="table-list" href="/dispatch/cfs-form-fields">
+    Field reference for the Create New Call for Service form.
+  </Card>
+</CardGroup>

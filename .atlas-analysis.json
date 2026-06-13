@@ -1,0 +1,129 @@
+{
+  "projectType": "saas",
+  "projectName": "Cadmus",
+  "projectDescription": "Cadmus is a computer-aided dispatch (CAD) platform for public-safety telecommunicators, offering Dispatch CAD for call handling and unit coordination, Mobile CAD for field responders, and Web Admin for agency configuration.",
+  "theme": "almond",
+  "primaryColor": "#7c7c7c",
+  "lightColor": "#131313",
+  "darkColor": "#c2c2c2",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Dispatch CAD",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "dispatch/introduction",
+              "dispatch/getting-started",
+              "dispatch/dashboard-overview"
+            ]
+          },
+          {
+            "group": "Call Handling",
+            "pages": [
+              "dispatch/create-cfs",
+              "dispatch/cfs-form-fields",
+              "dispatch/call-detail",
+              "dispatch/close-call",
+              "dispatch/find-a-call"
+            ]
+          },
+          {
+            "group": "Units & Dispatch",
+            "pages": [
+              "dispatch/unit-login",
+              "dispatch/dispatching-units",
+              "dispatch/quick-calls-fkeys"
+            ]
+          },
+          {
+            "group": "Tools",
+            "pages": [
+              "dispatch/map-and-location",
+              "dispatch/chat-sms-comms",
+              "dispatch/queries-ncic",
+              "dispatch/bolo-greaseboard-wrecker"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": [
+              "dispatch/troubleshooting"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Web Admin",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "admin/introduction",
+              "admin/organization-agency-basics",
+              "admin/roles-and-access"
+            ]
+          },
+          {
+            "group": "User Management",
+            "pages": [
+              "admin/users-lifecycle",
+              "admin/user-agency-overrides",
+              "admin/user-notification-preferences"
+            ]
+          },
+          {
+            "group": "Agency Configuration",
+            "pages": [
+              "admin/agency-settings",
+              "admin/citation-report-settings",
+              "admin/small-agency-admin"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "admin/integrations-overview",
+              "admin/rapidsos-management"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "admin/troubleshooting-audit"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Create and manage Calls for Service (CFS) with full intake, location, reporting party, and incident type fields",
+    "Dispatch and track units through real-time status progression (Available → Dispatched → Enroute → On Scene → Clear)",
+    "Keyboard-driven command line for power-user dispatch actions (status updates, notes, unit assignment)",
+    "Real-time call boards by discipline (Patrol, Fire, EMS) with drag-and-drop unit assignment",
+    "RapidSOS integration for emergency caller location tracking on the map",
+    "NCIC/CJIS query workspace for license plates, vehicles, persons, firearms, and wanted persons",
+    "BOLO broadcasts, operational greaseboard, and wrecker rotation management",
+    "Dispatcher chat, SMS messaging from calls, and notification templates",
+    "Role-based access control across Organization, Agency, and User scopes",
+    "Live vs. Sandbox environment pairing for training and go-live promotion",
+    "Configurable report number formats, citation templates, and quick call F-key shortcuts",
+    "Web Admin for agency setup, user lifecycle management, and integration configuration"
+  ],
+  "publicApiSurface": [
+    "POST /agencies/{agencyId}/users/{userId}/settings — user agency overrides",
+    "GET /agencies/{agencyId}/users/{userId}/settings — get user override settings",
+    "GET /admin/organizations/{orgId}/rapidsos/credentials — list RapidSOS credentials",
+    "POST /admin/organizations/{orgId}/rapidsos/credentials — save RapidSOS credentials",
+    "POST /admin/organizations/{orgId}/rapidsos/test — test RapidSOS credentials",
+    "GET /account/api-keys — list API keys (ExternalViewer role)",
+    "/agencies/{agencyId}/settings — agency settings page",
+    "/agencies/{agencyId}/command-aliases — command alias configuration",
+    "/agencies/{agencyId}/call-type-shortcodes — call type shortcode configuration",
+    "/rapidsos — RapidSOS management page",
+    "/users — user management",
+    "/settings — organization settings"
+  ]
+}

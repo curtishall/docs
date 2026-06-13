@@ -1,0 +1,126 @@
+---
+title: "Dispatch and Track Field Units in Cadmus Dispatch CAD"
+sidebarTitle: "Dispatching"
+description: "Assign units to a call from the dashboard or call detail, advance status from dispatched to on scene, and manage multi-unit assignments."
+---
+
+Dispatching in Cadmus means connecting one or more logged-on units to a Call for Service (CFS) and then tracking each unit's progress from initial assignment through clearance. You can assign units directly inside an open call, by dragging from the sidebar on the dashboard, or from the command line — whichever fits your workflow in the moment.
+
+## Assign a Unit from the Call Detail
+
+The most straightforward path is to open the CFS and assign from within the call record:
+
+<Steps>
+  <Step title="Open the CFS">
+    Click the call card on the dashboard or select the incident from the call queue to open the call detail view.
+  </Step>
+  <Step title="Locate the Units block">
+    Find the **Units** block or the **Quick Actions** panel within the call detail.
+  </Step>
+  <Step title="Select Assign Unit">
+    Click **Assign Unit**. The available-unit picker lists all on-duty units currently showing an Available status.
+  </Step>
+  <Step title="Choose the unit">
+    Click the unit you want to assign. You can also select from the **AVAILABLE UNITS** row for a quick-pick of the nearest or first available.
+  </Step>
+  <Step title="Confirm assignment">
+    Confirm the selection. The unit's status advances to **Dispatched (DISP)** and the unit row appears in the call's unit list.
+  </Step>
+</Steps>
+
+## Assign a Unit from the Dashboard
+
+<Tabs>
+  <Tab title="Drag and drop">
+    Locate the unit in the **Active Units** sidebar on the dashboard. Drag the unit row and drop it onto the target call card. The unit is immediately assigned and its status moves to Dispatched.
+  </Tab>
+  <Tab title="Command line">
+    Use the dispatch command line with the `DU` command:
+
+    ```
+    DU A23 #26-00045
+    ```
+
+    Replace `A23` with the unit ID and `#26-00045` with the incident number.
+  </Tab>
+</Tabs>
+
+## Status Progression
+
+Each unit assigned to a call moves through a standard status lifecycle. Update statuses promptly to keep the dispatch board accurate for the entire team.
+
+**Available → Dispatched → Enroute → On Scene → Clear**
+
+Use the quick-status chips on the call detail to advance a unit's status with a single click:
+
+| Chip | Status | Meaning |
+|---|---|---|
+| **DISP** | Dispatched | Unit is assigned and notified |
+| **ENRT** | Enroute | Unit is en route to the scene |
+| **SCENE** | On Scene | Unit has arrived |
+| **CLR** | Cleared | Unit has cleared the call |
+
+<Tip>
+  Mark units **Enroute** and **On Scene** as soon as officers radio in. An up-to-date board lets supervisors and other dispatchers make better assignment decisions in real time. Use the Unit Greaseboard (<kbd>F5</kbd>) for a big-picture view of all unit statuses across active calls.
+</Tip>
+
+## Quick Status Change (Without Opening the Call)
+
+When a unit needs a status update but you do not want to navigate into the full call detail, use the **Quick Status Change** option from the unit's context menu in the Active Units sidebar. This option is available when supported by your agency configuration.
+
+## Assign Multiple Units to One Call
+
+For incidents requiring several units, use the in-call command line in **multi-assign** mode:
+
+```
+ASSIGN @351 @422 @M1
+```
+
+Each `@` prefix identifies a unit ID. All listed units are assigned to the open call simultaneously.
+
+## Remove a Unit from a Call
+
+To clear a unit from an assignment:
+
+1. Open the call detail.
+2. Find the unit row in the **Units** block.
+3. Click the unit's action menu and select **Clear Call**, or use the command line:
+
+```
+CU A23
+```
+
+Confirm before clearing — the unit's status returns to Available and the assignment is removed from the call record.
+
+<Warning>
+  Clearing the primary (or only) unit from an active, in-progress call may violate your agency's standard operating procedure. Confirm with a supervisor before removing the last assigned unit from a high-priority incident.
+</Warning>
+
+## Conflict Resolution
+
+If you attempt to assign a unit that is already committed to another call, Cadmus returns an error toast and blocks the assignment. To resolve the conflict:
+
+1. Navigate to the other incident the unit is currently assigned to.
+2. Clear the unit from that call using **Clear Call** or the `CU` command.
+3. Return to the new incident and complete the assignment.
+
+<Note>
+  Do not force-clear a unit from a high-priority active call without coordinating with the officer or a supervisor first.
+</Note>
+
+## Tips for Efficient Dispatching
+
+<CardGroup cols={2}>
+  <Card title="Assign the closest unit" icon="location-dot">
+    When policy allows, prioritize the geographically closest available unit to minimize response time. Use the Map (<kbd>F4</kbd>) to visualize unit positions relative to the call location.
+  </Card>
+  <Card title="Keep statuses current" icon="clock">
+    Update Enroute and On Scene statuses as soon as officers confirm them by radio. Stale statuses make the board misleading for everyone sharing the console.
+  </Card>
+  <Card title="Use the greaseboard" icon="table">
+    Press <kbd>F5</kbd> to open the Unit Greaseboard for a high-density status grid. Open it in a new window on a secondary monitor for continuous situational awareness.
+  </Card>
+  <Card title="Use multi-assign for large incidents" icon="users">
+    For mutual aid or major incidents, use the `ASSIGN` command to add all responding units in a single action rather than one at a time.
+  </Card>
+</CardGroup>

@@ -1,0 +1,96 @@
+---
+title: "Map, Location, and RapidSOS Tracking in Cadmus CAD"
+sidebarTitle: "Map & Location"
+description: "Use the Cadmus map window to plot units and calls, validate addresses on incidents, and track caller locations with RapidSOS integration."
+---
+
+The Cadmus map window gives you a live, at-a-glance picture of your operational area — active units, open calls, and emergency caller positions all rendered on a single interactive display. Use it to confirm incident addresses, share GPS coordinates with responders, and leverage RapidSOS to pinpoint 911 callers in real time.
+
+## Opening the Map
+
+Press **F4** or click **Map** in the header to open the map window. On desktop installations the map may launch in a separate, repositionable window so you can keep it visible alongside your dispatch queue.
+
+## Map Layers
+
+The **Map Layers** panel lets you toggle each data overlay independently. Enable only the layers you need — cluttered maps can slow performance on older workstations.
+
+| Layer | What it shows |
+|---|---|
+| **Patrol Units** | GPS positions of active patrol vehicles |
+| **Personnel** | On-duty personnel locations |
+| **Active Calls** | Pin for each open call for service |
+| **RapidSOS Locations** | Current caller emergency location from RapidSOS |
+| **RapidSOS Breadcrumbs** | Caller movement trail during an active track |
+
+## Map Controls
+
+Use the toolbar controls to navigate and customize the map view:
+
+- **Zoom In / Zoom Out** — adjust the viewing level incrementally.
+- **Reset View** — return to the default zoom and center.
+- **Always on Top** — keep the map window above other applications (desktop only).
+- **Toggle Fullscreen** — expand the map to fill your entire screen.
+- **Select Map Style** — switch between available basemap themes (e.g., street, satellite, dark mode).
+
+## Location on Calls
+
+Every call detail panel includes a **Location details** block where you can manage the incident address without leaving the call.
+
+- Click **Edit address** to correct or update the location as the caller provides more information.
+- Click **Validate and Geocode Address** to resolve the address to verified map coordinates. Revalidate whenever the reporting party verbally corrects their location.
+- Click **Copy GPS coordinates** to copy the precise latitude/longitude to your clipboard for radio relay or CAD notes.
+
+<Warning>
+  GPS coordinates are personally identifiable location data. Follow your agency's CJIS and PII policy before sharing coordinates externally or pasting them into unsecured systems.
+</Warning>
+
+<Tip>
+  Always confirm that the map pin aligns with the reported cross streets before dispatching units. Geocoding can place pins at the nearest routable point, which may differ from the actual scene.
+</Tip>
+
+## RapidSOS Tracking
+
+When RapidSOS is enabled for your organization, you can initiate a live location track directly from the map.
+
+<Steps>
+  <Step title="Open the tracking panel">
+    Click **RapidSOS Tracking** or **Track Phone Number** from the map toolbar or call detail panel.
+  </Step>
+  <Step title="Enter the caller's phone number">
+    Type the caller's phone number, or select it automatically if the call context pre-fills the field.
+  </Step>
+  <Step title="Start tracking">
+    Click **Start Tracking**. The caller's emergency location appears as a pin on the map, and the **RapidSOS Locations** and **RapidSOS Breadcrumbs** layers activate to show movement over time.
+  </Step>
+  <Step title="Stop tracking">
+    Click **Stop Tracking** as soon as the track is no longer operationally necessary to protect caller privacy and free system resources.
+  </Step>
+</Steps>
+
+<Warning>
+  RapidSOS availability depends on the caller's carrier and device data connection. Do not treat RapidSOS results as a substitute for verbally confirming the caller's location — always attempt to corroborate with the reporting party.
+</Warning>
+
+## RapidSOS Lookup
+
+If your organization has the RapidSOS Lookup feature enabled, you can query historical emergency location data outside of an active track.
+
+<Steps>
+  <Step title="Open the lookup dialog">
+    Click **RapidSOS Lookup** in the header to open the lookup dialog.
+  </Step>
+  <Step title="Search by phone number">
+    Enter the phone number and click **Lookup**. Cadmus returns a **RapidSOS Results** list with available location records.
+  </Step>
+  <Step title="Plot the result">
+    Click **Show on Map** next to any result to plot that location on the live map.
+  </Step>
+</Steps>
+
+<Note>
+  RapidSOS Lookup is a separately enabled feature. If you do not see the option in the header, contact your agency administrator to confirm it is activated for your organization.
+</Note>
+
+## Configuring RapidSOS
+
+Agency administrators can enable and configure RapidSOS from **Web Admin → Integrations → RapidSOS**. Both the tracking and lookup features are controlled through that panel.

@@ -1,0 +1,172 @@
+---
+title: "Working a Call: The Cadmus Call Detail View Explained"
+sidebarTitle: "Call Detail"
+description: "Everything on the Call Detail page — call summary, units, reporting parties, persons and vehicles, notes, agency timers, and closing actions."
+---
+
+The **Call Detail** page is the complete, living record for a single Call for Service. Every piece of information tied to an incident — the location, assigned units, reporting parties, persons, vehicles, notes, and close details — lives here. You use call detail throughout the lifecycle of a CFS: from the moment a call is created through dispatch, scene management, and final closure.
+
+## How to open a call
+
+You can reach call detail from any of three entry points:
+
+- **Dispatch board** — click any call card on an active board tab (Pending, Active, Recent, etc.).
+- **After create** — Cadmus navigates to call detail automatically when you click **Create Call** in the New CFS form.
+- **Find a Call** — use the [Find a Call](/dispatch/find-a-call) search for closed or historical calls that have scrolled off the board.
+
+## App bar actions
+
+The actions available at the top of call detail change based on the call's current status.
+
+| Action             | When available                              |
+|--------------------|---------------------------------------------|
+| **Close Call**     | Active and open calls                       |
+| **Reopen Call**    | Closed calls (subject to supervisor policy) |
+| **Merge into…**    | Any open call — merge a duplicate CFS into this one |
+| **Report Taken**   | When the agency's report workflow is active |
+
+## Call detail blocks
+
+Call detail is organized into labeled blocks. Each block focuses on a distinct aspect of the incident.
+
+### Call summary
+
+The call summary block shows the current **status**, **priority**, **incident type**, and most recent updates at a glance. From here you can:
+
+- Click **Edit Call Details** to update priority, type, location, or narrative without reopening the New CFS form.
+- View **RECENT UPDATES** for a condensed activity feed.
+
+### Call type and description
+
+This block displays the structured incident type code alongside the free-text **Call Description**. Use **Edit Incident Type** to change the type after initial create if information from the field warrants a reclassification.
+
+### Call intelligence
+
+The call intelligence block provides contextual information organized into three tabs:
+
+| Tab          | Content                                                           |
+|--------------|-------------------------------------------------------------------|
+| **Activity** | Prior incident activity associated with the current address.      |
+| **Location** | Map and address details for the incident location.                |
+| **Callers**  | Caller history and prior contacts associated with the RP number.  |
+
+### Location details
+
+The location block lets you manage address accuracy after the call is created:
+
+- **Validate and Geocode Address** — re-submit the address to GIS and update the map pin.
+- **Refresh Address Resolution** — pull the latest GIS result without changing the stored address.
+- **Copy GPS coordinates** — copy the geocoded latitude/longitude to the clipboard for field communication.
+
+<Warning>
+  If the initial address was unvalidated, the map pin may be in the wrong location. Use **Validate and Geocode Address** as soon as you correct the address text.
+</Warning>
+
+### Units on call
+
+The units block shows every unit currently assigned to the CFS and their real-time status.
+
+| Status chip | Meaning                        |
+|-------------|--------------------------------|
+| **AVAIL**   | Unit is available               |
+| **DISP**    | Unit dispatched to the call     |
+| **ENRT**    | Unit en route                   |
+| **SCENE**   | Unit on scene                   |
+| **CLR**     | Unit cleared from the call      |
+
+The **AVAILABLE UNITS** row at the top of the block lists units that can be immediately assigned. Click a unit in that row to dispatch it to the call without leaving call detail.
+
+### Reporting party and callers
+
+This block displays the primary **REPORTING PARTY** and any additional callers.
+
+- Click **Query** next to a person record to run a CJIS person lookup.
+- Click **Add caller** to record additional callers that contact the center after the call is created.
+
+### Persons and vehicles
+
+Use this block to document everyone involved in the incident, in addition to the reporting party.
+
+**Person roles available:**
+
+- Suspect
+- Victim
+- Witness
+- Driver
+- Passenger
+- Other
+
+For vehicles, click **Add Vehicle** to attach a vehicle record. Once a vehicle is added, click **Run CJIS vehicle query** to run a plate or VIN check against available databases.
+
+### Assigned agencies
+
+On multi-agency incidents, each involved agency receives its own CFS number and appears in this block.
+
+- View each agency's CFS number alongside your own.
+- Click **Generate report \#** to assign a report or case number for a specific agency.
+- Click **Set Primary Agency** to designate the lead agency.
+- Click **Remove Agency** to detach an agency from the call if added in error.
+
+### Agency status timers
+
+Each agency on a multi-agency call has its own timer card that tracks how long the call has been in the current status.
+
+- Click **Status Check Complete** to acknowledge a timer check.
+- Click **Pause checks** to temporarily suspend the timer when warranted.
+- Use the interval and snooze options to adjust check frequency per agency SOP.
+
+### History, logs, and images
+
+This section is the call's permanent record of everything that happened.
+
+<Tabs>
+  <Tab title="Call Notes">
+    Dispatcher-entered narrative notes attached to this call. Call notes are visible in the call record and may appear on reports depending on agency configuration. Click **Add Call Note** to add an entry.
+  </Tab>
+  <Tab title="Audit Logs">
+    System-generated log of every change made to the call record — field edits, status updates, unit assignments, and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
+  </Tab>
+  <Tab title="Images">
+    Photos and document attachments associated with the call. Click **Add Image** to paste or upload a file. Use **Take Photo** on devices with camera access.
+  </Tab>
+</Tabs>
+
+### Quick actions
+
+The quick actions column provides one-click shortcuts to the most common dispatch tasks:
+
+| Action                    | Effect                                                         |
+|---------------------------|----------------------------------------------------------------|
+| **Add Log Entry**         | Opens the add-log dialog for a manual narrative entry.         |
+| **Assign Unit**           | Opens the unit search to assign a unit not in the available row. |
+| **Assign Report Number**  | Associates a report or case number with this CFS.              |
+| **Clear Call**            | Marks the call as cleared without a full close workflow.       |
+
+## Closed calls
+
+When a call's status is **Closed**:
+
+- Editing most fields and adding new logs or images is restricted.
+- The call remains visible in the **Recent** board tab for a configurable period, after which it moves to full history searchable via [Find a Call](/dispatch/find-a-call).
+- Use **Reopen Call** only in accordance with your agency's supervisor-approval policy.
+
+<Note>
+  Reopening a closed call creates an audit log entry and may require a supervisor PIN or approval step depending on your agency's configuration.
+</Note>
+
+## Related guides
+
+<CardGroup cols={2}>
+  <Card title="Create a CFS" icon="plus" href="/dispatch/create-cfs">
+    Step-by-step walkthrough for creating a new Call for Service.
+  </Card>
+  <Card title="Close a Call" icon="circle-check" href="/dispatch/close-call">
+    Finalize a CFS when units have cleared and narratives are complete.
+  </Card>
+  <Card title="Find a Call" icon="magnifying-glass" href="/dispatch/find-a-call">
+    Search closed and historical calls beyond the Recent board.
+  </Card>
+  <Card title="New CFS Form Fields" icon="table-list" href="/dispatch/cfs-form-fields">
+    Field-by-field reference for the Create New Call for Service form.
+  </Card>
+</CardGroup>

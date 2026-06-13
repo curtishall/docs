@@ -1,0 +1,129 @@
+---
+title: "New CFS Form Fields Reference for Cadmus Dispatch CAD"
+sidebarTitle: "Form Fields"
+description: "Complete field-by-field reference for the New Call for Service form — required fields, location modes, priority levels, and action buttons."
+---
+
+The **Create New Call for Service** form (opened with **F1** or **New CFS** in the header) collects the minimum information needed to create a dispatchable incident record. This page describes every field, mode, and button in the form so you can complete it accurately under time pressure. For the end-to-end workflow, see [Create a Call for Service](/dispatch/create-cfs).
+
+## Required fields
+
+All three fields below must be completed before Cadmus allows you to click **Create Call**.
+
+| Field              | Label                   | Notes                                           |
+|--------------------|-------------------------|-------------------------------------------------|
+| Incident type      | **Incident Type \***    | Select from the list — do not rely on free text alone |
+| Location           | **Location \***         | Street address, cross street, or common place   |
+| Incident details   | **Incident Details \*** | Who, what, where, and any immediate risks       |
+
+## Priority levels
+
+Select the **Priority Level \*** that matches your agency's response protocol. Priority drives queue order on the dispatch board and may trigger automated notifications.
+
+<CardGroup cols={2}>
+  <Card title="Priority 1 — Emergency" icon="siren-on">
+    Immediate life-safety threat. Requires the fastest available response.
+  </Card>
+  <Card title="Priority 2 — Urgent" icon="triangle-exclamation">
+    Prompt response required. Situation is serious but not immediately life-threatening.
+  </Card>
+  <Card title="Priority 3 — Routine" icon="circle-info">
+    Standard response. No immediate threat to life or property.
+  </Card>
+  <Card title="Priority 4 — Low" icon="circle-minus">
+    Non-urgent or informational. Can be queued for the next available unit.
+  </Card>
+</CardGroup>
+
+## Incident type
+
+Click **Incident Type \*** and type 2–4 letters to filter the dropdown, then select the matching type. Incident type drives tags, default priority, and all downstream workflows (reporting templates, CAD exports, statistics).
+
+<Tip>
+  Always select from the list. Free-text entries without a structured type may cause missing data in agency reports and integrations.
+</Tip>
+
+## Location modes
+
+The **Location \*** field accepts three input modes. Cadmus detects which mode you are using based on your entry.
+
+<Tabs>
+  <Tab title="Street Address">
+    Type a street number and name (e.g., `1234 Elm Street`). Cadmus submits the address to your agency's configured GIS service. A **Validating address…** spinner appears during lookup.
+
+    When GIS confirms the address, a **Geo verified** badge appears beside the field. The map pin is placed automatically.
+
+    <Warning>
+      If the address does not validate, the spinner stops without a Geo verified badge. Cadmus may still create the call, but the map pin could land in the wrong location. Verify the pin in call detail after creating the call.
+    </Warning>
+  </Tab>
+  <Tab title="Cross Street">
+    Enter two intersecting street names separated by `&` or `and` (e.g., `Main St & Oak Ave`). Use this mode when no building address is available.
+
+    <Tip>
+      Update the location to a full address as soon as field units confirm the scene, so the record and any downstream reports reflect the exact location.
+    </Tip>
+  </Tab>
+  <Tab title="Common Place">
+    Select from your agency's configured common-place list — schools, hospitals, parks, transit hubs, and other frequently dispatched locations. Common places include pre-validated coordinates, so GIS lookup is not required.
+  </Tab>
+</Tabs>
+
+### Address validation behavior
+
+While you type a street address, Cadmus contacts your agency's GIS service:
+
+- A **Validating address…** spinner appears in or below the Location field.
+- Follow any snackbar or inline error messages before submitting the form.
+- Address validation rules are configured in **Web Admin → GIS Settings**. Contact your agency administrator if validation consistently fails for known addresses.
+
+## Reporting party
+
+The reporting party (RP) section captures the caller's contact information.
+
+| Option               | Description                                                            |
+|----------------------|------------------------------------------------------------------------|
+| **RP same as scene** | Toggle on to copy the incident location to the RP's location field.    |
+| **Add Phone Number** | Record additional callback numbers for the same caller.                |
+| **Add Caller**       | Add a second or subsequent reporting party at create time.             |
+
+## Additional options
+
+| Option            | Description                                                                                  |
+|-------------------|----------------------------------------------------------------------------------------------|
+| **Disable Timer** | Skips the default agency status timer for this call. Use only when agency policy permits.    |
+| **Add Vehicle**   | Attach a vehicle record to the CFS at creation time (make, model, plate, color, state).      |
+
+## Form action buttons
+
+| Button           | Effect                                                                              |
+|------------------|-------------------------------------------------------------------------------------|
+| **Create Call**  | Validates all required fields, saves the CFS, and opens it in call detail.          |
+| **Drop Call**    | Discards all entered data without saving. Cadmus may prompt you to confirm.         |
+| **Done**         | Closes the dialog after a call has been saved.                                      |
+| **Append note**  | Adds a narrative note to an already-saved call without reopening the full form.     |
+
+<Warning>
+  **Drop Call** permanently discards everything entered in the current session of the form. Use it only when you intentionally want to cancel the new call.
+</Warning>
+
+## Tips
+
+<Tip>
+  Images and attachments are not available during the initial create dialog. After the call is saved, open it in call detail and use **Add Image** in the History / Logs section.
+</Tip>
+
+<Tip>
+  If you are unsure of the exact incident type, use a general category (e.g., "Disturbance") and update **Edit Incident Type** in call detail once more information is available.
+</Tip>
+
+## Related guides
+
+<CardGroup cols={2}>
+  <Card title="Create a CFS" icon="plus" href="/dispatch/create-cfs">
+    End-to-end walkthrough for creating a new Call for Service.
+  </Card>
+  <Card title="Call Detail" icon="file-lines" href="/dispatch/call-detail">
+    Everything on the call detail page after the call is created.
+  </Card>
+</CardGroup>

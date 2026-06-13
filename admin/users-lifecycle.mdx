@@ -1,0 +1,93 @@
+---
+title: "Invite, Edit, and Deactivate Users in Cadmus Web Admin"
+sidebarTitle: "Users"
+description: "Manage the full user lifecycle in Cadmus — invite new dispatchers or admins, update roles and agency access, and deactivate departing staff."
+---
+
+Web Admin gives organization-level administrators a single place to manage every user in Cadmus. From here you can bring on a new dispatcher with one invite, adjust an existing user's role or agency access, and safely deactivate an account when someone leaves — all while preserving the audit history required for CJIS compliance and accreditation reviews.
+
+## Open the Users page
+
+Navigate to **Users** (`/users`) in the Web Admin sidebar. This page requires the **OrgAdmin** role or higher. For agency-scoped views, navigate to `/agencies/{id}/users`.
+
+## Invite a user
+
+<Steps>
+  <Step title="Open the invite dialog">
+    On the Users page, select **Invite** or **Add user**.
+  </Step>
+  <Step title="Enter user details">
+    Enter the new user's email address and select a **role** (for example, Dispatcher or AgencyAdmin).
+  </Step>
+  <Step title="Assign agencies">
+    If prompted, assign the user to one or more agencies. Dispatchers who are missing an agency assignment will not see the correct units and calls in Dispatch CAD.
+  </Step>
+  <Step title="Send the invite">
+    Select **Send invite**. Cadmus emails the user a sign-up link. If the user reports that the sign-up link does not work or redirects to an error page, contact your Cadmus administrator or IT team.
+  </Step>
+</Steps>
+
+## Edit a user
+
+<Steps>
+  <Step title="Open the user record">
+    On the Users page, select the user's row and choose **Edit**.
+  </Step>
+  <Step title="Update the fields">
+    Modify the user's name, role, agency access, or active flag as needed.
+  </Step>
+  <Step title="Save">
+    Select **Save**. Role changes take effect on the user's next sign-in; sidebar items in Web Admin may update immediately.
+  </Step>
+</Steps>
+
+## Deactivate a user
+
+When someone leaves your organization, **deactivate** their account rather than deleting it. Deactivation:
+
+- Blocks the user from signing in to Dispatch CAD and Web Admin.
+- Preserves the full audit history for that account.
+
+Before deactivating, confirm that no critical workflows depend on that user's API keys.
+
+<Warning>
+  If the departing user is currently logged into a Dispatch CAD session and assigned to a unit crew, remove them from the crew in Dispatch CAD **before** deactivating their account to avoid stranded unit assignments.
+</Warning>
+
+## Notification preferences
+
+Each user has a **Notification Preferences** tab on their detail page where you can control which alerts they receive and through which channels. See [Configure User Notification Preferences](/admin/user-notification-preferences) for full details.
+
+## Import and export (bulk operations)
+
+When the import/export feature is enabled for your deployment, the Users page includes an import/export panel that accepts CSV files for bulk user operations. Use this panel to onboard large groups of users or export a roster for auditing.
+
+## Sync user records
+
+If user accounts appear out of sync with what you expect, navigate to **Settings** and use the sync cards to reconcile Cadmus user data:
+
+- **Sync Clerk memberships** — updates organization membership records.
+- **Sync Clerk users** — updates user profile data.
+
+## Dispatch and mobile impact
+
+| Action | Effect |
+|---|---|
+| Role → Dispatcher | Can use Dispatch CAD |
+| Role → ReadOnly-Calls | Incidents-only admin access |
+| Deactivate | Cannot sign in to Dispatch CAD or Web Admin |
+| Agency change | May change visible units and calls |
+
+## Common mistakes
+
+<Warning>
+  The **OrgAdmin** role grants visibility into all agencies in the organization. Assign the minimum role required for each user's actual responsibilities.
+</Warning>
+
+<Warning>
+  Re-inviting the same email address may fail if a previous account record still exists for that address. Contact your Cadmus administrator to remove the stale record before sending a new invite.
+</Warning>
+
+- **Wrong role on invite** — double-check whether the user needs Dispatcher or ReadOnly-Calls before sending.
+- **Missing agency assignment** — agency-scoped dispatchers must be assigned to at least one agency, or they will not see the correct data in Dispatch CAD.
+- **Deactivating without removing from crew** — log the user out of Dispatch CAD and remove them from any unit crew before deactivating.

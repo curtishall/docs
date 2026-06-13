@@ -1,0 +1,124 @@
+# Source: https://autonomy-today.getoutline.com/s/839a85b3-f8b8-4adb-8946-965d05854146/doc/dispatch-cad-LSy8OqLsl5
+
+Dispatch CAD
+
+**Dispatch CAD** is Cadmus’s computer-aided dispatch application for public-safety telecommunicators and dispatch supervisors. Use it to take calls for service (CFS), track units, coordinate fire and EMS, run queries, and keep field personnel informed in real time.
+
+> Screenshot placeholder: Dispatch CAD dashboard with call boards, units sidebar, and header shortcuts
+
+## #Who uses Dispatch CAD
+
+<table style="--default-cell-min-width: 25px; min-width: 50px;"><colgroup><col><col></colgroup><tbody><tr><th data-first-column="true"><p dir="auto">Role</p></th><th data-last-column="true"><p dir="auto">Typical work</p></th></tr><tr><td data-first-column="true"><p dir="auto"><strong>911 / PSAP dispatcher</strong></p></td><td data-last-column="true"><p dir="auto">Answer calls, create CFS, assign units, update status</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>Fire or EMS dispatcher</strong></p></td><td data-last-column="true"><p dir="auto">Discipline-specific boards, mutual aid, status timers</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>Law enforcement dispatch</strong></p></td><td data-last-column="true"><p dir="auto">NCIC queries, BOLOs, traffic stops, wrecker rotation</p></td></tr><tr><td data-first-column="true" data-last-row="true"><p dir="auto"><strong>Supervisor / lead</strong></p></td><td data-last-column="true" data-last-row="true"><p dir="auto">Oversight, greaseboard pass-on, admin verification (with Web Admin access)</p></td></tr></tbody></table>
+
+Field officers and deputies usually work in **Mobile CAD** on the MDT; they see the same calls and assignments you create here.
+
+## #What you can do
+
+- **Create and manage CFS** — intake, location, reporting parties, incident type, priority, disposition
+ 
+- **Dispatch units** — login crews, assign from the board or call detail, track en route / on scene
+ 
+- **Command line** — keyboard-driven status, notes, persons, vehicles, and batch actions (Omnigo-style)
+ 
+- **Map and location** — geocoded addresses, unit plots, RapidSOS tracking when enabled
+ 
+- **Queries** — NCIC/CJIS lookups when your agency is configured
+ 
+- **Communications** — dispatcher chat, SMS to field users, SMS templates tied to the call
+ 
+- **Operations boards** — BOLOs, operational greaseboard, wrecker rotation, utilities
+ 
+- **History** — find closed calls, review logs, SMS and query history on a CFS
+ 
+
+Settings that control what you see (incident types, quick calls, NCIC, report numbers) are configured in **Web Admin** by your agency administrators.
+
+## #How Dispatch CAD fits in Cadmus
+
+```
+Reporting party / 911  →  Dispatch CAD (create & dispatch CFS)
+                              ↓
+                         Mobile CAD (field updates, notes, NCIC)
+                              ↑
+                         Web Admin (users, agencies, templates, integrations)
+```
+
+- **Web Admin** — organization and agency configuration; changes flow to Dispatch CAD after reload or refresh
+ 
+- **Mobile CAD** — patrol and responder view of assigned calls, unit status, evidence, and chat
+ 
+
+Agency admins who configure and dispatch should read the [Admin and manager setup guide](https://./admin-manager-guide.md) for a go-live checklist across both apps.
+
+## #New dispatcher: start here
+
+1. [Getting started](https://./getting-started.md) — sign-in, sandbox vs live, main layout
+ 
+2. [Create CFS workflow](https://./create-cfs-workflow.md) — **New CFS** (F1) from first ring to created call
+ 
+3. [Unit login and assignment](https://./unit-login-and-assignment.md) — **Login User** (F2), assign units
+ 
+4. [Call detail overview](https://./call-detail-overview.md) — work an active CFS end to end
+ 
+5. [Close call](https://./close-call.md) — disposition, primary officer, report numbers
+ 
+
+Then add [Quick calls and F-keys](https://./quick-calls-and-f-keys.md) and the [Command Line](https://./command-line/overview.md) when you are comfortable with the boards.
+
+## #Main workspace at a glance
+
+<table style="--default-cell-min-width: 25px; min-width: 50px;"><colgroup><col><col></colgroup><tbody><tr><th data-first-column="true"><p dir="auto">Area</p></th><th data-last-column="true"><p dir="auto">Purpose</p></th></tr><tr><td data-first-column="true"><p dir="auto"><strong>Header</strong></p></td><td data-last-column="true"><p dir="auto">New CFS, Login User, Query, Map, Units, BOLO, Chat, settings</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>Units sidebar</strong></p></td><td data-last-column="true"><p dir="auto">Active units, off-duty pool, quick status</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>Call boards</strong></p></td><td data-last-column="true"><p dir="auto">Pending, Patrol, Dispatched, Fire, EMS, Recent, timers, BOLOs, Resources</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>Call detail</strong></p></td><td data-last-column="true"><p dir="auto">Full CFS: location, units, parties, notes, SMS, queries, close</p></td></tr><tr><td data-first-column="true" data-last-row="true"><p dir="auto"><strong>Command line</strong></p></td><td data-last-column="true" data-last-row="true"><p dir="auto">Type commands at bottom of dashboard or on call detail</p></td></tr></tbody></table>
+
+See [Dashboard overview](https://./dashboard-overview.md) for every tab and board behavior.
+
+## #Header shortcuts (F-keys)
+
+<table style="--default-cell-min-width: 25px; min-width: 50px;"><colgroup><col><col></colgroup><tbody><tr><th data-first-column="true"><p dir="auto">Key</p></th><th data-last-column="true"><p dir="auto">Action</p></th></tr><tr><td data-first-column="true"><p dir="auto"><strong>F1</strong></p></td><td data-last-column="true"><p dir="auto">New CFS</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>F2</strong></p></td><td data-last-column="true"><p dir="auto">Login User</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>F3</strong></p></td><td data-last-column="true"><p dir="auto">Query (when NCIC enabled)</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>F4</strong></p></td><td data-last-column="true"><p dir="auto">Map</p></td></tr><tr><td data-first-column="true"><p dir="auto"><strong>F5</strong></p></td><td data-last-column="true"><p dir="auto">Units / unit greaseboard</p></td></tr><tr><td data-first-column="true" data-last-row="true"><p dir="auto"><strong>F8–F12</strong></p></td><td data-last-column="true" data-last-row="true"><p dir="auto">Agency quick-call templates (e.g. traffic stop, follow-up)</p></td></tr></tbody></table>
+
+Full list and configuration notes: [Quick calls and F-keys](https://./quick-calls-and-f-keys.md).
+
+## #Documentation map
+
+### #Core workflows
+
+<table style="--default-cell-min-width: 25px; min-width: 50px;"><colgroup><col><col></colgroup><tbody><tr><th data-first-column="true"><p dir="auto">Topic</p></th><th data-last-column="true"><p dir="auto">Guide</p></th></tr><tr><td data-first-column="true"><p dir="auto">First run</p></td><td data-last-column="true"><p dir="auto"><a href="https://./getting-started.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Getting started</a></p></td></tr><tr><td data-first-column="true"><p dir="auto">Dashboard</p></td><td data-last-column="true"><p dir="auto"><a href="https://./dashboard-overview.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Dashboard overview</a></p></td></tr><tr><td data-first-column="true"><p dir="auto">Create CFS</p></td><td data-last-column="true"><p dir="auto"><a href="https://./create-cfs-workflow.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Create CFS workflow</a> · <a href="https://./new-cfs-form-fields.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Form fields</a></p></td></tr><tr><td data-first-column="true"><p dir="auto">Call detail</p></td><td data-last-column="true"><p dir="auto"><a href="https://./call-detail-overview.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Call detail overview</a> · <a href="https://./close-call.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Close call</a></p></td></tr><tr><td data-first-column="true" data-last-row="true"><p dir="auto">Units</p></td><td data-last-column="true" data-last-row="true"><p dir="auto"><a href="https://./unit-login-and-assignment.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Unit login and assignment</a> · <a href="https://./dispatching-units.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Dispatching units</a></p></td></tr></tbody></table>
+
+### #Tools and integrations
+
+<table style="--default-cell-min-width: 25px; min-width: 50px;"><colgroup><col><col></colgroup><tbody><tr><th data-first-column="true"><p dir="auto">Topic</p></th><th data-last-column="true"><p dir="auto">Guide</p></th></tr><tr><td data-first-column="true"><p dir="auto">Shortcuts</p></td><td data-last-column="true"><p dir="auto"><a href="https://./quick-calls-and-f-keys.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Quick calls and F-keys</a></p></td></tr><tr><td data-first-column="true"><p dir="auto">Map</p></td><td data-last-column="true"><p dir="auto"><a href="https://./map-and-location.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Map and location</a></p></td></tr><tr><td data-first-column="true"><p dir="auto">Comms</p></td><td data-last-column="true"><p dir="auto"><a href="https://./chat-sms-comms.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Chat, SMS, and comms</a> · <a href="https://./sms-templates-and-messaging.md" class="use-hover-preview" rel="noopener noreferrer nofollow">SMS templates and messaging</a></p></td></tr><tr><td data-first-column="true"><p dir="auto">Operations</p></td><td data-last-column="true"><p dir="auto"><a href="https://./bolo-greaseboard-wrecker.md" class="use-hover-preview" rel="noopener noreferrer nofollow">BOLO, greaseboard, and wrecker</a></p></td></tr><tr><td data-first-column="true"><p dir="auto">NCIC</p></td><td data-last-column="true"><p dir="auto"><a href="https://./queries-ncic.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Queries and NCIC</a></p></td></tr><tr><td data-first-column="true" data-last-row="true"><p dir="auto">History</p></td><td data-last-column="true" data-last-row="true"><p dir="auto"><a href="https://./find-a-call.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Find a call</a></p></td></tr></tbody></table>
+
+### #Support and administration
+
+<table style="--default-cell-min-width: 25px; min-width: 50px;"><colgroup><col><col></colgroup><tbody><tr><th data-first-column="true"><p dir="auto">Topic</p></th><th data-last-column="true"><p dir="auto">Guide</p></th></tr><tr><td data-first-column="true"><p dir="auto">Problems</p></td><td data-last-column="true"><p dir="auto"><a href="https://./troubleshooting.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Troubleshooting</a></p></td></tr><tr><td data-first-column="true" data-last-row="true"><p dir="auto">Admin setup</p></td><td data-last-column="true" data-last-row="true"><p dir="auto"><a href="https://./admin-manager-guide.md" class="use-hover-preview" rel="noopener noreferrer nofollow">Admin and manager setup guide</a></p></td></tr></tbody></table>
+
+## #Command line
+
+Power users can drive most call and unit actions from the **command line** instead of clicking through dialogs — status changes, dispatcher notes, assign units, persons/vehicles, and more.
+
+Start with [Command Line overview](https://./command-line/overview.md), then [Getting started](https://./command-line/getting-started.md) and [Command reference](https://./command-line/command-reference.md). Agency-specific aliases are configured in **Web Admin**.
+
+## #Related documentation
+
+- **Web Admin** — users, agencies, incident types, NCIC site, RapidSOS, notification templates
+ 
+- **Mobile CAD** — field responder workflows (calls, status, notes, BOLOs, chat)
+ 
+
+## #Tips
+
+- Confirm **Sandbox** vs **Live** in the header before training or production work.
+ 
+- Use **Select Agencies** when you dispatch for more than one agency in an organization.
+ 
+- After admin changes to incident types or quick calls, reload Dispatch CAD if something looks stale.
+ 
+- For life-safety events, treat radio and confirmed unit status as authoritative; chat and SMS are supplements.
+ 
+
+## #Warnings
+
+> **Warning:** NCIC and CJIS data must stay on approved channels — follow your agency’s criminal justice policy.
+
+> **Warning:** Do not share live CFS details or RP information outside authorized systems.
+
+ [Outline](https://www.getoutline.com?ref=sharelink)

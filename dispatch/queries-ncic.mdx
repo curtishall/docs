@@ -1,0 +1,96 @@
+---
+title: "Run NCIC and CJIS Queries from Cadmus Dispatch CAD"
+sidebarTitle: "Queries & NCIC"
+description: "Use the Query Workspace (F3) and in-call query panels to run CJIS/NCIC lookups on plates, vehicles, persons, and firearms tied to a call."
+---
+
+NCIC and CJIS query capabilities in Cadmus let authorized law-enforcement dispatchers run real-time lookups on license plates, vehicles, persons, firearms, and more — all without leaving the dispatch console. Query results can be tied to an open call for service, creating a complete audit trail on the incident record. Access to these features requires your agency's CJIS site configuration and proper user permissions.
+
+## Query Workspace (F3)
+
+Press **F3** or click **Query** in the header to open the full-screen **Query Workspace**.
+
+<Note>
+  If your agency's CJIS access is not enabled or your user account lacks the required permissions, Cadmus displays a **CJIS Access Denied** message. Contact your agency administrator to verify your **State/NCIC Access** setting — this is an administrative configuration issue, not a client bug.
+</Note>
+
+### Query Categories
+
+The left rail of the Query Workspace lists every available query type. Select a category to load its input form.
+
+| Category | Use |
+|---|---|
+| **Plate** | Look up a license plate number |
+| **VIN** | Query a vehicle identification number |
+| **Name / DOR** | Search for a person or driver |
+| **Vehicle Owner** | Identify a registered vehicle owner |
+| **Boat** | Query watercraft registrations |
+| **Gun** | Look up a firearm by serial number |
+| **Serial** | General serial number query |
+| **Wanted** | Search wanted-persons records |
+| **Criminal History** | Run a criminal history query |
+
+<Tip>
+  When querying out-of-state plates or licenses, always include the **state** in the query fields. Omitting the state can return incomplete or incorrect results.
+</Tip>
+
+### Recent Queries
+
+The **Recent Queries** sidebar inside the workspace lists your most recent lookups. Use it to repeat a similar query quickly without re-entering all fields.
+
+## In-Call Queries
+
+When a query must be tied to an open incident, run it from within the call detail panel rather than the standalone Query Workspace. This links the results to the call's audit trail automatically.
+
+From a call detail panel, you can initiate queries from several entry points:
+
+- **Reporting Party → Query** — run a query directly from the reporting party block.
+- **Run CJIS person query** — available on person records associated with the call.
+- **Run CJIS vehicle query** — available on vehicle records associated with the call.
+- **Run Query panel** — a consolidated panel offering **Persons**, **Vehicles**, **Serial**, and **Gun** query tabs from a single interface.
+
+<Note>
+  Query types your account is not authorized to run display a **RESTRICTED** label. Contact your administrator if you believe you should have access to a restricted query type.
+</Note>
+
+<Tip>
+  Run queries from the open call whenever the results need to appear in the CFS audit trail. Use the standalone Query Workspace (F3) only for queries unrelated to a specific incident.
+</Tip>
+
+## CJIS Query History
+
+Every query run from a call detail panel is logged in the **CJIS Query History** block at the bottom of that call. Click **Refresh** to reload the list. This audit trail is tied to the incident record and is available for supervisory review and compliance reporting.
+
+## Command-Line Queries
+
+For experienced dispatchers, Cadmus supports the following command-line query shortcuts:
+
+| Command | Function |
+|---|---|
+| `DL` | Driver's license lookup |
+| `LP` | License plate lookup |
+| `NAME` | Person name query |
+
+## Administrator Requirements
+
+NCIC/CJIS query access requires all three of the following to be configured correctly:
+
+<Steps>
+  <Step title="Configure the CJIS site">
+    In **Web Admin**, open **Settings** and configure the **CJIS Site** credentials for your organization. This step requires the CadmusAdmin platform role — contact your Cadmus implementer if you do not have access to this setting.
+  </Step>
+  <Step title="Enable agency access">
+    In **Web Admin → Integrations**, enable **State/NCIC Access** for the agency.
+  </Step>
+  <Step title="Verify user-level access">
+    Confirm that the individual user's effective access is not overridden by a denying permission. User-level permissions can be reviewed in the user management settings.
+  </Step>
+</Steps>
+
+<Warning>
+  All NCIC and CJIS queries are logged and auditable. Run queries only for official law-enforcement purposes in accordance with your agency's CJIS security policy. Unauthorized queries are a federal policy violation.
+</Warning>
+
+<Warning>
+  Never read NCIC or CJIS query results aloud on an open or unencrypted radio channel. Relay sensitive information through secure communication channels only.
+</Warning>

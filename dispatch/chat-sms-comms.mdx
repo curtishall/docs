@@ -1,0 +1,90 @@
+---
+title: "Dispatcher Chat, SMS, and Comms in Cadmus Dispatch"
+sidebarTitle: "Chat & SMS"
+description: "Send messages between dispatchers and field units using the built-in Chat panel, SMS from call detail, and command-line messaging tools."
+---
+
+Cadmus provides several messaging channels so you can communicate with other dispatchers and field units without leaving the dispatch console. Use the built-in Chat panel for real-time dispatcher-to-dispatcher conversations, the SMS workflow to send templated text messages tied directly to a call, and command-line shortcuts for rapid in-channel messaging.
+
+## Dispatcher Chat
+
+<Steps>
+  <Step title="Open the chat panel">
+    Click the **Chat** icon in the header. On desktop installations, chat may open in a separate window so you can keep it visible while working calls.
+  </Step>
+  <Step title="Start a new conversation">
+    Click **New Chat** or **Start a Conversation** to open a new thread. If no conversations exist yet, the panel displays **No active chats**.
+  </Step>
+  <Step title="Select a recipient">
+    Browse the conversation list to resume an existing thread, or open the **Online Users** sidebar to see who is currently logged in. Click **Start chat** on any user row to begin a direct message with that dispatcher or supervisor.
+  </Step>
+</Steps>
+
+<Tip>
+  Toggle the **Online Users** sidebar to quickly see which dispatchers and supervisors are available before sending a message.
+</Tip>
+
+## Send SMS from a Call
+
+SMS messages are sent from within a call detail panel and are tied to that call's record for audit purposes.
+
+<Steps>
+  <Step title="Open the call detail">
+    Navigate to the open call you want to message about.
+  </Step>
+  <Step title="Open the Send SMS sheet">
+    Click **Send SMS** in the call actions or tooltip area. The Send SMS sheet slides up.
+  </Step>
+  <Step title="Select a template">
+    Choose a message template from the **Template** field to pre-fill consistent wording:
+
+    | Template | Use case |
+    |---|---|
+    | **Status Update** | General incident status change |
+    | **Unit Dispatch** | Notify a unit of assignment |
+    | **Priority Change** | Communicate a change in call priority |
+    | **Custom Message** | Free-form text for unique situations |
+  </Step>
+  <Step title="Select recipients">
+    Switch between the **Groups** tab to message an entire group or select individual users. Confirm your selection before proceeding.
+  </Step>
+  <Step title="Preview and send">
+    Review the message in the **Preview** section to verify content and recipients, then click **Send SMS**. The button displays **Sending…** while the message is in transit.
+  </Step>
+</Steps>
+
+<Warning>
+  SMS delivery requires a backend SMS integration to be active for your agency. Enabling the SMS toggle in settings alone does not activate texting — confirm with your administrator that the integration is configured.
+</Warning>
+
+## SMS History
+
+After sending, the call detail panel displays an **SMS History** section showing every message sent for that call along with its delivery status. If no messages have been sent yet, the section shows **No SMS messages sent for this call**.
+
+<Tip>
+  Check SMS History after sending to confirm delivery. Units without mobile data or a registered MDT may not receive messages — follow up by radio if delivery is not confirmed.
+</Tip>
+
+## Command-Line Messaging
+
+For rapid messaging directly from the command line, Cadmus supports the following messaging commands:
+
+<CardGroup cols={3}>
+  <Card title="MSG" icon="message">
+    Send a direct message to a single logged-in unit. Use this for unit-specific instructions or information.
+  </Card>
+  <Card title="BC" icon="tower-broadcast">
+    Broadcast a message to **all** currently logged-in units. Use sparingly and only for agency-wide announcements.
+  </Card>
+  <Card title="DNOTES" icon="clipboard">
+    Add dispatcher notes to a call for service (CFS). Notes are attached to the incident record and visible in call history.
+  </Card>
+</CardGroup>
+
+<Warning>
+  **BC** reaches every logged-in unit simultaneously. Never include sensitive, restricted, or personally identifiable information in a broadcast message, as all recipients will see it without context.
+</Warning>
+
+<Note>
+  Use **MSG** instead of **BC** whenever you need to communicate with a specific unit. Reserve **BC** for genuine agency-wide notifications such as major incident alerts or shift-wide advisories.
+</Note>

@@ -1,0 +1,86 @@
+---
+title: "Search Call History with Find a Call in Cadmus CAD"
+sidebarTitle: "Find a Call"
+description: "Use Find a Call to search closed and historical calls beyond the Recent board — search by CFS number, address fragment, or keyword."
+---
+
+The dispatch board's **Recent** tab shows calls closed within the current session or a recent rolling window — it is not a complete archive. **Find a Call** gives you access to the full history of every call your agency has created, going back as far as your data retention policy allows. Use it to review prior incidents at a location, pull up a closed call that has dropped off the board, or look up a CFS number a field unit radioed in.
+
+<Warning>
+  Historical call records may contain personally identifiable information (PII). Access and handle all records in accordance with your agency's records policy and applicable law.
+</Warning>
+
+## How to open Find a Call
+
+You can open Find a Call from two places:
+
+- **Header** — click the history icon in the application header (tooltip: **Find a Call**).
+- **Recent tab** — click the **Find a Call (full history)** link at the bottom of the Recent board tab.
+
+## Search for a call
+
+Once Find a Call is open, use the **Search calls** field to query the archive. Cadmus supports the following search inputs:
+
+| Search type       | Example input              | Best for                                            |
+|-------------------|----------------------------|-----------------------------------------------------|
+| **CFS number**    | `2024-00123456`            | Exact lookup when you have the number               |
+| **Address**       | `1234 Elm` or `Oak & Main` | Repeat-location research and address history        |
+| **Keyword**       | `burglary` or `Smith`      | Incident type, person name, or narrative text       |
+
+Results appear in a paginated list showing the CFS number, incident type, location, and close date. The counter displays **N / total** so you know how many records matched.
+
+<Tip>
+  Search by an address fragment (e.g., `Elm St`) rather than a full address when you are researching prior activity at a general area. This casts a wider net and surfaces calls with slightly different address formats.
+</Tip>
+
+<Tip>
+  When a field unit radios a CFS number, enter it exactly as given — including any leading zeros or agency prefix — to find the call immediately.
+</Tip>
+
+## Open a search result
+
+Click any result in the list to open its [Call Detail](/dispatch/call-detail) page.
+
+- **Closed calls** — most fields are read-only. You can view all history, logs, notes, and unit assignments, but cannot add new logs or images.
+- **Calls eligible for editing** — some calls (e.g., recently closed or reopened with supervisor approval) may allow limited edits depending on your role and agency configuration.
+
+<Note>
+  If you need to make changes to a closed call, use **Reopen Call** in the app bar. Reopening requires supervisor approval at most agencies and generates an audit log entry.
+</Note>
+
+## Recent tab vs Find a Call
+
+Use the table below to decide which tool fits your current need.
+
+| Feature            | Recent tab                              | Find a Call                          |
+|--------------------|-----------------------------------------|--------------------------------------|
+| **Scope**          | Calls closed recently on this board     | Full agency archive                  |
+| **Speed**          | Fastest for today's closes              | Better for older CFS numbers         |
+| **Search**         | Tab search + advanced filters           | Full history search by CFS, address, or keyword |
+| **Best for**       | Quick reference during an active shift  | Research, audits, and older records  |
+
+## Export and printing
+
+If your agency requires a hard copy or export of a historical call:
+
+- Open the call in call detail via Find a Call.
+- Use your browser's print function or any agency-configured export option within call detail.
+
+Consult your agency administrator for approved export and records-request procedures.
+
+## Related guides
+
+<CardGroup cols={2}>
+  <Card title="Call Detail" icon="file-lines" href="/dispatch/call-detail">
+    Everything on the call detail page once you open a result.
+  </Card>
+  <Card title="Close a Call" icon="circle-check" href="/dispatch/close-call">
+    Finalize a CFS and understand the post-close state.
+  </Card>
+  <Card title="Create a CFS" icon="plus" href="/dispatch/create-cfs">
+    Open a new Call for Service from scratch.
+  </Card>
+  <Card title="New CFS Form Fields" icon="table-list" href="/dispatch/cfs-form-fields">
+    Field-by-field reference for the Create New CFS form.
+  </Card>
+</CardGroup>

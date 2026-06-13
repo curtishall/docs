@@ -1,0 +1,134 @@
+---
+title: "Integrations: RapidSOS, CJIS, RMS, and ATAK in Cadmus"
+sidebarTitle: "Integrations"
+description: "Overview of all Cadmus integration touchpoints — configure CJIS relay, RMS webhooks, RapidSOS location data, and ATAK at org and agency levels."
+---
+
+Cadmus integrations operate at two scopes: some settings live at the **organization level** and apply to every agency beneath them, while others toggle on a per-agency basis. Understanding which scope controls which feature is the fastest way to unblock dispatchers and maintain compliance. This page maps every integration touchpoint — CJIS relay, RMS webhooks, RapidSOS location data, and ATAK — so you can find the right setting without hunting through every menu.
+
+---
+
+## Organization Settings
+
+Navigate to **Settings** (`/settings`) in the Web Admin sidebar. Most cards are visible to OrgAdmins; cards marked **CadmusAdmin** require the platform-level role.
+
+<Note>
+  Changes you make in Organization Settings take effect for all agencies in your org. Coordinate with agency supervisors before altering CJIS site routing or RMS webhook endpoints in a live environment.
+</Note>
+
+### Geographic Service Area
+
+Set the **radius** and **map center** that Cadmus uses as the reference point for geocoding and "outside coverage" warnings.
+
+- Address validation in Dispatch CAD respects this boundary — calls entered outside the radius trigger an out-of-coverage alert.
+- Update this setting any time your agency's jurisdiction boundary changes significantly.
+
+### CFS Number Sharing
+
+Toggle **Enable CFS sharing across agencies** to allow calls for service numbers to be visible to all agencies within your organization. Turn this off if each agency must maintain an isolated CFS number sequence.
+
+### Clerk Membership & User Sync
+
+After bulk user imports or permission changes in Clerk, use the sync controls on this card to push updated memberships into Cadmus without waiting for the next scheduled sync.
+
+### CJIS Site <span style={{fontSize: '0.8em', fontWeight: 'normal'}}>(CadmusAdmin)</span>
+
+<Warning>
+  CJIS credentials and site routing are criminal-justice sensitive. Restrict CadmusAdmin access to personnel who have completed CJIS Security Awareness Training and have a documented operational need.
+</Warning>
+
+The CJIS site card sets the **per-organization target site** for NCIC/ConnectCIC relay traffic.
+
+- You **must** save a CJIS site here before agency-level NCIC toggles function end-to-end.
+- After saving, test an NCIC query from Dispatch CAD on a training call to confirm routing.
+
+### RMS Webhook <span style={{fontSize: '0.8em', fontWeight: 'normal'}}>(CadmusAdmin)</span>
+
+<Warning>
+  Webhook secrets captured in screenshots or support tickets must be rotated immediately. Treat them with the same care as passwords.
+</Warning>
+
+Configure an outbound webhook that fires whenever an incident updates in Cadmus. Fill in the following fields:
+
+| Field | Description |
+|---|---|
+| **URL** | Destination endpoint on your RMS |
+| **Secret** | HMAC signing secret for payload verification |
+| **Enable** | Toggle to activate or pause delivery |
+
+Dispatch CAD displays RMS submission status on the call detail panel when this webhook is active and returning success responses.
+
+### ATAK / TAK Integration
+
+When your deployment includes ATAK, configure the TAK server connection on this card. Enter the server address, port, and any authentication required by your TAK infrastructure. Contact your Cadmus implementer if the ATAK panel does not appear — the feature must be enabled at the platform level first.
+
+---
+
+## RapidSOS
+
+RapidSOS credentials are managed on a dedicated page rather than in the general Settings card. Navigate to **RapidSOS Management** (`/rapidsos`) in the sidebar, or see the full setup guide below.
+
+<Card title="RapidSOS Management" icon="location-dot" href="/admin/rapidsos-management">
+  Configure credentials, test connectivity, and troubleshoot RapidSOS location data for your organization.
+</Card>
+
+Once credentials are saved, Dispatch CAD surfaces RapidSOS tools in the **F4** header menu, including the **Track Phone Number** and **RapidSOS Lookup** dialogs.
+
+---
+
+## Agency-Level Access Toggles
+
+Open an agency record and look for **State/NCIC Access** in the agency settings. This toggle works in conjunction with the org-level CJIS site — the org must have a valid CJIS site before enabling this toggle has any effect.
+
+| Agency setting | Prerequisite |
+|---|---|
+| State/NCIC Access | Org CJIS site saved (CadmusAdmin) |
+
+---
+
+## Quick Calls & Command Integration
+
+The following features are not on the Settings page but directly affect dispatcher integrations and call workflows.
+
+| Feature | Path |
+|---|---|
+| Quick Call Shortcuts | Organization quick call page |
+| Command aliases | `/agencies/{agencyId}/command-aliases` |
+| Call type shortcodes | `/agencies/{agencyId}/call-type-shortcodes` |
+
+---
+
+## Common Mistakes
+
+Avoid these frequent misconfiguration patterns:
+
+- **Enabling NCIC at the agency without a CJIS site on the org.** Dispatchers will see query errors until you add the CJIS site at the org level.
+- **Pointing the RMS webhook URL to a dev endpoint in a production org.** Verify the URL matches your production RMS before going live.
+- **Saving RapidSOS keys to the wrong org.** A Live dispatch org pointed at Sandbox credentials will receive synthetic test data instead of real emergency location updates.
+
+---
+
+## Verification Checklist
+
+Run through this checklist after any integration change before releasing to dispatchers:
+
+<Steps>
+  <Step title="Save the CJIS site (CadmusAdmin)">
+    Confirm the CJIS site card shows the correct target site for your organization.
+  </Step>
+  <Step title="Enable Agency State/NCIC Access">
+    Open your test agency and verify **State/NCIC Access** is toggled on.
+  </Step>
+  <Step title="Confirm user access">
+    Check the test user's effective NCIC access — ensure no denying override is in place.
+  </Step>
+  <Step title="Run a test NCIC query in Dispatch CAD">
+    Open a training call and submit a test query. Confirm you receive a response from the relay.
+  </Step>
+  <Step title="Verify RapidSOS lookup in dev sandbox">
+    Use the **RapidSOS Lookup** dialog in Dispatch CAD against a known test number and confirm data returns.
+  </Step>
+  <Step title="Confirm the RMS webhook receives a sample payload">
+    Trigger a test incident update and verify your RMS endpoint logs the incoming payload with the correct signature.
+  </Step>
+</Steps>

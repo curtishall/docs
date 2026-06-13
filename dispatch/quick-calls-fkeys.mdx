@@ -1,0 +1,103 @@
+---
+title: "Function Key Shortcuts and Quick Call Templates in Cadmus"
+sidebarTitle: "Quick Calls & F-Keys"
+description: "Master the F1–F5 function keys and agency-configured quick call templates (F8–F12) to create calls and run queries faster in Cadmus Dispatch CAD."
+---
+
+Cadmus maps the most common dispatch actions to function keys so you can open dialogs, launch queries, and create pre-typed calls without lifting your hands from the keyboard. The F1–F5 keys are fixed across all agencies; F8–F12 are configured per organization and typically hold your agency's most-used quick call templates such as traffic stops, follow-ups, and paper service runs.
+
+## Core Function Keys (F1–F5)
+
+These five keys are available on every Cadmus dispatch console regardless of agency configuration:
+
+| Key | Action | Description |
+|---|---|---|
+| <kbd>F1</kbd> | **New CFS** | Opens a blank Call for Service entry form |
+| <kbd>F2</kbd> | **Login User** | Opens the Unit Assignment dialog to log crews on or off duty |
+| <kbd>F3</kbd> | **Query** | Opens the NCIC/law-enforcement query panel (law-enforcement agencies with NCIC enabled) |
+| <kbd>F4</kbd> | **Map** | Opens the dispatch map view |
+| <kbd>F5</kbd> | **Units / Unit Greaseboard** | Opens the live unit status grid; supports table view, sort by status, and new-window mode |
+
+<Note>
+  <kbd>F4</kbd> (Map) may be associated with RapidSOS in some training or sandbox environments. In live production deployments, use the map-side tracking controls when the RapidSOS shortcut is not available.
+</Note>
+
+## Quick Call Templates (F8–F12)
+
+Your agency administrator configures **Quick Call Shortcuts** in **Web Admin → Quick Call Shortcuts**. These shortcuts appear as labeled buttons in the Cadmus header and are also bound to function keys F8–F12. Common defaults include:
+
+| Key | Typical Template |
+|---|---|
+| <kbd>F8</kbd> | **Traffic Stop** |
+| <kbd>F9</kbd> | **Follow-up** |
+| <kbd>F10</kbd> | **Paper Service** |
+| <kbd>F11</kbd> | Additional org template |
+| <kbd>F12</kbd> | Additional org template |
+
+If your agency has more templates than there are function keys, the remaining templates appear in the **More Quick Calls** overflow menu in the header.
+
+<Tip>
+  Learn your agency's specific F8–F12 mappings early — they differ between organizations. Ask your CAD administrator or check **Web Admin → Quick Call Shortcuts** to see your current assignments.
+</Tip>
+
+## Traffic Stop Quick Call
+
+The Traffic Stop quick call (typically <kbd>F8</kbd>) opens a focused workflow designed for officer-initiated traffic stops:
+
+<Steps>
+  <Step title="Open Traffic Stop">
+    Press <kbd>F8</kbd> or click the **Traffic Stop** button in the header.
+  </Step>
+  <Step title="Enter the plate">
+    Type the license plate number in the plate entry field.
+  </Step>
+  <Step title="Run the plate (optional)">
+    Click **Run Plate** to send a query before creating the call. The result populates vehicle and registered-owner information automatically when your agency has plate-query integration enabled.
+  </Step>
+  <Step title="Create the traffic stop">
+    Click **Create Traffic Stop**. Cadmus creates a new CFS record using the traffic-stop call type template, pre-populated with the plate and any query results.
+  </Step>
+</Steps>
+
+<Warning>
+  The Traffic Stop quick call is only available when **Traffic Stops Allowed** is enabled in your agency's settings in Web Admin. If the button or function key does not appear, contact your CAD administrator to verify the agency configuration.
+</Warning>
+
+## Follow-Up Quick Call
+
+The **Follow-up** quick call (typically <kbd>F9</kbd>) creates a CFS linked to prior activity:
+
+- Use it when an officer needs to follow up on an existing incident without opening a brand-new, unrelated call.
+- Depending on your agency configuration, the follow-up template may automatically assign the initiating unit when the call is created.
+
+## Paper Service Quick Call
+
+The **Paper Service** quick call (typically <kbd>F10</kbd>) uses a service-of-process template:
+
+- Enter the service location and the unit performing the service.
+- The resulting CFS record is typed as a paper-service run for accurate activity reporting.
+
+## More Quick Calls Overflow Menu
+
+If your agency has configured more than five quick call templates, the extras appear in the **More Quick Calls** menu in the header (next to the F8–F12 buttons). Click the menu to see all available templates.
+
+## Tips and Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Know your F-keys" icon="keyboard">
+    Memorize your agency's F8–F12 layout. Quick calls are only fast if you do not have to search for the right button under pressure.
+  </Card>
+  <Card title="Reload after admin changes" icon="rotate">
+    If your CAD administrator updates quick call templates, use **Reload Data** (or refresh the browser) to pick up the new assignments. Stale templates can point to outdated call types.
+  </Card>
+  <Card title="Verify location before submit" icon="location-dot">
+    Quick calls create normal CFS records. Always confirm the incident location is accurate before submitting — the template does not auto-populate address from GPS unless your agency has that integration active.
+  </Card>
+  <Card title="Use F3 before F8" icon="magnifying-glass">
+    For traffic stops, run the plate query with <kbd>F3</kbd> (or the in-template **Run Plate** button) before creating the call. Pre-populated vehicle data saves time and improves record accuracy.
+  </Card>
+</CardGroup>
+
+<Warning>
+  The RapidSOS header shortcut may be unavailable in some live deployments. If you rely on RapidSOS caller-location data, use the map-side RapidSOS tracking panel rather than the header shortcut.
+</Warning>

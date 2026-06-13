@@ -1,0 +1,118 @@
+---
+title: "Troubleshoot Common Cadmus Dispatch CAD Issues and Errors"
+sidebarTitle: "Troubleshooting"
+description: "Diagnose and fix common Dispatch CAD problems — empty call boards, missing incident types, stale quick call templates, and real-time connection issues."
+---
+
+Use this guide when something in Dispatch CAD isn't behaving as expected — a board that looks empty, an F-key that fires nothing, or a query button that never appears. Most issues resolve with a configuration check in Web Admin or a data reload; work through the relevant accordion below before escalating to Cadmus support.
+
+<AccordionGroup>
+
+  <Accordion title="Cannot sign in">
+    If you cannot sign in to Dispatch CAD, check the three most common causes before contacting your administrator.
+
+    1. **Account inactive** — ask your agency admin to verify your account status in **Web Admin → Users** and reactivate it if needed.
+    2. **Wrong environment** — confirm whether you are trying to sign in to the Live or Sandbox organization. The sign-in screen displays the organization name; look for a "Sandbox" or "Training" label.
+    3. **Invite pending** — if your account was recently created, check your email for an invitation link. If the invite expired, ask your admin to resend it.
+  </Accordion>
+
+  <Accordion title="Call boards are empty">
+    Your boards can appear empty for three common reasons: an incorrect agency filter, the wrong organization selected, or stale cached data.
+
+    1. Open the **Select Agencies** picker in the header and confirm that the correct agencies are included. If you added or were assigned to an agency recently, it may not be checked.
+    2. Verify the organization badge in the header. If you belong to multiple organizations (for example, a Live org and a Sandbox training org), confirm you are signed in to the correct one.
+    3. Select **Reload Units & Dashboard Data** from the header settings menu to force a fresh pull from the server.
+
+    <Tip>
+      If calls reappear after a reload but disappear again within minutes, contact your admin — the issue may be a WebSocket connectivity problem rather than a filter setting.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Incident types missing from New CFS">
+    When you open **New CFS** (F1) and expected incident types are absent, the type may be inactive in Web Admin or the local data cache is stale.
+
+    1. Ask your admin to navigate to **Web Admin → Incident types** and confirm the type is set to **Active**.
+    2. After the admin activates or adds the type, select **Reload Data** from the header settings menu in Dispatch CAD. New incident types populate only after a reload.
+    3. Confirm you are in the correct organization — incident types are org-scoped, so switching to a different org will show a different list.
+  </Accordion>
+
+  <Accordion title="Quick call F-key does nothing">
+    If pressing an F-key shortcut (F8–F12) produces no action, the associated template is likely missing or its linked incident type is inactive.
+
+    1. Ask your admin to open **Web Admin → Quick Call Shortcuts** and verify a template exists for that key.
+    2. Confirm the incident type linked to that template is **Active** in Web Admin.
+    3. Select **Reload Data** in Dispatch CAD after any template changes. If the template was just created, a full restart of Dispatch CAD may be required before the shortcut fires.
+  </Accordion>
+
+  <Accordion title="NCIC/Query button not appearing">
+    The **Query** button (F3) is controlled by a combination of agency-level and org-level settings. If it is not visible, one or both settings are likely off.
+
+    1. Your admin must enable **State/NCIC Access** in **Web Admin → Agencies → your agency → Settings**.
+    2. **State/NCIC Access** requires a CJIS site to be configured at the organization level by a CadmusAdmin. If the toggle is on but the button still does not appear, the org-level CJIS site may be missing — contact your CadmusAdmin.
+    3. If your agency has NCIC enabled but your personal account does not, ask your admin about a user-level override.
+
+    <Warning>
+      Only CJIS-certified personnel should be granted NCIC access. Contact your agency's CJIS security officer before requesting this change.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Units not showing in Login User (F2)">
+    If the **Login User** dialog (F2) shows an empty unit list, either the wrong agency is selected or units have not been created in Web Admin.
+
+    1. Confirm the agency selected in the Dispatch CAD header matches the agency whose units you expect to see. Units are agency-scoped.
+    2. Ask your admin to navigate to **Web Admin → Agencies → your agency → Units** and verify that units have been created and are active.
+    3. Select **Reload Data** after the admin adds or activates units.
+  </Accordion>
+
+  <Accordion title="Sandbox vs. Live confusion">
+    Cadmus deployments commonly pair a **Live** organization for production use with a **Sandbox** organization for training. Dispatching in the wrong environment is a significant risk.
+
+    1. Check the header banner — Dispatch CAD displays a prominent **SANDBOX MODE** or **LIVE MODE** indicator.
+    2. If you are unsure which environment you signed in to, sign out and confirm the organization name on the sign-in screen. Sandbox orgs are typically labeled with a suffix such as "– Sandbox" or "– Training."
+    3. Never record real citizen calls or submit NCIC queries against real plates in a Sandbox org.
+
+    <Note>
+      If your organization's Live and Sandbox orgs have similar names, ask your OrgAdmin to rename them more distinctly to prevent confusion.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Map or RapidSOS not working">
+    If the map view (F4) fails to load or the RapidSOS caller-location feature is unavailable, check the following:
+
+    1. Confirm that GIS and RapidSOS integrations are configured at the organization level in **Web Admin → Integrations**.
+    2. The RapidSOS header shortcut may be unavailable in some live deployments — use the map-side RapidSOS tracking panel instead.
+    3. If a call's map pin is not resolving to the correct location, try **Refresh Address Resolution** on the call detail before pinning the location on the map.
+
+    <Note>
+      Contact your OrgAdmin if GIS or RapidSOS integrations do not appear in Web Admin — these may need to be enabled at the organization level.
+    </Note>
+  </Accordion>
+
+  <Accordion title="WebSocket updates appear stuck">
+    If the call board or unit statuses stop refreshing in real time, the WebSocket connection may have dropped.
+
+    1. Select **Reload Data** from the header settings gear menu. This reconnects the WebSocket and re-fetches all current data.
+    2. If the problem persists, open the gear menu and run **Test Connection** to check server reachability.
+    3. As a last resort, use **Force Reload** (also in the gear menu) to perform a full page reload without losing your current session.
+
+    <Warning>
+      **Clear All Caches** (available in Settings & Tools) may sign you out or reset local preferences. Use it only when directed by Cadmus support.
+    </Warning>
+  </Accordion>
+
+</AccordionGroup>
+
+## Escalate to Cadmus support
+
+If none of the steps above resolve your issue, contact Cadmus support. To help the team investigate quickly, collect the following information before you reach out:
+
+- **Organization name** and whether it is Live or Sandbox
+- **Agency name**
+- **Affected user email address**
+- **Time the issue occurred** (include time zone)
+- **Steps to reproduce** the problem
+- **Screenshots** showing the unexpected behavior
+
+<Warning>
+  Never include NCIC response data, driver's license numbers, plate results, or any other CJIS-protected information in support tickets, screenshots, or screen recordings. Doing so may violate your agency's CJIS Security Policy.
+</Warning>

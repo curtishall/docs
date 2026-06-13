@@ -1,0 +1,63 @@
+---
+title: "Configure User Notification Preferences in Cadmus Admin"
+sidebarTitle: "Notifications"
+description: "Set per-user notification channels and preferences in Web Admin to control which alerts dispatchers and administrators receive and through what channel."
+---
+
+Cadmus delivers alerts through multiple channels — email, in-app notifications, and SMS — and lets you tune exactly what each user receives. Configuring preferences per user ensures that supervisors get the broad situational awareness they need, while line dispatchers receive only the alerts relevant to their active workload. Misconfigured preferences can result in missed critical alerts, so review them during onboarding and after any major template change.
+
+## Open notification preferences
+
+<Steps>
+  <Step title="Navigate to Users">
+    In Web Admin, select **Users** from the sidebar.
+  </Step>
+  <Step title="Select the user">
+    Choose the user you want to configure.
+  </Step>
+  <Step title="Open the Notification Preferences tab">
+    On the user detail page, select the **Notification Preferences** tab.
+  </Step>
+</Steps>
+
+## What you can configure
+
+Available options depend on your deployment. Typical areas include:
+
+- **Email or in-app notifications** for specific incident types — subscribe a user to alerts only for the incident categories relevant to their role.
+- **Alert channels** tied to notification templates or policies — map each notification type to the delivery channel the user prefers (email, in-app, or SMS when available).
+
+<Note>
+  Organization-wide **Notification Policies** may not appear in all deployments. If the policies page is unavailable, use the **Notification Preferences** tab on the user detail page together with **Notification Templates** under org configuration to achieve the same result.
+</Note>
+
+## Related configuration
+
+| Item | Location |
+|---|---|
+| Message templates | **Notification Templates** (`/notification-templates`) |
+| Incident type linkage | Organization incident types |
+| Dispatch CAD alerts | Dispatch CAD audio and UI settings |
+
+## Dispatch and mobile impact
+
+Notification preferences control which alerts a user receives — they do not alter CFS data, incident status, or any information displayed on the Dispatch CAD board. A dispatcher's preferences are invisible to other users on the board.
+
+## Tips
+
+<Tip>
+  Set supervisor notification preferences separately from line dispatchers. Supervisors typically benefit from broader incident-type subscriptions and email digests, while line dispatchers usually need real-time in-app alerts for their assigned calls only.
+</Tip>
+
+<Tip>
+  After updating notification templates, ask affected users to reload Dispatch CAD so the updated templates take effect in their session.
+</Tip>
+
+## Common mistakes
+
+<Warning>
+  Disabling all notification channels for a user may cause them to miss critical alerts. Document your agency's minimum required notification settings and apply them to every user during onboarding.
+</Warning>
+
+- **Updating templates without updating user preferences** — if a user is opted out of a channel, changing the template on that channel has no effect until you re-enable the channel for that user.
+- **Expecting SMS from admin toggles alone** — SMS delivery requires a configured SMS service at the organization level. Enabling SMS in a user's preferences without the underlying SMS service produces no messages.

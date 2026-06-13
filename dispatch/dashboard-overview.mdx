@@ -1,0 +1,110 @@
+---
+title: "Dispatch CAD Dashboard: Call Boards and Real-Time Updates"
+sidebarTitle: "Dashboard"
+description: "Explore every section of the Dispatch CAD dashboard — call board tabs, the units sidebar, pending queues, status timer alerts, and recent call search."
+---
+
+The Dispatch CAD dashboard is your real-time dispatch surface. It organizes active calls, available units, operational broadcasts, and reference resources into a set of tabbed boards that update live as units change status and new calls come in. Understanding what each section shows — and when to use it — lets you work faster and miss nothing during a busy shift.
+
+## Call Board Tabs
+
+The call boards occupy the center of the dashboard. Each tab filters the active call list to a specific discipline or view, so you see exactly what is relevant to your role at any moment.
+
+| Tab | Shows |
+|---|---|
+| **Pending** | New and unassigned calls waiting for unit assignment (priority and regular queues) |
+| **Patrol** | Patrol-scoped active calls in progress |
+| **Dispatched** | Calls that have at least one unit assigned and are actively being worked |
+| **Fire** | Fire discipline calls |
+| **EMS** | EMS discipline calls |
+| **Recent** | Calls that were recently closed but remain visible on the board |
+| **Status Timers** | Calls with active agency-configured status timers running |
+| **BOLOs** | Active be-on-the-lookout broadcasts for your agency |
+| **Resources** | Wrecker rotation, utility contacts, emergency contacts, and the operational board |
+
+<Tip>
+  Use the **Fire** and **EMS** tabs to reduce noise when you dispatch by discipline. Patrol-focused dispatchers can stay on **Patrol** or **Dispatched** and only switch to other tabs when needed.
+</Tip>
+
+## Pending Board
+
+The **Pending** tab is typically your highest-priority view — it holds calls that have not yet been assigned to a unit. The board is divided into two sections:
+
+- **Priority Pending** — higher-priority calls placed in a separate queue when your agency has priority routing configured. These require immediate attention.
+- **Regular Pending** — standard incoming calls waiting for assignment.
+- **Show return calls** — toggle this control to include or exclude return calls from the pending view when that feature is available for your agency.
+
+When the queue is clear, the board shows **No pending calls**.
+
+<Note>
+  If Priority Pending is not visible for your agency, your administrator may not have priority routing enabled. Check with your supervisor if you expect to see a priority queue.
+</Note>
+
+## Sorting and Density
+
+You can adjust how call cards appear on any board tab:
+
+- **Sort calls** — change the sort order (for example, by time received, priority, or incident type) to match your workflow. Sort settings apply per tab.
+- **Call list density** — toggle between **compact** and **comfortable** card layouts. Compact fits more calls on screen; comfortable gives more detail per card without opening the call.
+
+## Assigning Units from the Board
+
+There are two ways to assign a unit to a call directly from the dashboard:
+
+<Tabs>
+  <Tab title="Drag and Drop">
+    Locate the unit in the **Active Units** sidebar, then drag it onto the target call card on any board. The call moves to the **Dispatched** tab and the unit's status updates automatically.
+
+    <Note>
+      Drag-and-drop must be enabled in your agency configuration. If dragging does not work, use the call detail method below.
+    </Note>
+  </Tab>
+  <Tab title="Call Detail">
+    Click the call card to open the full **call detail** panel, then click **Assign Unit**. Select the unit from the list and confirm. This method works regardless of whether drag-and-drop is enabled.
+  </Tab>
+</Tabs>
+
+## Status Timer Alerts
+
+When a status timer reaches its threshold, a **Status Timer Alerts** overlay appears globally — it is not limited to the Status Timers tab. The overlay identifies which calls have timers that are due or overdue so you can act immediately without navigating away from your current board.
+
+<Warning>
+  Do not dismiss a Status Timer Alert without taking action or confirming with the unit. Unanswered timer alerts can indicate a unit that needs a welfare check.
+</Warning>
+
+## Recent Tab and Call Search
+
+The **Recent** tab shows calls that have been closed but remain on the board within your agency's retention window. Use it for quick lookups of calls from the current shift.
+
+<Tabs>
+  <Tab title="Quick Search">
+    Type in the search field at the top of the Recent tab to filter visible closed calls by address, incident type, unit, or call number. Results update as you type.
+  </Tab>
+  <Tab title="Advanced Search">
+    Click **Advanced recent search** to open expanded filter options, including date range, incident type, and reporting party. Use this when a quick search returns too many results.
+  </Tab>
+  <Tab title="Find a Call (Full History)">
+    Click **Find a Call** to open the full archive search. This searches beyond the Recent board's retention window and includes all historical CFS records your agency has access to. Use Find a Call for any lookup that goes further back than the current shift.
+  </Tab>
+</Tabs>
+
+<Tip>
+  Apply the agency filter before comparing boards across departments. If you dispatch for multiple agencies, the boards reflect all agencies in your filter simultaneously, which can make call counts look higher than expected for any single department.
+</Tip>
+
+## Common Mistakes
+
+<CardGroup cols={2}>
+  <Card title="Searching only Recent for closed calls" icon="triangle-exclamation">
+    The Recent tab only shows calls within a short retention window. For anything older than the current shift, use **Find a Call** to search the full archive.
+  </Card>
+  <Card title="Forgetting an active agency filter" icon="filter">
+    If your boards look unexpectedly empty, an agency filter may be excluding your primary agency. Open **Select Agencies** in the header and verify your selection, or click **All Agencies** to reset.
+  </Card>
+  <Card title="Missing WebSocket updates" icon="rotate">
+    If live updates appear to have stopped — units not moving, new calls not appearing — open **Settings & tools** (gear icon) and select **Reload Data** to force a fresh connection.
+  </Card>
+  <Card title="Drag-and-drop not working" icon="hand">
+    If dragging a unit to a call has no effect, drag-and-drop may be disabled for your agency. Use the **Assign Unit** button inside the call detail panel instead.
+  </Card>
+</CardGroup>

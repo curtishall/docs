@@ -1,0 +1,103 @@
+---
+title: "How to Create a Call for Service in Cadmus Dispatch"
+sidebarTitle: "Create CFS"
+description: "Step-by-step guide to creating a new Call for Service (CFS) in Cadmus Dispatch CAD, from pressing F1 or New CFS through first dispatch."
+---
+
+A **Call for Service (CFS)** is the primary record for any incident your agency receives — from a traffic stop to a major emergency. Every dispatch action, unit assignment, narrative, and closure is attached to a CFS. Creating one accurately and quickly ensures field units get the right information and your agency maintains a complete audit trail.
+
+<Note>
+  Before creating calls in a live environment, confirm your workstation is connected to the **Live** system and not the **Sandbox**. Calls created in Sandbox are isolated from active dispatch operations.
+</Note>
+
+## Create a new CFS
+
+<Steps>
+  <Step title="Open the New CFS form">
+    Press **F1** on your keyboard, or click **New CFS** in the application header. The **Create New Call for Service** dialog opens.
+  </Step>
+
+  <Step title="Select an Incident Type">
+    Click the **Incident Type \*** field and type 2–4 letters to filter the list, then select the matching type. Incident type drives tags, priority defaults, and downstream workflows — always select from the list rather than relying on free text alone.
+
+    <Tip>
+      Type the first letters of a common abbreviation (e.g., `BURG` for Burglary) to narrow the list quickly.
+    </Tip>
+  </Step>
+
+  <Step title="Enter a Location">
+    Fill the **Location \*** field using any of the supported location modes:
+
+    - **Street address** — type a street number and name; a **Validating address…** spinner confirms GIS lookup.
+    - **Cross street** — use two intersecting street names when no exact address is known (e.g., `Main St & Oak Ave`).
+    - **Common place** — select from your agency's configured common-place list (schools, parks, landmarks).
+
+    A **Geo verified** badge appears when GIS successfully validates the address.
+
+    <Warning>
+      Unvalidated addresses may geocode incorrectly and drop the map pin in the wrong location. After creating the call, verify the map pin in call detail and correct the address if needed.
+    </Warning>
+
+    <Tip>
+      If you only have a cross street, enter it now and update to a full address once field units confirm the scene location.
+    </Tip>
+  </Step>
+
+  <Step title="Fill in Incident Details">
+    Enter a concise summary in the **Incident Details \*** field. Include who, what, where, and any immediate risks to responders or the public. This narrative appears on the dispatch board and in all downstream reports.
+  </Step>
+
+  <Step title="Add Reporting Party information">
+    Complete the reporting party (RP) section as information is available:
+
+    - Enable **RP same as scene** if the caller is at the incident location.
+    - Click **Add Phone Number** to record additional callback numbers.
+    - Click **Add Caller** to add a secondary reporting party.
+  </Step>
+
+  <Step title="Set the Priority Level">
+    Choose a **Priority Level \*** that matches agency protocol:
+
+    | Priority | Label     | Typical use                          |
+    |----------|-----------|--------------------------------------|
+    | 1        | Emergency | Immediate life safety threat         |
+    | 2        | Urgent    | Prompt response required             |
+    | 3        | Routine   | Standard response                    |
+    | 4        | Low       | Non-urgent, informational            |
+  </Step>
+
+  <Step title="Review optional fields and click Create Call">
+    Optionally add a vehicle record (**Add Vehicle**) or toggle **Disable Timer** if agency policy permits skipping the default status timer. When all required fields are complete, click **Create Call**.
+
+    The dialog closes and Cadmus opens the new call in [Call Detail](/dispatch/call-detail). The call is now live on the dispatch board and ready for unit assignment.
+  </Step>
+</Steps>
+
+## After creating the call
+
+Once the CFS is created, the call detail view opens automatically. From there you can:
+
+- Assign available units using the **AVAILABLE UNITS** quick-assign row.
+- Add images or supplemental documents in the **History / Logs** section.
+- Edit call information using **Edit Call Details** in the call summary block.
+
+<Tip>
+  Images and attachments cannot be added during the initial create dialog. Open the call in call detail and use **Add Image** in the History / Logs section to attach photos or documents.
+</Tip>
+
+## Related guides
+
+<CardGroup cols={2}>
+  <Card title="New CFS Form Fields" icon="table-list" href="/dispatch/cfs-form-fields">
+    Complete field-by-field reference for every option in the Create New Call for Service form.
+  </Card>
+  <Card title="Call Detail" icon="file-lines" href="/dispatch/call-detail">
+    Explore every block in the call detail view — units, callers, notes, and closing actions.
+  </Card>
+  <Card title="Close a Call" icon="circle-check" href="/dispatch/close-call">
+    Finalize a CFS when units have cleared and narratives are complete.
+  </Card>
+  <Card title="Find a Call" icon="magnifying-glass" href="/dispatch/find-a-call">
+    Search closed and historical calls beyond the Recent board.
+  </Card>
+</CardGroup>

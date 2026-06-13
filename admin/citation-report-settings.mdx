@@ -1,0 +1,89 @@
+---
+title: "Citation Templates and RMS Report Numbers in Cadmus"
+sidebarTitle: "Citations & Reports"
+description: "Configure citation template layouts and RMS report number formats for your agency — including format tokens and sequence seed setup."
+---
+
+Cadmus handles two closely related records at the agency level: citations generated during traffic stops and RMS case numbers assigned when a call closes with "Report to Follow." Both are configured on the agency Settings page, and both carry real legal and administrative weight — citations may be filed in court and report numbers must align with your RMS vendor's sequencing requirements. Get these settings right before going live and test them in a sandbox environment first.
+
+## Citations
+
+The **Citation** section of the agency settings page contains the citation template configuration and, when the citation module is enabled for your deployment, a PDF designer for customizing the layout of printed citations.
+
+### Configure citation templates
+
+<Steps>
+  <Step title="Open agency settings">
+    Navigate to `/agencies/{agencyId}/settings` in Web Admin.
+  </Step>
+  <Step title="Scroll to Citations">
+    Locate the **Citations** section on the settings page.
+  </Step>
+  <Step title="Configure template fields">
+    Set the template fields and layout options. Refer to your agency's citation form requirements and, if applicable, your state's traffic citation standards.
+  </Step>
+  <Step title="Save">
+    Select **Save** to apply the template configuration.
+  </Step>
+  <Step title="Test with a training user">
+    Use a training account to generate a test citation and produce a PDF. Verify that all fields render correctly before enabling the template in production.
+  </Step>
+</Steps>
+
+<Warning>
+  Citation templates may be legal documents used in court. Have your agency attorney review the template before production use. Editing the template after citations have been issued causes historical PDFs to no longer match the current layout.
+</Warning>
+
+<Tip>
+  Test one citation in your Sandbox organization before enabling the template in your Live organization. This lets you catch formatting issues without creating records in the production system.
+</Tip>
+
+## RMS report numbers
+
+How Cadmus assigns report numbers depends on a single agency-level toggle:
+
+| Setting | Effect |
+|---|---|
+| **Separate RMS Report Numbers** OFF | Report number matches the CFS number |
+| **Separate RMS Report Numbers** ON | Report number uses the **Report Number Format** template |
+
+### Format tokens
+
+When separate numbering is enabled, build your format string using these tokens:
+
+| Token | Output |
+|---|---|
+| `{YYYY}` | 4-digit year (e.g., `2026`) |
+| `{YY}` | 2-digit year (e.g., `26`) |
+| `{NNNN}` | 4-digit zero-padded sequence (e.g., `0042`) |
+| `{NNNNNN}` | 6-digit zero-padded sequence (e.g., `000042`) |
+| `{AGENCY}` | Agency abbreviation as configured in Cadmus |
+
+**Example:** `{YY}-{NNNN}` produces `26-0042`.
+
+### Sequence seed
+
+During initial go-live, a super admin may set the sequence seed to start numbering at a specific value — for example, to continue from where a legacy RMS left off. 
+
+<Warning>
+  Set the sequence seed only once, during initial deployment. Changing it after numbers have been issued creates gaps or duplicate sequences. Records staff must manually reconcile any gaps that occur when calls are deleted or workflows are aborted.
+</Warning>
+
+## Dispatch and mobile impact
+
+- Officers and deputies can generate citations from the call detail view in Dispatch CAD only when **Traffic Stops Allowed** is enabled for the agency. See [Agency Settings](/admin/agency-settings) for details on that toggle.
+- When a dispatcher closes a call with **Report to Follow**, Cadmus assigns a report number according to the agency's current numbering configuration. If separate numbering is on, the format string is applied immediately.
+
+## Common mistakes
+
+<Warning>
+  Report number gaps may occur if calls are deleted or workflows are aborted before a number is fully committed. Records staff should reconcile sequences periodically to identify and document any gaps.
+</Warning>
+
+- **Editing the citation template after citations have been issued** — historical PDFs no longer match the current template, which can create discrepancies in court filings.
+- **Wrong `{AGENCY}` abbreviation in the format string** — verify the abbreviation configured in Cadmus matches what your RMS and records system expect.
+- **Enabling separate report numbers without training records staff** — the numbering change affects how your RMS vendor receives case numbers; brief records staff before flipping the toggle in production.
+
+<Tip>
+  Document your format string in the agency SOP and align it with your RMS vendor's field length and character requirements. Some RMS systems impose a maximum case number length that may affect which tokens you can combine.
+</Tip>

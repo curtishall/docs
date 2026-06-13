@@ -1,0 +1,109 @@
+---
+title: "Get Started with Cadmus Dispatch CAD in Five Minutes"
+sidebarTitle: "Getting Started"
+description: "Sign in to Cadmus Dispatch CAD, confirm your environment, orient yourself to the main layout, and complete your first essential dispatch actions."
+---
+
+Before you take your first call, spend a few minutes getting oriented in Dispatch CAD — confirm the environment you are signed into, understand how your organization and agency context shapes what you see, and practice the keyboard shortcuts that will carry you through every shift. The steps below walk you through everything from the sign-in screen to your first dispatched unit.
+
+## Sign In
+
+<Steps>
+  <Step title="Launch the application">
+    Open the Cadmus Dispatch CAD application in your browser or from your workstation shortcut.
+  </Step>
+  <Step title="Enter your agency credentials">
+    Sign in with the username and password provided by your agency administrator. If you do not have credentials, contact your supervisor before proceeding.
+  </Step>
+  <Step title="Confirm the dashboard loads">
+    After sign-in, the **dashboard** appears with call boards in the center and the units sidebar on the side. If the boards are empty, verify your agency filter (see Organization and Agency Context below).
+  </Step>
+</Steps>
+
+<Tip>
+  Pin the Dispatch CAD window full-screen on your workstation. Resizing the window can shift board layouts and obscure call cards during busy periods.
+</Tip>
+
+## Sandbox vs. Live Environment
+
+<Warning>
+  Before creating or closing any real calls, confirm which environment you are in. The header displays either **SANDBOX MODE** or **LIVE MODE**. Creating calls in a sandbox org has no effect on live CAD — and vice versa. Follow your agency's SOP before dispatching in either environment for the first time.
+</Warning>
+
+If your deployment includes a training organization, you may be able to switch between environments:
+
+- **SANDBOX MODE** — safe for training and testing; calls do not affect live dispatch
+- **LIVE MODE** — production environment; all actions are real and audited
+
+Always verify the header badge at the start of every session, especially on shared workstations.
+
+## Organization and Agency Context
+
+Your **organization** determines which calls, units, incident types, and settings you see. If you dispatch for multiple agencies within one organization, use the **Select Agencies** filter in the header to focus your boards.
+
+| Header control | What it does |
+|---|---|
+| **Select Agencies** | Filters call boards and units to the agencies you choose |
+| **All Agencies** | Resets the filter to show everything in your organization |
+| **Clear** | Removes all agency selections |
+| **Done** | Applies the current filter and refreshes the boards |
+
+<Note>
+  If a board looks unexpectedly empty, check whether an agency filter is active. A filter that excludes your primary agency is one of the most common causes of a blank call board.
+</Note>
+
+## Main Screen Layout
+
+Familiarize yourself with the five major areas of the Dispatch CAD workspace before taking your first call:
+
+| Area | Purpose |
+|---|---|
+| **Header** | New CFS, Login User, Query, Map, Units, BOLO, Chat, and Settings shortcuts |
+| **Units sidebar** | Active units, off-duty pool, and quick status updates |
+| **Call boards** | Pending, Patrol, Dispatched, Fire, EMS, Recent, Status Timers, BOLOs, and Resources tabs |
+| **Call detail** | Full CFS view — location, assigned units, parties, notes, SMS, queries, and close actions |
+| **Command line** | Keyboard-driven commands at the bottom of the dashboard or inside a call detail |
+
+## Essential First Actions
+
+Use this table as a quick-reference until the actions become muscle memory. Every item is covered in a dedicated guide linked from the table.
+
+| Task | How |
+|---|---|
+| **Create a call** | Press **F1** or click **New CFS** in the header — opens the New CFS form |
+| **Log in a unit** | Press **F2** or click **Login User** in the header — assigns a responder to a unit |
+| **Open a call** | Click any call card on any board to open the full call detail panel |
+| **Assign a unit** | Drag a unit from the Active Units sidebar onto a call card, or open the call and click **Assign Unit** |
+| **Run a query** | Press **F3** or click **Query** in the header (requires NCIC to be enabled for your agency) |
+
+<Tip>
+  Master **F1 through F5** before relying on mouse navigation. Keyboard shortcuts are significantly faster during high-call-volume periods. Type **HELP** in the command line to see your agency's configured aliases.
+</Tip>
+
+## Header F-Key Reference
+
+| Key | Action |
+|---|---|
+| **F1** | New CFS |
+| **F2** | Login User |
+| **F3** | Query (when NCIC is enabled) |
+| **F4** | Map |
+| **F5** | Units / unit greaseboard |
+| **F8–F12** | Agency quick-call templates (e.g., traffic stop, follow-up) |
+
+## Reload After Admin Changes
+
+If incident types, quick-call templates, or units appear stale or missing after your agency admin makes changes in Web Admin:
+
+<Steps>
+  <Step title="Open Settings & Tools">
+    Click the **gear icon** in the header to open the Settings & tools menu.
+  </Step>
+  <Step title="Reload data">
+    Select **Reload Units & Dashboard Data** (or **Force Reload** if available). The boards refresh and pick up the latest configuration without requiring a full page reload.
+  </Step>
+</Steps>
+
+<Warning>
+  Sign out using **Sign Out** in the user menu at the end of every shift on shared workstations. Leaving a session open can expose call and unit data to the next user.
+</Warning>

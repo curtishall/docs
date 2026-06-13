@@ -1,0 +1,94 @@
+---
+title: "Organizations, Agencies, and Settings Scope in Cadmus"
+sidebarTitle: "Org & Agency Basics"
+description: "Understand the Cadmus tenant hierarchy — Organization, Agency, Unit, User — and how settings scope flows from org to agency to individual user."
+---
+
+Before you change anything in Web Admin, take a few minutes to understand how Cadmus structures its data. Every setting you touch lives at a specific level of the hierarchy — organization, agency, or user — and that scope determines exactly what gets affected and who can change it. Getting this model right prevents the most common admin mistakes, such as editing the Sandbox org by mistake or creating units under the wrong agency.
+
+## Definitions
+
+| Term | Meaning |
+|---|---|
+| **Organization** | The top-level tenant — typically a county CAD center or a single-agency deployment. All agencies, incident types, and org-level settings belong to one organization. |
+| **Agency** | A department within an organization, such as a Sheriff's Office, Police Department, Fire Department, or EMS service. Each agency has its own units, settings, and optional user lists. |
+| **Unit** | A field resource identified by call sign or apparatus number (e.g., `Unit 12`, `Medic 3`). Units belong to exactly one agency. |
+| **User** | A person with a Cadmus login. A user belongs to an organization and can be assigned one or more roles and agency associations. |
+
+## Organization picker
+
+After you sign in, select the organization you administer from the organization picker in the Web Admin header. Every list page — users, agencies, settings, incident types — filters to the selected organization. If you switch organizations mid-session, the pages refresh to show only data for the newly selected org.
+
+<Note>
+  If you have access to multiple organizations (for example, both a Live org and a Sandbox org), double-check the organization picker before you save any changes. There is no undo for configuration changes made to the wrong org.
+</Note>
+
+## Live vs. Sandbox
+
+Most Cadmus deployments pair two organizations: a **Live** organization used for real-world operations and a **Sandbox** organization used for training, testing, and go-live preparation.
+
+- **Use Sandbox first.** Configure and test everything — incident types, quick call templates, NCIC toggles — in Sandbox before applying the same changes to Live.
+- **Promote when ready.** When a Sandbox configuration is stable, a CadmusAdmin can promote it to Live.
+- **Name orgs distinctly.** Use clear naming conventions such as `County CAD – Sandbox` and `County CAD – Live` so dispatchers and admins immediately know which environment they are in.
+
+<Warning>
+  Do not use the Live organization for training exercises that involve real citizen phone numbers or NCIC queries unless your agency's policy explicitly permits it.
+</Warning>
+
+## Agencies list
+
+Navigate to **Agencies** (or **Organizations → [your org] → Agencies**) to view and manage the agencies in your organization. Each agency record includes:
+
+- **Units and vehicles** — the field resources available to that agency
+- **Agency settings** at the path `/agencies/{agencyId}/settings` — NCIC access, traffic stops, report number formats, and other agency-level toggles
+- **Scoped user lists** (optional) — restrict certain users to specific agencies within the org
+
+## Agency sharing
+
+When **CFS Sharing** is enabled in organization settings, all agencies within the org can see each other's active calls for service. This is useful in consolidated dispatch centers where one dispatcher handles multiple agencies. Coordinate with your dispatch supervisors before enabling CFS sharing — it changes what appears on every dispatcher's board.
+
+## Where to configure what
+
+Use this table to quickly find the right location for any configuration task:
+
+| Need | Where |
+|---|---|
+| Service area / geocoding radius | **Org Settings** |
+| Incident types, tags, common places | Organization configuration menus |
+| Traffic stops allowed / NCIC access | **Agency settings** (`/agencies/{agencyId}/settings`) |
+| Quick call F-key templates (F8–F12) | **Quick Call Shortcuts** |
+| Units and crews | **Units** under the specific agency |
+
+## Impact on Dispatch CAD
+
+Changes you make in Web Admin do not appear in Dispatch CAD automatically — dispatchers need to reload data for most changes to take effect. Use this table to understand what changes what:
+
+| Admin change | Effect in Dispatch CAD |
+|---|---|
+| New incident type added and set Active | Appears in the **New CFS** (F1) dropdown after dispatcher reloads data |
+| GIS / locations updated | Address validation and common places list updates |
+| Agency **NCIC Access** turned off | Query buttons are hidden or access is denied for that agency's users |
+| Quick call template added or changed | F8–F12 behavior updates after dispatcher reloads data |
+| CFS sharing enabled | All agency boards show the combined call list |
+
+## Common mistakes and tips
+
+<AccordionGroup>
+
+  <Accordion title="Editing Sandbox thinking it is Live">
+    This is the single most common admin error. Always verify the organization name in the header picker before saving. Rename your Sandbox org with a clear suffix (for example, `– Sandbox` or `– Training`) if the names are too similar.
+  </Accordion>
+
+  <Accordion title="Creating units under the wrong agency">
+    Units are agency-scoped. If a unit is created under Agency A, it does not appear when dispatchers log in to Agency B. Navigate to the correct agency before adding units.
+  </Accordion>
+
+  <Accordion title="Enabling CFS sharing without coordinating SOP">
+    Turning on CFS sharing changes every dispatcher's call board immediately. Brief your dispatch supervisors and update your standard operating procedures before enabling this setting.
+  </Accordion>
+
+  <Accordion title="Post-promotion checklist">
+    After a CadmusAdmin promotes a Sandbox org to Live, verify Clerk membership sync, re-check user role assignments, and confirm agency settings transferred as expected. Document agency abbreviations used in report number formats to avoid numbering gaps.
+  </Accordion>
+
+</AccordionGroup>

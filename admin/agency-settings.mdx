@@ -1,0 +1,115 @@
+---
+title: "Agency Settings: NCIC, Traffic Stops, and Report Numbers"
+sidebarTitle: "Agency Settings"
+description: "Configure agency-level toggles in Cadmus Web Admin — enable NCIC access, allow traffic stops, and set up RMS report number formats."
+---
+
+Agency settings give AgencyAdmins precise control over what officers and dispatchers in a single agency can do — from whether traffic stops and citations appear in the workflow to whether RMS case numbers follow a custom format. Because these settings are agency-scoped, they do not affect other agencies in your organization, and some can be further refined at the individual user level through [per-user overrides](/admin/user-agency-overrides).
+
+## Open agency settings
+
+<Steps>
+  <Step title="Select your organization">
+    From the Web Admin sidebar, confirm the correct organization is selected.
+  </Step>
+  <Step title="Go to Agencies">
+    Select **Agencies** in the sidebar.
+  </Step>
+  <Step title="Choose the agency">
+    Select the agency you want to configure.
+  </Step>
+  <Step title="Open Settings">
+    Select the **Settings** tab for that agency, or navigate directly to `/agencies/{agencyId}/settings`.
+  </Step>
+</Steps>
+
+This page requires the **AgencyAdmin** role or higher (`canManageAgencyResources`).
+
+## Boolean settings
+
+Settings are grouped by category and displayed with color-coded labels: **Safety** (red), **Access** (blue), **Features** (green), and **Compliance** (orange).
+
+<Tabs>
+  <Tab title="Traffic Stops Allowed">
+    - **Category:** Safety
+    - **Default:** Enabled
+    - **Effect when on:** Users may conduct traffic stops and generate citations from Dispatch CAD and mobile apps.
+    - **Effect when off:** Traffic stop and citation workflows are restricted for all users in this agency.
+    - **User override:** Allowed — you can disable traffic stops for individual users (for example, trainees) without affecting the rest of the agency.
+  </Tab>
+  <Tab title="State/NCIC Access">
+    - **Category:** Access
+    - **Default:** Disabled
+    - **Effect when on:** Users who also have NCIC access at the user level can run state and NCIC queries — provided CJIS routing is configured at the organization level.
+    - **Effect when off:** All NCIC queries are denied for this agency's users.
+    - **User override:** Allowed — you can enable NCIC for a specific certified operator while leaving the agency default off.
+
+    <Warning>
+      Enabling State/NCIC Access here without first configuring an org-level CJIS site causes queries to fail at runtime. Configure CJIS before enabling this toggle.
+    </Warning>
+  </Tab>
+  <Tab title="Separate RMS Report Numbers">
+    - **Category:** Features
+    - **Default:** Disabled
+    - **Effect when on:** "Report to Follow" closures assign RMS case numbers that are separate from the CFS number, using the **Report Number Format** you configure below.
+    - **Effect when off:** The report number equals the CFS number.
+    - **User override:** Not allowed — this setting applies to the entire agency.
+  </Tab>
+</Tabs>
+
+## Report number format
+
+The **Report Number Format** field appears only when **Separate RMS Report Numbers** is enabled. Use the following tokens to build your format string:
+
+| Token | Output |
+|---|---|
+| `{YYYY}` | 4-digit year (e.g., `2026`) |
+| `{YY}` | 2-digit year (e.g., `26`) |
+| `{NNNN}` | 4-digit zero-padded sequence (e.g., `0001`) |
+| `{NNNNNN}` | 6-digit zero-padded sequence (e.g., `000001`) |
+| `{AGENCY}` | Agency abbreviation as configured in Cadmus |
+
+**Example:** `{AGENCY}-{YY}-{NNNN}` produces `CPD-26-0001`.
+
+<Tip>
+  Document the format string in your agency's SOP and align it with your RMS vendor's case number field requirements before enabling separate numbering in production.
+</Tip>
+
+## Save workflow
+
+<Steps>
+  <Step title="Enter edit mode">
+    Select **Edit** if the page requires it to unlock fields.
+  </Step>
+  <Step title="Adjust settings">
+    Toggle boolean settings or edit the report number format string.
+  </Step>
+  <Step title="Save">
+    Select **Save**.
+  </Step>
+  <Step title="Confirm success">
+    Wait for the success toast notification to confirm the changes were applied.
+  </Step>
+</Steps>
+
+## Dispatch and mobile impact
+
+| Setting | When OFF | When ON |
+|---|---|---|
+| Traffic Stops Allowed | Traffic and citation flows restricted | Normal traffic stop workflow available |
+| State/NCIC Access | Queries denied | Queries allowed if user also has effective NCIC access |
+| Separate Report Numbers | Report number equals CFS number | Custom RMS numbering per format string |
+
+## Common mistakes
+
+<Warning>
+  Disabling **Traffic Stops Allowed** mid-shift affects units already on traffic calls. Communicate the change to active units before toggling.
+</Warning>
+
+<Warning>
+  Changing the **Report Number Format** after numbers have already been issued can create gaps or duplicate sequences. Coordinate with your records manager before modifying the format string in production.
+</Warning>
+
+- **Enabling NCIC without org CJIS configuration** — the agency-level toggle is only half of the requirement; org CJIS routing must also be set up.
+- **Changing report format after numbers are issued** — historical records reference the old format; the mismatch complicates reconciliation.
+- **Assuming separate copies exist** — mobile and Dispatch CAD read the same agency settings; there are no separate configuration copies to keep in sync.

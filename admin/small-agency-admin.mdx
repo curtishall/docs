@@ -1,0 +1,78 @@
+---
+title: "Small Agency Admin: Managing Both OrgAdmin and AgencyAdmin"
+sidebarTitle: "Small Agency"
+description: "A guide for small agency administrators who hold both OrgAdmin and AgencyAdmin roles — covering setup, daily workflow, and common pitfalls."
+---
+
+In small public-safety agencies — a rural police department, a small-town fire service, a county sheriff's office, or a modest EMS provider — one person often wears every hat at once: setting organizational policy, managing agency resources, and sometimes dispatching calls from the same desk. Cadmus supports this reality by allowing a single user to hold both the **OrgAdmin** and **AgencyAdmin** roles simultaneously. This guide walks you through what that combination unlocks, how to set it up, and how to avoid the mistakes that trip up small-agency admins most often.
+
+## What a small agency admin can do
+
+<CardGroup cols={2}>
+  <Card title="Organization" icon="building">
+    Manage incident types, tags, common places, and GIS radius settings that apply across your entire organization.
+  </Card>
+  <Card title="Agency" icon="shield">
+    Configure units, vehicles, NCIC and traffic stop toggles, and RMS report number formats for your agency.
+  </Card>
+  <Card title="Users" icon="users">
+    Invite dispatchers and officers, assign roles, adjust agency access, and deactivate departing staff.
+  </Card>
+  <Card title="Field" icon="radio">
+    The same person can also log in to Dispatch CAD and work active calls — the roles do not prevent field or dispatch use.
+  </Card>
+</CardGroup>
+
+Here is a summary of the full scope across each area:
+
+| Area | Examples |
+|---|---|
+| Organization | Incident types, tags, common places, GIS radius |
+| Agency | Units, vehicles, NCIC/traffic stop toggles, report numbers |
+| Users | Invite dispatchers and officers |
+| Field | Same person may also dispatch from Dispatch CAD |
+
+## Set up a small agency admin account
+
+<Steps>
+  <Step title="Create or select the user">
+    In Web Admin, navigate to **Users** and either create a new user or select an existing one.
+  </Step>
+  <Step title="Assign the OrgAdmin role">
+    Edit the user and set their role to **OrgAdmin** for the organization. This grants access to incident types, org settings, GIS configuration, and org-wide user management.
+  </Step>
+  <Step title="Assign AgencyAdmin access">
+    Assign the user **AgencyAdmin** (or the appropriate agency access level) for the primary agency. This grants access to units, vehicles, and agency-level settings.
+  </Step>
+  <Step title="Confirm access to both settings areas">
+    Verify the user can open **Settings** (organization-level) and **Agencies → Settings** (agency-level) in Web Admin.
+  </Step>
+  <Step title="Sign in and verify both products">
+    Have the user sign in to both **Web Admin** and **Dispatch CAD** and confirm that the expected sidebar items appear in each product.
+  </Step>
+</Steps>
+
+<Note>
+  Your Cadmus implementer may pre-provision users in Clerk during go-live. If accounts were already created, confirm with your IT team before creating duplicates.
+</Note>
+
+## Daily workflow tips
+
+- Configure **incident types** and **quick calls** before go-live so dispatchers have the call types they need from day one.
+- Set **agency settings** — traffic stops, NCIC — before training officers on the mobile app, so officers see the correct workflows during training.
+- Use the **Sandbox** organization for training exercises if your deployment includes a paired sandbox tenant. Changes made in Sandbox do not affect production data.
+- Document in writing who holds OrgAdmin for your organization. That person has broad power over the entire system and should be reachable during incidents and audits.
+
+## Common mistakes
+
+<Warning>
+  Small agency admins hold broad system access. Use separate accounts for testing and training versus daily dispatch operations when possible. Mixing test actions and live dispatch on the same account complicates the audit trail.
+</Warning>
+
+<Warning>
+  CJIS and NCIC settings must comply with your state and agency policy. Enabling NCIC access for any user without verifying that org-level CJIS routing is configured causes queries to fail and may create a compliance gap.
+</Warning>
+
+- **Giving OrgAdmin to every officer** — OrgAdmin grants visibility and control across all agencies in the organization. Assign it only to the person who actually needs org-wide configuration access.
+- **Enabling NCIC at the agency without org CJIS configured** — the agency-level toggle is necessary but not sufficient; org CJIS routing must also be set up before queries will succeed.
+- **Editing the Sandbox org thinking it is production** — confirm which organization is selected in the Web Admin header before making any configuration change.
