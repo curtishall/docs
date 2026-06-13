@@ -1,0 +1,30 @@
+---
+title: "Creating calls (NC)"
+sidebarTitle: "Creating calls (NC)"
+description: "NC <TYPE> <ADDRESS> [@UNIT] [!STATUS] [RP=name] [PH=phone] [PRI=n] [NARR=text] ['quoted narrative']"
+---
+
+## Shape
+
+```text
+NC <TYPE> <ADDRESS> [@UNIT] [!STATUS] [RP=name] [PH=phone] [PRI=n] [NARR=text] ["quoted narrative"]
+```
+
+- **TYPE** — Shortcode mapped in admin to an incident type (e.g. `BURG`, `MED`).
+- **ADDRESS** — Greedy text until a keyword or trigger; geocoding uses your org’s address services when configured.
+- **@UNIT** — Assign one or more units; **!STATUS** immediately after a unit applies to **that** unit (default dispatched if omitted).
+- **Quoted narrative** — Text in **double quotes** anywhere on the line is stored as call narrative / notes (same idea as **NARR=**, often easier to type). Example: `NC BURG 456 MAIN ST PRI=2 @351 !Enroute "Someone kicked in the back door"`.
+
+## Examples
+
+- `NC BURG 123 MAIN ST`
+- `NC MED 456 ELM ST @M1 !ENR @M2`
+- `NC DOMV 789 OAK AVE @A23 !OS RP=JOHN SMITH PH=5559876`
+- `NC BURG 200 ELM ST @A1 !ENR "Forced entry, alarm ringing"`
+- `NC TS 100 HWY 61 @423` — Traffic-style call with unit 423.
+
+## Updates to an existing call
+
+When supported by your deployment:
+
+`NC UPD #26-00023 …` — Adds an update / follow-up to the listed CFS.

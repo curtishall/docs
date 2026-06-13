@@ -1,0 +1,50 @@
+---
+title: "Training mode"
+sidebarTitle: "Training mode"
+description: "Training Mode lets officers practice MDT features with mock data without affecting real citations, NCIC submissions, or similar records."
+---
+
+Training Mode lets officers practice MDT features with mock data without affecting real citations, NCIC submissions, or similar records.
+
+## Activating training mode
+
+1. Open **Settings**.
+2. Find **ROOKIE / TRAINING MODE**.
+3. Tap **ENABLE SANDBOX**.
+4. Enter the Supervisor PIN (default training PIN: `0000`).
+5. Training mode is now active.
+
+## What changes
+
+**Visual indicators:**
+
+- Orange banner: **TRAINING MODE - MOCK DATA ACTIVE**
+- Simulated data for training modules
+- No real submissions or transmissions from training modules
+
+**Module behavior (typical):**
+
+- **NCIC**: Mock search results
+- **E-Tickets**: Preview only — nothing printed or transmitted
+- **FIR**: Saved in memory only
+- **BOLOs**: Session mock data
+- **Chat**: Simulated messages
+- **Calls/CAD**: Often **remains live** — confirm your agency SOP; many deployments keep real call data visible for context
+
+## Deactivating training mode
+
+1. Return to **Settings**.
+2. Tap **DISABLE SANDBOX** (no PIN required to disable).
+3. App returns to live mode.
+
+## Tips
+
+- Use training mode during academy or FTO shifts before going live on citations or NCIC.
+- If your agency uses a **Sandbox organization** in admin, prefer that for full end-to-end testing instead of device-only training mode.
+- Supervisors should change the default PIN if your agency policy requires it.
+
+## Warnings
+
+<Warning>Training mode behavior varies by module — do not assume all data is mock. Verify with your agency before relying on it for compliance testing.</Warning>
+
+<Warning>Do not use training mode on shared devices without telling the next user — the orange banner is easy to miss if the device stays logged in.</Warning>

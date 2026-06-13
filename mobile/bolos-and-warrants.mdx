@@ -1,0 +1,97 @@
+---
+title: "BOLOs and warrants"
+sidebarTitle: "BOLOs and warrants"
+description: "View active BOLOs broadcast from dispatch and search warrant information from the MDT."
+---
+
+View active BOLOs broadcast from dispatch and search warrant information from the MDT.
+
+<Note>Screenshot placeholder: WARRANTS & BOLOS screen with tabs</Note>
+
+## Open
+
+Sidebar → **Warrants & BOLOs** (or equivalent menu label in your deployment).
+
+## Tabs
+
+| Tab | Purpose |
+|-----|---------|
+| **Warrants** / **Active Warrants** | Search active warrant records |
+| **BOLOs** | Active be-on-the-lookout alerts from dispatch |
+
+## Search
+
+Use **SEARCH DATABASE…** to filter by subject name, charge, BOLO title, or summary.
+
+Pull down to **refresh** the list. If load fails, tap **RETRY** on the error banner.
+
+<Note>Screenshot placeholder: Search field and WARRANTS / BOLOS tab switcher</Note>
+
+## Warrants list
+
+Desktop layout shows columns:
+
+- **STATUS**
+- **SUBJECT NAME**
+- **DOB**
+- **CHARGE**
+- **BOND**
+- **AGENCY**
+- **ACTIONS** → **DETAILS**
+
+Compact layout uses cards with the same information.
+
+### Warrant details
+
+**DETAILS** opens **WARRANT DETAILS**:
+
+- **ACTIVE WARRANT CONFIRMED** banner
+- **EXTRADITION LIMITS MAY APPLY. CONFIRM WITH DISPATCH.**
+- Grid: **SUBJECT**, **DOB**, **CHARGE**, **BOND**, **DATE ISSUED**, **ISSUING AGENCY**
+- **CLOSE**
+
+<Note>Screenshot placeholder: WARRANT DETAILS dialog</Note>
+
+<Tip>Warrant data may show training sample records in **Training Mode** until your agency connects live warrant feeds. Confirm with dispatch before enforcement action.</Tip>
+
+## BOLOs grid
+
+Each BOLO card shows:
+
+- Type (e.g. stolen vehicle, wanted person, missing person, information)
+- **Title** and summary text
+- **Priority** badge (High / Medium / Low)
+- Thumbnail image when dispatch attached a photo
+- Time issued (relative, e.g. “2h ago”)
+
+Tap a card for **BOLO DETAILS** — full image, type, title, summary, and extended **details** text.
+
+<Note>Screenshot placeholder: BOLO card grid with priority colors</Note>
+
+BOLOs update in near real time when dispatch publishes or cancels alerts.
+
+## Voice announcement
+
+Settings → **Announce BOLO**
+
+When enabled, the device speaks **“New BOLO — {title}”** when a new BOLO arrives after you open the screen.
+
+See [Settings and display](/mobile/settings-and-display).
+
+## Relationship to dispatch
+
+Dispatchers create BOLOs from **Dispatch CAD** (header **BOLO** or dashboard **BOLOs** tab). Field units see the same active list here.
+
+See **Dispatch CAD** documentation: [BOLO, greaseboard, and wrecker](/dispatch/bolo-greaseboard-wrecker).
+
+## Tips
+
+- Refresh after long offline periods.
+- Read full **BOLO DETAILS** before initiating a stop — photos and narrative may not fit on the card.
+- For warrants, always confirm **STATUS** and extradition limits with dispatch or records.
+
+## Warnings
+
+<Warning>BOLO and warrant information may contain sensitive PII — follow CJIS and agency dissemination policy.</Warning>
+
+<Warning>Do not rely on training or sample warrant data for enforcement — verify live records through dispatch or NCIC when required.</Warning>

@@ -1,0 +1,71 @@
+---
+title: "Roles reference"
+sidebarTitle: "Roles reference"
+description: "Full role matrix for Web Admin, Dispatch CAD, and Mobile CAD access."
+---
+
+Full role matrix for **Web Admin**, **Dispatch CAD**, and **Mobile CAD** access.
+
+## Role tiers
+
+| Tier | Roles | Scope |
+|------|-------|-------|
+| **Platform** | CadmusAdmin | All organizations |
+| **Organization** | OrgAdmin | One organization |
+| **Agency** | AgencyAdmin, AgencySupervisor, AgencyUser, Dispatcher, ExternalViewer | Agency operations |
+| **Restricted** | ReadOnly-Calls | Incidents only in admin |
+
+## CadmusAdmin (platform)
+
+- Access to **all** organizations
+- Configure CJIS site, RMS webhooks, cross-org tools
+- Use organization picker carefully before saving
+
+## OrgAdmin (organization)
+
+- Manage agencies, users, org incident types, GIS, locations
+- Open **Settings** for org geographic area and Clerk sync
+- Cannot access other organizations
+
+## AgencyAdmin
+
+- Manage units, vehicles, agency settings, user overrides
+- Route: `/agencies/{agencyId}/settings`
+
+## AgencySupervisor / AgencyUser / Dispatcher
+
+- Operational access — **Dispatch CAD** for call handling
+- Limited or no **Web Admin** configuration pages
+- Dispatcher uses **Dispatch CAD** daily
+
+## ExternalViewer
+
+- API key access for integrations
+- **Account → API keys**
+
+## ReadOnly-Calls (restricted)
+
+- **Incidents only** in **Web Admin** sidebar
+- Redirected away from dashboard root
+- Cannot open organizations or agency settings
+- Does not replace **Dispatch CAD** access — role is for admin UI only
+
+## Sidebar visibility
+
+Navigation is filtered by role. If a menu item is missing, your role lacks permission for that route.
+
+## Common assignments
+
+| Person | Typical role |
+|--------|----------------|
+| County CAD director | OrgAdmin |
+| Chief / sheriff (small agency) | OrgAdmin + AgencyAdmin — see [Small agency admin](/admin/small-agency-admin) |
+| Dispatch supervisor | AgencyAdmin or Dispatcher |
+| Line dispatcher | Dispatcher |
+| Records (view only) | ReadOnly-Calls |
+
+## Warnings
+
+<Warning>Grant NCIC-related access only to CJIS-certified users per agency policy.</Warning>
+
+<Warning>CadmusAdmin changes can affect every tenant — confirm organization before saving.</Warning>

@@ -1,0 +1,75 @@
+---
+title: "Command reference"
+sidebarTitle: "Command reference"
+description: "Default command-line aliases for call, unit, messaging, and query actions in Dispatch CAD."
+---
+
+<Tip>
+Your **aliases** may differ from the defaults below. Use **`HELP`** in **Dispatch CAD** to see the live list for your login.
+</Tip>
+
+## Call management
+
+| Default | Action | Dashboard | In-call |
+|--------|--------|-----------|---------|
+| NC | New call | `NC <TYPE> <ADDRESS> [@UNIT] [!STATUS] [RP=] [PH=]` | — |
+| CLOSE | Close call | `CLOSE <CFS#>` | `CLOSE` |
+| REOPEN | Reopen | `REOPEN <CFS#>` | `REOPEN` |
+| VIEW | Open call | `VIEW <CFS#>` | — |
+| SEND | Promote active | `SEND <CFS#>` | `SEND` |
+| PENDING | Set pending | `PENDING <CFS#>` | `PENDING` |
+
+## Unit status
+
+| Default | Action | Dashboard | In-call |
+|--------|--------|-----------|---------|
+| DU | Dispatch unit | `DU <UNIT> <CFS#>` | `DU <UNIT>` |
+| ENR | Enroute | `ENR <UNIT> [CFS#]` | `ENR <UNIT>` |
+| OS | On scene | `OS <UNIT> [CFS#]` | `OS <UNIT>` |
+| CLR | Clear unit | `CLR <UNIT>` | `CLR <UNIT>` |
+| CU | Remove from call | `CU <UNIT> <CFS#>` | `CU <UNIT>` |
+| TS | Traffic / vehicle stop | `TS <UNIT> <ADDRESS>` | — |
+| BUSY / AVAIL / OOS | Availability | `BUSY <UNIT>` etc. | — |
+| ON / OFF | Duty | `ON <UNIT>` / `OFF <UNIT>` | — |
+
+## Call properties (in-call)
+
+| Form | Example |
+|------|---------|
+| PRI= | `PRI=2` (**Dispatch CAD** may offer autocomplete after `PRI=`) |
+| TYPE= | `TYPE=BURG` |
+| LOC= | `LOC=456 ELM ST` |
+| NARR= | `NARR=…` (multi-word value supported) |
+| N | `N narrative text…` |
+| RP= / PH= | Reporting party |
+| NS | No status check: `NS @AgencyName` |
+
+## Call detail only (open call required)
+
+| Default | Action | Example |
+|--------|--------|---------|
+| STATUS | Call-level timer minutes, or **ON** / **OFF**; optional **@agency** for per-agency timers | `STATUS 10`, `STATUS OFF`, `STATUS ON @Police` |
+| PERSON | Add involved person with **role** + name | `PERSON victim Jane Doe` |
+| VEH | Add vehicle: color, make, model, optional plate | `VEH silver Ford F150` |
+| FLAG | Mark report to follow | `FLAG` |
+| RTF | Same as **FLAG** (alias) | `RTF` |
+| ASSIGN | Assign multiple **@units** | `ASSIGN @A1 @A2` |
+| EMAIL | Email CFS PDF to address(es) | `EMAIL chief@agency.gov` |
+| REPORT# | Show or assign report / case number | `REPORT#` |
+
+## Messaging
+
+| Default | Example |
+|--------|---------|
+| MSG | `MSG <UNIT> <text>` |
+| BC | `BC <text>` |
+| DNOTES | `DNOTES <CFS#> <text>` |
+
+## Queries (CJIS / integrations)
+
+| Default | Example |
+|--------|---------|
+| DL | `DL <number> [STATE]` |
+| LP | `LP <PLATE> [STATE]` |
+| NAME | `NAME <LAST, FIRST> [DOB]` |
+| AH / UH / S | Address history, unit history, search (when enabled) |

@@ -1,0 +1,27 @@
+---
+title: "Smart triggers (@ # ! $)"
+sidebarTitle: "Smart triggers (@ # ! $)"
+description: "Triggers open autocomplete lists while you type."
+---
+
+Triggers open **autocomplete** lists while you type.
+
+| Character | Meaning |
+|-----------|---------|
+| **@** | **Unit** callsigns first; then **agency** names for longer matches. |
+| **#** | **CFS** numbers (active / recent calls). |
+| **!** | **Unit status** values from your organization. |
+| **$** | **Disposition** codes (agency-configured). |
+
+On **call detail**, after you type **`PRI=`**, **Dispatch CAD** may show **priority level** suggestions (numeric priority with labels) instead of a trigger character.
+
+## Examples
+
+- `NC MED 456 ELM ST @M1 !ENR` — Medical call, unit M1 enroute after assignment.
+- `CLOSE #26-00045 $RC` — Close using disposition shortcode `RC` if defined.
+
+## Combining with keywords
+
+Keywords like `RP=`, `PH=`, `PRI=` can appear alongside triggers. The parser treats them as named fields, not part of the free-text address.
+
+<Note>Screenshot placeholder: Command autocomplete popup while typing</Note>

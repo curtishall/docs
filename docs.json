@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
   "name": "Cadmus",
-  "description": "Documentation for Cadmus Dispatch CAD and Web Admin — public-safety dispatch software for telecommunicators, supervisors, and agency administrators.",
+  "description": "Documentation for Cadmus Dispatch CAD, Web Admin, and Mobile CAD — public-safety dispatch software for telecommunicators, field responders, supervisors, and agency administrators.",
   "colors": {
     "primary": "#7c7c7c",
     "light": "#131313",
@@ -68,15 +68,34 @@
             "pages": [
               "dispatch/map-and-location",
               "dispatch/chat-sms-comms",
+              "dispatch/sms-templates-messaging",
               "dispatch/queries-ncic",
               "dispatch/bolo-greaseboard-wrecker"
+            ]
+          },
+          {
+            "group": "Command Line",
+            "icon": "terminal",
+            "pages": [
+              "dispatch/command-line-overview",
+              "dispatch/command-line-getting-started",
+              "dispatch/command-reference",
+              "dispatch/smart-triggers",
+              "dispatch/creating-calls-command-line",
+              "dispatch/unit-status-commands",
+              "dispatch/in-call-commands",
+              "dispatch/messaging-commands",
+              "dispatch/query-commands",
+              "dispatch/command-admin-configuration",
+              "dispatch/command-tips-shortcuts"
             ]
           },
           {
             "group": "Support",
             "icon": "life-buoy",
             "pages": [
-              "dispatch/troubleshooting"
+              "dispatch/troubleshooting",
+              "dispatch/admin-manager-guide"
             ]
           }
         ]
@@ -91,7 +110,8 @@
             "pages": [
               "admin/introduction",
               "admin/organization-agency-basics",
-              "admin/roles-and-access"
+              "admin/roles-and-access",
+              "admin/roles-reference"
             ]
           },
           {
@@ -125,6 +145,62 @@
             "icon": "triangle-alert",
             "pages": [
               "admin/troubleshooting-audit"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Mobile CAD",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "smartphone",
+            "expanded": true,
+            "pages": [
+              "mobile/introduction",
+              "mobile/dashboard-overview",
+              "mobile/profile-and-unit"
+            ]
+          },
+          {
+            "group": "Calls & Status",
+            "icon": "radio",
+            "pages": [
+              "mobile/calls-list",
+              "mobile/call-details",
+              "mobile/close-call",
+              "mobile/unit-status",
+              "mobile/dispatch-notes",
+              "mobile/find-a-call"
+            ]
+          },
+          {
+            "group": "Field Tools",
+            "icon": "map",
+            "pages": [
+              "mobile/map-and-navigation",
+              "mobile/bolos-and-warrants",
+              "mobile/unit-chat",
+              "mobile/unit-calendar",
+              "mobile/evidence-capture",
+              "mobile/voice-alerts"
+            ]
+          },
+          {
+            "group": "NCIC & Enforcement",
+            "icon": "shield-check",
+            "pages": [
+              "mobile/ncic-overview",
+              "mobile/ecitations-overview"
+            ]
+          },
+          {
+            "group": "Device & Connectivity",
+            "icon": "wifi",
+            "pages": [
+              "mobile/connectivity-offline",
+              "mobile/settings-and-display",
+              "mobile/training-mode"
             ]
           }
         ]

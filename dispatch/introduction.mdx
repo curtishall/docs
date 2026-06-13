@@ -53,7 +53,94 @@ Reporting party / 911  →  Dispatch CAD  (create & dispatch CFS)
 | **Web Admin** | Agency admins configure incident types, users, and integrations; changes take effect after you reload |
 
 <Tip>
-  Agency admins who configure and dispatch should review the Admin and Manager Setup Guide for a go-live checklist that spans Dispatch CAD, Mobile CAD, and Web Admin.
+  Agency admins who configure and dispatch should review the [Admin and manager setup guide](/dispatch/admin-manager-guide) for a go-live checklist that spans Dispatch CAD, Mobile CAD, and Web Admin.
+</Tip>
+
+## New dispatcher: start here
+
+<Steps>
+  <Step title="Getting started">
+    [Sign in, sandbox vs live, and main layout](/dispatch/getting-started).
+  </Step>
+  <Step title="Create a CFS">
+    Use **New CFS** (F1) — [Create CFS workflow](/dispatch/create-cfs) and [Form fields](/dispatch/cfs-form-fields).
+  </Step>
+  <Step title="Log in units">
+    **Login User** (F2) — [Unit login and assignment](/dispatch/unit-login).
+  </Step>
+  <Step title="Work the call">
+    [Call detail overview](/dispatch/call-detail) from first dispatch through updates.
+  </Step>
+  <Step title="Close the call">
+    Disposition, primary officer, report numbers — [Close call](/dispatch/close-call).
+  </Step>
+</Steps>
+
+Then add [Quick calls and F-keys](/dispatch/quick-calls-fkeys) and the [Command Line overview](/dispatch/command-line-overview) when you are comfortable with the boards.
+
+## Main workspace at a glance
+
+| Area | Purpose |
+|------|---------|
+| **Header** | New CFS, Login User, Query, Map, Units, BOLO, Chat, settings |
+| **Units sidebar** | Active units, off-duty pool, quick status |
+| **Call boards** | Pending, Patrol, Dispatched, Fire, EMS, Recent, timers, BOLOs, Resources |
+| **Call detail** | Full CFS: location, units, parties, notes, SMS, queries, close |
+| **Command line** | Type commands at bottom of dashboard or on call detail |
+
+See [Dashboard overview](/dispatch/dashboard-overview) for every tab and board behavior.
+
+## Header shortcuts (F-keys)
+
+| Key | Action |
+|-----|--------|
+| **F1** | New CFS |
+| **F2** | Login User |
+| **F3** | Query (when NCIC enabled) |
+| **F4** | Map |
+| **F5** | Units / unit greaseboard |
+| **F8–F12** | Agency quick-call templates (e.g. traffic stop, follow-up) |
+
+Full list and configuration notes: [Quick calls and F-keys](/dispatch/quick-calls-fkeys).
+
+## Documentation map
+
+### Core workflows
+
+| Topic | Guide |
+|-------|--------|
+| First run | [Getting started](/dispatch/getting-started) |
+| Dashboard | [Dashboard overview](/dispatch/dashboard-overview) |
+| Create CFS | [Create CFS workflow](/dispatch/create-cfs) · [Form fields](/dispatch/cfs-form-fields) |
+| Call detail | [Call detail overview](/dispatch/call-detail) · [Close call](/dispatch/close-call) |
+| Units | [Unit login and assignment](/dispatch/unit-login) · [Dispatching units](/dispatch/dispatching-units) |
+
+### Tools and integrations
+
+| Topic | Guide |
+|-------|--------|
+| Shortcuts | [Quick calls and F-keys](/dispatch/quick-calls-fkeys) |
+| Map | [Map and location](/dispatch/map-and-location) |
+| Comms | [Chat, SMS, and comms](/dispatch/chat-sms-comms) · [SMS templates and messaging](/dispatch/sms-templates-messaging) |
+| Operations | [BOLO, greaseboard, and wrecker](/dispatch/bolo-greaseboard-wrecker) |
+| NCIC | [Queries and NCIC](/dispatch/queries-ncic) |
+| History | [Find a call](/dispatch/find-a-call) |
+
+### Support and administration
+
+| Topic | Guide |
+|-------|--------|
+| Problems | [Troubleshooting](/dispatch/troubleshooting) |
+| Admin setup | [Admin and manager setup guide](/dispatch/admin-manager-guide) |
+
+## Command line
+
+Power users can drive most call and unit actions from the **command line** instead of clicking through dialogs — status changes, dispatcher notes, assign units, persons/vehicles, and more.
+
+Start with [Command Line overview](/dispatch/command-line-overview), then [Getting started](/dispatch/command-line-getting-started) and [Command reference](/dispatch/command-reference). Agency-specific aliases are configured in **Web Admin**.
+
+<Tip>
+  Confirm **Sandbox** vs **Live** in the header before training or production work. Use **Select Agencies** when you dispatch for more than one agency in an organization. After admin changes to incident types or quick calls, reload Dispatch CAD if something looks stale.
 </Tip>
 
 ## Next Steps
@@ -76,5 +163,5 @@ Reporting party / 911  →  Dispatch CAD  (create & dispatch CFS)
 </CardGroup>
 
 <Warning>
-  NCIC and CJIS data must remain on approved channels. Follow your agency's criminal-justice policy at all times.
+  NCIC and CJIS data must remain on approved channels. Follow your agency's criminal-justice policy at all times. Do not share live CFS details or reporting-party information outside authorized systems.
 </Warning>

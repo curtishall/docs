@@ -1,0 +1,27 @@
+---
+title: "Admin configuration (Web Admin)"
+sidebarTitle: "Admin configuration (Web …"
+description: "Audience: Organization admins and agency admins."
+---
+
+**Audience:** Organization admins and agency admins.
+
+## Navigation
+
+In **Web Admin**, open **Agency & dispatch** in the sidebar (or your agency’s menu):
+
+- **Command Aliases** — Per-agency alias, description, and enable/disable. Includes a **test** box (dry-run parse). New organizations receive standard dispatch commands (**NC**, **DU**, …) plus call-detail entries such as **STATUS**, **PERSON**, **VEH**, **FLAG**, **RTF** (same as FLAG), **ASSIGN**, **EMAIL**, and **REPORT#**.
+- **Call Shortcodes** — Map shorthand (`BURG`, `MED`, …) to incident types.
+- **Disposition Codes** — Codes for the **`$`** trigger.
+
+Routes use your primary agency ID, e.g. `/agencies/<agencyId>/command-aliases`.
+
+## Propagation
+
+Saving changes refreshes command configuration across **Dispatch CAD** sessions (short delay possible).
+
+## Import / export
+
+Bulk JSON import/export may be added in a future release; use row edit for now.
+
+<Note>Screenshot placeholder: Command aliases admin page</Note>

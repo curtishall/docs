@@ -1,0 +1,17 @@
+---
+title: "Unit status commands"
+sidebarTitle: "Unit status commands"
+description: "Use these from the dashboard with an explicit CFS when required, or from call detail with call context implied."
+---
+
+Use these from the **dashboard** with an explicit **CFS** when required, or from **call detail** with call context implied.
+
+## Typical flow
+
+**Available → Dispatched → Enroute → On scene → Clear**
+
+Commands like **DU**, **ENR**, **OS**, and **CLR** move units along that path. Your agency may rename aliases (e.g. **TS** vs **VS** for vehicle stop).
+
+## Conflicts
+
+If a unit is already on another call or in an invalid state, the server returns an error message in the toast — read it and adjust the command or clear the unit from the other incident first.

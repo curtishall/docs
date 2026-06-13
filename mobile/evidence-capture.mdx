@@ -1,0 +1,88 @@
+---
+title: "Evidence capture"
+sidebarTitle: "Evidence capture"
+description: "This guide explains how to capture, view, and manage evidence photos in the Cadmus MDT app."
+---
+
+This guide explains how to capture, view, and manage evidence photos in the Cadmus MDT app.
+
+## Overview
+
+Evidence capture lets officers take photos tied to specific incidents. Each photo is tagged with:
+
+- **Incident** — Call number and incident ID
+- **Unit** — Your assigned unit
+- **Officer** — Your name and badge number
+- **Location** — GPS coordinates (when available)
+- **Time** — Capture timestamp (UTC)
+
+Photos are stored only in the app's private storage. They are **not** saved to the device photo gallery.
+
+## Capturing evidence
+
+<Steps>
+  <Step title="Open the camera">
+    From the **Calls** screen, when you're assigned to a call, tap the **camera icon** (Capture evidence photo). The camera opens in full screen with the back camera.
+  </Step>
+  <Step title="Take a photo">
+    Point the camera at the scene and tap the **capture button** (large circle). The app shows a preview of the captured image.
+  </Step>
+  <Step title="Save or retake">
+    Tap **Save** to store the photo and return to the call (you'll see "Evidence photo saved"), or **Retake** to discard and shoot again.
+  </Step>
+</Steps>
+
+### Requirements
+
+- You must be **logged in** to save evidence.
+- You must be **assigned to the call** to capture evidence for that incident.
+
+## Viewing evidence
+
+### Gallery
+
+- Open the **Evidence** section from the app navigation.
+- Photos are grouped by **incident** (call number).
+
+### Opening an incident
+
+- Tap an incident card to open its photo grid.
+- Photos are shown newest first.
+
+### Viewing a single photo
+
+- Tap a photo to open it full screen.
+- A **metadata panel** shows call number, unit, officer, date/time, GPS, and SHA-256 hash.
+- Tap **X** or swipe back to close.
+
+## Deleting photos
+
+- In the incident photo grid, open a photo and use **delete**.
+- Deletion is recorded in the audit log.
+
+## Offline use
+
+- **Capture** and **view** work offline.
+- If GPS is unavailable, coordinates may show as 0,0 — the photo is still saved.
+- You must be logged in to save while offline.
+
+## Error messages
+
+| Message | Meaning |
+|--------|---------|
+| No cameras available | Device has no usable camera. |
+| Failed to initialize camera | Camera could not start. Close other apps or restart the device. |
+| Not logged in. Cannot save evidence. | Log in before saving photos. |
+| Failed to save | Storage or system error. Try again. |
+| Photo not found | Photo may have been deleted or data was cleared. |
+
+## Tips
+
+- Capture photos as soon as possible after arriving on scene.
+- Ensure good lighting and a clear view of the subject.
+- Use **Retake** if the image is blurry or poorly framed.
+- Check the metadata panel to confirm location and timestamp for reports.
+
+<Warning>
+  Evidence photos are stored in the app's private storage only — not the device gallery. Follow agency policy for chain of custody and authorized disclosure.
+</Warning>

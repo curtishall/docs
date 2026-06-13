@@ -1,0 +1,291 @@
+---
+title: "SMS templates and messaging"
+sidebarTitle: "SMS templates and messaging"
+description: "Deep dive on sending text messages from Dispatch CAD call detail: built-in templates, merge fields, recipients, delivery status, and how Web Admin configur…"
+---
+
+Deep dive on sending text messages from **Dispatch CAD** call detail: built-in templates, merge fields, recipients, delivery status, and how **Web Admin** configuration fits in.
+
+<Note>Screenshot placeholder: Send SMS sheet open on call detail with template dropdown and recipients</Note>
+
+## Overview
+
+Dispatch SMS is **manual, call-scoped texting** to agency users (field officers, supervisors, etc.) — not the same as texting a reporting party from a personal phone. Messages are tied to the open CFS, logged on the call, and sent through your agency’s configured SMS service.
+
+Three layers work together:
+
+| Layer | What it is | Where configured |
+|-------|------------|------------------|
+| **Quick templates** | Four starter messages in the **Send SMS** sheet | Built into **Dispatch CAD** picker |
+| **Merge fields** | `{{variables}}` expanded from live call data when you send | Typed in the message box; expanded at send time |
+| **Notification templates** | Reusable **Incident SMS** / **Critical Alert SMS** bodies for automated or policy-driven notifications | **Web Admin** → **Notification Templates** |
+
+This guide focuses on the **Send SMS** workflow. Automated incident SMS (assignment alerts, critical notifications) uses **Notification Templates** and per-user preferences — see [User notification preferences](/admin/user-notification-preferences).
+
+## Prerequisites
+
+SMS must be **enabled for your deployment** (agency SMS provider configured by Cadmus/IT). If **Send SMS** is missing or sends always fail, escalate to your administrator — admin toggles alone do not enable texting.
+
+Recipients must have a **mobile phone number** on their user profile. Users without a number are skipped silently when resolving groups.
+
+Dispatchers need permission to send SMS when your deployment assigns **send SMS** capabilities to the dispatcher role.
+
+## Open Send SMS
+
+<Steps>
+  <Step title="Open call detail">
+    Open **call detail** for the CFS you want to message about.
+  </Step>
+  <Step title="Launch Send SMS">
+    Click **Send SMS** (SMS icon in the call toolbar). The sheet header shows **Send SMS** and a one-line **call description** summary for context.
+  </Step>
+</Steps>
+
+<Note>Screenshot placeholder: Send SMS toolbar button on call detail</Note>
+
+## Built-in quick templates
+
+The **Template** dropdown pre-fills the **Message** box:
+
+| Template | Pre-filled text (concept) |
+|----------|---------------------------|
+| **Status Update** | Call status update: `{call description}` |
+| **Unit Dispatch** | Unit dispatched to: `{call description}` |
+| **Priority Change** | Priority changed for call: `{call description}` |
+| **Custom Message** | Empty — write your own |
+
+The picker inserts the call’s **description** field where the template says “description.” You can edit the text before sending.
+
+<Note>Screenshot placeholder: Template dropdown with Status Update selected</Note>
+
+### When to use each
+
+- **Status Update** — general situational text to field units (“RP on scene,” “cancelled,” etc.).
+- **Unit Dispatch** — notify off-duty or secondary units of an assignment context.
+- **Priority Change** — after elevating or lowering priority on the call.
+- **Custom Message** — anything else; use merge fields below for structured data.
+
+## Merge fields (variables)
+
+If you type **`{{variable}}`** placeholders in the message (in any template or custom text), they are replaced with **live call data** when you tap **Send SMS**.
+
+### Primary fields (recommended)
+
+| Variable | Replaced with |
+|----------|----------------|
+| `{{agency_cfs}}` | Agency CFS / call number |
+| `{{incident_type}}` | Incident type name |
+| `{{RP_FullName}}` | Reporting party name |
+| `{{phone}}` | Reporting party phone (may format as a dial link) |
+| `{{address}}` | Incident address / location |
+| `{{CallDescription}}` | Call description / narrative |
+
+### Additional fields (legacy / optional)
+
+| Variable | Replaced with |
+|----------|----------------|
+| `{{incidentId}}` | Internal incident identifier |
+| `{{location}}` | Location text |
+| `{{priority}}` | Priority level |
+| `{{description}}` | Description (same family as call narrative) |
+| `{{timestamp}}` | Call created time |
+
+### Example custom message
+
+```text
+CFS #{{agency_cfs}} {{incident_type}}
+RP: {{RP_FullName}} {{phone}}
+{{address}}
+{{CallDescription}}
+```
+
+After send, recipients see resolved values — not the curly-brace placeholders.
+
+<Tip>Use **Preview** before sending when you rely on merge fields, so you confirm the message box looks right. Final merge happens at send time on the server.</Tip>
+
+## Message length
+
+The **Message** field shows a **160-character** counter in **Dispatch CAD**. Standard SMS is one segment at 160 GSM characters; longer or Unicode text may split into multiple billable segments on the carrier.
+
+Keep critical info (CFS number, address) in the first segment when possible.
+
+## Recipients
+
+**Recipients** section with a count badge (e.g. “3 selected”).
+
+### Groups tab
+
+Checkbox list of **groups** defined in **Web Admin** (when Groups management is available):
+
+- Group name
+- **N members** subtitle
+
+Selecting a group includes every member with a phone number. Duplicate numbers across groups or individuals are deduplicated.
+
+<Note>Screenshot placeholder: Groups tab with two groups selected</Note>
+
+### Individuals tab
+
+Checkbox list of organization **users**:
+
+- Name
+- Email subtitle (for identification)
+
+Only users with a stored **phone number** receive SMS.
+
+<Note>Screenshot placeholder: Individuals tab with user checkboxes</Note>
+
+You may select **both** groups and individuals in one send.
+
+## Preview and send
+
+| Button | Action |
+|--------|--------|
+| **Preview** | Dialog: recipient count + message text as entered (merge may still apply at send) |
+| **Send SMS** | Sends to all selected recipients; label shows **Sending…** while in progress |
+
+Validation:
+
+- Message cannot be empty.
+- At least one group or individual must be selected.
+
+### Send results dialog
+
+After send, **SMS Send Results** shows:
+
+- **Total Recipients**
+- **Sent** / **Failed** counts
+- Per-number rows: phone, **sent** or **failed**, optional error text
+
+<Note>Screenshot placeholder: SMS Send Results dialog with mixed sent/failed rows</Note>
+
+Partial success is possible — review failed numbers and retry or contact IT.
+
+## SMS history on the call
+
+Scroll call detail to **SMS History** (below **History & Logs**).
+
+| Element | Meaning |
+|---------|---------|
+| **Refresh** | Reload history from server |
+| Empty state | **No SMS messages sent for this call** |
+| Status badge | **SENT**, **FAILED**, **PENDING**, **DELIVERED**, etc. |
+| Timestamp | Local time and “time ago” |
+| Recipient | Destination phone or address |
+| Error line | Carrier or provider error when failed |
+| Metadata line | **Recipients: N \| Sent: X \| Failed: Y** for bulk sends |
+
+<Note>Screenshot placeholder: SMS History block with two entries and status badges</Note>
+
+Successful sends also appear in **History & Logs** on the call (dispatcher name and message summary when available).
+
+## Web Admin setup (administrators)
+
+### Notification Templates
+
+**Web Admin** → **Notification Templates** (`/notification-templates`)
+
+**OrgAdmin** can create templates by type:
+
+| Type | Use |
+|------|-----|
+| **Incident SMS** | Standard incident notification body (160-char guidance in editor) |
+| **Critical Alert SMS** | High-urgency short alerts |
+| **Incident Email** / **Critical Alert Email** | Email counterparts |
+
+Template editor supports the same **`{{variable}}`** family as manual sends (see tables above). Use **Preview** in admin to test rendering.
+
+Default **Incident SMS** pattern (example agencies use):
+
+```text
+CFS #{{agency_cfs}} {{incident_type}}
+RP: {{RP_FullName}} Phone: {{phone}}
+Address: {{address}}
+
+{{CallDescription}}
+```
+
+These templates drive **automated** SMS where your deployment wires incident events to notifications — separate from the manual **Send SMS** sheet, but the same variable names keep wording consistent.
+
+### Recipient groups
+
+**Web Admin** → **Groups** (when available in your deployment)
+
+- Create named groups (e.g. “Patrol Sergeants,” “Fire mutual aid”).
+- Add members with phone numbers.
+- Groups appear on the **Groups** tab in **Send SMS**.
+
+If the Groups page is not in the sidebar, contact Cadmus support — you may still send to **Individuals** only.
+
+### User phone numbers
+
+**Web Admin** → **Users** → edit user → ensure **phone number** is populated for anyone who should receive dispatch SMS.
+
+### User notification preferences
+
+Per-user SMS scope (assigned calls only, all calls, critical only) affects **automated** notifications, not necessarily manual **Send SMS** from dispatch. See [User notification preferences](/admin/user-notification-preferences).
+
+## API reference
+
+Manual send and history (authenticated dispatcher session):
+
+| Action | Method | Path |
+|--------|--------|------|
+| Send SMS for call | POST | `/incidents/{incidentId}/send-sms` |
+| SMS history | GET | `/incidents/{incidentId}/sms-history` |
+
+**Send body (JSON):**
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `incidentId` | Yes | CFS / incident ID |
+| `message` | Yes | Final or templated message text |
+| `recipientUserIds` | One of users or groups | Array of user IDs |
+| `recipientGroupIds` | One of users or groups | Array of group IDs |
+| `correlationId` | No | Optional tracking ID |
+
+**Response:** `success`, `sentCount`, `failedCount`, `correlationId`, and per-recipient `results` (phone, status, error).
+
+Recipient lists for the UI:
+
+| Action | Method | Path |
+|--------|--------|------|
+| List groups | GET | `/groups` |
+| List users | GET | `/users` |
+
+Notification templates (admin):
+
+| Action | Method | Path |
+|--------|--------|------|
+| List templates | GET | `/notification-templates` |
+| Template variables help | GET | `/notification-templates/variables/incident_sms` |
+
+## Troubleshooting
+
+| Symptom | Likely cause | Action |
+|---------|--------------|--------|
+| No **Send SMS** button | SMS not enabled for deployment | Contact IT / Cadmus admin |
+| **Failed to load data** on open | Groups/users API error | Check network; verify org access |
+| **Please select at least one recipient** | No checkboxes selected | Pick group or user |
+| All recipients **failed** | SMS provider misconfigured | IT checks provider credentials |
+| Some numbers **failed** | Invalid or missing mobile number | Update user profile in Web Admin |
+| Merge field shows literal `{{agency_cfs}}` | Typo in variable name | Match spelling exactly (case-sensitive) |
+| Empty groups list | No groups created | Web Admin → Groups |
+| History empty after “success” | Refresh needed or logging delay | Tap **Refresh** in SMS History |
+
+## Related pages
+
+- [Chat, SMS, and comms](/dispatch/chat-sms-comms) — chat vs SMS overview
+- [Admin and manager setup guide](/dispatch/admin-manager-guide) — go-live checklist
+- [User notification preferences](/admin/user-notification-preferences)
+- [Messaging commands](/dispatch/messaging-commands) — **MSG** / **BC** (unit chat, not SMS)
+
+## Warnings
+
+<Warning>SMS to field units is not a secure CJIS channel — do not include NCIC returns, SSNs, or criminal history in text.</Warning>
+
+<Warning>Reporting party phone numbers in messages may be PII — follow agency policy on sharing RP data with third parties.</Warning>
+
+<Warning>Confirm recipient list before send — group selections can include many numbers at once.</Warning>
+
+<Warning>Carrier delivery is not guaranteed — use radio or unit status for life-safety confirmations.</Warning>

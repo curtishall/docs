@@ -1,0 +1,71 @@
+---
+title: "Connectivity and offline"
+sidebarTitle: "Connectivity and offline"
+description: "Network indicators and what works without connectivity."
+---
+
+Network indicators and what works without connectivity.
+
+<Note>Screenshot placeholder: Top bar WS LIVE indicator and queued messages tooltip</Note>
+
+## Connection indicators
+
+| Indicator | Meaning |
+|-----------|---------|
+| **WS LIVE** | Realtime connection healthy |
+| **WS FAIR** | Degraded connection |
+| **WS POOR** | Poor connection |
+| **WS OFFLINE** | No websocket |
+
+Calls screen may show Wi‑Fi dot with queued count — tooltip **Queued messages**.
+
+<Note>Screenshot placeholder: WS POOR and queued messages indicator</Note>
+
+## Works offline
+
+| Feature | Offline |
+|---------|---------|
+| View cached calls | Often yes |
+| Evidence capture | Yes (see [Evidence capture](/mobile/evidence-capture)) |
+| View evidence gallery | Yes |
+| Map cached tiles | Partial (see offline maps) |
+
+## Requires network
+
+| Feature | Offline message |
+|---------|-----------------|
+| Dispatch notes | **Note was not sent.** |
+| Unit status / assign | **Try again when online.** |
+| Find a Call search | **Search failed. Check network and try again.** |
+| NCIC queries | Blocked |
+| Close call | Blocked |
+
+<Note>Screenshot placeholder: Offline snackbar on note save</Note>
+
+## Offline maps
+
+Settings → **OFFLINE MAP MANAGEMENT**
+
+- Download map zones: **DOWNLOAD** / **CACHED**
+- Tiles cache automatically on slow links in some deployments.
+
+<Note>Screenshot placeholder: Offline map management with zone download buttons</Note>
+
+## E-ticket sync
+
+When e-citations enabled:
+
+- Home **PENDING SYNC** metric
+- Settings **Auto-Sync Ticket Data** — upload drafts when connection restores
+
+See [E-citations overview](/mobile/ecitations-overview).
+
+## Tips
+
+- Glance at WS indicator before relying on realtime call updates.
+- Queue clears when connection returns — pull to refresh calls.
+- Download map zones for rural patrol areas with poor LTE.
+
+## Warnings
+
+<Warning>Do not assume dispatch saw your note until sync succeeds.</Warning>

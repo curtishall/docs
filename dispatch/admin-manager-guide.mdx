@@ -1,0 +1,193 @@
+---
+title: "Admin and manager setup guide"
+sidebarTitle: "Admin setup"
+description: "For AgencyAdmin, OrgAdmin, and supervisors who configure Web Admin and verify behavior in Dispatch CAD (and Mobile CAD)."
+---
+
+For **AgencyAdmin**, **OrgAdmin**, and supervisors who configure **Web Admin** and verify behavior in **Dispatch CAD** (and **Mobile CAD**).
+
+Use this as a go-live checklist: change settings in admin, then confirm in dispatch before training the full shift.
+
+<Note>Screenshot placeholder: Split view — Web Admin agency settings and Dispatch CAD dashboard</Note>
+
+## Who this is for
+
+| Role | Typical use |
+|------|-------------|
+| **AgencyAdmin** | Agency toggles, units, quick calls, command aliases |
+| **OrgAdmin** | Users, incident types, GIS, RapidSOS, org settings |
+| **Small agency lead** | Both roles — see [Small agency admin](/admin/small-agency-admin) |
+
+## Before you start
+
+1. Know whether you are in **Sandbox** or **Live** organization.
+2. Use a dedicated admin account for configuration (not a shared dispatch login).
+3. Keep a second browser or window: **Web Admin** + **Dispatch CAD**.
+
+## Go-live checklist
+
+### 1. Users and roles
+
+**Web Admin:** [Users lifecycle](/admin/users-lifecycle)
+
+- Invite dispatchers with **Dispatcher** role.
+- Assign correct **agency access**.
+- Deactivate test accounts before production.
+
+**Verify in Dispatch CAD:**
+
+- User signs in and sees expected org in header.
+- Sidebar matches role ([Roles and access](/admin/roles-and-access)).
+
+### 2. Incident types and New CFS
+
+**Web Admin:** Organization **Incident types** — active types for your org.
+
+**Verify in Dispatch CAD:**
+
+- **New CFS** (F1) → types appear in dropdown.
+- Create a test call in Sandbox; confirm type, priority, and numbering.
+
+See [Create CFS workflow](/dispatch/create-cfs) and [New CFS form fields](/dispatch/cfs-form-fields).
+
+### 3. Quick calls (F8–F12)
+
+**Web Admin:** Organization **Quick Call Shortcuts** — map keys to incident types.
+
+**Verify in Dispatch CAD:**
+
+- Press each configured F-key from dashboard.
+- Reload **Dispatch CAD** if a template was just added.
+
+See [Quick calls and F-keys](/dispatch/quick-calls-fkeys).
+
+### 4. Agency settings
+
+**Web Admin:** [Agency settings (core)](/admin/agency-settings)
+
+| Setting | Verify in dispatch / mobile |
+|---------|----------------------------|
+| **State/NCIC Access** | **Query** (F3) available when org CJIS also configured |
+| **Traffic Stops Allowed** | Mobile e-citation / traffic stop flows |
+| **Separate RMS report numbers** | Close call / **REPORT#** behavior |
+| Report number format | Close with RTF assigns expected format |
+
+### 5. CJIS and NCIC
+
+**Web Admin:** [Integrations settings](/admin/integrations-overview)
+
+1. **CadmusAdmin** sets org **CJIS site**.
+2. **AgencyAdmin** enables **State/NCIC Access**.
+3. User overrides only if policy requires ([User agency overrides](/admin/user-agency-overrides)).
+
+**Verify in Dispatch CAD:**
+
+- Run training query on Sandbox call — see [Queries and NCIC](/dispatch/queries-ncic).
+- Confirm **CJIS Access Denied** is resolved before go-live.
+
+### 6. Command line aliases
+
+**Web Admin:** [Admin configuration (Web Admin)](/dispatch/command-admin-configuration) — **Command Aliases**, **Call Shortcodes**, **Disposition Codes**.
+
+**Verify in Dispatch CAD:**
+
+- Type **`HELP`** on dashboard and on call detail — lists match what you enabled.
+- Dry-run test in admin **test** box if available.
+
+See [Command Line](/dispatch/command-line-overview) overview.
+
+### 7. Units and login
+
+**Web Admin:** Units and vehicles for the agency.
+
+**Verify in Dispatch CAD:**
+
+- **Login User** (F2) — units appear, login succeeds.
+- Mobile unit sees assignments — [Unit login and assignment](/dispatch/unit-login).
+
+### 8. Notifications
+
+**Web Admin:** [User notification preferences](/admin/user-notification-preferences) and org **Notification Templates**.
+
+**Verify:**
+
+- Dispatcher hears/sees alerts for test incident types.
+- Mobile voice alerts if used — [Voice alerts](/mobile/voice-alerts).
+
+### 8b. Dispatch SMS (if enabled)
+
+**Web Admin:**
+
+- **Notification Templates** (`/notification-templates`) — **Incident SMS** wording
+- **Groups** — recipient lists for field supervisors
+- User **phone numbers** on every SMS recipient
+
+**Verify in Dispatch CAD:**
+
+- **Send SMS** on a Sandbox test call — see [SMS templates and messaging](/dispatch/sms-templates-messaging)
+- Confirm **SMS History** and send-results dialog
+
+### 9. RapidSOS (if used)
+
+**Web Admin:** [RapidSOS management](/admin/rapidsos-management)
+
+**Verify in Dispatch CAD:**
+
+- Map layers **RapidSOS Locations** / **Breadcrumbs**.
+- **RapidSOS Lookup** or **Track Phone Number** on sandbox test number.
+
+See [Map and location](/dispatch/map-and-location).
+
+### 10. BOLOs and operational boards
+
+**Verify in Dispatch CAD:**
+
+- Create test BOLO — appears on **BOLOs** tab and in mobile [BOLOs and warrants](/mobile/bolos-and-warrants).
+- Operational greaseboard categories match SOP — [BOLO, greaseboard, and wrecker](/dispatch/bolo-greaseboard-wrecker).
+
+### 11. Citations (if used)
+
+**Web Admin:** [Citation and report settings](/admin/citation-report-settings)
+
+**Verify on Mobile CAD:**
+
+- **E-Ticket** available when **Traffic Stops Allowed** is on.
+- See [E-citations overview](/mobile/ecitations-overview).
+
+## Daily admin tasks
+
+| Task | Where |
+|------|--------|
+| Add dispatcher | Web Admin → Users |
+| New incident type | Web Admin → Incident types → reload Dispatch CAD |
+| NCIC for one officer | User override + CJIS already configured |
+| Shift pass-on note | Dispatch CAD greaseboard or chat |
+| Audit who has OrgAdmin | Web Admin → Users + written roster |
+
+## Common mistakes
+
+| Mistake | Fix |
+|---------|-----|
+| Configured Sandbox, dispatchers use Live | Match org names; sign out/in |
+| NCIC on at agency, no CJIS site | Org **Settings** → CJIS site first |
+| Quick call key silent | Template missing or inactive incident type |
+| Units empty on F2 | Wrong agency or units not created under agency |
+| RapidSOS test OK, map empty | Wrong org credentials; check environment |
+
+## Escalation
+
+Collect for Cadmus support: organization name, agency name, user email, time of issue, screenshots (no CJIS data or query responses).
+
+See [Troubleshooting](/dispatch/troubleshooting) and [Web Admin troubleshooting](/admin/troubleshooting-audit).
+
+## Related documentation
+
+- **Web Admin** — [intro](/admin/introduction)
+- **Mobile CAD** — settings that affect field units
+- **Dispatch CAD** — [Getting started](/dispatch/getting-started)
+
+## Warnings
+
+<Warning>Test all NCIC and RapidSOS changes in Sandbox before Live.</Warning>
+
+<Warning>Do not use production org for training exercises with real citizen phone numbers without agency policy approval.</Warning>

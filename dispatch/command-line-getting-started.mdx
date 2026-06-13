@@ -1,0 +1,43 @@
+---
+title: "Getting started"
+sidebarTitle: "Getting started"
+description: "1. Dispatch a unit to a call (dashboard):"
+---
+
+## Your first commands
+
+1. **Dispatch a unit to a call** (dashboard):  
+   `DU A23 #26-00045`  
+   (Replace with your unit callsign and CFS.)
+
+2. **Mark a unit on scene** (inside that call’s detail page):  
+   `OS A23`  
+   No CFS needed — the open call is the context.
+
+3. **Create a quick call** (dashboard):  
+   `NC BURG 123 MAIN ST`  
+   `BURG` must be a **call type shortcode** configured for your agency (see admin docs).
+
+4. **Inside an open call** (optional): set a **status timer**, add a **person**, or **assign** several units:  
+   `STATUS 10` · `PERSON witness Alex Lee` · `ASSIGN @A1 @A2`  
+   See [In-call commands](/dispatch/in-call-commands) for the full list.
+
+## Keys
+
+| Key | Action |
+|-----|--------|
+| **Enter** | Run the command (or all segments separated by `;`). |
+| **Esc** | Clear / close suggestions (behavior may vary by deployment). |
+| **↑ / ↓** | Move in the suggestion list, or browse **command history** when no list is open. |
+| **Tab** | Accept the highlighted suggestion when the list is open. |
+| **F1** | Open the help dialog. |
+
+## Multiple commands
+
+Separate with semicolons:
+
+`DU A23 #26-00045; ENR A23`
+
+## History
+
+Recent commands are stored locally on your workstation (last 50). Use **↑** to recall older lines when the suggestion popup is closed.

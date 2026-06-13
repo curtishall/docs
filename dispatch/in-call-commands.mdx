@@ -1,0 +1,67 @@
+---
+title: "In-call commands"
+sidebarTitle: "In-call commands"
+description: "In call detail, the command line runs in in-call mode:"
+---
+
+In **call detail**, the command line runs in **in-call** mode:
+
+- The **CFS badge** shows which call is targeted.
+- **OS 423** means unit 423 on scene **for this call** — no `#` needed.
+- **PRI=**, **TYPE=**, **LOC=**, **NARR=**, **N**, and **NS** apply to **this** call.
+- Type **`PRI=`** and keep typing for **priority suggestions** (e.g. 1 Emergency … 4 Low), when **Dispatch CAD** command suggest is connected.
+
+Use **VIEW** or the board to open a different call before running in-call commands for that CFS.
+
+## Call-only commands (require an open call)
+
+These are recognized when you are on **call detail** (and appear in **HELP** there only):
+
+### Status timer (call-level and agency)
+
+| Command | What it does |
+|--------|----------------|
+| `STATUS 10` | Set or restart the **call-level** status timer to *N* minutes (use `STATUS 0` to stop the countdown). |
+| `STATUS OFF` | Disable the **call-level** status timer. |
+| `STATUS ON` | Re-enable the **call-level** timer (restarts from saved duration when one is set). |
+| `STATUS OFF @Agency` | Disable the **agency** status timer for that agency on this call. Use agency **ID** or **name** after `@` when multiple agencies are attached. |
+| `STATUS ON @Agency` | Re-enable that agency's status timer row. |
+
+### People and vehicles
+
+| Command | What it does |
+|--------|----------------|
+| `PERSON <role> <name…>` | Add an involved person. **Role** is required: `suspect`, `victim`, `witness`, `other`, `driver`, `passenger`, `passenger_1` … `passenger_4`, `reporting_party`. First word of the name is **first name**; the rest is **last name** (e.g. `PERSON suspect John Smith`). |
+| `VEH <color> <make> <model> [plate]` | Add an involved vehicle (e.g. `VEH red Honda Civic ABC123`). Plate is optional; extra tokens are treated as part of the plate. |
+
+### Report flag and email
+
+| Command | What it does |
+|--------|----------------|
+| `FLAG` or `RTF` | Mark the call **report to follow** (same effect; **RTF** is a shortcut alias). |
+| `EMAIL user@example.com` | Generate the **CFS PDF** and email it to the address(es) listed. Multiple addresses: separate with spaces. |
+
+### Batch assign
+
+| Command | What it does |
+|--------|----------------|
+| `ASSIGN @351 @422 @VEH-5` | Assign **multiple** units to **this** call in one line. Each token must start with `@` and match a unit callsign (or ID) in your org. Unknown callsigns are skipped; at least one must succeed. |
+
+### Report number
+
+| Command | What it does |
+|--------|----------------|
+| `REPORT#` | Shows or assigns the **report / case number** for the current call. |
+
+How it works depends on your agency's **report-number mode** (configured by a CadmusAdmin):
+
+| Mode | `separateReportNumbers` setting | Behavior |
+|------|-------------------------------|----------|
+| **Same as CFS** (default) | `false` | Returns the CFS number — no new number is generated. |
+| **Separate sequence** | `true` | Allocates the next number from the agency's format template (e.g. `26-0001`) and writes it to the incident. Also sets **Report to Follow**. |
+
+If a report number has already been assigned (from a previous `REPORT#`, `FLAG`, or close with RTF), the command simply displays it — it will not allocate a second number.
+
+<Note>
+On the **dashboard**, **HELP** does **not** list the call-only table above; open a call and press **HELP** there to see it.
+</Note>
