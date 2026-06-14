@@ -90,3 +90,17 @@ description: "Short description of what the page helps users do"
 - **Memory bank**: [.cursor/memory/documentation-standards.md](.cursor/memory/documentation-standards.md)
 
 For Mintlify component reference: `npx skills add https://mintlify.com/docs`
+
+## Mintlify MCP (Cursor)
+
+Project MCP config: [.cursor/mcp.json](.cursor/mcp.json)
+
+| Server | URL / command | Purpose |
+|--------|----------------|---------|
+| `mintlify-cadmus` | `https://cadmus.mintlify.app/mcp` | Public search over published docs |
+| `mintlify-cadmus-authed` | `scripts/mintlify-mcp-authed.sh` | Authenticated search (client credentials) |
+| `mintlify-admin` | `https://mcp.mintlify.com` | Edit pages, `docs.json`, open PRs (OAuth login) |
+
+**Authenticated search setup:** copy [scripts/mintlify-mcp.env.example](scripts/mintlify-mcp.env.example) to `~/.config/cadmus/mintlify-mcp.env`, add client ID/secret from Mintlify dashboard → MCP server → Client credentials. Enable authenticated MCP and add redirect domain `app.cursor.ai` in the dashboard if using interactive OAuth.
+
+After editing MCP config, reload Cursor (**Settings → MCP** or restart).
