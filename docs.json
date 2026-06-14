@@ -47,6 +47,7 @@
             "icon": "phone-call",
             "pages": [
               "dispatch/create-cfs",
+              "dispatch/rapidsos-import-cfs",
               "dispatch/cfs-form-fields",
               "dispatch/call-detail",
               "dispatch/close-call",

@@ -115,14 +115,64 @@ Open the row actions menu (**⋮**) on any organization row to access:
 
 ---
 
+## Runtime Settings
+
+Each organization has a **Runtime Settings** panel on the RapidSOS Management page (below or beside the credentials table). These settings are stored in Cadmus and control what the backend and Dispatch CAD actually use — credentials alone are not enough.
+
+<Steps>
+  <Step title="Open Runtime Settings">
+    On **RapidSOS Management**, expand **Runtime Settings** for the target organization and select **Edit Settings**.
+  </Step>
+  <Step title="Choose environment and dispatch agency">
+    **Environment** must match saved credentials (Sandbox or Production). **Dispatch agency** sets the default agency when RapidSOS data creates or enriches incidents for that org.
+  </Step>
+  <Step title="Enable features">
+    Turn on only what your deployment needs:
+
+    | Toggle | Purpose |
+    |---|---|
+    | **RAD-E** | Additional data queries, staged alert polling, crash/partner payloads |
+    | **LEI** | Location API for **Track Phone Number** and live device fixes |
+    | **EDX** | Real-time WebSocket alerts from RapidSOS |
+    | **Configured number polling** | Polls sandbox/demo phone numbers on an interval (requires RAD-E) |
+    | **Active call polling** | Polls reporting-party phones on open CFS records (requires RAD-E) |
+
+    Status badges (**RAD-E On/Off**, **LEI On/Off**, **EDX On/Off**) summarize the current state at a glance.
+  </Step>
+  <Step title="Configure polling (optional)">
+    For demos and sandbox rehearsals:
+
+    - **Polling interval (seconds)** — minimum 15, maximum 300 (default 30).
+    - **Configured polling phone numbers** — E.164 numbers, one per line (example: `+15555555556`).
+  </Step>
+  <Step title="Configure EDX (optional)">
+    When **EDX** is on, set **EDX event types** as a comma-separated list of RapidSOS event types your org subscribes to.
+  </Step>
+  <Step title="Save">
+    Select **Save**. The backend refreshes runtime behavior immediately (WebSocket reconnect, polling start/stop).
+  </Step>
+</Steps>
+
+<Warning>
+  If **LEI** is off, dispatchers may see *LEI is disabled for this organization* when using **Track Phone Number**. Enable LEI in Runtime Settings after credentials are saved.
+</Warning>
+
+<Note>
+  Saving or deleting credentials also triggers a runtime refresh so feature toggles and the active environment stay in sync.
+</Note>
+
+---
+
 ## What Happens After Save
 
-Once Cadmus validates the credentials and establishes services:
+Once credentials are saved **and** Runtime Settings enable the features you need:
 
-1. The RapidSOS WebSocket connects for the organization and begins streaming location events.
-2. Emergency location alerts can automatically create or enrich incidents according to your deployment's incident rules.
-3. The **RapidSOS Locations** and **RapidSOS Breadcrumbs** map layers in Dispatch CAD become active and receive live data.
-4. The **Track Phone Number** and **RapidSOS Lookup** dialogs in the Dispatch CAD F4 menu become functional for dispatchers in that organization.
+1. **EDX** (when enabled) connects the RapidSOS WebSocket and streams real-time alerts to staged map pins.
+2. **Configured polling** (when enabled with RAD-E) periodically queries demo numbers and stages alerts on the map.
+3. The **RapidSOS Locations** and **RapidSOS Breadcrumbs** map layers in Dispatch CAD receive data.
+4. **Track Phone Number**, **RapidSOS Lookup**, and **Create New CFS** from map tooltips become available according to RAD-E/LEI/EDX toggles.
+
+Dispatchers can click a staged pin and use **Create New CFS** — see [Import RapidSOS CFS](/dispatch/rapidsos-import-cfs) and [Map & Location](/dispatch/map-and-location#rapidsos-alerts-on-the-map).
 
 ---
 
@@ -154,6 +204,8 @@ Cadmus exposes the following endpoints for managing RapidSOS credentials program
 | `GET` | `/admin/organizations/{orgId}/rapidsos/credentials` | List saved RapidSOS credentials for the organization |
 | `POST` | `/admin/organizations/{orgId}/rapidsos/credentials` | Save (create or update) RapidSOS credentials for the organization |
 | `POST` | `/admin/organizations/{orgId}/rapidsos/test` | Test saved RapidSOS credentials and return pass/fail results for each service check |
+| `GET` | `/admin/organizations/{orgId}/rapidsos/settings` | Read per-org runtime settings (RAD-E, LEI, EDX, polling) |
+| `PUT` | `/admin/organizations/{orgId}/rapidsos/settings` | Update per-org runtime settings |
 
 Replace `{orgId}` with the numeric or UUID identifier for your organization, visible in the Web Admin URL when you navigate to your organization record.
 
@@ -182,9 +234,21 @@ Replace `{orgId}` with the numeric or UUID identifier for your organization, vis
   **Symptom:** All three test checks pass, but the RapidSOS Locations layer shows no pins.
 
   **Checks:**
+  - Open **Runtime Settings** and confirm **RAD-E**, **EDX**, and/or **Configured number polling** are enabled for the correct environment.
+  - For sandbox demos, add test numbers (e.g. `+15555555556`) under **Configured polling phone numbers** and enable **Configured number polling**.
   - Verify the saved **Environment** matches the Cadmus org type. Sandbox credentials on a Live org return no real-world location events.
   - Check WebSocket connectivity from the Cadmus server to the WebSocket endpoint. Firewalls or proxies that block `wss://` connections will silently drop the stream.
   - Contact IT to confirm outbound WebSocket traffic is permitted on port 443.
+</Accordion>
+
+<Accordion title="Track Phone Number fails or map goes blank">
+  **Symptom:** Dispatcher enters a phone number but tracking fails, or the map previously showed a black screen.
+
+  **Checks:**
+  - Enable **LEI** in Runtime Settings for the organization (LEI powers live device location).
+  - Enable **RAD-E** if crash or partner data is also required.
+  - Confirm credentials exist for the selected environment.
+  - Dispatch CAD should show an on-map message instead of a blank screen when a feature is disabled — if not, update to the latest client build.
 </Accordion>
 
 <Accordion title="Lookup works, no auto-incidents">
@@ -209,14 +273,18 @@ Replace `{orgId}` with the numeric or UUID identifier for your organization, vis
 After completing setup, run through these steps before notifying dispatchers that RapidSOS is live:
 
 1. Credentials saved for the correct organization and environment.
-2. All three checks pass in the **Test Credentials** dialog (green indicators for token, RAD-E, and LEI).
-3. A dispatcher runs **RapidSOS Lookup** on a known Sandbox test number and receives data.
-4. The **RapidSOS Locations** map layer toggles on in Dispatch CAD and displays a pin when tracking a test number.
-5. Document the credential rotation date and the name of the RapidSOS portal account owner for future reference.
+2. **Runtime Settings** saved with appropriate **RAD-E**, **LEI**, and **EDX** toggles (and demo polling numbers if using sandbox).
+3. All three checks pass in the **Test Credentials** dialog (green indicators for token, RAD-E, and LEI).
+4. A dispatcher runs **RapidSOS Lookup** on a known Sandbox test number and receives data.
+5. The **RapidSOS Locations** map layer toggles on in Dispatch CAD and displays a staged pin (polling/EDX) or track pin (live LEI).
+6. Clicking a staged pin shows **Create New CFS** and opens the import form with pre-filled data.
+7. Document the credential rotation date and the name of the RapidSOS portal account owner for future reference.
 
 ---
 
 ## Related Pages
 
+- [Map & Location — RapidSOS alerts](/dispatch/map-and-location#rapidsos-alerts-on-the-map) — pin icons, tooltips, and map layers for dispatchers
+- [Import RapidSOS CFS](/dispatch/rapidsos-import-cfs) — Create New CFS from a map alert
 - [Integrations Overview](/admin/integrations-overview) — full map of org and agency integration settings
 - [Troubleshooting & Audit Checks](/admin/troubleshooting-audit) — resolve common admin issues and run quarterly reviews
