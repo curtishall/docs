@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "mintlify-cadmus": {
+      "url": "https://cadmus.mintlify.app/mcp"
+    },
+    "mintlify-cadmus-authed": {
+      "command": "bash",
+      "args": [
+        "/home/curt/apps/cadmus/cad-docs/scripts/mintlify-mcp-authed.sh"
+      ]
+    },
+    "mintlify-admin": {
+      "url": "https://mcp.mintlify.com"
+    }
+  }
+}

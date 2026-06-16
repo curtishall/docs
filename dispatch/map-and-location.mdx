@@ -1,96 +1,165 @@
 ---
-title: "Map, Location, and RapidSOS Tracking in Cadmus CAD"
+title: "Map, Location, and RapidSOS in Cadmus CAD"
 sidebarTitle: "Map & Location"
-description: "Use the Cadmus map window to plot units and calls, validate addresses on incidents, and track caller locations with RapidSOS integration."
+description: "Use the Cadmus map to plot units and calls, review staged RapidSOS alerts by icon type, and create CFS records from emergency data."
 ---
 
-The Cadmus map window gives you a live, at-a-glance picture of your operational area — active units, open calls, and emergency caller positions all rendered on a single interactive display. Use it to confirm incident addresses, share GPS coordinates with responders, and leverage RapidSOS to pinpoint 911 callers in real time.
+The Cadmus map gives you a live picture of units, open calls, and — when enabled — **staged RapidSOS alerts** with partner-specific icons and detail panels. Use it to validate addresses, share coordinates with responders, track a phone number live, or **Create New CFS** directly from an alert pin.
 
 ## Opening the Map
 
-Press **F4** or click **Map** in the header to open the map window. On desktop installations the map may launch in a separate, repositionable window so you can keep it visible alongside your dispatch queue.
+Press **F4** or click **Map** in the header. On desktop, the map may open in a separate window you can keep beside the dispatch queue.
 
 ## Map Layers
 
-The **Map Layers** panel lets you toggle each data overlay independently. Enable only the layers you need — cluttered maps can slow performance on older workstations.
+Enable only the layers you need — dense maps can slow older workstations.
 
 | Layer | What it shows |
 |---|---|
 | **Patrol Units** | GPS positions of active patrol vehicles |
 | **Personnel** | On-duty personnel locations |
 | **Active Calls** | Pin for each open call for service |
-| **RapidSOS Locations** | Current caller emergency location from RapidSOS |
-| **RapidSOS Breadcrumbs** | Caller movement trail during an active track |
+| **RapidSOS Locations** | Staged RapidSOS alerts and live tracks |
+| **RapidSOS Breadcrumbs** | Movement trail during an active phone track |
+
+Weather and radar overlays are available from the map layer toolbar when your deployment includes them.
 
 ## Map Controls
 
-Use the toolbar controls to navigate and customize the map view:
-
-- **Zoom In / Zoom Out** — adjust the viewing level incrementally.
-- **Reset View** — return to the default zoom and center.
-- **Always on Top** — keep the map window above other applications (desktop only).
-- **Toggle Fullscreen** — expand the map to fill your entire screen.
-- **Select Map Style** — switch between available basemap themes (e.g., street, satellite, dark mode).
+- **Zoom In / Zoom Out** — adjust viewing level
+- **Reset View** — return to default center and zoom
+- **Always on Top** — keep map above other apps (desktop)
+- **Toggle Fullscreen** — expand map to full screen
+- **Select Map Style** — street, satellite, or dark basemap
 
 ## Location on Calls
 
-Every call detail panel includes a **Location details** block where you can manage the incident address without leaving the call.
+Every call detail panel includes **Location details**:
 
-- Click **Edit address** to correct or update the location as the caller provides more information.
-- Click **Validate and Geocode Address** to resolve the address to verified map coordinates. Revalidate whenever the reporting party verbally corrects their location.
-- Click **Copy GPS coordinates** to copy the precise latitude/longitude to your clipboard for radio relay or CAD notes.
+- **Edit address** — update as the caller provides corrections
+- **Validate and Geocode Address** — resolve to map coordinates
+- **Copy GPS coordinates** — copy lat/long for radio or notes
 
 <Warning>
-  GPS coordinates are personally identifiable location data. Follow your agency's CJIS and PII policy before sharing coordinates externally or pasting them into unsecured systems.
+  GPS coordinates are location PII. Follow agency CJIS and privacy policy before sharing externally.
 </Warning>
 
 <Tip>
-  Always confirm that the map pin aligns with the reported cross streets before dispatching units. Geocoding can place pins at the nearest routable point, which may differ from the actual scene.
+  Confirm the map pin matches reported cross streets before dispatching. Geocoding may snap to the nearest routable address.
 </Tip>
 
-## RapidSOS Tracking
+---
 
-When RapidSOS is enabled for your organization, you can initiate a live location track directly from the map.
+## RapidSOS alerts on the map
+
+When RapidSOS is enabled, the backend **stages** alerts from configured polling (sandbox demo numbers) and/or the EDX real-time feed. Staged alerts appear as pins on the map when **RapidSOS Locations** is on.
+
+### Pin icon types (primary category)
+
+Each pin uses a **primary icon** based on the highest-priority partner data in the alert:
+
+| Icon / category | Typical source | Pin color |
+|---|---|---|
+| **Vehicle crash** | SiriusXM telematics crash data | Red / crash styling |
+| **Active assailant** | Weapon-detection or assailant partners | Deep orange |
+| **Alarm** | Home security (e.g. Cove) | Amber / alarm styling |
+| **Medical** | Emergency health profile (EHA) | Pink / medical styling |
+| **Live media** | Streaming or media partners | Purple |
+| **Mobile / ride-share** | Mobile app vehicle data | Teal |
+| **Location only** | GPS fix without rich partner payload | **Accuracy color** (see below) |
+| **Device source** | Phone/device metadata emphasis | Neutral with phone badge |
+
+Small **badge icons** may appear on the pin when multiple data types are present (Location, Crash, Medical, Contacts, Media, Alarm, Source).
+
+### Location-only accuracy colors
+
+When the alert is primarily a GPS fix (no crash/alarm/medical partner block), the pin color reflects **uncertainty radius**:
+
+| Color | Approximate accuracy |
+|---|---|
+| Green | ≤ 10 m |
+| Blue | ≤ 25 m |
+| Yellow | ≤ 50 m |
+| Orange | ≤ 100 m |
+| Red | &gt; 100 m or unknown |
+
+### Map view — alert plotted on the map
+
+<Frame caption="RapidSOS location-only alert on the map (sandbox demo). Pin shows medical-style icon for alerts with health profile data.">
+  <img src="/images/rapidsos/map-pin-tooltip-basic.png" alt="Map with RapidSOS pin and basic Emergency Data tooltip" />
+</Frame>
+
+### Click a RapidSOS pin — Emergency Data panel
+
+Click any RapidSOS pin to open **RapidSOS Emergency Data**. The panel shows:
+
+- **Header** — alert label and partner source (example: *Cove Alarm*, *Source: Cove*)
+- **PINNED** badge when the panel is locked open
+- **Category badges** — quick filters: Location, Source, Alarm, Contacts, Medical, etc.
+- **Caller ID**, **Last update** (live age), **Coordinates**
+- **Partner sections** — expandable blocks (Home Security, Medical profile, Crash details, etc.)
+- **Create New CFS** — opens [Import RapidSOS Alert](/dispatch/rapidsos-import-cfs)
+- **Dismiss** — remove staged alert from the map (per workflow)
+- **Close** (X) — close the panel
+- **Raw Data (Debug)** — optional JSON for administrators/testing
+
+<Frame caption="Cove home-security demo alert — full tooltip with account holder, alarm zone, monitoring company, and contacts.">
+  <img src="/images/rapidsos/map-pin-tooltip-cove-alarm.png" alt="RapidSOS Emergency Data panel for Cove alarm with Home Security and Contacts sections" />
+</Frame>
 
 <Steps>
-  <Step title="Open the tracking panel">
-    Click **RapidSOS Tracking** or **Track Phone Number** from the map toolbar or call detail panel.
+  <Step title="Enable RapidSOS Locations layer">
+    Turn on **RapidSOS Locations** in **Map Layers** if pins are not visible.
   </Step>
-  <Step title="Enter the caller's phone number">
-    Type the caller's phone number, or select it automatically if the call context pre-fills the field.
+  <Step title="Click the pin">
+    Review caller ID, coordinates, and partner sections in the Emergency Data panel.
   </Step>
-  <Step title="Start tracking">
-    Click **Start Tracking**. The caller's emergency location appears as a pin on the map, and the **RapidSOS Locations** and **RapidSOS Breadcrumbs** layers activate to show movement over time.
+  <Step title="Create New CFS (optional)">
+    Click **Create New CFS** to open the import form with fields pre-filled. See [Import RapidSOS CFS](/dispatch/rapidsos-import-cfs).
   </Step>
-  <Step title="Stop tracking">
-    Click **Stop Tracking** as soon as the track is no longer operationally necessary to protect caller privacy and free system resources.
+  <Step title="Dismiss when done">
+    Use **Dismiss** for invalid or duplicate sandbox alerts, or **Close** if no action is needed.
   </Step>
 </Steps>
 
-<Warning>
-  RapidSOS availability depends on the caller's carrier and device data connection. Do not treat RapidSOS results as a substitute for verbally confirming the caller's location — always attempt to corroborate with the reporting party.
-</Warning>
+---
 
-## RapidSOS Lookup
+## Track Phone Number (live LEI / RAD-E)
 
-If your organization has the RapidSOS Lookup feature enabled, you can query historical emergency location data outside of an active track.
+Separate from staged alerts, dispatchers can **track a phone number** live:
 
 <Steps>
-  <Step title="Open the lookup dialog">
-    Click **RapidSOS Lookup** in the header to open the lookup dialog.
+  <Step title="Open tracking">
+    From the map toolbar, choose **Track Phone Number** (or **RapidSOS Tracking**).
   </Step>
-  <Step title="Search by phone number">
-    Enter the phone number and click **Lookup**. Cadmus returns a **RapidSOS Results** list with available location records.
+  <Step title="Enter E.164 phone number">
+    Example sandbox demo: `+15555555556`
   </Step>
-  <Step title="Plot the result">
-    Click **Show on Map** next to any result to plot that location on the live map.
+  <Step title="Start Tracking">
+    Cadmus queries RapidSOS RAD-E (crash location) and LEI (device location). A pin appears when data returns.
+  </Step>
+  <Step title="Stop when finished">
+    Click **Stop Tracking** to end polling and protect caller privacy.
   </Step>
 </Steps>
 
 <Note>
-  RapidSOS Lookup is a separately enabled feature. If you do not see the option in the header, contact your agency administrator to confirm it is activated for your organization.
+  If tracking cannot start (LEI disabled, no location returned, or credentials missing), Cadmus shows a message on the map — the screen will **not** go blank. Contact your admin to enable **LEI** and **RAD-E** under Runtime Settings.
 </Note>
 
-## Configuring RapidSOS
+<Warning>
+  RapidSOS depends on carrier/device data. Always corroborate location with the reporting party. Do not treat map data as the sole source of truth.
+</Warning>
 
-Agency administrators can enable and configure RapidSOS from **Web Admin → Integrations → RapidSOS**. Both the tracking and lookup features are controlled through that panel.
+## RapidSOS Lookup
+
+When enabled, **RapidSOS Lookup** in the header lets you query by phone number and **Show on Map** for a one-time plot (distinct from staged alerts and live track).
+
+## Configuration
+
+Agency administrators configure RapidSOS in **Web Admin → Integrations → RapidSOS Management**:
+
+- **Credentials** — OAuth client for Sandbox or Production
+- **Runtime Settings** — per-org toggles for RAD-E, LEI, EDX, polling numbers, dispatch agency
+
+See [RapidSOS Management](/admin/rapidsos-management).
