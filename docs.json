@@ -191,6 +191,7 @@
             "icon": "shield-check",
             "pages": [
               "mobile/ncic-overview",
+              "mobile/field-interview-reports",
               "mobile/ecitations-overview"
             ]
           },
