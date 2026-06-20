@@ -31,13 +31,24 @@ Select the **Priority Level \*** that matches your agency's response protocol. P
     Standard response. No immediate threat to life or property.
   </Card>
   <Card title="Priority 4 — Low" icon="circle-minus">
-    Non-urgent or informational. Can be queued for the next available unit.
+    Non-urgent. Can be queued for the next available unit.
+  </Card>
+  <Card title="Priority 5 — Informational" icon="circle-dot">
+    Informational only — no dispatch response expected.
   </Card>
 </CardGroup>
+
+<Frame caption="Priority Level dropdown in the create form — P1 through P5 with color indicators.">
+  <img src="/images/dispatch/create-cfs/priority-selector.png" alt="Priority Level dropdown showing P1 Emergency through P5 Informational" />
+</Frame>
 
 ## Incident type
 
 Click **Incident Type \*** and type 2–4 letters to filter the dropdown, then select the matching type. Incident type drives tags, default priority, and all downstream workflows (reporting templates, CAD exports, statistics).
+
+<Frame caption="Filter incident types by typing the first few letters of the name or abbreviation.">
+  <img src="/images/dispatch/create-cfs/incident-type-filter.png" alt="Incident Type autocomplete filtering to Structure Fire" />
+</Frame>
 
 <Tip>
   Always select from the list. Free-text entries without a structured type may cause missing data in agency reports and integrations.
@@ -49,23 +60,35 @@ The **Location \*** field accepts three input modes. Cadmus detects which mode y
 
 <Tabs>
   <Tab title="Street Address">
-    Type a street number and name (e.g., `1234 Elm Street`). Cadmus submits the address to your agency's configured GIS service. A **Validating address…** spinner appears during lookup.
+    Set the location dropdown to **Address**, then type a street number and name. Cadmus submits the address to your agency's configured GIS service. Address suggestions appear as you type.
 
     When GIS confirms the address, a **Geo verified** badge appears beside the field. The map pin is placed automatically.
+
+    <Frame caption="**Address** mode with autocomplete and **Geo verified** badge.">
+      <img src="/images/dispatch/create-cfs/location-geo-verified.png" alt="Address location field with suggestions and Geo verified badge" />
+    </Frame>
 
     <Warning>
       If the address does not validate, the spinner stops without a Geo verified badge. Cadmus may still create the call, but the map pin could land in the wrong location. Verify the pin in call detail after creating the call.
     </Warning>
   </Tab>
   <Tab title="Cross Street">
-    Enter two intersecting street names separated by `&` or `and` (e.g., `Main St & Oak Ave`). Use this mode when no building address is available.
+    Set the location dropdown to **Cross St**, then enter two intersecting street names (e.g., `Main St & Ash St`). Use this mode when no building address is available.
+
+    <Frame caption="**Cross St** mode with an intersection in the location field.">
+      <img src="/images/dispatch/create-cfs/location-cross-street.png" alt="Cross street location mode with Main St and Ash St" />
+    </Frame>
 
     <Tip>
       Update the location to a full address as soon as field units confirm the scene, so the record and any downstream reports reflect the exact location.
     </Tip>
   </Tab>
   <Tab title="Common Place">
-    Select from your agency's configured common-place list — schools, hospitals, parks, transit hubs, and other frequently dispatched locations. Common places include pre-validated coordinates, so GIS lookup is not required.
+    Set the location dropdown to **Place**, then select from your agency's configured common-place list — schools, stores, parks, and other frequently dispatched locations. Common places include pre-validated coordinates, so GIS lookup is not required.
+
+    <Frame caption="**Place** dropdown listing agency-configured common places.">
+      <img src="/images/dispatch/create-cfs/location-common-place.png" alt="Place dropdown with common locations such as schools and stores" />
+    </Frame>
   </Tab>
 </Tabs>
 
@@ -81,18 +104,31 @@ While you type a street address, Cadmus contacts your agency's GIS service:
 
 The reporting party (RP) section captures the caller's contact information.
 
-| Option               | Description                                                            |
-|----------------------|------------------------------------------------------------------------|
-| **RP same as scene** | Toggle on to copy the incident location to the RP's location field.    |
-| **Add Phone Number** | Record additional callback numbers for the same caller.                |
-| **Add Caller**       | Add a second or subsequent reporting party at create time.             |
+| Option                                      | Description                                                            |
+|---------------------------------------------|------------------------------------------------------------------------|
+| **Caller address same as incident location** | Toggle on to copy the incident location to the caller's address field. |
+| **+ Add Phone Number**                      | Record additional callback numbers for the same caller.                |
+| **+ Add Caller**                            | Add a second or subsequent reporting party at create time.              |
+
+<Frame caption="Reporting party fields — name, address, and optional notes for the primary caller.">
+  <img src="/images/dispatch/create-cfs/reporting-party-section.png" alt="Reporting party section with caller name address and notes" />
+</Frame>
+
+<Frame caption="**3 — Reporting Person** — caller contact fields, **Caller address same as incident location**, and links to add phones, callers, vehicles, and involved persons.">
+  <img src="/images/dispatch/create-cfs/reporting-party-expanded.png" alt="Expanded reporting person section with OLN phone and additional callers vehicles persons" />
+</Frame>
+
+<Frame caption="Further down the form — **Additional Callers**, **Vehicles Involved**, and **Persons Involved** (Suspect, Victim, Witness, Other).">
+  <img src="/images/dispatch/create-cfs/optional-callers-vehicles-persons.png" alt="Optional sections for additional callers vehicles and persons involved with add buttons" />
+</Frame>
 
 ## Additional options
 
 | Option            | Description                                                                                  |
 |-------------------|----------------------------------------------------------------------------------------------|
 | **Disable Timer** | Skips the default agency status timer for this call. Use only when agency policy permits.    |
-| **Add Vehicle**   | Attach a vehicle record to the CFS at creation time (make, model, plate, color, state).      |
+| **+ Add Vehicle** | Attach a vehicle record to the CFS at creation time (make, model, plate, color, state).      |
+| **+ Add units (optional)** | Assign units at create time; collapsed by default — expand to notify units on submit. |
 
 ## Form action buttons
 

@@ -20,13 +20,27 @@ When a **RapidSOS** pin appears on the map, click it and choose **Create New CFS
 
 ## Create a new CFS
 
+<Frame caption="Dispatch header in sandbox — **New CFS** (F1) opens the create dialog. Confirm **SANDBOX MODE** or **LIVE MODE** before every session.">
+  <img src="/images/dispatch/create-cfs/header-new-cfs-button.png" alt="Dispatch CAD header showing SANDBOX MODE badge and New CFS F1 button" />
+</Frame>
+
+The **Create New Call for Service** dialog is organized into numbered sections — **Incident Detail**, **Incident Location**, **Reporting Person**, and optional callers, vehicles, and persons. Use the section pills at the top (**Type**, **Location**, **Nature**, **RP**, **Narrative**) or keyboard shortcuts **Ctrl+Alt+1** through **Ctrl+Alt+5** to jump between sections. The **Incident snapshot** sidebar on the right summarizes what you have entered and shows when the form is ready to submit.
+
 <Steps>
   <Step title="Open the New CFS form">
     Press **F1** on your keyboard, or click **New CFS** in the application header. The **Create New Call for Service** dialog opens.
+
+    <Frame caption="New CFS dialog on section **1 — Incident Detail**. Required fields must be completed before **Create Call** is enabled.">
+      <img src="/images/dispatch/create-cfs/create-cfs-dialog-empty.png" alt="Create New Call for Service dialog showing empty incident detail section and disabled Create Call button" />
+    </Frame>
   </Step>
 
   <Step title="Select an Incident Type">
     Click the **Incident Type \*** field and type 2–4 letters to filter the list, then select the matching type. Incident type drives tags, priority defaults, and downstream workflows — always select from the list rather than relying on free text alone.
+
+    <Frame caption="Type a few letters to filter incident types, then pick from the dropdown (e.g. **Structure Fire**).">
+      <img src="/images/dispatch/create-cfs/incident-type-filter.png" alt="Incident Type field with struc typed and Structure Fire suggestion in dropdown" />
+    </Frame>
 
     <Tip>
       Type the first letters of a common abbreviation (e.g., `BURG` for Burglary) to narrow the list quickly.
@@ -34,13 +48,29 @@ When a **RapidSOS** pin appears on the map, click it and choose **Create New CFS
   </Step>
 
   <Step title="Enter a Location">
-    Fill the **Location \*** field using any of the supported location modes:
+    In **2 — Incident Location**, choose a location mode from the dropdown and fill the field:
 
-    - **Street address** — type a street number and name; a **Validating address…** spinner confirms GIS lookup.
-    - **Cross street** — use two intersecting street names when no exact address is known (e.g., `Main St & Oak Ave`).
-    - **Common place** — select from your agency's configured common-place list (schools, parks, landmarks).
+    - **Address** — type a street number and name; address suggestions appear as you type. A **Geo verified** badge confirms GIS validation.
+    - **Cross St** — use two intersecting street names when no exact address is known (e.g., `Main St & Ash St`).
+    - **Place** — select from your agency's configured common-place list (schools, stores, landmarks).
 
-    A **Geo verified** badge appears when GIS successfully validates the address.
+    <Tabs>
+      <Tab title="Street address">
+        <Frame caption="Address mode with suggestions and **Geo verified** badge after GIS confirms the location.">
+          <img src="/images/dispatch/create-cfs/location-geo-verified.png" alt="Incident Location address field with autocomplete suggestions and Geo verified badge" />
+        </Frame>
+      </Tab>
+      <Tab title="Cross street">
+        <Frame caption="**Cross St** mode — enter the intersection in the location field.">
+          <img src="/images/dispatch/create-cfs/location-cross-street.png" alt="Incident Location cross street mode showing Main St and Ash St intersection" />
+        </Frame>
+      </Tab>
+      <Tab title="Common place">
+        <Frame caption="**Place** mode — pick a pre-configured common place from the dropdown.">
+          <img src="/images/dispatch/create-cfs/location-common-place.png" alt="Incident Location Place dropdown with agency common places listed" />
+        </Frame>
+      </Tab>
+    </Tabs>
 
     <Warning>
       Unvalidated addresses may geocode incorrectly and drop the map pin in the wrong location. After creating the call, verify the map pin in call detail and correct the address if needed.
@@ -53,29 +83,46 @@ When a **RapidSOS** pin appears on the map, click it and choose **Create New CFS
 
   <Step title="Fill in Incident Details">
     Enter a concise summary in the **Incident Details \*** field. Include who, what, where, and any immediate risks to responders or the public. This narrative appears on the dispatch board and in all downstream reports.
+
+    <Frame caption="**Incident Details** with a sample narrative. Keep it factual and actionable for responding units.">
+      <img src="/images/dispatch/create-cfs/incident-details-filled.png" alt="Incident Details field filled with neighbor reporting house fire narrative and geo verified location below" />
+    </Frame>
   </Step>
 
   <Step title="Add Reporting Party information">
-    Complete the reporting party (RP) section as information is available:
+    Scroll to **3 — Reporting Person** and complete the caller and reporting party fields as information is available:
 
-    - Enable **RP same as scene** if the caller is at the incident location.
-    - Click **Add Phone Number** to record additional callback numbers.
-    - Click **Add Caller** to add a secondary reporting party.
+    - Toggle **Caller address same as incident location** when the caller is at the scene.
+    - Click **+ Add Phone Number** to record additional callback numbers.
+    - Click **+ Add Caller** under **Additional Callers** for a secondary reporting party.
+
+    <Frame caption="Reporting party name, address, and optional notes for the primary caller.">
+      <img src="/images/dispatch/create-cfs/reporting-party-section.png" alt="Reporting party section with first name, last name, address, and notes filled in" />
+    </Frame>
   </Step>
 
   <Step title="Set the Priority Level">
     Choose a **Priority Level \*** that matches agency protocol:
 
-    | Priority | Label     | Typical use                          |
-    |----------|-----------|--------------------------------------|
-    | 1        | Emergency | Immediate life safety threat         |
-    | 2        | Urgent    | Prompt response required             |
-    | 3        | Routine   | Standard response                    |
-    | 4        | Low       | Non-urgent, informational            |
+    | Priority | Label          | Typical use                          |
+    |----------|----------------|--------------------------------------|
+    | 1        | Emergency      | Immediate life safety threat         |
+    | 2        | Urgent         | Prompt response required             |
+    | 3        | Routine        | Standard response                    |
+    | 4        | Low            | Non-urgent                           |
+    | 5        | Informational  | Informational only                   |
+
+    <Frame caption="Priority dropdown — color-coded P1 through P5. P1 shows a warning icon for emergency incidents.">
+      <img src="/images/dispatch/create-cfs/priority-selector.png" alt="Priority Level dropdown open showing P1 Emergency through P5 Informational options" />
+    </Frame>
   </Step>
 
   <Step title="Review optional fields and click Create Call">
-    Optionally add a vehicle record (**Add Vehicle**) or toggle **Disable Timer** if agency policy permits skipping the default status timer. When all required fields are complete, click **Create Call**.
+    Optionally expand **+ Add units (optional)** to assign units at create time, toggle **Disable Timer** if agency policy permits, or add vehicles and involved persons further down the form. When all required sections show green checkmarks in the section nav and the **Incident snapshot** is complete, click **Create Call**.
+
+    <Frame caption="Completed form — section pills show green checkmarks, **Incident snapshot** lists type, priority, and geo-verified location, and **Create Call** is enabled.">
+      <img src="/images/dispatch/create-cfs/form-complete-create-call.png" alt="Completed Create New Call for Service form with all sections checked and Create Call button enabled" />
+    </Frame>
 
     The dialog closes and Cadmus opens the new call in [Call Detail](/dispatch/call-detail). The call is now live on the dispatch board and ready for unit assignment.
   </Step>
@@ -83,10 +130,16 @@ When a **RapidSOS** pin appears on the map, click it and choose **Create New CFS
 
 ## After creating the call
 
-Once the CFS is created, the call detail view opens automatically. From there you can:
+Once the CFS is created, the call detail view opens automatically.
 
-- Assign available units using the **AVAILABLE UNITS** quick-assign row.
-- Add images or supplemental documents in the **History / Logs** section.
+<Frame caption="Call detail after **Create Call** — incident type, location, narrative, and **Assign Unit** quick actions.">
+  <img src="/images/dispatch/create-cfs/after-create-call-detail.png" alt="Call Details view showing Structure Fire incident with location, description, and available units row" />
+</Frame>
+
+From call detail you can:
+
+- Assign available units using the **AVAILABLE UNITS** quick-assign row or **Assign Unit**.
+- Add log entries with **Add Log Entry** or the quick note field.
 - Edit call information using **Edit Call Details** in the call summary block.
 
 <Tip>
