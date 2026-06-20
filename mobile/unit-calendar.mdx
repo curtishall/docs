@@ -16,14 +16,24 @@ Sidebar → **Calendar** (or **Unit Calendar**).
 
 **UNIT CALENDAR** header with:
 
-- Month navigation (**←** / **→**)
-- **TODAY** — jump to current month and day
+- Month navigation (**←** / **→**) — changing months reloads events for that month
+- **TODAY** — jump to the current month and day
+- A thin loading bar while events are fetched
 - Month grid (Sun–Sat) with colored dots for days that have events
 - **Upcoming events** list (next items after today)
 
 On compact screens, **Filters** opens a bottom sheet with search, date range, and event types. On larger layouts, filters appear in a right sidebar.
 
 <Note>Screenshot placeholder: Desktop calendar with sidebar filters and upcoming list</Note>
+
+## Live vs training mode
+
+| Mode | What you see |
+|------|----------------|
+| **Live (sandbox or production)** | Events from your agency’s Cadmus Ops Calendar — the same scheduling data dispatch uses. Visibility follows your role (agency-private, shared dispatch, or org-wide events you are allowed to see). |
+| **Training** | Sample events for practice. These are not live schedule data. |
+
+If the calendar cannot load live events, the screen shows **Could not load calendar events**. If your agency has a very busy month and the server returns a partial list, a warning may appear asking you to narrow the date range or contact dispatch.
 
 ## Event types
 
@@ -58,10 +68,6 @@ Tap an event in the grid or **Upcoming events** list to open details:
 - Case number or priority when applicable
 
 <Note>Screenshot placeholder: Event detail modal</Note>
-
-## Availability
-
-Calendar content depends on your agency’s scheduling integration. Some deployments show sample events until live scheduling data is connected — confirm with your supervisor if events look like placeholders.
 
 ## Tips
 

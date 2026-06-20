@@ -24,6 +24,10 @@ Officer availability and call-level status on mobile.
 
 Line shows **Current: {status}**
 
+In **live mode**, choosing a status sends `PUT /units/{your-unit-id}/status` to Cadmus so dispatch sees the same availability as the CAD board. If your profile unit cannot be matched to an apparatus, the app shows an error and keeps the previous status.
+
+In **training mode**, status changes stay on the device only.
+
 <Note>Screenshot placeholder: STATUS CONTROL chip row on dashboard</Note>
 
 Top bar also shows officer status chip with same labels.
