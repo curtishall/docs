@@ -27,6 +27,16 @@ Set the **radius** and **map center** that Cadmus uses as the reference point fo
 
 Toggle **Enable CFS sharing across agencies** to allow calls for service numbers to be visible to all agencies within your organization. Turn this off if each agency must maintain an isolated CFS number sequence.
 
+### CFS Reports
+
+Toggle **Enable Public CFS Report** to allow **Generate Public CFS** on Web Admin closed incidents and on Mobile CAD **Find a Call** closed-call detail.
+
+- When enabled, users can download a **public-only** PDF that includes the CFS number and the **public narrative** (labeled **CFS**).
+- Private notes, call chronology, unit assignments, and incident summary tables are **not** included.
+- When disabled, the button is hidden in the apps and the API returns **403** if called directly.
+
+Full internal PDF and email report workflows are unchanged and always include the complete internal CFS content for authorized users.
+
 ### Clerk Membership & User Sync
 
 After bulk user imports or permission changes in Clerk, use the sync controls on this card to push updated memberships into Cadmus without waiting for the next scheduled sync.
