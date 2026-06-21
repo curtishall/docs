@@ -14,23 +14,49 @@ Sidebar **Find a Call**
 
 Title: **Find a Call** — subtitle **Past calls — not NCIC**
 
-## Search fields
+## Search filters
+
+Combine any of these filters — all active filters apply together (AND logic).
 
 | Field | Use |
 |-------|-----|
-| **CFS number** | Exact or partial call number |
+| **Keyword** | Search descriptions, notes, phone fragments, and related text |
+| **CFS #** | Exact or partial call number |
 | **Address** | Location text |
-| **License plate** | Plate tied to incident |
+| **License plate** | Plate on the incident; use `330*` for prefix match (e.g. `330PK3`, `330000`) |
+| **By officer / unit** | Officer name, badge, or unit call sign |
+| **Date** | Single day (reported date) |
+| **From / To** | Date range (reported date) |
 
-**Search** button runs query.
+Active filters appear as **chips** you can remove individually.
+
+Tap **Search** to run the query. **Clear** resets all filters.
 
 Results: **N result(s) — page X of Y**
 
 <Note>Screenshot placeholder: Find a Call search form and results</Note>
 
-## Open result
+## Sort results
 
-Tap result to view call summary (read-only typical for closed calls).
+Tap a column header to sort:
+
+- CFS #
+- Report #
+- Date/Time
+- Location
+- Type
+- Officer/Units
+
+Tap again to reverse sort direction.
+
+## Result actions
+
+Each row has two actions:
+
+| Action | Purpose |
+|--------|---------|
+| **Add/Edit CFS notes** | Edit public narrative and private/internal notes; supervisors can mark **Supervisor approved CFS** |
+| **See call details** | Open the full call detail screen |
 
 <Note>Screenshot placeholder: Historical call summary from search</Note>
 
@@ -41,9 +67,12 @@ Tap result to view call summary (read-only typical for closed calls).
 ## Tips
 
 - Use CFS number when dispatch radioed it.
-- Address search helps repeat-location checks.
+- Use `330*` on license plate when you know the prefix only.
+- Combine keyword + officer + date range to narrow busy agencies.
 - This is **not** NCIC — use **NCIC Search** for criminal queries.
 
 ## Warnings
 
 <Warning>Historical call data is sensitive — follow records/PII policy on shared devices.</Warning>
+
+<Warning>Private notes are restricted — only enter information appropriate for your role.</Warning>
