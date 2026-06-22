@@ -38,6 +38,24 @@ The **Citation** section of the agency settings page contains the citation templ
   Test one citation in your Sandbox organization before enabling the template in your Live organization. This lets you catch formatting issues without creating records in the production system.
 </Tip>
 
+### Import RSMO / statewide charge codes
+
+The **Charge Codes (RSMO)** card on the agency **E-Citation Settings** page lets **Cadmus administrators** import the active statewide charge code catalog from a JMS-format CSV.
+
+<Steps>
+  <Step title="Confirm State code">
+    Set **State Code** on the e-citation settings (for example `MO`) so mobile officers search the correct catalog.
+  </Step>
+  <Step title="Upload CSV">
+    Choose the export file and select **Import CSV**. Only rows with `active = 1` are loaded into the picker.
+  </Step>
+  <Step title="Verify count">
+    The card shows how many active codes are loaded and the last import time. Officers should open **E-CITATIONS** once online to refresh the mobile cache.
+  </Step>
+</Steps>
+
+Expected CSV columns: `chargecodeid`, `chargename`, `code`, `class_name`, `crime_type`, `description`, `statute_code`, `state`, `active`.
+
 ## RMS report numbers
 
 How Cadmus assigns report numbers depends on a single agency-level toggle:
