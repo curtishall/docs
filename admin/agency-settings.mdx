@@ -55,6 +55,24 @@ Settings are grouped by category and displayed with color-coded labels: **Safety
     - **Effect when off:** The report number equals the CFS number.
     - **User override:** Not allowed — this setting applies to the entire agency.
   </Tab>
+  <Tab title="CAD Module">
+    - **Category:** Features
+    - **Default:** Enabled (existing agencies keep full access until you change this)
+    - **Effect when on:** Dispatch CAD and Mobile CAD show calls, map, dashboard, and call-linked citation workflows.
+    - **Effect when off:** Mobile hides Calls, Find a Call, Map, and Dashboard navigation for that agency. Officers use e-citations without linking to a CAD call.
+    - **User override:** Not allowed — applies to the entire agency.
+  </Tab>
+  <Tab title="E-Ticket Module">
+    - **Category:** Features
+    - **Default:** Enabled (existing agencies keep full access until you change this)
+    - **Effect when on:** Mobile **E-Ticket** and agency citation settings are available. In production builds, e-tickets unlock when this module is on for the agency.
+    - **Effect when off:** Mobile hides **E-Ticket** and citation configuration is disabled for that agency.
+    - **User override:** Not allowed — applies to the entire agency.
+
+    <Warning>
+      At least one of **CAD Module** or **E-Ticket Module** must stay enabled. Cadmus rejects saving when both are off.
+    </Warning>
+  </Tab>
 </Tabs>
 
 ## Report number format
@@ -99,6 +117,8 @@ The **Report Number Format** field appears only when **Separate RMS Report Numbe
 | Traffic Stops Allowed | Traffic and citation flows restricted | Normal traffic stop workflow available |
 | State/NCIC Access | Queries denied | Queries allowed if user also has effective NCIC access |
 | Separate Report Numbers | Report number equals CFS number | Custom RMS numbering per format string |
+| CAD Module | Mobile hides CAD navigation (calls, map, dashboard) | Full CAD workflows in Dispatch and Mobile |
+| E-Ticket Module | Mobile hides E-Ticket; citation settings disabled | E-citations available; production E-Ticket unlocks when enabled |
 
 ## Common mistakes
 
