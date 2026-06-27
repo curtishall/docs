@@ -8,7 +8,16 @@ Electronic citations and warnings from the MDT.
 
 <Note>Screenshot placeholder: E-CITATIONS home screen</Note>
 
-**Availability:** Sidebar **E-Ticket** may show **This area is still in development for this release.** on some deployments.
+**Availability:** Sidebar **E-Ticket** may show **This area is still in development for this release.** on production builds when the agency does not have **E-Ticket Module** enabled. Agencies with e-tickets turned on in Web Admin can use **E-Ticket** in production.
+
+## Standalone vs call-linked citations
+
+| Agency setup | Mobile behavior |
+|---|---|
+| **CAD Module** on (default) | **Linked call** dropdown appears on new citations. **ISSUE CITATION** requires an assigned call for live sync. |
+| **CAD Module** off, **E-Ticket Module** on | Calls, Map, and Dashboard nav are hidden. New citations do **not** ask for a call. Issue and sync work without an `IncidentID`. |
+
+Configure modules under [Agency settings](/admin/agency-settings) in Web Admin.
 
 ## Home screen
 
@@ -27,10 +36,13 @@ Electronic citations and warnings from the MDT.
     Tap **NEW CITATION** and toggle **CITATION** vs **WARNING**.
   </Step>
   <Step title="Complete wizard steps">
-    Fill **Subject / Vehicle**, **Violation / Loc**, **Signatures**, and **Review & Issue**.
+    Fill **Subject / Vehicle**, **Violation / Loc** or **Violation** (template-driven forms may use this label), **Signatures**, and **Review & Issue**.
+  </Step>
+  <Step title="Violation charge codes">
+    On **Violation / Loc** or **Violation**, tap **Search charge codes** or start typing in the violation description field. Type an offense description (for example, *financial responsibility*). Results are ranked by description, not RSMO number. Codes your agency uses often appear with an **Often used** badge. **Unlawful Act** is filled from the selection but can still be edited. If the catalog is not cached yet, connect once to sync, or enter the charge manually.
   </Step>
   <Step title="Issue or save draft">
-    Tap **ISSUE CITATION** or **SAVE DRAFT**. Use **Violator Refused to Sign** when applicable.
+    Tap **ISSUE CITATION** or **SAVE DRAFT**. Use **Violator Refused to Sign** when applicable. For full CAD agencies, select a **Linked call** before issuing for live sync. Standalone e-ticket agencies skip the call selector.
   </Step>
 </Steps>
 
@@ -52,13 +64,16 @@ Electronic citations and warnings from the MDT.
 
 ## Offline and sync
 
-- Drafts stored locally on device.
+- Drafts stored locally on the device.
+- Active charge codes for your agency **State** (for example MO/RSMO) are cached after the first online visit to **E-CITATIONS**. Charge code search works offline after that sync.
 - **Auto-Sync Ticket Data** in Settings uploads when online.
 - See [Connectivity and offline](/mobile/connectivity-offline).
 
 ## Requirements
 
-- Agency **Traffic Stops Allowed** in Web Admin.
+- Agency **E-Ticket Module** enabled in Web Admin (on by default for existing agencies).
+- Agency **Traffic Stops Allowed** in Web Admin for citation workflows.
+- For call-linked citations: **CAD Module** on and an assigned call selected before issue.
 - Bluetooth printer paired if printing in field.
 
 ## Warnings
