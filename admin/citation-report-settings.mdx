@@ -6,6 +6,20 @@ description: "Configure citation template layouts and RMS report number formats 
 
 Cadmus handles two closely related records at the agency level: citations generated during traffic stops and RMS case numbers assigned when a call closes with "Report to Follow." Both are configured on the agency Settings page, and both carry real legal and administrative weight — citations may be filed in court and report numbers must align with your RMS vendor's sequencing requirements. Get these settings right before going live and test them in a sandbox environment first.
 
+## E-ticket-only agencies
+
+Some agencies use Cadmus **only for electronic citations**, without dispatch CAD or call-for-service workflows. On the agency **Settings** page:
+
+1. Turn **CAD Module** **off** for that agency.
+2. Leave **E-Ticket Module** **on**.
+3. Configure citation templates, charge codes, court info, and number blocks as usual.
+
+Officers sign into Mobile CAD and land on **E-CITATIONS**. They can issue, sync, preview, and print citations **without selecting an assigned call**. Full CAD agencies still link citations to an active call when **CAD Module** is on.
+
+<Note>
+  **Traffic Stops Allowed** still controls whether traffic-stop and citation workflows are permitted for the agency. E-ticket-only agencies typically leave it enabled.
+</Note>
+
 ## Citations
 
 The **Citation** section of the agency settings page contains the citation template configuration and, when the citation module is enabled for your deployment, a PDF designer for customizing the layout of printed citations.
@@ -37,6 +51,24 @@ The **Citation** section of the agency settings page contains the citation templ
 <Tip>
   Test one citation in your Sandbox organization before enabling the template in your Live organization. This lets you catch formatting issues without creating records in the production system.
 </Tip>
+
+### Import RSMO / statewide charge codes
+
+The **Charge Codes (RSMO)** card on the agency **E-Citation Settings** page lets **Cadmus administrators** import the active statewide charge code catalog from a JMS-format CSV.
+
+<Steps>
+  <Step title="Confirm State code">
+    Set **State Code** on the e-citation settings (for example `MO`) so mobile officers search the correct catalog.
+  </Step>
+  <Step title="Upload CSV">
+    Choose the export file and select **Import CSV**. Only rows with `active = 1` are loaded into the picker.
+  </Step>
+  <Step title="Verify count">
+    The card shows how many active codes are loaded and the last import time. Officers should open **E-CITATIONS** once online to refresh the mobile cache.
+  </Step>
+</Steps>
+
+Expected CSV columns: `chargecodeid`, `chargename`, `code`, `class_name`, `crime_type`, `description`, `statute_code`, `state`, `active`.
 
 ## RMS report numbers
 

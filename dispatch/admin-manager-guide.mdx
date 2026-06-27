@@ -131,10 +131,13 @@ See [Command Line](/dispatch/command-line-overview) overview.
 
 **Web Admin:** [RapidSOS management](/admin/rapidsos-management)
 
+Configure credentials and **Runtime Settings** (RAD-E, LEI, EDX, dispatch agency).
+
 **Verify in Dispatch CAD:**
 
-- Map layers **RapidSOS Locations** / **Breadcrumbs**.
-- **RapidSOS Lookup** or **Track Phone Number** on sandbox test number.
+- Staged alerts on map → **Import** / **Create New CFS**
+- Map layers **RapidSOS Locations** / **Breadcrumbs**
+- **RapidSOS Lookup** or **Track Phone Number** on sandbox test number (when enabled)
 
 See [Map and location](/dispatch/map-and-location).
 
@@ -147,12 +150,15 @@ See [Map and location](/dispatch/map-and-location).
 
 ### 11. Citations (if used)
 
-**Web Admin:** [Citation and report settings](/admin/citation-report-settings)
+**Web Admin:** [Citation and report settings](/admin/citation-report-settings) and [Agency settings](/admin/agency-settings) (**CAD Module** / **E-Ticket Module**)
 
 **Verify on Mobile CAD:**
 
-- **E-Ticket** available when **Traffic Stops Allowed** is on.
+- **E-Ticket** available when **E-Ticket Module** and **Traffic Stops Allowed** are on.
+- **Call-linked** citations when **CAD Module** is on; **standalone** issue/sync when **CAD Module** is off (e-ticket-only agencies).
 - See [E-citations overview](/mobile/ecitations-overview).
+
+Citation-only agencies can skip dispatch/CFS setup (units, incident types for live dispatch) until they add full CAD later.
 
 ## Daily admin tasks
 

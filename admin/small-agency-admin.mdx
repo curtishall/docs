@@ -61,9 +61,31 @@ Here is a summary of the full scope across each area:
 For a full go-live checklist spanning Web Admin, Dispatch CAD, and Mobile CAD, see the [Admin and manager setup guide](/dispatch/admin-manager-guide).
 
 - Configure **incident types** and **quick calls** before go-live so dispatchers have the call types they need from day one.
-- Set **agency settings** — traffic stops, NCIC — before training officers on the mobile app, so officers see the correct workflows during training.
+- Set **agency settings** — traffic stops, NCIC, CAD and E-Ticket modules — before training officers on the mobile app, so officers see the correct workflows during training.
 - Use the **Sandbox** organization for training exercises if your deployment includes a paired sandbox tenant. Changes made in Sandbox do not affect production data.
 - Document in writing who holds OrgAdmin for your organization. That person has broad power over the entire system and should be reachable during incidents and audits.
+
+## E-ticket-only go-live checklist
+
+Use this when the agency wants **electronic citations only** (no dispatch CAD):
+
+<Steps>
+  <Step title="Create the agency">
+    In Web Admin → **Agencies**, create the agency or select an existing one.
+  </Step>
+  <Step title="Set modules">
+    On **Settings**, turn **CAD Module** off and **E-Ticket Module** on. Leave **Traffic Stops Allowed** on unless policy says otherwise.
+  </Step>
+  <Step title="Configure citations">
+    Complete [Citation and report settings](/admin/citation-report-settings): template, charge codes, court info, and citation number blocks.
+  </Step>
+  <Step title="Invite officers">
+    Add users with mobile access for that agency. They do not need dispatch training for CFS workflows.
+  </Step>
+  <Step title="Verify on a device">
+    Sign in to Mobile CAD. Confirm **E-Ticket** appears, Calls/Map are hidden, and a test citation issues and syncs without a linked call.
+  </Step>
+</Steps>
 
 ## Common mistakes
 
