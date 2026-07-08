@@ -54,53 +54,52 @@ When multiple units are coming on duty simultaneously — such as at a major shi
 Once units are logged on, the **Active Units** sidebar gives you a live view of your deployment:
 
 - **Active units list** — shows every on-duty unit with its current status and color-coded indicator.
-- **Off Duty section** — lists units that are configured but not currently logged on, available for batch or individual login.
+- **Unstaffed units** — apparatus or units with **Available** status but no logged-in crew appear in the active list with an **Unstaffed** badge. Right-click and choose **Log in…** before assigning them to a call, or drag them to a call to be prompted to log in first.
+- **Off Duty section** — below the active list; shows units in **Off Duty** status (not Available units with no crew). Use batch or individual login from this section.
 - **Units list density** — toggle between **Compact** and **Comfortable** display density to match your screen layout.
 - **Status filter** — use the **All** dropdown to filter the sidebar to a specific status (e.g., show only Available units).
 
+The header shows total unit count, **Available**, **Unstaffed** (when any are present), and **En Route** counts.
+
 For a full-screen grid view of all unit statuses, press <kbd>F5</kbd> to open the **Unit Greaseboard**. The greaseboard supports **Table view**, **Sort by Status**, and can be opened in a new window for a secondary monitor.
+
+## Assigning an Unstaffed Unit to a Call
+
+If you drag an **Unstaffed** unit onto a call card (or select it in the unit assignment dialog), Cadmus opens the **Log in** dialog first. After crew is logged in, the assignment proceeds automatically. If assignment fails after a successful login, you will see an orange warning — the unit will not remain on the call.
 
 ## Unit Context Menu
 
 Right-click any unit row in the sidebar (or click the unit's action menu) to access quick actions without opening a call:
 
-| Action | Effect |
-|---|---|
-| **Create Call** | Opens a new CFS pre-tied to this unit |
-| **Off Duty** | Moves the unit to the Off Duty pool |
-| **Mark Available** | Returns unit to Available status |
-| **Logout User** | Removes one crew member without clearing the entire unit |
-| **Devices…** | Opens MDT device enrollment for the unit |
+| Action | When | Effect |
+|---|---|---|
+| **Create Call** | Always | Opens a new CFS pre-tied to this unit |
+| **Log in…** | Unstaffed unit | Opens the single-unit login dialog |
+| **Log off** | Staffed unit, no active calls | Logs off one officer (single crew) or all crew (multi-crew confirm) |
+| **Log off** (blocked) | Staffed unit on an active CFS | Shows active call references; clear the unit from calls first |
+| **Mark Available** | Always | Returns unit to Available status |
+| **Devices…** | When permitted | Opens MDT device enrollment for the unit |
 
 <Note>
   Some context menu items may display **Coming soon** depending on your agency configuration (for example, Traffic Stop from the sidebar and Memo Location).
 </Note>
 
-## Log Out a Single Officer
-
-To remove one crew member without taking the entire unit off duty:
-
-1. Open the unit context menu from the Active Units sidebar.
-2. Select **Logout User** from the unit's context menu.
-3. Confirm the officer to remove.
-
-The unit remains on duty with any remaining assigned crew.
-
-## Set a Unit Off Duty at Shift End
+## Log Off at Shift End
 
 <Steps>
   <Step title="Confirm the unit is clear of all calls">
-    A unit cannot be set off duty while assigned to an active CFS. If you attempt this, Cadmus displays a **Cannot Set Unit Off Duty** error toast.
+    A unit cannot be logged off while assigned to an active CFS. Cadmus displays a **Cannot Log off** dialog listing the active calls.
   </Step>
   <Step title="Open the unit context menu">
     Right-click the unit row in the Active Units sidebar.
   </Step>
-  <Step title="Select Off Duty">
-    Click **Off Duty** and confirm in the **Set Unit Off Duty** dialog.
+  <Step title="Select Log off">
+    Click **Log off** and confirm. Single-crew units log off one officer; multi-crew units prompt to log off all crew.
   </Step>
 </Steps>
 
-The unit moves from the Active Units list to the Off Duty pool.
+- **Permanent apparatus** (e.g., Ladder 1) — after log off, the unit stays in the Active Units list as **Unstaffed**.
+- **Standard units** — after log off, the unit moves to the **Off-Duty Units** section below the active list.
 
 ## MDT Device Enrollment
 
