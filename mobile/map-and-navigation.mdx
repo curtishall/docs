@@ -1,10 +1,10 @@
 ---
 title: "Map and navigation"
 sidebarTitle: "Map and navigation"
-description: "Navigate to call locations on the MDT map."
+description: "Navigate to call locations, view unit positions, and understand how GPS tracking works on MDT vs handheld phone."
 ---
 
-Navigate to call locations on the MDT map.
+Navigate to call locations on the map, view active units, and use GPS tracking appropriate to your device type.
 
 <Note>Screenshot placeholder: Map screen with call pin and BASE MAP selector</Note>
 
@@ -20,6 +20,59 @@ Navigate to call locations on the MDT map.
 - **DayPatrol (Light)**
 
 <Note>Screenshot placeholder: Map style toggle NightOps vs DayPatrol</Note>
+
+## GPS location tracking
+
+Cadmus sends your position to dispatch so units appear on the live map. **How** tracking works depends on the device:
+
+| Device | What is tracked | When tracking starts |
+|--------|-----------------|----------------------|
+| **Desktop MDT** (Windows, Linux, macOS) | Your **apparatus / unit** only | Automatically when you sign in and dispatch has you on an active crew |
+| **Activated apparatus tablet** (unit-device mode) | The **enrolled unit** | Automatically when the device session is active |
+| **Handheld phone or tablet** (officer sign-in, not unit-device) | **You** as a person | **Manual** — start from the dashboard **LOCATION** card or **Settings → Location services** |
+
+<Note>
+Handheld phone tracking reports **your** GPS position. It does not move your apparatus on the dispatch board. That avoids duplicate markers when you are assigned to a vehicle that also reports MDT location.
+</Note>
+
+### Map icons
+
+On the map and in dispatch CAD:
+
+- **Vehicle icons** (patrol car, fire truck, etc.) rotate with heading for apparatus / MDT telemetry.
+- **Phone icon** (upright, no rotation) means the position came from a **handheld** officer GPS fix.
+
+On a handheld phone, when person tracking is active, the map shows **your** local GPS fix even if you are assigned to a unit on the roster.
+
+<Frame caption="**TODO — screenshot:** Mobile map with a rotating vehicle unit icon and an upright phone icon (handheld officer). Capture both marker types on the same map if possible.">
+  <img src="/images/mobile/location/map-vehicle-vs-phone-icons.png" alt="Map showing vehicle unit marker and upright phone personnel marker" />
+</Frame>
+
+### Start and stop (handheld)
+
+1. Open the dashboard **LOCATION** card or **Settings → Location services**.
+2. Grant location permission if prompted.
+3. Tap **Start tracking** to begin sending your position.
+4. Tap **Stop tracking** to end updates.
+
+Desktop MDT and activated apparatus tablets stop tracking when you sign out or disconnect the device session.
+
+### Troubleshooting
+
+| Symptom | What to check |
+|---------|----------------|
+| **Assign a unit before starting MDT location tracking** | Dispatch must have you on an active crew with a resolvable call sign, or use unit-device activation on a shared tablet. |
+| **Sign in required for phone location tracking** | Sign in with your officer account before starting handheld tracking. |
+| GPS fix stale or missing | Tap **Refresh fix** on the dashboard; confirm OS location services and permissions are on. |
+| Wrong unit on dispatch board | Verify profile call sign matches dispatch; see [Profile and unit](/mobile/profile-and-unit). |
+
+<Frame caption="**TODO — screenshot:** Dashboard **LOCATION** card — GPS fix, speed/accuracy, **Start tracking** / **Stop tracking**, and **Refresh fix**.">
+  <img src="/images/mobile/location/dashboard-location-card.png" alt="Dashboard LOCATION panel with tracking controls and GPS accuracy" />
+</Frame>
+
+<Frame caption="**TODO — screenshot:** Handheld map with local GPS self-marker while person tracking is active (assigned officer, not apparatus AVL as YOU).">
+  <img src="/images/mobile/location/handheld-self-marker.png" alt="Handheld phone map showing local GPS dot while tracking" />
+</Frame>
 
 ## Navigation
 
@@ -37,7 +90,14 @@ Map may use cached tiles on slow or offline connections — see [Connectivity an
 - Switch **NightOps** for night shifts to reduce glare.
 - Confirm pin matches cross streets before proceeding.
 - Use map for orientation — follow agency policy for en-route navigation apps.
+- On handheld phones, start location tracking when your agency expects field GPS on the map.
 
 ## Warnings
 
 <Warning>Driving while interacting with map may violate policy — park safe or use passenger/MDT mount.</Warning>
+<Warning>Location data is sensitive — follow agency policy before sharing coordinates outside Cadmus.</Warning>
+
+## Related guides
+
+- [Settings and display](/mobile/settings-and-display) — Location services controls
+- [Profile and unit](/mobile/profile-and-unit) — Unit assignment and unit-device tablets

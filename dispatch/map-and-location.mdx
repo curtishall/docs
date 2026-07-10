@@ -16,13 +16,36 @@ Enable only the layers you need — dense maps can slow older workstations.
 
 | Layer | What it shows |
 |---|---|
-| **Patrol Units** | GPS positions of active patrol vehicles |
-| **Personnel** | On-duty personnel locations |
+| **Patrol Units** | GPS positions of active patrol vehicles and apparatus |
+| **Personnel** | On-duty personnel locations from handheld GPS |
 | **Active Calls** | Pin for each open call for service |
 | **RapidSOS Locations** | Staged RapidSOS alerts and live tracks |
 | **RapidSOS Breadcrumbs** | Movement trail during an active phone track |
 
 Weather and radar overlays are available from the map layer toolbar when your deployment includes them.
+
+## Unit and personnel map icons
+
+Cadmus uses different icons so you can tell **apparatus** telemetry apart from **handheld officer** GPS:
+
+| Icon | Meaning |
+|------|---------|
+| **Vehicle** (patrol car, fire truck, ambulance, etc.) | Apparatus or MDT-reported unit position; icon **rotates** with travel direction when heading is available |
+| **Phone** (upright) | Handheld officer GPS — person location, not the apparatus |
+
+Personnel on the **Personnel** layer also display with a phone-style marker and name label.
+
+<Tip>
+If a unit shows a vehicle icon at the station but an officer’s phone icon is moving toward a call, trust the phone fix for **where that officer is** and the vehicle icon for **where the apparatus last reported**.
+</Tip>
+
+<Frame caption="**TODO — screenshot:** Dispatch map — **Patrol Units** layer with a vehicle icon rotated to heading (MDT/apparatus telemetry).">
+  <img src="/images/dispatch/map/unit-vehicle-icon.png" alt="Dispatch map patrol unit with vehicle icon aligned to travel direction" />
+</Frame>
+
+<Frame caption="**TODO — screenshot:** Dispatch map — **Personnel** layer with upright phone icon and officer name label.">
+  <img src="/images/dispatch/map/personnel-phone-icon.png" alt="Dispatch map personnel marker with phone icon and name label" />
+</Frame>
 
 ## Map Controls
 
