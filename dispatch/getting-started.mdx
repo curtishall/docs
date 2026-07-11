@@ -107,3 +107,18 @@ If incident types, quick-call templates, or units appear stale or missing after 
 <Warning>
   Sign out using **Sign Out** in the user menu at the end of every shift on shared workstations. Leaving a session open can expose call and unit data to the next user.
 </Warning>
+
+## Application updates (Windows)
+
+Production Dispatch CAD checks for signed updates when you start the app and about every four hours while it stays open and online.
+
+| Stage | What you see |
+|-------|----------------|
+| **Update available** | Banner or **Cadmus updates** notice with release notes |
+| **Downloading** | Progress on the update action in the Communication Center |
+| **Ready to install** | **Update ready — restart to install** chip; choose **Restart to update** |
+| **After restart** | The installer applies the new version and relaunches Dispatch CAD |
+
+Updates download from Cadmus release infrastructure (Cloudflare). The app verifies each update with a cryptographic signature before staging it. An update is **not** installed until you restart and the verified installer runs.
+
+If auto-update is unavailable, use **Download update** in the notice to open the manual installer from your administrator.
