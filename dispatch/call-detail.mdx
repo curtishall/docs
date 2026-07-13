@@ -98,6 +98,28 @@ Use this block to document everyone involved in the incident, in addition to the
 
 For vehicles, click **Add Vehicle** to attach a vehicle record. Once a vehicle is added, click **Run CJIS vehicle query** to run a plate or VIN check against available databases.
 
+### CJIS query history
+
+Queries started from call detail appear in the call's **CJIS Query History**. The icon and label on each entry show whether the query is pending, completed with a hit, completed with no hit, timed out, or failed.
+
+<Steps>
+  <Step title="Find the query">
+    Open **CJIS Query History** and select **Refresh** if a recently submitted query is not yet listed.
+  </Step>
+  <Step title="Check its status">
+    Wait if the entry is marked sent or pending. A completed icon means a response arrived; read the accompanying hit or no-hit label.
+  </Step>
+  <Step title="Reopen the result">
+    Select a completed entry to view its parsed response and authoritative raw response. A DOR photo tab appears only when photo information is available.
+  </Step>
+</Steps>
+
+If part of an older response is unavailable, Cadmus keeps any accessible parsed or raw information visible and identifies the missing portion. Entries without a transaction identifier are not selectable.
+
+<Warning>
+  CJIS Query History and reopened results are restricted to authorized Law Enforcement users. Do not copy response text into an unrestricted note or relay it over an open or unencrypted channel.
+</Warning>
+
 ### Assigned agencies
 
 On multi-agency incidents, each involved agency receives its own CFS number and appears in this block.
