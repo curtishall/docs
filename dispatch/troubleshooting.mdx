@@ -28,6 +28,18 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     </Tip>
   </Accordion>
 
+  <Accordion title='"Could not load call board" after switching organizations'>
+    If you belong to both a **Live** organization and its paired **Sandbox** (training) organization, you may see **"Could not load call board — check network or try signing in again"** shortly after switching from one to the other. This usually means your session is still carrying the agency from the organization you switched away from.
+
+    1. Sign out completely and sign back in, then select the organization you want to work in from the sign-in screen.
+    2. After signing in, open the **Select Agencies** picker and confirm an agency for the current organization is checked.
+    3. If the error persists on every sign-in, ask your admin to confirm — in **Web Admin → Users** — that your account has an agency assigned in **both** the Live and Sandbox spaces. A membership with no agency in the space you are entering causes this error.
+
+    <Note>
+      Administrators: when creating a user for an organization that has paired Live and Sandbox spaces, the **Add User** form shows a separate **Live Agency** and **Sandbox Agency** selector. Choose an agency for each space so the user is not left without an agency in one of them.
+    </Note>
+  </Accordion>
+
   <Accordion title="Incident types missing from New CFS">
     When you open **New CFS** (F1) and expected incident types are absent, the type may be inactive in Web Admin or the local data cache is stale.
 
