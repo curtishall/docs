@@ -18,7 +18,7 @@ The call boards occupy the center of the dashboard. Each tab filters the active 
 | **Fire** | Fire discipline calls |
 | **EMS** | EMS discipline calls |
 | **Recent** | Calls that were recently closed but remain visible on the board |
-| **Status Timers** | Calls with active agency-configured status timers running |
+| **Status Timers** | Calls that need an agency status check while at least one unit for that agency is **on scene** |
 | **BOLOs** | Active be-on-the-lookout broadcasts for your agency |
 | **Resources** | Wrecker rotation, utility contacts, emergency contacts, and the operational board |
 
@@ -66,7 +66,11 @@ There are two ways to assign a unit to a call directly from the dashboard:
 
 ## Status Timer Alerts
 
+The **Status Timers** tab lists open calls where an agency status timer is active **and** that agency currently has a unit on scene. Calls that are only dispatched or en route (with nobody on scene yet) do not appear on this tab, even if a timer row exists in the system.
+
 When a status timer reaches its threshold, a **Status Timer Alerts** overlay appears globally — it is not limited to the Status Timers tab. The overlay identifies which calls have timers that are due or overdue so you can act immediately without navigating away from your current board.
+
+Quick calls such as **Paper Service** and **Follow-up** create the call with the unit **Dispatched**. The call is not marked On Scene, and status timers do not start, until a unit is placed on scene.
 
 <Warning>
   Do not dismiss a Status Timer Alert without taking action or confirming with the unit. Unanswered timer alerts can indicate a unit that needs a welfare check.
