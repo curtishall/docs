@@ -48,12 +48,13 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     3. Confirm you are in the correct organization — incident types are org-scoped, so switching to a different org will show a different list.
   </Accordion>
 
-  <Accordion title="Quick call F-key does nothing">
-    If pressing an F-key shortcut (F8–F12) produces no action, the associated template is likely missing or its linked incident type is inactive.
+  <Accordion title="Quick call or header F-key does nothing">
+    If pressing an F-key shortcut (F1–F12) produces no action, check whether a dialog is open and whether a template is configured.
 
-    1. Ask your admin to open **Web Admin → Quick Call Shortcuts** and verify a template exists for that key.
-    2. Confirm the incident type linked to that template is **Active** in Web Admin.
-    3. Select **Reload Data** in Dispatch CAD after any template changes. If the template was just created, a full restart of Dispatch CAD may be required before the shortcut fires.
+    1. Close the **New CFS** dialog if it is open — dashboard F-keys are disabled while that form is open.
+    2. For **F1–F5**, confirm you are on the dispatch dashboard (not mid-dialog) and try again. **F4** opens Map only; RapidSOS (training builds) is click-only.
+    3. For **F6–F12**, ask your admin to open **Web Admin → Quick Call Shortcuts** and verify a template exists for that key, and that its incident type is **Active**.
+    4. Select **Reload Data** in Dispatch CAD after any template changes. If the template was just created, a full restart of Dispatch CAD may be required before the shortcut fires.
   </Accordion>
 
   <Accordion title="NCIC/Query button not appearing">
