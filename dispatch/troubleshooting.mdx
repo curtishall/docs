@@ -68,12 +68,19 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     Cadmus deployments commonly pair a **Live** organization for production use with a **Sandbox** organization for training. Dispatching in the wrong environment is a significant risk.
 
     1. Check the header banner — Dispatch CAD displays a prominent **SANDBOX MODE** or **LIVE MODE** indicator.
-    2. If you are unsure which environment you signed in to, sign out and confirm the organization name on the sign-in screen. Sandbox orgs are typically labeled with a suffix such as "– Sandbox" or "– Training."
-    3. Never record real citizen calls or submit NCIC queries against real plates in a Sandbox org.
+    2. The banner reflects the active **organization space**, not the API server environment. If you switch organizations, confirm that the banner updates before entering call or query data.
+    3. If you are unsure which organization you signed in to, sign out and confirm the organization name on the sign-in screen. Sandbox orgs are typically labeled with a suffix such as "– Sandbox" or "– Training."
+    4. Never record real citizen calls or submit NCIC queries against real plates in a Sandbox org.
 
     <Note>
       If your organization's Live and Sandbox orgs have similar names, ask your OrgAdmin to rename them more distinctly to prevent confusion.
     </Note>
+  </Accordion>
+
+  <Accordion title="Map or Units window is already open">
+    On Windows, **Map** (F4) and **Units** (F5) open as secondary windows with their own Flutter engine inside the running Dispatch CAD application.
+
+    If clicking the shortcut does not create another window, check the taskbar and other monitors: Dispatch CAD focuses the existing Map or Units window instead of opening a duplicate. Closing the secondary window and opening it again starts a new secondary window and engine without restarting the main CAD application.
   </Accordion>
 
   <Accordion title="Map or RapidSOS not working">
