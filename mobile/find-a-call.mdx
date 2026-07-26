@@ -28,11 +28,29 @@ Results: **N result(s) — page X of Y**
 
 <Note>Screenshot placeholder: Find a Call search form and results</Note>
 
-## Open result
+## Open a closed call
 
-Tap result to view call summary (read-only typical for closed calls).
+Tap a result row to open the **closed call detail** screen. This replaces the older separate **CFS notes** and **call details** actions with one combined view.
 
-<Note>Screenshot placeholder: Historical call summary from search</Note>
+The detail screen includes:
+
+| Section | What you see |
+|---------|----------------|
+| **Header** | CFS number, report/RMS number when present, CLOSED status, reported and cleared times |
+| **Summary** | Call type, location, primary units, priority |
+| **CFS narratives** | Public narrative and private notes (when your role allows). Tap **Edit** to update, then **Save**. Supervisors can mark **Supervisor approved CFS**. |
+| **Occurrence history** | Entered, dispatched, on scene, and cleared timestamps |
+| **Call notes** | Dispatcher and officer notes logged on the call |
+
+### Reports (top bar)
+
+| Action | Purpose |
+|--------|---------|
+| **PDF** | Download the full internal CFS report (same PDF as Web Admin closed incidents) |
+| **Email** | Email the full internal report to agency notification addresses configured in Web Admin |
+| **Public CFS** | Shown only when your organization has **Enable Public CFS Report** turned on in Web Admin. Opens a preview of the **public narrative only** (labeled **CFS**), then **Share PDF** for a redacted public document — no private notes, chronology, or incident tables. |
+
+<Note>Screenshot placeholder: Closed call detail with narratives and report actions</Note>
 
 ## Offline
 
@@ -43,7 +61,9 @@ Tap result to view call summary (read-only typical for closed calls).
 - Use CFS number when dispatch radioed it.
 - Address search helps repeat-location checks.
 - This is **not** NCIC — use **NCIC Search** for criminal queries.
+- If **Public CFS** is missing, ask an OrgAdmin to enable it under Web Admin **Settings** → **CFS Reports**.
 
 ## Warnings
 
 <Warning>Historical call data is sensitive — follow records/PII policy on shared devices.</Warning>
+<Warning>Public CFS shares only the public narrative, but still may contain PII — follow your agency release policy before sharing outside the organization.</Warning>
