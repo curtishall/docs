@@ -46,6 +46,32 @@ You can adjust how call cards appear on any board tab:
 
 - **Sort calls** — change the sort order (for example, by time received, priority, or incident type) to match your workflow. Sort settings apply per tab.
 - **Call list density** — toggle between **compact** and **comfortable** card layouts. Compact fits more calls on screen; comfortable gives more detail per card without opening the call.
+- **Call preview** — use **Preview on / Preview off** on the side rail to show or hide the reading pane under the call list. Drag the horizontal handle to resize the pane; Cadmus remembers your height preference across sessions.
+
+## Call Preview Pane
+
+Every call board tab (Pending, Patrol, Dispatched, Fire, EMS, Recent, and Status Timers) includes an Outlook-style **preview pane** below the call list. BOLOs and Resources do not use this pane.
+
+| Action | Result |
+|---|---|
+| **Single-click** a call card | Selects the call and fills the preview pane (does not leave the board) |
+| **Double-click** a call card | Opens the full [Call Detail](/dispatch/call-detail) page |
+| **Open details** in the preview | Same as double-click |
+| Drag the resize handle | Makes the preview taller or shorter |
+
+The preview is optimized for a quick dispatcher glance and common actions:
+
+- **Quick note bar at the top** — add a dispatcher note without leaving the board
+- Header (CFS, priority, status, type, address, reporting party)
+- Quick stats chips (on scene / en route / dispatched / safety flags / unit count)
+- Needs-attention banner when status checks are overdue or safety notes exist
+- **Units with status buttons** — change a unit to Available, Dispatched, En Route, or On Scene from the preview
+- Officer safety, access, contacts, and EMS cards (editable when the call is open)
+- Recent activity / latest note and agency status timers (snooze / complete)
+
+<Tip>
+  Use the preview to triage and add notes while keeping the board visible. Open full Call Detail when you need persons, vehicles, citations, or other full-page tools.
+</Tip>
 
 ## Assigning Units from the Board
 
@@ -60,7 +86,7 @@ There are two ways to assign a unit to a call directly from the dashboard:
     </Note>
   </Tab>
   <Tab title="Call Detail">
-    Click the call card to open the full **call detail** panel, then click **Assign Unit**. Select the unit from the list and confirm. This method works regardless of whether drag-and-drop is enabled.
+    Double-click the call card (or click **Open details** in the preview pane) to open the full **call detail** page, then click **Assign Unit**. Select the unit from the list and confirm. This method works regardless of whether drag-and-drop is enabled.
   </Tab>
 </Tabs>
 
