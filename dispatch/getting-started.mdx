@@ -43,13 +43,15 @@ Your **organization** determines which calls, units, incident types, and setting
 
 | Header control | What it does |
 |---|---|
-| **Select Agencies** | Filters call boards and units to the agencies you choose |
-| **All Agencies** | Resets the filter to show everything in your organization |
-| **Clear** | Removes all agency selections |
-| **Done** | Applies the current filter and refreshes the boards |
+| **Select Agencies** | Filters call boards (and related agency-scoped views) to the agencies you choose |
+| **All** | Selects every agency (shows the full organization) |
+| **Clear** | Deselects every agency — boards show **no** calls until you check agencies again or tap **All** |
+| **Done** | Closes the picker (the filter already updates as you check or clear) |
+
+The footer count shows how many agencies are checked (for example **0 of 12** after **Clear**, or **12 of 12** when **All** is selected).
 
 <Note>
-  If a board looks unexpectedly empty, check whether an agency filter is active. A filter that excludes your primary agency is one of the most common causes of a blank call board.
+  If a board looks unexpectedly empty, open **Select Agencies** and confirm agencies are checked. **Clear** leaves zero agencies selected, which empties the boards on purpose. Tap **All** to restore the full organization view.
 </Note>
 
 ## Main Screen Layout
