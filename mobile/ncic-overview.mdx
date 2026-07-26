@@ -78,6 +78,27 @@ In training mode, serials or boat identifiers containing `STOLEN` return sample 
 
 ## Responses
 
+The **RESPONSES** tab keeps feedback for each submitted query. A second query does not replace a query that is still pending.
+
+| Status | Meaning |
+|---|---|
+| **Sent** or **Pending** | The MDT submitted the query and is waiting for a response. |
+| **Completed — Hit** | One or more matching records were returned. Review the details before acting. |
+| **Completed — No hit** | The response explicitly reports no matching record or no operator. |
+| **Error** or **Timed out** | The query did not complete. Open it for available details and retry when appropriate. |
+
+Tap a completed response to open its result:
+
+- **Parsed** shows structured person, driver, vehicle, warrant, firearm, article, or boat information.
+- **Raw** shows the authoritative CJIS response. It is displayed on screen only and is never included in a spoken summary.
+- **Photo** appears when an authorized DOR photo is available. A missing or invalid photo does not hide the parsed or raw result.
+
+DOR responses distinguish **Suspended**, **Revoked**, **No Operators**, **Valid**, and **Unknown**. Warrant and returned protection-order indicators appear separately from the overall hit/no-hit status.
+
+<Info>
+  The MDT can display a protection-order indicator returned in a response. It does not provide a separate Ex Parte or Order of Protection submission form.
+</Info>
+
 Actions on results (availability varies):
 
 - **ISSUE CITATION**, **ISSUE WARNING**, **CREATE FIR**
@@ -87,7 +108,7 @@ Actions on results (availability varies):
 
 ## Voice summaries
 
-Enable **CJIS result summaries** in Settings — see [Voice alerts](/mobile/voice-alerts).
+Enable **CJIS result summaries** in Settings — see [Voice alerts](/mobile/voice-alerts). Spoken summaries may announce approved high-level information such as hit/no-hit, suspended or revoked status, or a warrant/protection indicator. They never read raw CJIS text, personal identifiers, addresses, or photo data aloud.
 
 ## In-call queries
 
@@ -95,8 +116,8 @@ Person/vehicle **QUERY** buttons also appear on call detail cards.
 
 ## Requirements
 
-Agency **State/NCIC Access** and user authorization in Web Admin. Criminal history queries are not available on mobile.
+Agency **State/NCIC Access** and user authorization in Web Admin. Live results are cleared when your organization or session changes. Training responses remain separate from live CJIS responses. Criminal history queries are not available on mobile.
 
 ## Warnings
 
-<Warning>CJIS policy applies on mobile same as desktop — official use only.</Warning>
+<Warning>CJIS policy applies on mobile same as desktop — official use only. Do not copy, share, or read raw CJIS results over an open or unencrypted channel.</Warning>

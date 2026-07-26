@@ -96,7 +96,8 @@
             "icon": "life-buoy",
             "pages": [
               "dispatch/troubleshooting",
-              "dispatch/admin-manager-guide"
+              "dispatch/admin-manager-guide",
+              "dispatch/release-notes"
             ]
           }
         ]
