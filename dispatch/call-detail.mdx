@@ -133,6 +133,8 @@ If part of an older response is unavailable, Cadmus keeps any accessible parsed 
   CJIS Query History and reopened results are restricted to authorized Law Enforcement users. Do not copy response text into an unrestricted note or relay it over an open or unencrypted channel.
 </Warning>
 
+Adding, editing, or removing a person writes an entry under **History & Logs → Audit Logs** (switch the filter from **Call Notes** if you do not see it).
+
 ### Assigned agencies
 
 On multi-agency incidents, each involved agency receives its own CFS number and appears in this block.
@@ -162,7 +164,9 @@ This section is the call's permanent record of everything that happened.
     **Restricted CJIS notes:** If a dispatcher pastes external query response text that begins with `FROM-MULES`, `FROM-DOC`, `FROM-NCIC`, `FROM-REVENUE`, or `FROM-NLETS`, Cadmus automatically classifies the note as **Restricted / Confidential — Law Enforcement only**. Law Enforcement agencies see the full text; Fire, EMS, and other non-LE agencies see a placeholder message instead of CJIS content. An orange warning may appear while typing or pasting before the note is saved.
   </Tab>
   <Tab title="Audit Logs">
-    System-generated log of every change made to the call record — field edits, status updates, unit assignments, and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
+    System-generated log of every change made to the call record — field edits, status updates, unit assignments, person add/edit/remove (suspect, victim, witness, and other roles), and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
+
+    The History filter defaults to **Call Notes**. Switch to **Audit Logs** or **All** to see person and other system changes.
   </Tab>
   <Tab title="Images">
     Photos attached to the call appear under **History & Logs**. Use the image icons below the note field:
