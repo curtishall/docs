@@ -60,12 +60,25 @@ Tap a row to open that call in read-only detail. Use **RETRY** if a tab fails to
 
 ## History & Logs
 
+Mobile shows one **combined timeline** under **History & Logs** (there is no separate Call Notes / Audit Logs filter like dispatch CAD).
+
+| Badge | Meaning |
+|-------|---------|
+| **CALL NOTE** | Officer or dispatcher narrative you added, or another user's note on the call |
+| **SYSTEM** | System-generated timeline (status changes, unit activity, and similar) |
+| **DISPATCHER** | Dispatcher-originated log line |
+| **RESTRICTED** | CJIS/MULES/NCIC response text visible only to Law Enforcement viewers |
+
 - Scroll to **History & Logs** on call detail (phone) or the detail panel (tablet/desktop).
-- **Add a note** inline or use the app bar note icon / **Dialog** link.
-- **Refresh** icon reloads notes and system log lines.
-- Notes need network — offline attempts show a clear error and do not claim success.
-- Detail screen **updates automatically** when dispatch adds notes or changes status (WebSocket refresh).
-- Notes that contain pasted CJIS/MULES/NCIC/NLETS/DOR response headers are marked **RESTRICTED** for non–Law Enforcement viewers.
+- **Add a note** inline (**Add Note**) or use the app bar note icon / **Dialog** link — see [Dispatch notes](/mobile/dispatch-notes).
+- **Refresh** reloads notes and system log lines.
+- Notes need network — offline attempts show **No network connection. Note was not sent.**
+- The detail screen **updates automatically** when dispatch adds notes, changes status, or updates persons/vehicles (WebSocket refresh).
+- Pasting CJIS/MULES/NCIC/NLETS/DOR response text triggers a warning; saved notes may show **RESTRICTED** for non–Law Enforcement viewers.
+
+<Tip>
+  Dispatchers reviewing person add/edit/remove audit entries use the **Audit Logs** filter on [Call Detail (dispatch)](/dispatch/call-detail). On mobile, watch **Persons involved** for live updates and use **Refresh** on History & Logs for the latest timeline.
+</Tip>
 
 <Note>Screenshot placeholder: History & Logs section with note field</Note>
 
@@ -79,7 +92,7 @@ When connected to Android Auto, **My Calls** shows your assignments with critica
 - **Scan ID** — scan a driver license barcode (camera or hardware wedge), review parsed fields, choose a person type, and add to the call
 - **Add Vehicle to Call** / **ADD VEHICLE**
 - Required: **First and last name are required**, **License plate is required**
-- When dispatch adds or updates a person or vehicle on the same open call, mobile refreshes the **Persons involved** and **Vehicles involved** sections automatically (and vice versa on the dispatch CAD).
+- When dispatch adds or updates a person or vehicle on the same open call, mobile refreshes the **Persons involved** and **Vehicles involved** sections automatically (and vice versa on the dispatch CAD). You do not need to leave and reopen the call.
 
 <Note>Screenshot placeholder: Add Person dialog</Note>
 
@@ -117,7 +130,7 @@ See [Close call](/mobile/close-call).
 
 ## Find a closed call
 
-From sidebar **Find a Call**, search closed calls and tap **See call details** on a result to open read-only call detail (same panel as assigned calls, without status buttons when not assigned).
+From sidebar **Find a Call**, search closed calls and **tap a result row** to open the unified closed-call detail screen (narratives, notes, PDF/email/Public CFS when enabled). Same layout as assigned call detail, without status buttons when your unit is not on the call. See [Find a call (mobile)](/mobile/find-a-call).
 
 ## Related
 
