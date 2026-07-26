@@ -9,23 +9,25 @@ In **call detail**, the command line runs in **in-call** mode:
 - The **CFS badge** shows which call is targeted.
 - **OS 423** means unit 423 on scene **for this call** — no `#` needed.
 - **PRI=**, **TYPE=**, **LOC=**, **NARR=**, **N**, and **NS** apply to **this** call.
-- Type **`PRI=`** and keep typing for **priority suggestions** (e.g. 1 Emergency … 4 Low), when **Dispatch CAD** command suggest is connected.
+- Type **`PRI=`** for priority suggestions (1–4). Type **`TYPE=`** for incident types / shortcodes that **start with** what you typed (e.g. `TYPE=ASS` → ASSAULT…).
+- Notes from **`N`** / **`NARR=`** appear on the call immediately (quotes optional: `N "test 123"`).
+- Type **`HELP STATUS`** (or tap **STATUS** in the HELP dialog) for full timer usage.
 
-Use **VIEW** or the board to open a different call before running in-call commands for that CFS.
+Use **`VIEW #<CFS>`** from the dashboard to open a different call, or pick it from the board, before running in-call commands for that CFS.
 
 ## Call-only commands (require an open call)
 
-These are recognized when you are on **call detail** (and appear in **HELP** there only):
+These are recognized when you are on **call detail** (and appear in **HELP** there):
 
 ### Status timer (call-level and agency)
 
 | Command | What it does |
 |--------|----------------|
-| `STATUS 10` | Set or restart the **call-level** status timer to *N* minutes (use `STATUS 0` to stop the countdown). |
-| `STATUS OFF` | Disable the **call-level** status timer. |
-| `STATUS ON` | Re-enable the **call-level** timer (restarts from saved duration when one is set). |
-| `STATUS OFF @Agency` | Pause the **agency** status timer for that agency on this call (same as **Pause checks** on the timer card). Use agency **ID** or **name** after `@` when multiple agencies are attached. |
-| `STATUS ON @Agency` | Resume that agency's status timer and restart the check interval (same as **Resume checks** on the timer card). |
+| `STATUS 10` | Set or restart the **call-level** status timer to *N* minutes (`STATUS 0` stops it). |
+| `STATUS ON` | **One agency** on the call → start that agency’s status timer. **Multiple agencies** → you must use `STATUS ON @AgencyName` (the error lists the agencies). **No agency on call** → enable call-level timer. |
+| `STATUS OFF` | Same single / multi / call-level rules to stop timers. |
+| `STATUS OFF @Agency` | Pause the **agency** status timer for that agency on this call. |
+| `STATUS ON @Agency` | Start or resume that agency's status timer (creates the timer if it was never started). |
 
 ### People and vehicles
 

@@ -36,10 +36,16 @@ Configure modules under [Agency settings](/admin/agency-settings) in Web Admin.
     Tap **NEW CITATION** and toggle **CITATION** vs **WARNING**.
   </Step>
   <Step title="Complete wizard steps">
-    Fill **Subject / Vehicle**, **Violation / Loc** or **Violation** (template-driven forms may use this label), **Signatures**, and **Review & Issue**.
+    Fill **Subject / Vehicle**, **Violation / Loc** or **Violation** (template-driven forms may use this label), **Signatures**, and **Review & Issue**. When your Missouri state template includes them, you may also enter **Court division**, optional **OCN**, **CDL** (Yes / No / blank), and **Did unlawfully** checkboxes (operate/drive, park, C.M.V., hazmat).
   </Step>
   <Step title="Violation charge codes">
-    On **Violation / Loc** or **Violation**, tap **Search charge codes** or start typing in the violation description field. Type an offense description (for example, *financial responsibility*). Results are ranked by description, not RSMO number. Codes your agency uses often appear with an **Often used** badge. **Unlawful Act** is filled from the selection but can still be edited. If the catalog is not cached yet, connect once to sync, or enter the charge manually.
+    On **Violation / Loc** or **Violation**, start typing in the **Unlawful Act** or violation description field. Type offense words (for example, *steal* matches *stealing*). Results are ranked by description, not RSMO number. Codes your agency uses often appear with an **Often used** badge. **Unlawful Act** is filled from the selection but can still be edited. If the catalog is not cached yet, connect once to sync, or enter the charge manually.
+  </Step>
+  <Step title="Seat belt violations (Missouri)">
+    For **Seat belt unlawful act**, type at least four characters including **belt** (for example, *belt* or *seat belt*). Shorter terms such as *seat* alone do not return seat-belt statutes. Missouri RSMo 307.178.x and 307.179 appear when the search includes **belt**.
+  </Step>
+  <Step title="Driver information">
+    On **Subject / Vehicle** or **Driver**, tap **Scan ID** to scan the license barcode with the device camera or a hardware wedge scanner. Review the parsed fields, or tap **Use demo data** for training. Mapped fields include name, DOB, license number, and address. Sex, height, and similar fields not on the citation form are ignored.
   </Step>
   <Step title="Issue or save draft">
     Tap **ISSUE CITATION** or **SAVE DRAFT**. Use **Violator Refused to Sign** when applicable. For full CAD agencies, select a **Linked call** before issuing for live sync. Standalone e-ticket agencies skip the call selector.
@@ -58,11 +64,14 @@ Configure modules under [Agency settings](/admin/agency-settings) in Web Admin.
 
 - Open **PDF PREVIEW** from a citation (issued or ready to print).
 - When your agency uses a **state or custom form template**, choose:
-  - **4" THERMAL** — single-strip layout for mobile 4″ printers
+  - **4" THERMAL** — single-strip layout for mobile 4″ printers (Missouri: page 1 and 2 sequential)
   - **LETTER (FRONT + BACK)** — letter-size page with front and back side-by-side
 - Use **PRINT** from the preview once the form shows correctly (not a blank page).
 - **BACK TO E-CITATIONS** returns to the citation list.
 - PDF content includes defendant/driver, vehicle, and offense fields from the filled citation.
+- **Officer**, **Badge**, and **Issue date** on Missouri Form 37A are filled automatically from your login when you start a new citation — you do not type them on the entry form.
+
+<Note>Officers do not enter or see fine amounts in the citation wizard, review screen, or print preview. Courts and records systems assign fines separately.</Note>
 
 If the preview is blank, check network so template pages can download, then reopen **PDF PREVIEW**. Contact an admin if the form still does not appear.
 

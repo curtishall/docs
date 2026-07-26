@@ -8,17 +8,19 @@ The **Create New Call for Service** form (opened with **F1** or **New CFS** in t
 
 ## Required fields
 
-All three fields below must be completed before Cadmus allows you to click **Create Call**.
+These fields must be completed before Cadmus enables **Create Call**. In the form they are marked with a **red arrow** and **\*** (uses the theme error color so it stays readable in dark or light UI).
 
 | Field              | Label                   | Notes                                           |
 |--------------------|-------------------------|-------------------------------------------------|
 | Incident type      | **Incident Type \***    | Select from the list — do not rely on free text alone |
-| Location           | **Location \***         | Street address, cross street, or common place   |
+| Location           | **Incident Location \*** | Street address, cross street, common place, or GPS |
 | Incident details   | **Incident Details \*** | Who, what, where, and any immediate risks       |
+
+**Reporting party is optional.** You can create the call with an empty RP section and add or edit the caller later in call detail.
 
 ## Priority levels
 
-Select the **Priority Level \*** that matches your agency's response protocol. Priority drives queue order on the dispatch board and may trigger automated notifications.
+Select the **Priority Level \*** that matches your agency's response protocol. Priority drives queue order on the dispatch board and may trigger automated notifications. A default is always selected, so priority alone does not block **Create Call**.
 
 <CardGroup cols={2}>
   <Card title="Priority 1 — Emergency" icon="siren-on">
@@ -100,9 +102,9 @@ While you type a street address, Cadmus contacts your agency's GIS service:
 - Follow any snackbar or inline error messages before submitting the form.
 - Address validation rules are configured in **Web Admin → GIS Settings**. Contact your agency administrator if validation consistently fails for known addresses.
 
-## Reporting party
+## Reporting party (optional)
 
-The reporting party (RP) section captures the caller's contact information.
+The reporting party (RP) section captures the caller's contact information when available. It is labeled **(optional)** in the form and **does not** block **Create Call**.
 
 | Option                                      | Description                                                            |
 |---------------------------------------------|------------------------------------------------------------------------|
@@ -110,11 +112,11 @@ The reporting party (RP) section captures the caller's contact information.
 | **+ Add Phone Number**                      | Record additional callback numbers for the same caller.                |
 | **+ Add Caller**                            | Add a second or subsequent reporting party at create time.              |
 
-<Frame caption="Reporting party fields — name, address, and optional notes for the primary caller.">
+<Frame caption="Optional reporting party fields — name, address, and notes for the primary caller.">
   <img src="/images/dispatch/create-cfs/reporting-party-section.png" alt="Reporting party section with caller name address and notes" />
 </Frame>
 
-<Frame caption="**3 — Reporting Person** — caller contact fields, **Caller address same as incident location**, and links to add phones, callers, vehicles, and involved persons.">
+<Frame caption="**3 — Reporting Person (optional)** — caller contact fields, **Caller address same as incident location**, and links to add phones, callers, vehicles, and involved persons.">
   <img src="/images/dispatch/create-cfs/reporting-party-expanded.png" alt="Expanded reporting person section with OLN phone and additional callers vehicles persons" />
 </Frame>
 
@@ -128,7 +130,7 @@ The reporting party (RP) section captures the caller's contact information.
 |-------------------|----------------------------------------------------------------------------------------------|
 | **Disable Timer** | Skips the default agency status timer for this call. Use only when agency policy permits.    |
 | **+ Add Vehicle** | Attach a vehicle record to the CFS at creation time (make, model, plate, color, state).      |
-| **+ Add units (optional)** | Assign units at create time; collapsed by default — expand to notify units on submit. |
+| **+ Add units (optional)** | Assign units at create time; collapsed by default — expand to search and select units. Click outside the section (or the header again) to collapse it; selected units stay assigned. |
 
 ## Form action buttons
 
