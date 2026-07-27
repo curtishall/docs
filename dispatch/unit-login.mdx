@@ -30,12 +30,27 @@ You can open the **Unit Assignment** dialog two ways:
     Click the row for the unit you want to bring on duty.
   </Step>
   <Step title="Assign crew">
-    Click **Logon** and enter or select the officer's name or ID to associate them with the unit.
+    Enter or select the officer's DSN or name. For **fixed apparatus** (ladder, tanker) marked Fixed in Web Admin, you may leave crew empty and still Logon — the unit becomes **Available** / **Unstaffed**.
   </Step>
   <Step title="Confirm">
     Submit the dialog. The unit moves from the Off Duty pool to the **Active Units** sidebar with an **Available** status.
   </Step>
 </Steps>
+
+## Command line: LOGIN / OFF
+
+From the CAD command bar (dashboard or call):
+
+| Command | Meaning |
+|---------|---------|
+| `LOGIN 351 CAR6` or `ON 351 CAR6` | Log user DSN **351** onto unit **CAR6** |
+| `LOGIN LADDER2` | Fixed apparatus only — put the unit Available with **no** crew |
+| `OFF CAR6` or `LOGOFF CAR6` | Log off all crew on that unit |
+| `OFF 351` | Log off DSN **351** if they are on exactly one unit |
+
+Type `HELP LOGIN` for usage and examples. Non-fixed units (typical police cars) always need a DSN: `LOGIN CAR6` alone is rejected.
+
+**Admin prerequisite for apparatus:** In Web Admin → Units, enable **Fixed apparatus (may log on with no crew)** (`IsFixed`) on ladder/tanker/engine units before empty-crew login works.
 
 ## Batch Login at Shift Start
 

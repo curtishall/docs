@@ -48,6 +48,9 @@ Opens the call in Call Detail when the CFS exists.
 | TS | Traffic / vehicle stop | `TS @UNIT <ADDRESS>` | — |
 | BUSY / AVAIL / OOS | Availability | `BUSY <UNIT>` etc. | — |
 | UI | Unit info | `UI <UNIT>` | `UI <UNIT>` |
+| LOGIN / ON | Log person onto unit | `LOGIN 351 CAR6` | Same |
+| LOGIN / ON | Fixed apparatus, no crew | `LOGIN LADDER2` | Same (unit must be Fixed in Admin) |
+| OFF / LOGOFF | Log off unit crew or unique DSN | `OFF CAR6` / `OFF 351` | Same |
 
 ## Call properties (in-call)
 
