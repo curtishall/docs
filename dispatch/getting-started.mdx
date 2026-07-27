@@ -129,7 +129,8 @@ On Windows CAD builds, Settings & tools also includes application update control
 
 - **Automatically download updates** is **off by default**. Cadmus still checks for updates, then asks before downloading and installing.
 - Turn the toggle **on** if you want quiet background downloads; Cadmus still asks before installing and restarting.
-- Choose **Later** to postpone for 24 hours.
+- Choose **Later** to postpone for 24 hours. While postponed, Settings & tools shows **Install pending update** so you can install before the reminder returns.
+- **Install pending update** clears the postpone and downloads or installs the update you already deferred.
 
 <Warning>
   Sign out using **Sign Out** in the user menu at the end of every shift on shared workstations. Leaving a session open can expose call and unit data to the next user.
@@ -144,6 +145,7 @@ Production Dispatch CAD checks for signed updates when you start the app and abo
 | **Update available** | Banner or **Cadmus updates** notice with release notes |
 | **Downloading** | Progress on the update action in the Communication Center |
 | **Ready to install** | **Update ready — restart to install** chip; choose **Restart to update** |
+| **Postponed** | Settings shows **Install pending update**; choose it when you are ready before the 24-hour reminder |
 | **After restart** | The installer applies the new version and relaunches Dispatch CAD |
 
 Updates download from Cadmus release infrastructure (Cloudflare). The app verifies each update with a cryptographic signature before staging it. An update is **not** installed until you restart and the verified installer runs.
