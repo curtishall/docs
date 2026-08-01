@@ -4,7 +4,9 @@ sidebarTitle: "Map & Location"
 description: "Use the Cadmus map to plot units and calls, review staged RapidSOS alerts by icon type, and create CFS records from emergency data."
 ---
 
-The Cadmus map gives you a live picture of units, open calls, and — when enabled — **staged RapidSOS alerts** with partner-specific icons and detail panels. Use it to validate addresses, share coordinates with responders, track a phone number live, or **Create New CFS** directly from an alert pin.
+The Cadmus map gives you a live picture of units, open calls, and - when enabled - **staged RapidSOS alerts** with partner-specific icons and detail panels. Use it to validate addresses, share coordinates with responders, track a phone number live, or **Create New CFS** directly from an alert pin.
+
+Published GIS data from Web Admin also feeds address validation and map overlays for the selected organization. Dispatchers do not upload GIS files themselves, but they will see the effects of published GIS data here.
 
 ## Opening the Map
 
@@ -12,7 +14,7 @@ Press **F4** or click **Map** in the header. On desktop, the map may open in a s
 
 ## Map Layers
 
-Enable only the layers you need — dense maps can slow older workstations.
+Enable only the layers you need - dense maps can slow older workstations.
 
 | Layer | What it shows |
 |---|---|
@@ -23,6 +25,8 @@ Enable only the layers you need — dense maps can slow older workstations.
 | **RapidSOS Breadcrumbs** | Movement trail during an active phone track |
 
 Weather and radar overlays are available from the map layer toolbar when your deployment includes them.
+
+Depending on your organization's GIS configuration, additional operational overlays may appear after an OrgAdmin or CadmusAdmin publishes new GIS data.
 
 ## Unit and personnel map icons
 
@@ -186,3 +190,14 @@ Agency administrators configure RapidSOS in **Web Admin → Integrations → Rap
 - **Runtime Settings** — per-org toggles for RAD-E, LEI, EDX, polling numbers, dispatch agency
 
 See [RapidSOS Management](/admin/rapidsos-management).
+
+## GIS-driven address behavior
+
+When dispatchers enter or revalidate an address, Cadmus can use organization-scoped GIS data to:
+
+- confirm the address exists
+- place the incident pin more accurately
+- support common-place and operational matching
+- determine whether the address is outside configured operational coverage
+
+If known good addresses stop validating after an admin publishes new GIS data, escalate to your OrgAdmin or Cadmus support and provide the affected address examples and timestamps.

@@ -1,0 +1,95 @@
+---
+title: "Manage GIS Uploads, Coverage, and Publication"
+sidebarTitle: "GIS Data Management"
+description: "Upload zipped GIS artifacts, review preview results, map fields, validate operational matches, and publish organization-scoped GIS data in Web Admin."
+---
+
+Cadmus GIS administration lives in **Web Admin** and is intended for **OrgAdmins** and **CadmusAdmins**. This workflow handles organization-scoped map and address data used by Dispatch CAD and related services.
+
+<Warning>
+  GIS publication affects address validation, map overlays, and coverage reads for the selected organization. Always verify the organization picker before you upload or publish.
+</Warning>
+
+## Who can use this
+
+| Role | Access |
+|---|---|
+| **OrgAdmin** | Manage GIS only for their organization |
+| **CadmusAdmin** | Cross-org GIS support and publication across all organizations |
+| **AgencyAdmin / Dispatcher** | No GIS upload or publish access |
+
+## Supported upload format
+
+Upload a **single `.zip` archive** that contains the full GIS layer payload for one dataset version. For Shapefile uploads, include the required sidecar files in the archive:
+
+- `.shp`
+- `.shx`
+- `.dbf`
+- `.prj` when available
+
+Cadmus parses the archive server-side and builds a preview before any publication occurs.
+
+## Recommended workflow
+
+<Steps>
+  <Step title="Open GIS management">
+    Open the GIS import area in Web Admin and confirm the selected organization.
+  </Step>
+  <Step title="Upload the archive">
+    Upload the zipped GIS artifact. Cadmus stores the raw artifact, inspects the layer structure, and generates a preview.
+  </Step>
+  <Step title="Review preview">
+    Confirm the detected layer, geometry type, feature count, and field list. Stop here if the preview does not match the source file you expected.
+  </Step>
+  <Step title="Field mapping">
+    Map source columns to the Cadmus GIS contract. Save the draft only after the required fields are mapped correctly.
+  </Step>
+  <Step title="Operational checks">
+    Run operational location or address matching checks and review exceptions before publish.
+  </Step>
+  <Step title="Publish">
+    Publish only after preview and matching results look correct. Publication makes that dataset version available to Cadmus reads for the selected organization.
+  </Step>
+</Steps>
+
+## What happens after upload
+
+Cadmus uses a two-stage model:
+
+1. **Preview stage**: quick validation and schema inspection
+2. **Background processing stage**: queued GIS processing handled by a dedicated worker job
+
+The worker job is not kept warm all day. Cadmus wakes it only when queued GIS work exists, then the job exits after the queue drains.
+
+## What dispatchers see after publish
+
+Depending on the dataset type and enabled features, a published GIS dataset can affect:
+
+- address validation and geocoding
+- common-place and operational-location matching
+- map overlays
+- future typed coverage reads
+
+Changes are organization-scoped. Publishing GIS for one tenant must not affect any other tenant.
+
+## Safe operating rules
+
+- Use **Sandbox** first for new datasets or mapping changes.
+- Avoid publishing multiple versions at once for the same logical dataset unless you have a clear replacement plan.
+- Keep the source archive for rollback and comparison.
+- Do not assume a successful upload means a successful publish; review processing results first.
+
+## Troubleshooting
+
+| Symptom | Likely cause | Action |
+|---|---|---|
+| Preview fails immediately | invalid or incomplete zip contents | rebuild the archive and re-upload |
+| Import stays `queued` | background worker not running yet | verify the worker execution started and completed |
+| Matching screen is empty | draft field mapping missing required fields | return to field mapping and save the needed mappings |
+| Publish blocked or missing | dataset not fully processed | wait for background processing or inspect errors |
+
+## Related docs
+
+- [Roles and Access](/admin/roles-and-access)
+- [Troubleshooting & Audit](/admin/troubleshooting-audit)
+- [Map & Location](/dispatch/map-and-location)
