@@ -130,6 +130,7 @@
             "icon": "settings",
             "pages": [
               "admin/agency-settings",
+              "admin/gis-data-management",
               "admin/citation-report-settings",
               "admin/small-agency-admin"
             ]
