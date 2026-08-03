@@ -6,6 +6,8 @@ description: "How to log in field units using the Login User dialog (F2), manage
 
 The **Login User** function in Cadmus lets dispatchers log crews onto units at the start of a shift, assign individual officers to unit IDs, and manage the off-duty pool — all from a single dialog. Keeping unit login state accurate ensures the Active Units sidebar reflects real-world availability and that field MDTs stay in sync with the dispatch board.
 
+When an agency or individual user has **Require unit login by dispatch** enabled, the officer's MDT stays in a waiting room after normal sign-in until dispatch logs that officer onto an active unit. The same behavior applies on Windows, Android, and iOS MDT builds. Dispatch CAD and enrolled unit-device or apparatus tablet mode are not blocked by this waiting room.
+
 ## Open the Login User Dialog
 
 You can open the **Unit Assignment** dialog two ways:
@@ -14,26 +16,34 @@ You can open the **Unit Assignment** dialog two ways:
 - Click the **Login User** button in the top header bar.
 
 <Note>
-  Verify that the correct **Agency** is selected in the filter row at the top of the dialog before proceeding. If your console covers multiple agencies, selecting the wrong agency will show the wrong unit pool.
+  Verify that the correct **Agency** is selected in the filter row at the top of
+  the dialog before proceeding. If your console covers multiple agencies,
+  selecting the wrong agency will show the wrong unit pool.
 </Note>
 
 ## Log a Unit On Duty
 
 <Steps>
   <Step title="Open the Unit Assignment dialog">
-    Press <kbd>F2</kbd> or click **Login User** in the header. The dialog lists all units available for login.
+    Press <kbd>F2</kbd> or click **Login User** in the header. The dialog lists
+    all units available for login.
   </Step>
   <Step title="Filter the unit list (optional)">
-    Use the **All Beats**, **All Agencies**, and **All Unit Types** dropdowns to narrow the list. This is especially useful at multi-agency consoles or large-agency shift changes.
+    Use the **All Beats**, **All Agencies**, and **All Unit Types** dropdowns to
+    narrow the list. This is especially useful at multi-agency consoles or
+    large-agency shift changes.
   </Step>
   <Step title="Select the unit">
     Click the row for the unit you want to bring on duty.
   </Step>
   <Step title="Assign crew">
-    Click **Logon** and enter or select the officer's name or ID to associate them with the unit.
+    Click **Logon** and enter or select the officer's name or ID to associate
+    them with the unit.
   </Step>
   <Step title="Confirm">
-    Submit the dialog. The unit moves from the Off Duty pool to the **Active Units** sidebar with an **Available** status.
+    Submit the dialog. The unit moves from the Off Duty pool to the **Active
+    Units** sidebar with an **Available** status. If the officer was waiting in
+    the MDT, the MDT refreshes crew status and unlocks.
   </Step>
 </Steps>
 
@@ -46,10 +56,10 @@ When multiple units are coming on duty simultaneously — such as at a major shi
 3. Select all units to bring on duty and confirm.
 
 <Tip>
-  Batch login saves significant time at peak shift changes. Coordinate with officers to confirm they are ready before you submit — logging a unit on triggers MDT login state on their device.
+  Batch login saves significant time at peak shift changes. Coordinate with
+  officers to confirm they are ready before you submit — logging a unit on
+  triggers MDT login state on their device.
 </Tip>
-
-
 
 ## Login without personnel
 
@@ -62,8 +72,16 @@ Some apparatus (especially fire trucks and some ambulances) go in service with *
 
 The unit appears on the **Active Units** sidebar with no officers listed. Use **Set Off Duty** from the unit context menu when that apparatus leaves service — it returns to the Off Duty pool.
 
+<Warning>
+  Login without personnel does not unlock a user's MDT waiting room. The gate
+  requires the signed-in user to be an active crew member on the selected
+  agency's unit.
+</Warning>
+
 <Note>
-**Agency desks** (for example MSHP, Dispatch, or Jail desks) are different. They show on Active Units as virtual assignees and are assigned to calls through the agency desk workflow — they are not logged in with Login User.
+  **Agency desks** (for example MSHP, Dispatch, or Jail desks) are different.
+  They show on Active Units as virtual assignees and are assigned to calls
+  through the agency desk workflow — they are not logged in with Login User.
 </Note>
 
 Fire and EMS **agencies** themselves are not logged in as units. Only real apparatus (and agency desks where configured) appear on Active Units.
@@ -95,35 +113,40 @@ If you drag an **Unstaffed** unit onto a call card (or select it in the unit ass
 
 Right-click any unit row in the sidebar (or click the unit's action menu) to access quick actions without opening a call:
 
-| Action | When | Effect |
-|---|---|---|
-| **Create Call** | Always | Opens a new CFS pre-tied to this unit |
-| **Log in…** | Unstaffed unit | Opens the single-unit login dialog |
-| **Log off** | Staffed unit, no active calls | Logs off one officer (single crew) or all crew (multi-crew confirm) |
-| **Log off** (blocked) | Staffed unit on an active CFS | Shows active call references; clear the unit from calls first |
-| **Mark Available** | Always | Returns unit to Available status |
-| **Devices…** | When permitted | Opens MDT device enrollment for the unit |
+| Action                | When                          | Effect                                                              |
+| --------------------- | ----------------------------- | ------------------------------------------------------------------- |
+| **Create Call**       | Always                        | Opens a new CFS pre-tied to this unit                               |
+| **Log in…**           | Unstaffed unit                | Opens the single-unit login dialog                                  |
+| **Log off**           | Staffed unit, no active calls | Logs off one officer (single crew) or all crew (multi-crew confirm) |
+| **Log off** (blocked) | Staffed unit on an active CFS | Shows active call references; clear the unit from calls first       |
+| **Mark Available**    | Always                        | Returns unit to Available status                                    |
+| **Devices…**          | When permitted                | Opens MDT device enrollment for the unit                            |
 
 <Note>
-  Some context menu items may display **Coming soon** depending on your agency configuration (for example, Traffic Stop from the sidebar and Memo Location).
+  Some context menu items may display **Coming soon** depending on your agency
+  configuration (for example, Traffic Stop from the sidebar and Memo Location).
 </Note>
 
 ## Log Off at Shift End
 
 <Steps>
   <Step title="Confirm the unit is clear of all calls">
-    A unit cannot be logged off while assigned to an active CFS. Cadmus displays a **Cannot Log off** dialog listing the active calls.
+    A unit cannot be logged off while assigned to an active CFS. Cadmus displays
+    a **Cannot Log off** dialog listing the active calls.
   </Step>
   <Step title="Open the unit context menu">
     Right-click the unit row in the Active Units sidebar.
   </Step>
   <Step title="Select Log off">
-    Click **Log off** and confirm. Single-crew units log off one officer; multi-crew units prompt to log off all crew.
+    Click **Log off** and confirm. Single-crew units log off one officer;
+    multi-crew units prompt to log off all crew.
   </Step>
 </Steps>
 
 - **Permanent apparatus** (e.g., Ladder 1) — after log off, the unit stays in the Active Units list as **Unstaffed**.
 - **Standard units** — after log off, the unit moves to the **Off-Duty Units** section below the active list.
+
+If an officer has **Require unit login by dispatch** enabled, logging that officer off returns their MDT to the waiting room. If the device was disconnected when the change occurred, the MDT checks crew status again on reconnect or app resume.
 
 ## MDT Device Enrollment
 
@@ -137,7 +160,9 @@ If a field unit needs to enroll a new mobile device (MDT), open the **Devices** 
 Units and their agency associations are created and maintained in **Web Admin** under the Units pages. If units appear stale or a newly created unit does not appear in the Login User dialog, reload the page to refresh the unit list after any admin changes.
 
 <Note>
-  NCIC behavior and traffic-stop permissions are governed by agency-level settings in Web Admin, not the unit login configuration.
+  NCIC behavior, traffic-stop permissions, and the MDT dispatch-login
+  requirement are governed by agency-level settings and per-user overrides in
+  Web Admin, not the unit login configuration itself.
 </Note>
 
 ## Common Mistakes to Avoid
@@ -147,5 +172,8 @@ Units and their agency associations are created and maintained in **Web Admin** 
 - **Skipping batch login at a major shift change** — logging units on one at a time slows down shift start and can delay MDT availability for officers in the field.
 
 <Warning>
-  Logout and off-duty actions directly affect the field MDT login state for assigned officers. Always coordinate with officers before forcing a logout from the dispatch console — an unexpected MDT logout can disrupt an active officer in the field.
+  Logout and off-duty actions directly affect the field MDT login state for
+  assigned officers. Always coordinate with officers before forcing a logout
+  from the dispatch console — an unexpected MDT logout can disrupt an active
+  officer in the field.
 </Warning>

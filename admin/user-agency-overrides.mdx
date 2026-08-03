@@ -1,10 +1,10 @@
 ---
 title: "Per-User Agency Setting Overrides in Cadmus Web Admin"
 sidebarTitle: "Agency Overrides"
-description: "Grant or deny exceptions to agency-default settings for individual users — override NCIC access or traffic stop permissions with a full audit trail."
+description: "Grant or deny exceptions to agency-default settings for individual users — override NCIC access, dispatch unit-login requirements, or traffic stop permissions with a full audit trail."
 ---
 
-Agency settings establish baseline behavior for every officer and dispatcher in an agency — for example, disabling NCIC queries for everyone by default. User agency overrides let you punch a precise exception into that baseline for a single person, such as enabling NCIC for a newly certified operator or restricting traffic stops for a trainee until their FTO signs off. Every override is recorded with a required reason, creating the audit trail demanded by CJIS reviews and accreditation processes.
+Agency settings establish baseline behavior for every officer and dispatcher in an agency — for example, disabling NCIC queries for everyone by default or requiring field MDT users to wait for dispatch unit login. User agency overrides let you punch a precise exception into that baseline for a single person, such as enabling NCIC for a newly certified operator, requiring one deputy to wait for dispatch login while the agency default is off, or exempting command staff while the agency default is on. Every override is recorded with a required reason, creating the audit trail demanded by CJIS reviews and accreditation processes.
 
 ## Override hierarchy
 
@@ -21,15 +21,20 @@ If no user override exists, the agency default is the effective setting.
 In **Web Admin**, open the user's agency settings or navigate to the dedicated overrides screen if your deployment provides one.
 
 <Note>
-  The per-user override screen may not be linked directly from the Users list in all deployments. If you cannot locate it, contact your Cadmus administrator. The underlying API endpoints are `GET /agencies/{agencyId}/users/{userId}/settings` (read current overrides) and `POST /agencies/{agencyId}/users/{userId}/settings` (create or update an override).
+  The per-user override screen may not be linked directly from the Users list in
+  all deployments. If you cannot locate it, contact your Cadmus administrator.
+  The underlying API endpoints are `GET /agencies/{agencyId}/users/{userId}
+  /settings` (read current overrides) and `POST /agencies/{agencyId}/users/
+  {userId}/settings` (create or update an override).
 </Note>
 
 ## Overridable settings
 
-| Setting | Agency default | Common override use |
-|---|---|---|
-| **Traffic Stops Allowed** | On | Disable for a trainee until FTO sign-off |
-| **State/NCIC Access** | Off | Enable for a newly certified operator |
+| Setting                            | Agency default | Common override use                                                                                                |
+| ---------------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Traffic Stops Allowed**          | On             | Disable for a trainee until FTO sign-off                                                                           |
+| **State/NCIC Access**              | Off            | Enable for a newly certified operator                                                                              |
+| **Require unit login by dispatch** | Off            | Require MDT waiting-room behavior for selected field users, or exempt selected users when the agency default is on |
 
 Only settings that are explicitly marked as overridable can be changed at the user level. Settings that are agency-wide (such as Separate RMS Report Numbers) cannot be overridden for individual users.
 
@@ -40,6 +45,19 @@ Every override requires:
 - **Reason text** — a written justification stored in the audit log.
 - **AgencyAdmin** role or higher to save the override.
 - The target setting must be overridable at the user level.
+
+## Unit-login override values
+
+The **Require unit login by dispatch** override is tri-state:
+
+| Agency setting | User override | Effective result | MDT behavior                                    |
+| -------------- | ------------- | ---------------- | ----------------------------------------------- |
+| No             | Inherit       | No               | User enters MDT after sign-in                   |
+| No             | Yes           | Yes              | User waits until dispatch logs them onto a unit |
+| Yes            | Inherit       | Yes              | User waits until dispatch logs them onto a unit |
+| Yes            | No            | No               | User is exempt and enters MDT after sign-in     |
+
+Unlike NCIC access, a user override of **Yes** works even when the agency default is **No**. Use **Clear override** to return the user to **Inherit**.
 
 ## Audit trail
 
@@ -53,22 +71,28 @@ Retrieve this history during accreditations and CJIS audits to demonstrate that 
 
 ## Dispatch and mobile impact
 
-| Effective setting | Field behavior |
-|---|---|
-| NCIC on | Query actions enabled in Dispatch CAD and mobile |
-| NCIC off | Queries blocked or hidden |
-| Traffic stops off | Traffic stop and citation flows restricted |
+| Effective setting          | Field behavior                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------ |
+| NCIC on                    | Query actions enabled in Dispatch CAD and mobile                                     |
+| NCIC off                   | Queries blocked or hidden                                                            |
+| Unit-login requirement on  | Field MDT stays in the waiting room until dispatch logs the user onto an active unit |
+| Unit-login requirement off | Field MDT opens after normal sign-in                                                 |
+| Traffic stops off          | Traffic stop and citation flows restricted                                           |
 
 For information on the query commands available when NCIC access is enabled, see the Dispatch CAD **Query commands** documentation.
 
 ## Common mistakes
 
 <Warning>
-  Enabling NCIC access via a user override does **not** make queries work if the organization's CJIS site is not configured. Set up CJIS routing at the org level first, or the queries will fail at runtime regardless of the override.
+  Enabling NCIC access via a user override does **not** make queries work if the
+  organization's CJIS site is not configured. Set up CJIS routing at the org
+  level first, or the queries will fail at runtime regardless of the override.
 </Warning>
 
 <Warning>
-  Overrides are fully auditable. Do not use them to grant informal exceptions outside your agency's written policy — every override appears in compliance reports.
+  Overrides are fully auditable. Do not use them to grant informal exceptions
+  outside your agency's written policy — every override appears in compliance
+  reports.
 </Warning>
 
 - **Override without a documented reason** — always enter a meaningful justification; vague entries such as "requested" are difficult to defend during audits.
