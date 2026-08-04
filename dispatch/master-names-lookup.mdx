@@ -1,0 +1,44 @@
+---
+title: Master Names lookup
+description: Search Cadmus Master Names when adding a person to a call
+---
+
+# Master Names lookup
+
+Cadmus keeps a **Master Names** index for your organization so you can look up people when adding them to a call. Search uses Cadmus data only — it does **not** depend on Oasis being online.
+
+## What you can do
+
+1. Open **Add person** on a new or existing call.
+2. Use **Master name lookup**.
+3. Enter at least two characters of first or last name (or both).
+4. Select a result to fill name, DOB, and related fields.
+
+## What you will see
+
+Results can include:
+
+- Name and middle name
+- Date of birth
+- SSN (full or masked, based on your permissions)
+- Driver’s license and state when known
+- City / last known location
+- Last seen information
+
+People with the same name are listed separately when Cadmus treats them as different identities (for example different SSNs or licenses).
+
+## SSN display
+
+- If you have permission to view full SSN, the complete number can appear on the result.
+- Otherwise you see a masked value such as `***-**-6789`.
+- Full SSN searches and views are audited. Cadmus never puts full SSNs in ordinary application logs.
+
+## Oasis
+
+If your agency also uses Oasis, Cadmus can receive Oasis names in the background. Oasis being down does **not** turn off Master Name search. An Oasis ID on a result is optional metadata only.
+
+## Notes
+
+- Adding or updating a person on a call may update the Master Names index shortly afterward (asynchronous).
+- Ambiguous matches are not automatically merged.
+- Master Names are shared across agencies in your organization.
