@@ -81,6 +81,8 @@ The units block shows every unit currently assigned to the CFS and their real-ti
 
 The **AVAILABLE UNITS** row at the top of the block lists units that can be immediately assigned. Click a unit in that row to dispatch it to the call without leaving call detail.
 
+**Agency desk** virtual units (for example **MSHP-DESK**) also appear in this row and in **Assign Unit**. Clicking or dragging an agency desk uses the same UX as a field unit, but Cadmus runs **agency assignment** instead — the agency is added under **Assigned agencies** and receives its own CFS number. Agency desks are not logged on through **Login User** (F2).
+
 ### Reporting party and callers
 
 This block displays the primary **REPORTING PARTY** and any additional callers.
@@ -137,7 +139,7 @@ Adding, editing, or removing a person writes an entry under **History & Logs →
 
 ### Assigned agencies
 
-On multi-agency incidents, each involved agency receives its own CFS number and appears in this block.
+On multi-agency incidents, each involved agency receives its own CFS number and appears in this block. Assigning an **agency desk** virtual unit from the sidebar or **AVAILABLE UNITS** row adds the agency here and triggers CFS generation for that agency.
 
 - View each agency's CFS number alongside your own.
 - Click **Generate report \#** to assign a report or case number for a specific agency.
