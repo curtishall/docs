@@ -1,10 +1,10 @@
 ---
 title: "Find a call (mobile)"
 sidebarTitle: "Find a call (mobile)"
-description: "Search past calls from the MDT — not NCIC."
+description: "Search open and past calls from the MDT — not NCIC."
 ---
 
-Search past calls from the MDT — not NCIC.
+Search open and past calls from the MDT — not NCIC.
 
 <Note>Screenshot placeholder: Find a Call screen</Note>
 
@@ -12,7 +12,20 @@ Search past calls from the MDT — not NCIC.
 
 Sidebar **Find a Call**
 
-Title: **Find a Call** — subtitle **Past calls — not NCIC**
+Title: **Find a Call** — subtitle **Open and past calls — not NCIC**
+
+## Status
+
+Use the **Status** control to choose which calls to search:
+
+| Status | Shows |
+|---|---|
+| **Pending** (default) | Unassigned open calls |
+| **Active** | Dispatched / in-progress calls (not pending, closed, or cancelled) |
+| **Closed** | Closed archive calls |
+| **All open** | Pending and active calls (excludes closed and cancelled) |
+
+Status is kept when you change pages of results.
 
 ## Search filters
 
@@ -27,6 +40,18 @@ Combine any of these filters — all active filters apply together (AND logic).
 | **By officer / unit** | Officer name, badge, or unit call sign |
 | **Date** | Single day (reported date) |
 | **From / To** | Date range (reported date) |
+
+**More filters** (person / vehicle):
+
+| Field | Use |
+|---|---|
+| **Name** | Person or reporting party name |
+| **SSN** | Partial match |
+| **DOB** | Partial match |
+| **VIN** | Vehicle VIN |
+| **Driver license** | OLN / DL |
+
+Filled person filters must match the **same** person on the call. Vehicle fields apply to the call.
 
 Active filters appear as **chips** you can remove individually.
 
@@ -49,11 +74,11 @@ Tap a column header to sort:
 
 Tap again to reverse sort direction.
 
-## Open a closed call
+## Open a result
 
-Tap a result row to open the **closed call detail** screen. This replaces the older separate **CFS notes** and **call details** actions with one combined view.
+Tap a result row to open the call. Open (pending/active) calls may still be worked in the field. Closed calls open the **closed call detail** screen.
 
-The detail screen includes:
+The closed-call detail screen includes:
 
 | Section | What you see |
 |---------|----------------|
@@ -79,6 +104,8 @@ The detail screen includes:
 
 ## Tips
 
+- Default status is **Pending** for open-call lookups during a shift.
+- Switch to **Closed** for archive-style history search.
 - Use CFS number when dispatch radioed it.
 - Use `330*` on license plate when you know the prefix only.
 - Combine keyword + officer + date range to narrow busy agencies.
