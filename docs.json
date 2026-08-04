@@ -49,6 +49,7 @@
               "dispatch/create-cfs",
               "dispatch/rapidsos-import-cfs",
               "dispatch/cfs-form-fields",
+              "dispatch/master-names-lookup",
               "dispatch/call-detail",
               "dispatch/close-call",
               "dispatch/find-a-call"
@@ -147,7 +148,8 @@
             "group": "Troubleshooting",
             "icon": "triangle-alert",
             "pages": [
-              "admin/troubleshooting-audit"
+              "admin/troubleshooting-audit",
+              "admin/master-names-operations"
             ]
           }
         ]
