@@ -17,6 +17,8 @@ Add notes to a call log from the MDT.
 
 Empty state: **No history entries yet.**
 
+Entries show a timestamp, type badge (**CALL NOTE**, **SYSTEM**, or **DISPATCHER**), author, and text. **RESTRICTED** appears on CJIS-classified notes for viewers without Law Enforcement access.
+
 <Note>Screenshot placeholder: Inline Add Note field</Note>
 
 ## Add Dispatch Note dialog
@@ -46,3 +48,13 @@ See [Connectivity and offline](/mobile/connectivity-offline).
 <Warning>Notes may be public record — no inappropriate or unprofessional content.</Warning>
 
 <Warning>Do not paste NCIC hit details verbatim — follow agency redaction policy.</Warning>
+
+## Restricted / Confidential CJIS notes
+
+If you paste external query response text that starts with a system header such as `FROM-MULES`, `FROM-DOC`, `FROM-NCIC`, `FROM-REVENUE`, or `FROM-NLETS`, Cadmus automatically saves the note as **Restricted / Confidential — Law Enforcement only**.
+
+- **Law Enforcement** agencies see the full note text.
+- **Non–Law Enforcement** agencies (Fire, EMS, and similar) see a placeholder: *Restricted / Confidential information - Law Enforcement only* instead of the CJIS content.
+- While typing or pasting, the app may show an orange warning before you submit.
+
+This applies to notes added from **History & Logs**, the **Add Dispatch Note** dialog, and Android Auto’s latest-note line (restricted text is not spoken verbatim to non-LE viewers).

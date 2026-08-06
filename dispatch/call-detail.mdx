@@ -54,6 +54,11 @@ The call intelligence block provides contextual information organized into three
 
 The location block lets you manage address accuracy after the call is created:
 
+- **Edit Address** — open the location editor and choose a mode from the same dropdown used when creating a CFS:
+  - **Address** — street address with GIS suggestions and validation
+  - **Cross Street** — intersection when no exact address is known
+  - **Common Place** (**Place**) — pick from your agency's saved common-place list
+  - **GPS Coordinates** — shows existing geocoded coordinates when available
 - **Validate and Geocode Address** — re-submit the address to GIS and update the map pin.
 - **Refresh Address Resolution** — pull the latest GIS result without changing the stored address.
 - **Copy GPS coordinates** — copy the geocoded latitude/longitude to the clipboard for field communication.
@@ -96,7 +101,39 @@ Use this block to document everyone involved in the incident, in addition to the
 - Passenger
 - Other
 
-For vehicles, click **Add Vehicle** to attach a vehicle record. Once a vehicle is added, click **Run CJIS vehicle query** to run a plate or VIN check against available databases.
+For vehicles, click **Add Vehicle** to attach a vehicle record.
+
+On each person or vehicle card:
+
+- **View** — open a read-only details dialog (available even when the call is closed; you do not need to open Edit just to inspect fields).
+- **Query** — (law enforcement) run a CJIS person or vehicle lookup tied to this call and subject.
+- **Review Query** — (law enforcement) when a prior query is already associated with that person or vehicle on this call, reopen the saved CJIS result instead of starting a new query.
+
+Edit, remove, and citation actions remain available on open calls as before.
+
+### CJIS query history
+
+Queries started from call detail appear in the call's **CJIS Query History**. The icon and label on each entry show whether the query is pending, completed with a hit, completed with no hit, timed out, or failed.
+
+<Steps>
+  <Step title="Find the query">
+    Open **CJIS Query History** and select **Refresh** if a recently submitted query is not yet listed.
+  </Step>
+  <Step title="Check its status">
+    Wait if the entry is marked sent or pending. A completed icon means a response arrived; read the accompanying hit or no-hit label.
+  </Step>
+  <Step title="Reopen the result">
+    Select a completed entry to view its parsed response and authoritative raw response. A DOR photo tab appears only when photo information is available.
+  </Step>
+</Steps>
+
+If part of an older response is unavailable, Cadmus keeps any accessible parsed or raw information visible and identifies the missing portion. Entries without a transaction identifier are not selectable.
+
+<Warning>
+  CJIS Query History and reopened results are restricted to authorized Law Enforcement users. Do not copy response text into an unrestricted note or relay it over an open or unencrypted channel.
+</Warning>
+
+Adding, editing, or removing a person writes an entry under **History & Logs → Audit Logs** (switch the filter from **Call Notes** if you do not see it).
 
 ### Assigned agencies
 
@@ -109,10 +146,11 @@ On multi-agency incidents, each involved agency receives its own CFS number and 
 
 ### Agency status timers
 
-Each agency on a multi-agency call has its own timer card that tracks how long the call has been in the current status.
+Each agency on a multi-agency call can have its own timer card. Timer cards appear for agencies that currently have a unit **on scene** on this call — they are hidden when that agency’s units are only dispatched or en route.
 
 - Click **Status Check Complete** to acknowledge a timer check.
-- Click **Pause checks** to temporarily suspend the timer when warranted.
+- Click **Pause checks** to temporarily suspend the timer when warranted. The card stays on the call and shows **Checks paused**.
+- Click **Resume checks** on a paused card to restart that agency’s timer from a fresh interval (same result as the command-line `STATUS ON @Agency`).
 - Use the interval and snooze options to adjust check frequency per agency SOP.
 
 ### History, logs, and images
@@ -122,12 +160,23 @@ This section is the call's permanent record of everything that happened.
 <Tabs>
   <Tab title="Call Notes">
     Dispatcher-entered narrative notes attached to this call. Call notes are visible in the call record and may appear on reports depending on agency configuration. Click **Add Call Note** to add an entry.
+
+    **Restricted CJIS notes:** If a dispatcher pastes external query response text that begins with `FROM-MULES`, `FROM-DOC`, `FROM-NCIC`, `FROM-REVENUE`, or `FROM-NLETS`, Cadmus automatically classifies the note as **Restricted / Confidential — Law Enforcement only**. Law Enforcement agencies see the full text; Fire, EMS, and other non-LE agencies see a placeholder message instead of CJIS content. An orange warning may appear while typing or pasting before the note is saved.
   </Tab>
   <Tab title="Audit Logs">
-    System-generated log of every change made to the call record — field edits, status updates, unit assignments, and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
+    System-generated log of every change made to the call record — field edits, status updates, unit assignments, person add/edit/remove (suspect, victim, witness, and other roles), and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
+
+    The History filter defaults to **Call Notes**. Switch to **Audit Logs** or **All** to see person and other system changes.
   </Tab>
   <Tab title="Images">
-    Photos and document attachments associated with the call. Click **Add Image** to paste or upload a file. Use **Take Photo** on devices with camera access.
+    Photos attached to the call appear under **History & Logs**. Use the image icons below the note field:
+
+    | Control | Action |
+    |---------|--------|
+    | Gallery / upload icons | Open a file picker and attach a JPEG, PNG, or GIF (max 5MB). |
+    | Clipboard icon | Paste a screenshot or image copied to the clipboard, then upload it to the call. |
+
+    Canceling the file dialog does nothing (it is not an error). If paste finds no image, copy a screenshot first or use upload.
   </Tab>
 </Tabs>
 

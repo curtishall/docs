@@ -6,6 +6,20 @@ description: "Configure citation template layouts and RMS report number formats 
 
 Cadmus handles two closely related records at the agency level: citations generated during traffic stops and RMS case numbers assigned when a call closes with "Report to Follow." Both are configured on the agency Settings page, and both carry real legal and administrative weight — citations may be filed in court and report numbers must align with your RMS vendor's sequencing requirements. Get these settings right before going live and test them in a sandbox environment first.
 
+## E-ticket-only agencies
+
+Some agencies use Cadmus **only for electronic citations**, without dispatch CAD or call-for-service workflows. On the agency **Settings** page:
+
+1. Turn **CAD Module** **off** for that agency.
+2. Leave **E-Ticket Module** **on**.
+3. Configure citation templates, charge codes, court info, and number blocks as usual.
+
+Officers sign into Mobile CAD and land on **E-CITATIONS**. They can issue, sync, preview, and print citations **without selecting an assigned call**. Full CAD agencies still link citations to an active call when **CAD Module** is on.
+
+<Note>
+  **Traffic Stops Allowed** still controls whether traffic-stop and citation workflows are permitted for the agency. E-ticket-only agencies typically leave it enabled.
+</Note>
+
 ## Citations
 
 The **Citation** section of the agency settings page contains the citation template configuration and, when the citation module is enabled for your deployment, a PDF designer for customizing the layout of printed citations.
@@ -19,14 +33,17 @@ The **Citation** section of the agency settings page contains the citation templ
   <Step title="Scroll to Citations">
     Locate the **Citations** section on the settings page.
   </Step>
-  <Step title="Configure template fields">
-    Set the template fields and layout options. Refer to your agency's citation form requirements and, if applicable, your state's traffic citation standards.
+  <Step title="Place fields on the form">
+    Upload your blank citation PDF or images, drag fields from the palette onto each page, and adjust position and font size. **Save layout** when finished.
   </Step>
-  <Step title="Save">
-    Select **Save** to apply the template configuration.
+  <Step title="Preview before mobile">
+    Select **Preview** to fill the template with fictional sample data (driver, vehicle, and violation fields). Court fields use your agency citation settings when configured. Text is clipped at each field box — the same behavior as mobile — and fields outlined in red have text that does not fit (widen the box or reduce font size).
   </Step>
-  <Step title="Test with a training user">
-    Use a training account to generate a test citation and produce a PDF. Verify that all fields render correctly before enabling the template in production.
+  <Step title="Enable on mobile">
+    Turn on **Use on mobile** when the preview looks correct.
+  </Step>
+  <Step title="Optional: verify on a device">
+    Generate a test citation from the mobile app in training mode if you want a final check on a physical printer or MDT screen.
   </Step>
 </Steps>
 
@@ -37,6 +54,32 @@ The **Citation** section of the agency settings page contains the citation templ
 <Tip>
   Test one citation in your Sandbox organization before enabling the template in your Live organization. This lets you catch formatting issues without creating records in the production system.
 </Tip>
+
+### Import RSMO / statewide charge codes
+
+The **Charge Codes (RSMO)** card on the agency **E-Citation Settings** page lets **Cadmus administrators** import the active statewide charge code catalog from a JMS-format CSV.
+
+<Steps>
+  <Step title="Confirm State code">
+    Set **State Code** on the e-citation settings (for example `MO`) so mobile officers search the correct catalog.
+  </Step>
+  <Step title="Upload CSV">
+    Choose the export file and select **Import CSV**. Only rows with `active = 1` are loaded into the picker.
+  </Step>
+  <Step title="Verify count">
+    The card shows how many active codes are loaded and the last import time. Officers should open **E-CITATIONS** once online to refresh the mobile cache.
+  </Step>
+</Steps>
+
+Expected CSV columns: `chargecodeid`, `chargename`, `code`, `class_name`, `crime_type`, `description`, `statute_code`, `state`, `active`.
+
+### Missouri state template vs custom agency PDF
+
+Missouri agencies can choose **Missouri state template (recommended)** so officers use the Cadmus-managed Form 37A layout statewide, or **Custom agency template** to upload and place merge fields in Web Admin. Non-Missouri states use the custom designer only until a state template is published.
+
+The template designer palette includes **Driver middle initial** (`DriverMiddleName`) for PDF placement. Fine amount is not shown to officers on mobile; do not rely on a fine field in the officer workflow.
+
+For Missouri Form 37A, Cadmus administrators can also place these merge fields on the **State E-Ticket Templates** page: **Officer name**, **Officer badge**, **Issue date** (`CitationDate`), **Court division**, **OCN**, **CDL yes/no** (`DriverIsCdlYes` / `DriverIsCdlNo`), and **Did unlawfully** checkboxes (`UnlawfulOperateDrive`, `VehicleIsParked`, `VehicleIsCmv`, `VehicleHasHazmat`). Officer name, badge, and issue date are autofilled on mobile at ticket creation; division, OCN, CDL, and unlawfully boxes appear on the officer entry form only when placed on the published state template.
 
 ## RMS report numbers
 

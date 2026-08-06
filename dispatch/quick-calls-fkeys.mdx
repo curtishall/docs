@@ -1,10 +1,10 @@
 ---
 title: "Function Key Shortcuts and Quick Call Templates in Cadmus"
 sidebarTitle: "Quick Calls & F-Keys"
-description: "Master the F1–F5 function keys and agency-configured quick call templates (F8–F12) to create calls and run queries faster in Cadmus Dispatch CAD."
+description: "Master the F1–F5 function keys and agency-configured quick call templates (F6–F12) to create calls and run queries faster in Cadmus Dispatch CAD."
 ---
 
-Cadmus maps the most common dispatch actions to function keys so you can open dialogs, launch queries, and create pre-typed calls without lifting your hands from the keyboard. The F1–F5 keys are fixed across all agencies; F8–F12 are configured per organization and typically hold your agency's most-used quick call templates such as traffic stops, follow-ups, and paper service runs.
+Cadmus maps the most common dispatch actions to function keys so you can open dialogs, launch queries, and create pre-typed calls without lifting your hands from the keyboard. The F1–F5 keys are fixed across all agencies; F6–F12 are configured per organization and typically hold your agency's most-used quick call templates such as traffic stops, follow-ups, and paper service runs.
 
 ## Core Function Keys (F1–F5)
 
@@ -19,12 +19,12 @@ These five keys are available on every Cadmus dispatch console regardless of age
 | <kbd>F5</kbd> | **Units / Unit Greaseboard** | Opens the live unit status grid; supports table view, sort by status, and new-window mode |
 
 <Note>
-  <kbd>F4</kbd> (Map) may be associated with RapidSOS in some training or sandbox environments. In live production deployments, use the map-side tracking controls when the RapidSOS shortcut is not available.
+  <kbd>F4</kbd> always opens **Map**. RapidSOS (when shown in training builds) is click-only and does not share an F-key with Map. Function keys are inactive while the **New CFS** dialog is open.
 </Note>
 
-## Quick Call Templates (F8–F12)
+## Quick Call Templates (F6–F12)
 
-Your agency administrator configures **Quick Call Shortcuts** in **Web Admin → Quick Call Shortcuts**. These shortcuts appear as labeled buttons in the Cadmus header and are also bound to function keys F8–F12. Common defaults include:
+Your agency administrator configures **Quick Call Shortcuts** in **Web Admin → Quick Call Shortcuts**. These shortcuts appear as labeled buttons in the Cadmus header and are also bound to function keys F6–F12. Common defaults include:
 
 | Key | Typical Template |
 |---|---|
@@ -76,6 +76,7 @@ The **Paper Service** quick call (typically <kbd>F10</kbd>) uses a service-of-pr
 
 - Enter the service location and the unit performing the service.
 - The resulting CFS record is typed as a paper-service run for accurate activity reporting.
+- When you assign a unit at create time, the call opens under **Dispatched** (not **Pending**), with that unit shown as Dispatched on the call card.
 
 ## More Quick Calls Overflow Menu
 
