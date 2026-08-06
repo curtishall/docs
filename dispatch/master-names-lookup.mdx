@@ -12,7 +12,9 @@ Cadmus keeps a **Master Names** index for your organization so you can look up p
 1. Open **Add person** on a new or existing call.
 2. Use **Master name lookup**.
 3. Enter at least two characters of first or last name (or both).
-4. Select a result to fill name, DOB, and related fields.
+4. Select a result to fill name, DOB, sex (Gender), and related fields when known.
+
+Lookup returns the **top 5** matches and is designed to complete quickly (typically under 2 seconds). There is no “load more” in the dispatcher dialog — refine the name spelling if the person is not listed.
 
 ## What you will see
 
@@ -20,6 +22,7 @@ Results can include:
 
 - Name and middle name
 - Date of birth
+- Sex (applied to Gender on the person when you select a match)
 - SSN (full or masked, based on your permissions)
 - Driver’s license and state when known
 - City / last known location
@@ -37,8 +40,16 @@ People with the same name are listed separately when Cadmus treats them as diffe
 
 If your agency also uses Oasis, Cadmus can receive Oasis names in the background. Oasis being down does **not** turn off Master Name search. An Oasis ID on a result is optional metadata only.
 
+## Mobile MDT
+
+Officers on the mobile app use the same Cadmus-only Master Name search (top 5) when adding a person to a call. Selecting a match can fill Gender from sex on the Master Name.
+
 ## Notes
 
 - Adding or updating a person on a call may update the Master Names index shortly afterward (asynchronous).
 - Ambiguous matches are not automatically merged.
 - Master Names are shared across agencies in your organization.
+
+## Photos when applying a Master Name
+
+After you select a match from Master Name lookup, a **confirm** step shows any attached photos as thumbnails. Tap a thumbnail to enlarge it, then choose **Use this name** to apply.
