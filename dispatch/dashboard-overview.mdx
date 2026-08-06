@@ -36,6 +36,22 @@ The **Pending** tab is typically your highest-priority view — it holds calls t
 
 When the queue is clear, the board shows **No pending calls**.
 
+### Search open calls (Pending and Dispatched)
+
+Use the side-rail **Search** control on **Pending** or **Dispatched** to find open calls by person or vehicle identifiers. Filters are applied on the server across your organization.
+
+| Field | Notes |
+|---|---|
+| **Name** | Matches incident persons, reporting party, or additional callers |
+| **SSN** | Partial match (substring) |
+| **DOB** | Partial match (for example `MM/DD/YYYY`) |
+| **Driver license** | Partial match |
+| **Plate** / **VIN** | Vehicle fields on the call |
+
+All filled person fields must match the **same** person record. Vehicle fields apply to the call. Click **Clear** to restore the full open-call boards.
+
+If many matches exist, Cadmus may show only a limited set and display a truncation notice — refine the search or use **Find a Call** for a full paginated list.
+
 <Note>
   If Priority Pending is not visible for your agency, your administrator may not have priority routing enabled. Check with your supervisor if you expect to see a priority queue.
 </Note>
