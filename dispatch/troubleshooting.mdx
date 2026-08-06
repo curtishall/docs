@@ -14,18 +14,32 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     1. **Account inactive** — ask your agency admin to verify your account status in **Web Admin → Users** and reactivate it if needed.
     2. **Wrong environment** — confirm whether you are trying to sign in to the Live or Sandbox organization. The sign-in screen displays the organization name; look for a "Sandbox" or "Training" label.
     3. **Invite pending** — if your account was recently created, check your email for an invitation link. If the invite expired, ask your admin to resend it.
+
+    If the password is wrong, Cadmus keeps you on the sign-in screen and shows an error message (for example, that the password or username is incorrect). The app should not close. Use **Forgot password** on the sign-in screen if you need to reset it.
   </Accordion>
 
   <Accordion title="Call boards are empty">
     Your boards can appear empty for three common reasons: an incorrect agency filter, the wrong organization selected, or stale cached data.
 
-    1. Open the **Select Agencies** picker in the header and confirm that the correct agencies are included. If you added or were assigned to an agency recently, it may not be checked.
+    1. Open the **Select Agencies** picker in the header and confirm that the correct agencies are checked. After **Clear**, the count shows **0 of N** and boards stay empty until you select agencies or tap **All**. If you added or were assigned to an agency recently, it may not be checked yet.
     2. Verify the organization badge in the header. If you belong to multiple organizations (for example, a Live org and a Sandbox training org), confirm you are signed in to the correct one.
     3. Select **Reload Units & Dashboard Data** from the header settings menu to force a fresh pull from the server.
 
     <Tip>
       If calls reappear after a reload but disappear again within minutes, contact your admin — the issue may be a WebSocket connectivity problem rather than a filter setting.
     </Tip>
+  </Accordion>
+
+  <Accordion title='"Could not load call board" after switching organizations'>
+    If you belong to both a **Live** organization and its paired **Sandbox** (training) organization, you may see **"Could not load call board — check network or try signing in again"** shortly after switching from one to the other. This usually means your session is still carrying the agency from the organization you switched away from.
+
+    1. Sign out completely and sign back in, then select the organization you want to work in from the sign-in screen.
+    2. After signing in, open the **Select Agencies** picker and confirm an agency for the current organization is checked.
+    3. If the error persists on every sign-in, ask your admin to confirm — in **Web Admin → Users** — that your account has an agency assigned in **both** the Live and Sandbox spaces. A membership with no agency in the space you are entering causes this error.
+
+    <Note>
+      Administrators: when creating a user for an organization that has paired Live and Sandbox spaces, the **Add User** form shows a separate **Live Agency** and **Sandbox Agency** selector. Choose an agency for each space so the user is not left without an agency in one of them.
+    </Note>
   </Accordion>
 
   <Accordion title="Incident types missing from New CFS">
@@ -36,12 +50,13 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     3. Confirm you are in the correct organization — incident types are org-scoped, so switching to a different org will show a different list.
   </Accordion>
 
-  <Accordion title="Quick call F-key does nothing">
-    If pressing an F-key shortcut (F8–F12) produces no action, the associated template is likely missing or its linked incident type is inactive.
+  <Accordion title="Quick call or header F-key does nothing">
+    If pressing an F-key shortcut (F1–F12) produces no action, check whether a dialog is open and whether a template is configured.
 
-    1. Ask your admin to open **Web Admin → Quick Call Shortcuts** and verify a template exists for that key.
-    2. Confirm the incident type linked to that template is **Active** in Web Admin.
-    3. Select **Reload Data** in Dispatch CAD after any template changes. If the template was just created, a full restart of Dispatch CAD may be required before the shortcut fires.
+    1. Close the **New CFS** dialog if it is open — dashboard F-keys are disabled while that form is open.
+    2. For **F1–F5**, confirm you are on the dispatch dashboard (not mid-dialog) and try again. **F4** opens Map only; RapidSOS (training builds) is click-only.
+    3. For **F6–F12**, ask your admin to open **Web Admin → Quick Call Shortcuts** and verify a template exists for that key, and that its incident type is **Active**.
+    4. Select **Reload Data** in Dispatch CAD after any template changes. If the template was just created, a full restart of Dispatch CAD may be required before the shortcut fires.
   </Accordion>
 
   <Accordion title="NCIC/Query button not appearing">
@@ -100,11 +115,25 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     </Warning>
   </Accordion>
 
+  <Accordion title="Application update failed or stuck">
+    If Dispatch CAD shows an update notice but will not install:
+
+    1. Confirm you are on a **production** Windows build from your agency's supported release channel.
+    2. Open **Cadmus updates** and check for **Update ready — restart to install**. If present, choose **Restart to update**.
+    3. If you previously chose **Later**, open **Settings & tools** and choose **Install pending update** (subtitle may say the update was postponed).
+    4. Ensure you have disk space for the full installer (typically hundreds of MB).
+    5. If download fails repeatedly, use **Download update** for a manual installer or contact support with your current app version from the header.
+
+    Verification failures mean the staged file did not pass signature checks — the app will not install it. Retry after network conditions improve or ask support to confirm the latest release was published.
+  </Accordion>
+
 </AccordionGroup>
 
 ## Escalate to Cadmus support
 
-If none of the steps above resolve your issue, contact Cadmus support. To help the team investigate quickly, collect the following information before you reach out:
+If none of the steps above resolve your issue, contact Cadmus support. You can also open the **Communication Center** from the header (message icon with an exclamation mark, next to Settings) and choose **Report a problem** to submit feedback in-app.
+
+To help the team investigate quickly, collect the following information before you reach out:
 
 - **Organization name** and whether it is Live or Sandbox
 - **Agency name**

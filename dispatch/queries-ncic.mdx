@@ -36,7 +36,41 @@ The left rail of the Query Workspace lists every available query type. Select a 
 
 ### Recent Queries
 
-The **Recent Queries** sidebar inside the workspace lists your most recent lookups. Use it to repeat a similar query quickly without re-entering all fields.
+The **Recent Queries** sidebar inside the workspace lists your most recent lookups. Each row shows the query's current status. Select a completed row to reopen its result without running the query again.
+
+| Status | Meaning |
+|---|---|
+| **Sent** or **Pending** | Cadmus submitted the query and is waiting for the CJIS system. |
+| **Completed — Hit** | The response contains one or more matching records. Review the full result before taking action. |
+| **Completed — No hit** | The response contains an explicit no-record or no-operator result. |
+| **Error** or **Timed out** | Cadmus could not complete the query. Open the row for available details, then retry if appropriate. |
+
+<Note>
+  A completed icon confirms that a response arrived. It does not by itself indicate a hit. Read the status label and response details.
+</Note>
+
+### Review a query result
+
+<Steps>
+  <Step title="Open the result">
+    Select a completed query in **Recent Queries** or **CJIS Query History**. Pending queries show their current status instead of a completed result.
+  </Step>
+  <Step title="Review the parsed response">
+    Start with **Parsed** for the key person, vehicle, license, warrant, or serial-record fields. Returned warrant or protection-order indicators appear here when present.
+  </Step>
+  <Step title="Check the authoritative response">
+    Open **Raw** to review the response exactly as received. Use this restricted information only for an official law-enforcement purpose.
+  </Step>
+  <Step title="Review an available photo">
+    Open **Photo** when the response includes an authorized DOR image. If the image is missing, too large, malformed, or no longer available, Cadmus keeps the parsed and raw response visible and marks the photo unavailable.
+  </Step>
+</Steps>
+
+For DOR responses, **Suspended** and **Revoked** are warning statuses. **No Operators** means the response explicitly found no operator record; it is not a valid-license result. **Valid** and **Unknown** remain separate so an unknown status is never presented as clear.
+
+<Warning>
+  A hit, license status, and warrant or protection-order indicator describe different parts of the response. Review all displayed fields and follow your agency's confirmation procedure before enforcement action.
+</Warning>
 
 ## In-Call Queries
 
@@ -45,8 +79,9 @@ When a query must be tied to an open incident, run it from within the call detai
 From a call detail panel, you can initiate queries from several entry points:
 
 - **Reporting Party → Query** — run a query directly from the reporting party block.
-- **Run CJIS person query** — available on person records associated with the call.
-- **Run CJIS vehicle query** — available on vehicle records associated with the call.
+- **View** — open a read-only person or vehicle details dialog from the Persons / Vehicles involved cards (no edit required).
+- **Query** — on a person or vehicle card when no prior CJIS query is associated with that subject on this call.
+- **Review Query** — on a person or vehicle card when a prior query is already associated; reopens the saved CJIS result for that subject.
 - **Run Query panel** — a consolidated panel offering **Persons**, **Vehicles**, **Serial**, and **Gun** query tabs from a single interface.
 
 <Note>
@@ -59,7 +94,11 @@ From a call detail panel, you can initiate queries from several entry points:
 
 ## CJIS Query History
 
-Every query run from a call detail panel is logged in the **CJIS Query History** block at the bottom of that call. Click **Refresh** to reload the list. This audit trail is tied to the incident record and is available for supervisory review and compliance reporting.
+Every query run from a call detail panel is logged in the **CJIS Query History** block at the bottom of that call. Click **Refresh** to reload the list. Status icons distinguish pending, completed hit, completed no-hit, and failed queries. Select a completed entry to reopen the same parsed, raw, and photo views available in the Query Workspace. This audit trail is tied to the incident record and is available for supervisory review and compliance reporting.
+
+<Info>
+  Cadmus displays protection-order indicators when they are returned as part of an authorized response. This does not add a separate Ex Parte or Order of Protection query type.
+</Info>
 
 ## Command-Line Queries
 

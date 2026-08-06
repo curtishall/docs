@@ -1,0 +1,88 @@
+---
+title: Master Names operations
+description: Migration, backfill, Oasis sync, keys, and rollout for Cadmus Master Names
+---
+
+# Master Names operations
+
+Internal operations guide for Cadmus Master Names v1.
+
+## Feature flags
+
+| Key | Purpose | Default |
+|-----|---------|---------|
+| `cadmus_master_names` | Enable Cadmus search API | off |
+| `cadmus_master_names_full_ssn` | Allow full SSN reveal when permitted | off |
+| `cadmus_master_names_oasis_sync` | Allow Oasis sync jobs | off |
+
+Env overrides (local/dev):
+
+- `CADMUS_MASTER_NAMES_ENABLED=true|false`
+- `CADMUS_MASTER_NAMES_FULL_SSN_ENABLED=true|false`
+
+## Secrets
+
+Set separately from JWT secrets (never commit):
+
+- `MASTER_NAMES_SSN_ENCRYPTION_KEY` — 64 hex chars (AES-256-GCM)
+- `MASTER_NAMES_SSN_HMAC_KEY` — 64 hex chars (HMAC-SHA256 for match)
+
+Key rotation: bump `SSNEncryptionVersion` on write after deploying a new encryption key; re-encrypt gradually via ops job if needed.
+
+## Migration
+
+```bash
+cd backend
+npm run migrate
+```
+
+Creates: `MasterNames`, `MasterNameSources`, `MasterNameAgencies`, `MasterNameUpsertOutbox`, `MasterNameSyncState`, `MasterNameBackfillCheckpoint`, `SensitiveDataAudit`.
+
+## Backfill
+
+```bash
+npm run master-names:backfill -- \
+  --organization-id <uuid> \
+  --batch-size 500 \
+  --resume \
+  --dry-run
+```
+
+Dry-run prints scanned / skipped / insert / update / conflict counts. Always dry-run a pilot org first.
+
+## Outbox recovery
+
+```bash
+npm run master-names:process-outbox -- --limit 50
+```
+
+Person create succeeds even if indexing is delayed; outbox retains work for retry.
+
+## Oasis sync
+
+```bash
+npm run master-names:oasis-sync -- \
+  --organization-id <uuid> \
+  [--agency-id <uuid>] \
+  [--page-size 200] \
+  [--dry-run]
+```
+
+No-op (exit 0) when Oasis env or catalog is missing. Status lives in `MasterNameSyncState`. Cadmus rows are never deleted when Oasis drops a source — source link is marked inactive.
+
+## Rollout checklist
+
+1. Migrate tables
+2. Deploy backend with flags off
+3. Deploy client/mobile UUID parsers
+4. Dry-run backfill → review conflicts
+5. Real backfill for pilot org
+6. Validate SSN search/view + `SensitiveDataAudit`
+7. Oasis sync where configured
+8. Enable `cadmus_master_names` for pilot
+9. Monitor latency, errors, outbox backlog, conflicts
+10. Expand org by org
+
+## Sensitive audit
+
+`SensitiveDataAudit` stores encrypted SSN payloads for SSN search/view/create/update/deny events. Do not export raw ciphertext in support bundles without redaction.

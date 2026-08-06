@@ -14,25 +14,64 @@ Sidebar **Find a Call**
 
 Title: **Find a Call** — subtitle **Past calls — not NCIC**
 
-## Search fields
+## Search filters
+
+Combine any of these filters — all active filters apply together (AND logic).
 
 | Field | Use |
 |-------|-----|
-| **CFS number** | Exact or partial call number |
+| **Keyword** | Search descriptions, notes, phone fragments, and related text |
+| **CFS #** | Exact or partial call number |
 | **Address** | Location text |
-| **License plate** | Plate tied to incident |
+| **License plate** | Plate on the incident; use `330*` for prefix match (e.g. `330PK3`, `330000`) |
+| **By officer / unit** | Officer name, badge, or unit call sign |
+| **Date** | Single day (reported date) |
+| **From / To** | Date range (reported date) |
 
-**Search** button runs query.
+Active filters appear as **chips** you can remove individually.
+
+Tap **Search** to run the query. **Clear** resets all filters.
 
 Results: **N result(s) — page X of Y**
 
 <Note>Screenshot placeholder: Find a Call search form and results</Note>
 
-## Open result
+## Sort results
 
-Tap result to view call summary (read-only typical for closed calls).
+Tap a column header to sort:
 
-<Note>Screenshot placeholder: Historical call summary from search</Note>
+- CFS #
+- Report #
+- Date/Time
+- Location
+- Type
+- Officer/Units
+
+Tap again to reverse sort direction.
+
+## Open a closed call
+
+Tap a result row to open the **closed call detail** screen. This replaces the older separate **CFS notes** and **call details** actions with one combined view.
+
+The detail screen includes:
+
+| Section | What you see |
+|---------|----------------|
+| **Header** | CFS number, report/RMS number when present, CLOSED status, reported and cleared times |
+| **Summary** | Call type, location, primary units, priority |
+| **CFS narratives** | Public narrative and private notes (when your role allows). Tap **Edit** to update, then **Save**. Supervisors can mark **Supervisor approved CFS**. |
+| **Occurrence history** | Entered, dispatched, on scene, and cleared timestamps |
+| **Call notes** | Dispatcher and officer notes logged on the call |
+
+### Reports (top bar)
+
+| Action | Purpose |
+|--------|---------|
+| **PDF** | Download the full internal CFS report (same PDF as Web Admin closed incidents) |
+| **Email** | Email the full internal report to agency notification addresses configured in Web Admin |
+| **Public CFS** | Shown only when your organization has **Enable Public CFS Report** turned on in Web Admin. Opens a preview of the **public narrative only** (labeled **CFS**), then **Share PDF** for a redacted public document — no private notes, chronology, or incident tables. |
+
+<Note>Screenshot placeholder: Closed call detail with narratives and report actions</Note>
 
 ## Offline
 
@@ -41,9 +80,13 @@ Tap result to view call summary (read-only typical for closed calls).
 ## Tips
 
 - Use CFS number when dispatch radioed it.
-- Address search helps repeat-location checks.
+- Use `330*` on license plate when you know the prefix only.
+- Combine keyword + officer + date range to narrow busy agencies.
 - This is **not** NCIC — use **NCIC Search** for criminal queries.
+- If **Public CFS** is missing, ask an OrgAdmin to enable it under Web Admin **Settings** → **CFS Reports**.
 
 ## Warnings
 
 <Warning>Historical call data is sensitive — follow records/PII policy on shared devices.</Warning>
+<Warning>Public CFS shares only the public narrative, but still may contain PII — follow your agency release policy before sharing outside the organization.</Warning>
+<Warning>Private notes are restricted — only enter information appropriate for your role.</Warning>

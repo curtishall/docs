@@ -45,6 +45,22 @@ The most straightforward path is to open the CFS and assign from within the call
   </Tab>
 </Tabs>
 
+## Agency desk assignments
+
+**Agency desk** virtual units (for example **MSHP-DESK**) use the same drag-and-drop and quick-assign UX as field units, but Cadmus routes them through **agency assignment** instead of a standard unit dispatch.
+
+When you drag an agency desk onto a call card, click it in the **AVAILABLE UNITS** row on call detail, or select it from the **Assign Unit** dialog:
+
+1. The agency is added to the call's **Assigned agencies** block.
+2. Cadmus generates a CFS number for that agency as part of the agency desk workflow.
+3. The desk unit does **not** require a clerk user to be logged on through **Login User** (F2).
+
+In the **Assign Unit** dialog, agency desks are grouped under **Agency desks**, separate from staffed field units. You can assign a desk and field units to the same call in one action when needed.
+
+<Note>
+  Agency desk units are configured in **Web Admin**. They appear in the Active Units sidebar without shift login. See [Unit login](/dispatch/unit-login#agency-desk-units) for what not to do with F2.
+</Note>
+
 ## Status Progression
 
 Each unit assigned to a call moves through a standard status lifecycle. Update statuses promptly to keep the dispatch board accurate for the entire team.

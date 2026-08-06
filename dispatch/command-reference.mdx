@@ -1,75 +1,96 @@
 ---
 title: "Command reference"
 sidebarTitle: "Command reference"
-description: "Default command-line aliases for call, unit, messaging, and query actions in Dispatch CAD."
+description: "Per-command reference for the Dispatch CAD quick command line, including usage, examples, and HELP <command>."
 ---
 
 <Tip>
-Your **aliases** may differ from the defaults below. Use **`HELP`** in **Dispatch CAD** to see the live list for your login.
+Your **aliases** may differ from the defaults below. In **Dispatch CAD**, press **F1** or type **`HELP`** for the live list. Type **`HELP <command>`** (for example **`HELP VIEW`**) to open detailed usage and examples for one command. Tap any row in the help dialog to expand it.
 </Tip>
+
+## Getting help in the app
+
+| What you type | What happens |
+|---|---|
+| `HELP` or `?` or **F1** | Opens the full command reference dialog |
+| `HELP VIEW` | Opens the same dialog focused on **VIEW** with usage and examples |
+| Tap a command row | Expands usage, examples, arguments, and related commands |
+
+CJIS query commands (**DL**, **LP**, **NAME**, **CQ**, **AH**, **UH**, **S**) appear in help marked as **CJIS relay — use CJIS panel**.
 
 ## Call management
 
 | Default | Action | Dashboard | In-call |
 |--------|--------|-----------|---------|
-| NC | New call | `NC <TYPE> <ADDRESS> [@UNIT] [!STATUS] [RP=] [PH=]` | — |
+| NC | New call | `NC <TYPE> <ADDRESS> [@UNIT] [!STATUS] [RP=] [PH=] ["narrative"]` | — |
 | CLOSE | Close call | `CLOSE <CFS#>` | `CLOSE` |
 | REOPEN | Reopen | `REOPEN <CFS#>` | `REOPEN` |
-| VIEW | Open call | `VIEW <CFS#>` | — |
+| VIEW | Open call detail | `VIEW <CFS#>` or `VIEW #<CFS#>` | — |
 | SEND | Promote active | `SEND <CFS#>` | `SEND` |
 | PENDING | Set pending | `PENDING <CFS#>` | `PENDING` |
+
+### VIEW
+
+Opens the call in Call Detail when the CFS exists.
+
+- `VIEW #2026000014`
+- `VIEW 2026000014`
 
 ## Unit status
 
 | Default | Action | Dashboard | In-call |
 |--------|--------|-----------|---------|
-| DU | Dispatch unit | `DU <UNIT> <CFS#>` | `DU <UNIT>` |
-| ENR | Enroute | `ENR <UNIT> [CFS#]` | `ENR <UNIT>` |
-| OS | On scene | `OS <UNIT> [CFS#]` | `OS <UNIT>` |
-| CLR | Clear unit | `CLR <UNIT>` | `CLR <UNIT>` |
-| CU | Remove from call | `CU <UNIT> <CFS#>` | `CU <UNIT>` |
-| TS | Traffic / vehicle stop | `TS <UNIT> <ADDRESS>` | — |
+| DU | Dispatch unit | `DU @UNIT <CFS#>` | `DU @UNIT` |
+| ENR | Enroute | `ENR @UNIT [CFS#]` | `ENR @UNIT` |
+| OS | On scene | `OS @UNIT [CFS#]` | `OS @UNIT` |
+| CLR | Clear unit | `CLR @UNIT` | `CLR @UNIT` |
+| CU | Remove from call | `CU @UNIT <CFS#>` | `CU @UNIT` |
+| TS | Traffic / vehicle stop | `TS @UNIT <ADDRESS>` | — |
 | BUSY / AVAIL / OOS | Availability | `BUSY <UNIT>` etc. | — |
-| ON / OFF | Duty | `ON <UNIT>` / `OFF <UNIT>` | — |
+| UI | Unit info | `UI <UNIT>` | `UI <UNIT>` |
 
 ## Call properties (in-call)
 
-| Form | Example |
-|------|---------|
-| PRI= | `PRI=2` (**Dispatch CAD** may offer autocomplete after `PRI=`) |
-| TYPE= | `TYPE=BURG` |
-| LOC= | `LOC=456 ELM ST` |
-| NARR= | `NARR=…` (multi-word value supported) |
-| N | `N narrative text…` |
-| RP= / PH= | Reporting party |
-| NS | No status check: `NS @AgencyName` |
+| Form | Example | Notes |
+|------|---------|-------|
+| PRI= | `PRI=2` | Autocomplete after `PRI=` (1–4) |
+| TYPE= | `TYPE=ASS` | Autocomplete types/shortcodes that **start with** what you type |
+| LOC= | `LOC=456 ELM ST` | Multi-word address |
+| NARR= | `NARR=Caller reports…` | Adds a note on the call |
+| N | `N Caller advises disregard` or `N "test 123"` | Note appears immediately on the call |
+| RP= / PH= | Reporting party | |
+| NS | `NS` | No-status-check flag (audit today) |
 
-## Call detail only (open call required)
+## Status timers (open call required)
+
+| Command | Behavior |
+|---------|----------|
+| `STATUS ON` | **One agency** on the call → starts that agency’s status timer. **Multiple agencies** → error listing agencies; use `STATUS ON @AgencyName`. **No agency rows** → call-level enable. |
+| `STATUS OFF` | Same single / multi / call-level rules to stop timers |
+| `STATUS ON @Agency` | Start (or create) that agency’s timer |
+| `STATUS OFF @Agency` | Disable that agency’s timer |
+| `STATUS 10` | Set call-level timer to 10 minutes |
+| `STATUS 0` | Stop call-level timer |
+
+## Call detail only
 
 | Default | Action | Example |
 |--------|--------|---------|
-| STATUS | Call-level timer minutes, or **ON** / **OFF**; optional **@agency** for per-agency timers | `STATUS 10`, `STATUS OFF`, `STATUS ON @Police` |
-| PERSON | Add involved person with **role** + name | `PERSON victim Jane Doe` |
-| VEH | Add vehicle: color, make, model, optional plate | `VEH silver Ford F150` |
-| FLAG | Mark report to follow | `FLAG` |
-| RTF | Same as **FLAG** (alias) | `RTF` |
+| PERSON | Add person (role + name) | `PERSON victim Jane Doe` |
+| VEH | Add vehicle | `VEH silver Ford F150 ABC123` |
+| FLAG / RTF | Mark report to follow | `FLAG` |
 | ASSIGN | Assign multiple **@units** | `ASSIGN @A1 @A2` |
-| EMAIL | Email CFS PDF to address(es) | `EMAIL chief@agency.gov` |
-| REPORT# | Show or assign report / case number | `REPORT#` |
+| EMAIL | Email CFS PDF | `EMAIL chief@agency.gov` |
+| REPORT# | Show or assign report number | `REPORT#` |
 
 ## Messaging
 
 | Default | Example |
 |--------|---------|
-| MSG | `MSG <UNIT> <text>` |
+| MSG | `MSG @UNIT <text>` (open call) |
 | BC | `BC <text>` |
-| DNOTES | `DNOTES <CFS#> <text>` |
+| DNOTES | `DNOTES <text>` or `DNOTES <CFS#> <text>` |
 
-## Queries (CJIS / integrations)
+## Queries (CJIS)
 
-| Default | Example |
-|--------|---------|
-| DL | `DL <number> [STATE]` |
-| LP | `LP <PLATE> [STATE]` |
-| NAME | `NAME <LAST, FIRST> [DOB]` |
-| AH / UH / S | Address history, unit history, search (when enabled) |
+Use the **CJIS panel** for full query workflows. Command-line **DL** / **LP** / **NAME** / **CQ** may relay supported types; **AH** / **UH** / **S** are listed in help as CJIS relay stubs.

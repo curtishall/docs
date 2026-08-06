@@ -49,58 +49,93 @@ When multiple units are coming on duty simultaneously — such as at a major shi
   Batch login saves significant time at peak shift changes. Coordinate with officers to confirm they are ready before you submit — logging a unit on triggers MDT login state on their device.
 </Tip>
 
+
+
+## Login without personnel
+
+Some apparatus (especially fire trucks and some ambulances) go in service with **no crew members** logged onto the unit.
+
+1. Open **Login User** (<kbd>F2</kbd>) or use **Login** on an Off Duty unit card.
+2. Select the unit.
+3. Check **Login without personnel**.
+4. Click **Logon** / **Log In**.
+
+The unit appears on the **Active Units** sidebar with no officers listed. Use **Set Off Duty** from the unit context menu when that apparatus leaves service — it returns to the Off Duty pool.
+
+<Note>
+**Agency desks** (for example MSHP, Dispatch, or Jail desks) are different. They show on Active Units as virtual assignees and are assigned to calls through the agency desk workflow — they are not logged in with Login User.
+</Note>
+
+Fire and EMS **agencies** themselves are not logged in as units. Only real apparatus (and agency desks where configured) appear on Active Units.
+
 ## Active Units Sidebar
 
 Once units are logged on, the **Active Units** sidebar gives you a live view of your deployment:
 
 - **Active units list** — shows every on-duty unit with its current status and color-coded indicator.
-- **Off Duty section** — lists units that are configured but not currently logged on, available for batch or individual login.
+- **Unstaffed units** — apparatus or units with **Available** status but no logged-in crew appear in the active list with an **Unstaffed** badge. Right-click and choose **Log in…** before assigning them to a call, or drag them to a call to be prompted to log in first.
+- **Off Duty section** — below the active list; shows units in **Off Duty** status (not Available units with no crew). Use batch or individual login from this section.
 - **Units list density** — toggle between **Compact** and **Comfortable** display density to match your screen layout.
 - **Status filter** — use the **All** dropdown to filter the sidebar to a specific status (e.g., show only Available units).
 
-For a full-screen grid view of all unit statuses, press <kbd>F5</kbd> to open the **Unit Greaseboard**. The greaseboard supports **Table view**, **Sort by Status**, and can be opened in a new window for a secondary monitor.
+The header shows total unit count, **Available**, **Unstaffed** (when any are present), and **En Route** counts.
+
+For a full-screen grid view of all unit statuses, press <kbd>F5</kbd> to open the **Unit Greaseboard**. The greaseboard supports:
+
+- **Agency filter** — same All / Clear / Done pattern as header **Select Agencies** (Clear shows an empty board)
+- **Online / Offline** — filters by whether crew is logged into the unit
+- **Sort: Status** vs **Sort: Status | Zone** — reorders units within each status lane by zone or beat (when zones are missing or all the same, order may look unchanged)
+- **Table view** and opening in a new window for a secondary monitor
+
+## Assigning an Unstaffed Unit to a Call
+
+If you drag an **Unstaffed** unit onto a call card (or select it in the unit assignment dialog), Cadmus opens the **Log in** dialog first. After crew is logged in, the assignment proceeds automatically. If assignment fails after a successful login, you will see an orange warning — the unit will not remain on the call.
+
+## Agency desk units
+
+Some agencies use **agency desk** virtual units — for example **MSHP-DESK** — to hand a call off to another agency's dispatch desk. These units appear in the **Active Units** sidebar alongside field units, but they work differently from patrol or apparatus units:
+
+- **Do not log them on with Login User (F2).** Agency desks are not crewed units. There is no officer to assign, and they do not appear in the **Unit Assignment** dialog for logon.
+- **Assign them from the board or call detail instead.** Drag an agency desk from the sidebar onto a call card, click it in the **AVAILABLE UNITS** row, or pick it from **Assign Unit** — the same drag-and-drop and quick-assign gestures you use for field units.
+- **Agency assignment, not a standard unit dispatch.** When you assign an agency desk, Cadmus adds that agency to the call through the agency assignment workflow. The agency receives its own CFS number, which appears in the **Assigned agencies** block on call detail.
+
+<Tip>
+  Agency desk units are created in **Web Admin** and stay available without batch login at shift change. See [Dispatching units](/dispatch/dispatching-units#agency-desk-assignments) for assignment details.
+</Tip>
 
 ## Unit Context Menu
 
 Right-click any unit row in the sidebar (or click the unit's action menu) to access quick actions without opening a call:
 
-| Action | Effect |
-|---|---|
-| **Create Call** | Opens a new CFS pre-tied to this unit |
-| **Off Duty** | Moves the unit to the Off Duty pool |
-| **Mark Available** | Returns unit to Available status |
-| **Logout User** | Removes one crew member without clearing the entire unit |
-| **Devices…** | Opens MDT device enrollment for the unit |
+| Action | When | Effect |
+|---|---|---|
+| **Create Call** | Always | Opens a new CFS pre-tied to this unit |
+| **Log in…** | Unstaffed unit | Opens the single-unit login dialog |
+| **Log off** | Staffed unit, no active calls | Logs off one officer (single crew) or all crew (multi-crew confirm) |
+| **Log off** (blocked) | Staffed unit on an active CFS | Shows active call references; clear the unit from calls first |
+| **Mark Available** | Always | Returns unit to Available status |
+| **Devices…** | When permitted | Opens MDT device enrollment for the unit |
 
 <Note>
   Some context menu items may display **Coming soon** depending on your agency configuration (for example, Traffic Stop from the sidebar and Memo Location).
 </Note>
 
-## Log Out a Single Officer
-
-To remove one crew member without taking the entire unit off duty:
-
-1. Open the unit context menu from the Active Units sidebar.
-2. Select **Logout User** from the unit's context menu.
-3. Confirm the officer to remove.
-
-The unit remains on duty with any remaining assigned crew.
-
-## Set a Unit Off Duty at Shift End
+## Log Off at Shift End
 
 <Steps>
   <Step title="Confirm the unit is clear of all calls">
-    A unit cannot be set off duty while assigned to an active CFS. If you attempt this, Cadmus displays a **Cannot Set Unit Off Duty** error toast.
+    A unit cannot be logged off while assigned to an active CFS. Cadmus displays a **Cannot Log off** dialog listing the active calls.
   </Step>
   <Step title="Open the unit context menu">
     Right-click the unit row in the Active Units sidebar.
   </Step>
-  <Step title="Select Off Duty">
-    Click **Off Duty** and confirm in the **Set Unit Off Duty** dialog.
+  <Step title="Select Log off">
+    Click **Log off** and confirm. Single-crew units log off one officer; multi-crew units prompt to log off all crew.
   </Step>
 </Steps>
 
-The unit moves from the Active Units list to the Off Duty pool.
+- **Permanent apparatus** (e.g., Ladder 1) — after log off, the unit stays in the Active Units list as **Unstaffed**.
+- **Standard units** — after log off, the unit moves to the **Off-Duty Units** section below the active list.
 
 ## MDT Device Enrollment
 
@@ -119,6 +154,7 @@ Units and their agency associations are created and maintained in **Web Admin** 
 
 ## Common Mistakes to Avoid
 
+- **Trying to log on an agency desk with F2** — agency desk virtual units (for example **MSHP-DESK**) are assigned by dragging or quick-assigning them onto a call, not through Login User.
 - **Logging a unit on without assigning to a call** — the call remains in a pending state until a unit is explicitly assigned.
 - **Setting a unit off duty while assigned to an open CFS** — Cadmus will block the action, but verify call assignments manually before ending a shift.
 - **Skipping batch login at a major shift change** — logging units on one at a time slows down shift start and can delay MDT availability for officers in the field.
