@@ -91,6 +91,18 @@ For a full-screen grid view of all unit statuses, press <kbd>F5</kbd> to open th
 
 If you drag an **Unstaffed** unit onto a call card (or select it in the unit assignment dialog), Cadmus opens the **Log in** dialog first. After crew is logged in, the assignment proceeds automatically. If assignment fails after a successful login, you will see an orange warning — the unit will not remain on the call.
 
+## Agency desk units
+
+Some agencies use **agency desk** virtual units — for example **MSHP-DESK** — to hand a call off to another agency's dispatch desk. These units appear in the **Active Units** sidebar alongside field units, but they work differently from patrol or apparatus units:
+
+- **Do not log them on with Login User (F2).** Agency desks are not crewed units. There is no officer to assign, and they do not appear in the **Unit Assignment** dialog for logon.
+- **Assign them from the board or call detail instead.** Drag an agency desk from the sidebar onto a call card, click it in the **AVAILABLE UNITS** row, or pick it from **Assign Unit** — the same drag-and-drop and quick-assign gestures you use for field units.
+- **Agency assignment, not a standard unit dispatch.** When you assign an agency desk, Cadmus adds that agency to the call through the agency assignment workflow. The agency receives its own CFS number, which appears in the **Assigned agencies** block on call detail.
+
+<Tip>
+  Agency desk units are created in **Web Admin** and stay available without batch login at shift change. See [Dispatching units](/dispatch/dispatching-units#agency-desk-assignments) for assignment details.
+</Tip>
+
 ## Unit Context Menu
 
 Right-click any unit row in the sidebar (or click the unit's action menu) to access quick actions without opening a call:
@@ -142,6 +154,7 @@ Units and their agency associations are created and maintained in **Web Admin** 
 
 ## Common Mistakes to Avoid
 
+- **Trying to log on an agency desk with F2** — agency desk virtual units (for example **MSHP-DESK**) are assigned by dragging or quick-assigning them onto a call, not through Login User.
 - **Logging a unit on without assigning to a call** — the call remains in a pending state until a unit is explicitly assigned.
 - **Setting a unit off duty while assigned to an open CFS** — Cadmus will block the action, but verify call assignments manually before ending a shift.
 - **Skipping batch login at a major shift change** — logging units on one at a time slows down shift start and can delay MDT availability for officers in the field.
