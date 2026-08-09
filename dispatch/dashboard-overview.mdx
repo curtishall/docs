@@ -6,6 +6,21 @@ description: "Explore every section of the Dispatch CAD dashboard — call board
 
 The Dispatch CAD dashboard is your real-time dispatch surface. It organizes active calls, available units, operational broadcasts, and reference resources into a set of tabbed boards that update live as units change status and new calls come in. Understanding what each section shows — and when to use it — lets you work faster and miss nothing during a busy shift.
 
+## Live Board Status Banners
+
+Cadmus displays a status banner when the dashboard cannot show current live board data. Treat these banners as an operational prompt to verify the board before relying on it:
+
+| Banner | What it means | What to do |
+|---|---|---|
+| **Could not load call board** | The board did not load its call data. | Select **Reload Data**. |
+| **Live connection lost** | The live connection used for board updates has disconnected. | Select **Reload Data** to reconnect and refresh the board. |
+| **Last board refresh failed — showing previous data** | The board remains visible, but it is showing the last successful refresh and may be stale. | Select **Reload Data** and confirm the banner clears. |
+| **Agencies unavailable** | Cadmus could not load the agencies available to your session. | Select **Retry now**. If the message remains, confirm your connection and contact your supervisor or Cadmus support. |
+
+<Warning>
+  A board marked as showing previous data may not include the latest calls or unit changes. Do not treat it as current until a reload succeeds and the banner clears.
+</Warning>
+
 ## Call Board Tabs
 
 The call boards occupy the center of the dashboard. Each tab filters the active call list to a specific discipline or view, so you see exactly what is relevant to your role at any moment.

@@ -32,7 +32,7 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     When you open **New CFS** (F1) and expected incident types are absent, the type may be inactive in Web Admin or the local data cache is stale.
 
     1. Ask your admin to navigate to **Web Admin → Incident types** and confirm the type is set to **Active**.
-    2. After the admin activates or adds the type, select **Reload Data** from the header settings menu in Dispatch CAD. New incident types populate only after a reload.
+    2. After the admin activates or adds the type, select **Reload Units & Dashboard Data** from the header settings menu in Dispatch CAD. New incident types populate only after a reload.
     3. Confirm you are in the correct organization — incident types are org-scoped, so switching to a different org will show a different list.
   </Accordion>
 
@@ -41,7 +41,7 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
 
     1. Ask your admin to open **Web Admin → Quick Call Shortcuts** and verify a template exists for that key.
     2. Confirm the incident type linked to that template is **Active** in Web Admin.
-    3. Select **Reload Data** in Dispatch CAD after any template changes. If the template was just created, a full restart of Dispatch CAD may be required before the shortcut fires.
+    3. Select **Reload Units & Dashboard Data** in Dispatch CAD after any template changes. If the template was just created, a full restart of Dispatch CAD may be required before the shortcut fires.
   </Accordion>
 
   <Accordion title="NCIC/Query button not appearing">
@@ -61,7 +61,7 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
 
     1. Confirm the agency selected in the Dispatch CAD header matches the agency whose units you expect to see. Units are agency-scoped.
     2. Ask your admin to navigate to **Web Admin → Agencies → your agency → Units** and verify that units have been created and are active.
-    3. Select **Reload Data** after the admin adds or activates units.
+    3. Select **Reload Units & Dashboard Data** after the admin adds or activates units.
   </Accordion>
 
   <Accordion title="Sandbox vs. Live confusion">
@@ -88,16 +88,33 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     </Note>
   </Accordion>
 
-  <Accordion title="WebSocket updates appear stuck">
-    If the call board or unit statuses stop refreshing in real time, the WebSocket connection may have dropped.
+  <Accordion title="Board banner says data is stale or unavailable">
+    A live-board banner tells you that the board may not be current. The message identifies what failed:
 
-    1. Select **Reload Data** from the header settings gear menu. This reconnects the WebSocket and re-fetches all current data.
-    2. If the problem persists, open the gear menu and run **Test Connection** to check server reachability.
-    3. As a last resort, use **Force Reload** (also in the gear menu) to perform a full page reload without losing your current session.
+    - **Could not load call board** — select **Reload Data**.
+    - **Live connection lost** — select **Reload Data** to reconnect and refresh current data.
+    - **Last board refresh failed — showing previous data** — select **Reload Data** before relying on the board; the visible calls may be stale.
+    - **Agencies unavailable** — select **Retry now**. If it remains unavailable, verify your connection and contact your supervisor or Cadmus support.
 
     <Warning>
-      **Clear All Caches** (available in Settings & Tools) may sign you out or reset local preferences. Use it only when directed by Cadmus support.
+      Do not rely on a board showing previous data for current calls or unit statuses. Wait for a successful refresh and for the banner to clear.
     </Warning>
+  </Accordion>
+
+  <Accordion title="WebSocket updates appear stuck">
+    If call boards or unit statuses stop refreshing in real time and no banner is visible, the live connection may have dropped.
+
+    1. Select **Reload Units & Dashboard Data** from the header settings gear menu. This re-fetches current data and reconnects the live board while keeping your session signed in.
+    2. If the problem persists, open the gear menu and run **Test Connection** to check server reachability.
+    3. If Cadmus support directs you to use **Settings Recovery**, select either **Force Reload** or **Clear All Caches**. Both actions sign you out, so sign back in afterward.
+  </Accordion>
+
+  <Accordion title="Shared workstation or agency filter left from prior dispatcher">
+    On a shared Windows login, Cadmus remains signed in as the previous dispatcher until that person uses the user menu to select **Sign Out**.
+
+    1. Sign out from the user menu before changing dispatchers, then sign in with the current dispatcher's account.
+    2. Check **Select Agencies** in the header after signing in. Clear any filter that should not apply to the current dispatcher, or select **All Agencies** when appropriate for the console.
+    3. Use **Reload Units & Dashboard Data** only to refresh the dashboard. It keeps the session signed in and does not replace signing out between dispatchers.
   </Accordion>
 
 </AccordionGroup>

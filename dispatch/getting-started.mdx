@@ -52,6 +52,16 @@ Your **organization** determines which calls, units, incident types, and setting
   If a board looks unexpectedly empty, check whether an agency filter is active. A filter that excludes your primary agency is one of the most common causes of a blank call board.
 </Note>
 
+## Shared Workstation Sign-Out
+
+When dispatchers share the same Windows login, each person must sign out of Cadmus before the next dispatcher begins work. Open the user menu and select **Sign Out** between dispatchers, not only at the end of a shift.
+
+Signing out protects the prior dispatcher's session and prevents the next dispatcher from inheriting the prior user's agency filter. Before signing out, clear any agency filter that should not carry into the next shift, or leave it set to **All Agencies** when that matches your agency's normal console setup.
+
+<Warning>
+  Do not leave Dispatch CAD signed in for the next person. A shared Windows login does not create a separate Cadmus session.
+</Warning>
+
 ## Main Screen Layout
 
 Familiarize yourself with the five major areas of the Dispatch CAD workspace before taking your first call:
@@ -91,7 +101,7 @@ Use this table as a quick-reference until the actions become muscle memory. Ever
 | **F5** | Units / unit greaseboard |
 | **F8–F12** | Agency quick-call templates (e.g., traffic stop, follow-up) |
 
-## Reload After Admin Changes
+## Reload Data and Recovery Tools
 
 If incident types, quick-call templates, or units appear stale or missing after your agency admin makes changes in Web Admin:
 
@@ -100,10 +110,8 @@ If incident types, quick-call templates, or units appear stale or missing after 
     Click the **gear icon** in the header to open the Settings & tools menu.
   </Step>
   <Step title="Reload data">
-    Select **Reload Units & Dashboard Data** (or **Force Reload** if available). The boards refresh and pick up the latest configuration without requiring a full page reload.
+    Select **Reload Units & Dashboard Data**. This refreshes boards and picks up the latest configuration while keeping you signed in.
   </Step>
 </Steps>
 
-<Warning>
-  Sign out using **Sign Out** in the user menu at the end of every shift on shared workstations. Leaving a session open can expose call and unit data to the next user.
-</Warning>
+Use **Settings Recovery** only when directed by Cadmus support or when the normal reload does not resolve the issue. Both **Force Reload** and **Clear All Caches** under Settings Recovery sign you out; sign back in after running either action. See [Troubleshooting](/dispatch/troubleshooting) for recovery steps and live-board status messages.
