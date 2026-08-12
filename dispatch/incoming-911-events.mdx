@@ -1,0 +1,100 @@
+---
+title: "Incoming 911 events in Dispatch CAD"
+sidebarTitle: "Incoming 911"
+description: "How Cadmus presents onsite ANI/ALI 911 spills — local popup, event tray, claim collaboration, Create CFS, and cloud-offline behavior."
+---
+
+When your PSAP is connected to Cadmus through the onsite **911 gateway**, traditional ANI/ALI spills appear in Dispatch CAD immediately — even if Cadmus Cloud is temporarily unreachable.
+
+<Note>
+  Creating the Call for Service (CFS) still requires Cadmus Cloud. The gateway ensures you always see who called and where; the CFS record is saved when cloud connectivity is available.
+</Note>
+
+## What you see
+
+### Incoming popup
+
+A non-blocking **Incoming 911** card appears when a spill arrives. It does not steal keyboard focus from the form or command line you are using.
+
+Typical fields:
+
+- Callback number
+- Address / city / sector
+- Wireless class (for example, Wireless Phase II) and carrier
+- Location accuracy (uncertainty and confidence) when Phase II coordinates are present
+- Age timer (how long the event has been waiting)
+
+Actions:
+
+- **Create CFS** — claims the event for you and opens **New CFS** with ANI/ALI fields prefilled
+- **Acknowledge** — used when cloud is offline (you confirm you saw the call without creating a CFS yet)
+- **Dismiss** — removes the event from the active queue with a required reason (duplicate, test, non-call, handled elsewhere, other)
+- **View full ANI/ALI** — shows the normalized fields and the raw spill text
+
+### 911 event tray
+
+A persistent **911** badge on the dashboard shows how many active events need attention. Open the tray to review:
+
+- New / unhandled events
+- Claimed events (who is creating the CFS)
+- Attached events (linked CFS number)
+- Recently dismissed events
+
+Popups can be missed during a busy shift — the tray is the durable list.
+
+## Collaboration (claiming)
+
+Every signed-in dispatcher at the PSAP receives the same event.
+
+1. Dispatcher B clicks **Create CFS**.
+2. The onsite gateway marks the event **claimed** by Dispatcher B.
+3. Other workstations immediately show **911 being handled** with that dispatcher's name.
+4. After the CFS is saved in Cadmus Cloud, everyone sees **Attached** with the clickable CFS number.
+
+This prevents two people from assuming someone else has the call.
+
+## Create CFS from ANI/ALI
+
+<Steps>
+  <Step title="Click Create CFS on the popup or tray">
+    Cadmus claims the event locally first, then opens **New CFS**.
+  </Step>
+  <Step title="Review prefilled fields">
+    Callback number, address, coordinates, and accuracy metadata are filled from the spill. Complete incident type, priority, caller name, and narrative as usual.
+  </Step>
+  <Step title="Submit the CFS">
+    When cloud save succeeds, the 911 event attaches to the new call. Other dispatchers see the CFS number.
+  </Step>
+</Steps>
+
+If you cancel New CFS without saving, Cadmus asks whether to **release the claim** or **keep claimed** so another dispatcher can take over cleanly.
+
+## Cloud offline behavior
+
+If the onsite gateway is healthy but Cadmus Cloud is unreachable:
+
+- Incoming 911 popups and the tray still work.
+- A **Cadmus Cloud Offline** notice appears on the card.
+- **Create CFS** is replaced with **Acknowledge** until cloud returns.
+- The gateway queues the event for cloud ingest; you create the CFS after connectivity returns.
+
+## Map
+
+When coordinates are present and cloud enrichment is available, Cadmus can show a map pin with an uncertainty circle for the Phase II location. Selecting the pin opens the same event detail / Create CFS flow.
+
+## Go-live checklist for supervisors
+
+1. Confirm the onsite gateway health indicator is green on at least one dispatch workstation.
+2. Run a test spill (or vendor simulator) and verify every console receives the popup and one 911 sound.
+3. Have two dispatchers click **Create CFS** at the same time — only one should win the claim.
+4. Create a CFS and confirm the tray shows the attached call number.
+5. Optional: disconnect internet briefly and confirm the popup still appears with the cloud-offline message.
+
+## Related
+
+- [Create CFS](/dispatch/create-cfs)
+- [Dashboard overview](/dispatch/dashboard-overview)
+- [Map and location](/dispatch/map-and-location)
+- [Troubleshooting](/dispatch/troubleshooting)
+
+{/* TODO screenshots after UI sign-off: incoming popup, claimed-by-another, cloud-offline, tray, map uncertainty circle */}

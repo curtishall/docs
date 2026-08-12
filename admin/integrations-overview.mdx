@@ -4,7 +4,7 @@ sidebarTitle: "Integrations"
 description: "Overview of all Cadmus integration touchpoints — configure CJIS relay, RMS webhooks, RapidSOS location data, and ATAK at org and agency levels."
 ---
 
-Cadmus integrations operate at two scopes: some settings live at the **organization level** and apply to every agency beneath them, while others toggle on a per-agency basis. Understanding which scope controls which feature is the fastest way to unblock dispatchers and maintain compliance. This page maps every integration touchpoint — CJIS relay, RMS webhooks, RapidSOS location data, and ATAK — so you can find the right setting without hunting through every menu.
+Cadmus integrations operate at two scopes: some settings live at the **organization level** and apply to every agency beneath them, while others toggle on a per-agency basis. Understanding which scope controls which feature is the fastest way to unblock dispatchers and maintain compliance. This page maps every integration touchpoint — CJIS relay, RMS webhooks, RapidSOS location data, ATAK, and the onsite 911 ANI/ALI gateway — so you can find the right setting without hunting through every menu.
 
 ---
 
@@ -73,6 +73,16 @@ RapidSOS credentials are managed on a dedicated page rather than in the general 
 </Card>
 
 Once credentials are saved, Dispatch CAD surfaces RapidSOS tools in the **F4** header menu, including the **Track Phone Number** and **RapidSOS Lookup** dialogs.
+
+---
+
+## Onsite 911 ANI/ALI gateway
+
+Agencies with a Digi serial-to-TCP converter (or direct ALI serial) can run the Cadmus onsite **911 gateway** on the PSAP LAN. Dispatch CAD receives authenticated local events immediately; Cadmus Cloud remains authoritative for CFS creation.
+
+Dispatcher workflow: [Incoming 911 events](/dispatch/incoming-911-events).
+
+Installation and security for the gateway appliance are handled by Cadmus/onsite IT (separate from Web Admin RapidSOS settings).
 
 ---
 

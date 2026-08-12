@@ -47,6 +47,7 @@
             "icon": "phone-call",
             "pages": [
               "dispatch/create-cfs",
+              "dispatch/incoming-911-events",
               "dispatch/cfs-form-fields",
               "dispatch/call-detail",
               "dispatch/close-call",
@@ -95,7 +96,8 @@
             "icon": "life-buoy",
             "pages": [
               "dispatch/troubleshooting",
-              "dispatch/admin-manager-guide"
+              "dispatch/admin-manager-guide",
+              "dispatch/release-notes"
             ]
           }
         ]

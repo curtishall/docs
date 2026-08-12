@@ -88,6 +88,15 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     </Note>
   </Accordion>
 
+  <Accordion title="Incoming 911 ANI/ALI not appearing">
+    If traditional 911 spills do not pop in Dispatch CAD:
+
+    1. Check the **911 gateway** connection indicator. If it shows disconnected, confirm the workstation can reach the onsite gateway on the PSAP LAN and that the site secret is configured.
+    2. If the gateway is connected but no events arrive, ask onsite IT to confirm the Digi/serial input is online and that only the Cadmus gateway owns that TCP/serial port.
+    3. If popups appear but **Create CFS** is unavailable, Cadmus Cloud may be offline — use **Acknowledge**, then create the CFS when cloud returns. See [Incoming 911 events](/dispatch/incoming-911-events).
+    4. If two dispatchers both opened New CFS for the same spill, verify claim collaboration — only one workstation should win; others should show who is handling it.
+  </Accordion>
+
   <Accordion title="WebSocket updates appear stuck">
     If the call board or unit statuses stop refreshing in real time, the WebSocket connection may have dropped.
 
