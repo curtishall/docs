@@ -82,7 +82,16 @@ Agencies with a Digi serial-to-TCP converter (or direct ALI serial) can run the 
 
 Dispatcher workflow: [Incoming 911 events](/dispatch/incoming-911-events).
 
-Installation and security for the gateway appliance are handled by Cadmus/onsite IT (separate from Web Admin RapidSOS settings).
+### Configure the LAN endpoint in Web Admin
+
+Organization admins set the gateway address so every Dispatch CAD workstation can pull it (similar to other org-level dispatch settings):
+
+1. Open **Settings** for the dispatch organization (dispatch center).
+2. Find **Onsite 911 Gateway**.
+3. Enter the LAN **host / IP**, **port** (default `9182`), optional **site ID**, and enable the gateway.
+4. Save. Workstations pick up the endpoint on next sign-in or organization refresh.
+
+The gateway appliance itself (Digi/serial wiring, site secret, Docker/systemd) is still installed by Cadmus/onsite IT. Web Admin only publishes the address Dispatch CAD should use.
 
 ---
 

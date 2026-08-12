@@ -82,9 +82,15 @@ If the onsite gateway is healthy but Cadmus Cloud is unreachable:
 
 When coordinates are present and cloud enrichment is available, Cadmus can show a map pin with an uncertainty circle for the Phase II location. Selecting the pin opens the same event detail / Create CFS flow.
 
+## Organization settings
+
+Your dispatch organization stores the onsite gateway **LAN IP/hostname and port** in Cadmus Web Admin (**Settings → Onsite 911 Gateway**). Dispatch CAD pulls that endpoint automatically — you normally do not type the gateway address on each workstation.
+
+The workstation still needs the shared **site secret** (installed with the gateway) to authenticate to the LAN WebSocket.
+
 ## Go-live checklist for supervisors
 
-1. Confirm the onsite gateway health indicator is green on at least one dispatch workstation.
+1. Confirm Web Admin has the correct gateway host/port for the dispatch organization, then confirm the onsite gateway health indicator is green on at least one dispatch workstation.
 2. Run a test spill (or vendor simulator) and verify every console receives the popup and one 911 sound.
 3. Have two dispatchers click **Create CFS** at the same time — only one should win the claim.
 4. Create a CFS and confirm the tray shows the attached call number.
