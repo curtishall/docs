@@ -20,9 +20,12 @@ Typical fields:
 
 - Callback number
 - Address / city / sector
-- Wireless class (for example, Wireless Phase II) and carrier
-- Location accuracy (uncertainty and confidence) when Phase II coordinates are present
+- **Phase 1** or **Phase 2** wireless class (WPH from ALI) — Phase 2 is handset location (much closer); Phase 1 is cell-site approximate
+- Location accuracy in meters (for example, ±45 m) when the ALI includes uncertainty
+- Carrier when present
 - Age timer (how long the event has been waiting)
+
+The popup stays visible even if another window (status timer, New CFS) is already open — it does not take over the keyboard or replace that window.
 
 Actions:
 
