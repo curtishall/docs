@@ -6,9 +6,15 @@ description: "Electronic citations and warnings from the MDT."
 
 Electronic citations and warnings from the MDT.
 
+## MDT beta
+
+- Top bar shows **BETA**. Production installs stay on the production update channel.
+- Click **SANDBOX** / **LIVE** in the top bar to switch paired organization spaces.
+- Draft and queued citations can be resumed. Signatures are not captured yet.
+
 <Note>Screenshot placeholder: E-CITATIONS home screen</Note>
 
-**Availability:** Sidebar **E-Ticket** may show **This area is still in development for this release.** on production builds when the agency does not have **E-Ticket Module** enabled. Agencies with e-tickets turned on in Web Admin can use **E-Ticket** in production.
+**Availability:** This MDT **beta** unlocks E-Ticket on production builds when the agency has **E-Ticket Module** enabled. BOLOs and Calendar remain in development. Sidebar **E-Ticket** may show **This area is still in development for this release.** when the module is off.
 
 ## Standalone vs call-linked citations
 
@@ -48,13 +54,20 @@ Configure modules under [Agency settings](/admin/agency-settings) in Web Admin.
     On **Subject / Vehicle** or **Driver**, tap **Scan ID** to scan the license barcode with the device camera or a hardware wedge scanner. Review the parsed fields, or tap **Use demo data** for training. Mapped fields include name, DOB, license number, and address. Sex, height, and similar fields not on the citation form are ignored.
   </Step>
   <Step title="Issue or save draft">
-    Tap **ISSUE CITATION** or **SAVE DRAFT**. Use **Violator Refused to Sign** when applicable. For full CAD agencies, select a **Linked call** before issuing for live sync. Standalone e-ticket agencies skip the call selector.
+    Tap **ISSUE CITATION** or **SAVE DRAFT**. Signatures are **not captured** in this beta — review the printed form with the violator. For full CAD agencies, select a **Linked call** before issuing for live sync. Standalone e-ticket agencies skip the call selector.
   </Step>
 </Steps>
 
-<Note>Screenshot placeholder: Citation wizard Subject/Vehicle step</Note>
+## Resume, edit, and delete
+
+- **RESUME** / **EDIT** reopen **draft** and **PENDING SYNC** citations in the wizard. The same ticket identity is kept so sync updates the same record.
+- Queued (**PENDING SYNC**) citations stay queued after you save edits. Issue or retry sync when the network is back.
+- **VIEW** / **PRINT** apply to submitted, printed, and accepted citations. Those cannot be edited.
+- **DELETE** is available for **drafts only**, with confirmation. Submitted history cannot be deleted from the MDT.
 
 ## Status labels
+
+<Note>Screenshot placeholder: Citation wizard Subject/Vehicle step</Note>
 
 - **PENDING SYNC** — waiting for network upload
 - **SUBMITTED** — sent to records
@@ -62,10 +75,12 @@ Configure modules under [Agency settings](/admin/agency-settings) in Web Admin.
 
 ## Print
 
-- Open **PDF PREVIEW** from a citation (issued or ready to print).
+- Open **PDF PREVIEW** from a citation.
+- **PRINT** is available only after the citation is synced (submitted, printed, or accepted). Draft and queued citations show **EDIT** instead.
 - When your agency uses a **state or custom form template**, choose:
   - **4" THERMAL** — single-strip layout for mobile 4″ printers (Missouri: page 1 and 2 sequential)
   - **LETTER (FRONT + BACK)** — letter-size page with front and back side-by-side
+- If the agency template is not cached, Missouri agencies can print a clearly labeled **built-in state form**. Other states are blocked until the template downloads — Cadmus will not silently use a generic form.
 - Use **PRINT** from the preview once the form shows correctly (not a blank page).
 - **BACK TO E-CITATIONS** returns to the citation list.
 - PDF content includes defendant/driver, vehicle, and offense fields from the filled citation.
@@ -81,15 +96,15 @@ If the preview is blank, check network so template pages can download, then reop
 
 In **live mode**:
 
-- Drafts are stored locally on the device.
-- **SUBMISSION HISTORY** loads citations synced to CAD from your agency (`/agencies/{agencyId}/citations`).
-- **ISSUE CITATION** uploads through `POST /citations/sync`. For full CAD agencies, the citation must be linked to an active **call (incident)** before issue. Standalone e-ticket agencies (CAD off, E-Tickets on) can issue and sync without a call.
+- Drafts and queued citations stay visible on the device if citation history cannot load. A notice explains that you are seeing local copies.
+- **SUBMISSION HISTORY** loads citations synced to CAD from your agency.
+- **ISSUE CITATION** uploads for live sync. For full CAD agencies, the citation must be linked to an active **call** before issue. Standalone e-ticket agencies (CAD off, E-Tickets on) can issue and sync without a call.
 - Active charge codes for your agency **State** (for example MO/RSMO) are cached after the first online visit to **E-CITATIONS**. Charge code search works offline after that sync.
-- Errors show on the home screen with **RETRY**. Tap **RETRY** or re-open a pending draft after linking the call (when required).
+- Sync failures report how many queued citations failed, without raw server traces. Errors show on the home screen with **RETRY**.
+- **Auto-Sync Ticket Data** in Settings uploads when online (when enabled).
 
 In **Training Mode**, sample citations stay on the device only — nothing is transmitted.
 
-- **Auto-Sync Ticket Data** in Settings uploads when online (when enabled).
 - See [Connectivity and offline](/mobile/connectivity-offline).
 
 ## Requirements

@@ -6,6 +6,19 @@ description: "MDT settings beyond voice alerts and training mode."
 
 MDT settings beyond voice alerts and training mode.
 
+<Note>Screenshot placeholder: top bar showing clickable SANDBOX or LIVE badge and BETA label</Note>
+
+## Sandbox and Live
+
+If your login includes paired **Sandbox** and **Live** organizations, the top bar shows **SANDBOX** or **LIVE**.
+
+1. Tap the badge to switch to the opposite space (Sandbox → Live, or Live → Sandbox).
+2. You must already have membership in both organizations. Production MDT only offers Sandbox and Live — not an arbitrary organization list.
+3. After a successful switch, Calls, Units, Map, and E-Citations reload for the new organization. A short reconnect is expected.
+4. If the switch fails, the message tells you whether the organization change failed or live data did not reconnect. Retry from **Settings** if lists look stale.
+
+The same switch is available in Settings when a pair exists.
+
 ## Voice and assignment alerts
 
 **Voice Alerts** (Settings):
@@ -77,17 +90,6 @@ On Windows production builds, MDT checks for signed updates when you start the a
 
 Updates are verified before installation. Offline or slow networks may delay download; the previous version remains usable until a verified update is staged.
 
-## Synchronization
-
-**SYNCHRONIZATION** section:
-
-- **Auto-Sync Ticket Data** (e-citations)
-- **CHECK UPDATES** / violation DB updates
-
-<Note>Screenshot placeholder: Synchronization settings</Note>
-
-## Application updates (Windows MDT)
-
 On **Windows** MDT builds with auto-update enabled:
 
 | Control | Effect |
@@ -97,6 +99,15 @@ On **Windows** MDT builds with auto-update enabled:
 | **Later** | Postpone the prompt for 24 hours and keep using the current version |
 
 Install always requires confirmation. If Windows asks for administrator approval and you cancel, you can keep working on the current version and retry later.
+
+## Synchronization
+
+**SYNCHRONIZATION** section:
+
+- **Auto-Sync Ticket Data** (e-citations)
+- **CHECK UPDATES** / violation DB updates
+
+<Note>Screenshot placeholder: Synchronization settings</Note>
 
 ## Feedback
 
