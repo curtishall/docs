@@ -28,9 +28,11 @@ A **Call for Service (CFS)** is the primary record for any incident your agency 
   <Step title="Enter a Location">
     Fill the **Location \*** field using any of the supported location modes:
 
-    - **Street address** — type a street number and name; a **Validating address…** spinner confirms GIS lookup.
+    - **Street address** — type a street number and name (for example `300 E Concord`). Suggestions appear in normal mailing format such as `300 East Concord Street, Appleton City, Missouri 64724` (no comma after the house number). Selecting a suggestion looks up jurisdiction agencies immediately.
     - **Cross street** — use two intersecting street names when no exact address is known (e.g., `Main St & Oak Ave`).
     - **Common place** — select from your agency's configured common-place list (schools, parks, landmarks).
+
+    After a GIS match, Cadmus shows the **GIS Agencies** strip (police, fire, EMS) for the address. Agency assignment does not wait on cross-street enrichment.
 
     A **Geo verified** badge appears when GIS successfully validates the address.
 
@@ -39,7 +41,7 @@ A **Call for Service (CFS)** is the primary record for any incident your agency 
     </Warning>
 
     <Tip>
-      If you only have a cross street, enter it now and update to a full address once field units confirm the scene location.
+      If the same street name exists in more than one city and you did not pick a suggestion that already includes the city, Cadmus asks you to choose the city. ZIP codes and state abbreviations are not city choices. If you only have a cross street, enter it now and update to a full address once field units confirm the scene location.
     </Tip>
   </Step>
 
