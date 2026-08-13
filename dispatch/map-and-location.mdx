@@ -7,7 +7,7 @@ description: "Use the Cadmus map window to plot units and calls, validate addres
 The Cadmus map window gives you a live, at-a-glance picture of your operational area — active units, open calls, and emergency caller positions all rendered on a single interactive display. Use it to confirm incident addresses, share GPS coordinates with responders, and leverage RapidSOS to pinpoint 911 callers in real time.
 
 <Tip>
-  Onsite ANI/ALI Phase II locations can also appear as 911 event pins with an uncertainty circle. See [Incoming 911 events](/dispatch/incoming-911-events).
+  Onsite ANI/ALI locations support a focused Initial → Updated trail via **Show on map**. The agency-wide **911 Calls** layer defaults off. See [Incoming 911 events](/dispatch/incoming-911-events).
 </Tip>
 
 ## Opening the Map
@@ -25,6 +25,18 @@ The **Map Layers** panel lets you toggle each data overlay independently. Enable
 | **Active Calls** | Pin for each open call for service |
 | **RapidSOS Locations** | Current caller emergency location from RapidSOS |
 | **RapidSOS Breadcrumbs** | Caller movement trail during an active track |
+| **911 Calls** | Agency-wide onsite ANI/ALI pins (**off by default**) |
+| **Location trail** | Numbered Initial → Updated path for the focused 911 event (nested under 911 Calls) |
+
+### Focused 911 location trail
+
+When you click **Show on map** on an incoming 911 event:
+
+1. Cadmus focuses that one call’s trail even if **911 Calls** is still off.
+2. You see numbered points, uncertainty circles, and a connecting line.
+3. Use **Close 911 focus** on the map banner to clear the focused trail.
+
+Turn **911 Calls** on only when you intentionally want every active 911 pin for the agency.
 
 ## Map Controls
 

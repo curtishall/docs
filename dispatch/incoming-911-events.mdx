@@ -22,6 +22,7 @@ Typical fields:
 - Address / city / sector
 - **Phase 1** or **Phase 2** wireless class (WPH from ALI) — Phase 2 is handset location (much closer); Phase 1 is cell-site approximate
 - Location accuracy in meters (for example, ±45 m) when the ALI includes uncertainty
+- **Location updated** badge when the ALI sends a meaningful rebid (Initial → Updated / Last known)
 - Carrier when present
 - Age timer (how long the event has been waiting)
 
@@ -30,9 +31,10 @@ The popup stays visible even if another window (status timer, New CFS) is alread
 Actions:
 
 - **Create CFS** — claims the event for you and opens **New CFS** with ANI/ALI fields prefilled
+- **Show on map** — focuses the map on this one event’s location trail (does not turn on agency-wide 911 clutter)
 - **Acknowledge** — used when cloud is offline (you confirm you saw the call without creating a CFS yet)
 - **Dismiss** — removes the event from the active queue with a required reason (duplicate, test, non-call, handled elsewhere, other)
-- **View full ANI/ALI** — shows the normalized fields and the raw spill text
+- **View full ANI/ALI** — shows the normalized fields, location timeline, and the raw spill text
 
 ### 911 event tray
 
@@ -81,9 +83,34 @@ If the onsite gateway is healthy but Cadmus Cloud is unreachable:
 - **Create CFS** is replaced with **Acknowledge** until cloud returns.
 - The gateway queues the event for cloud ingest; you create the CFS after connectivity returns.
 
+## Location timeline (Initial / Updated / Last known)
+
+Wireless ALI often sends more than one location for the same callback:
+
+| Kind | Meaning |
+|---|---|
+| **Initial** | First coordinates for the call |
+| **Updated** | A rebid with a new/tighter fix |
+| **Last known** | Vendor “last known” label (often same point as a recent Updated) |
+
+Cadmus keeps an ordered timeline of meaningful points. Repeated copies at the same coordinates are collapsed so the trail does not invent movement.
+
+### Notes vs CFS address
+
+- When the 911 event is already attached to a CFS, each meaningful rebid appends a **system call note** (accuracy, coordinates, and kind).
+- Cadmus **does not** silently replace the CFS address or coordinates when a rebid arrives.
+- Open the event detail and choose **Apply latest location to CFS** only when you want the CFS location to change. Confirm the old vs new values before applying.
+
 ## Map
 
-When coordinates are present and cloud enrichment is available, Cadmus can show a map pin with an uncertainty circle for the Phase II location. Selecting the pin opens the same event detail / Create CFS flow.
+Use **Show on map** from the popup, tray, or detail view to focus one event:
+
+- Numbered Initial → Updated points
+- Uncertainty circles
+- A connecting trail
+- Fit-to-view for that event only
+
+The agency-wide **911 Calls** map layer stays **off by default** so large agencies are not flooded with pins. Focus mode still shows the selected trail while that layer is off. See [Map and location](/dispatch/map-and-location).
 
 ## Organization settings
 
