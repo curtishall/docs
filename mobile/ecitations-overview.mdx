@@ -6,9 +6,15 @@ description: "Electronic citations and warnings from the MDT."
 
 Electronic citations and warnings from the MDT.
 
+## MDT beta
+
+- Top bar shows **BETA**. Production installs stay on the production update channel.
+- Click **SANDBOX** / **LIVE** in the top bar to switch paired organization spaces.
+- Draft and queued citations can be resumed. Signatures are not captured yet.
+
 <Note>Screenshot placeholder: E-CITATIONS home screen</Note>
 
-**Availability:** Sidebar **E-Ticket** may show **This area is still in development for this release.** on some deployments.
+**Availability:** This MDT **beta** unlocks E-Ticket on production builds when the agency has **E-Ticket Module** enabled. BOLOs and Calendar remain in development.
 
 ## Home screen
 
@@ -30,19 +36,35 @@ Electronic citations and warnings from the MDT.
     Fill **Subject / Vehicle**, **Violation / Loc**, **Signatures**, and **Review & Issue**.
   </Step>
   <Step title="Issue or save draft">
-    Tap **ISSUE CITATION** or **SAVE DRAFT**. Use **Violator Refused to Sign** when applicable.
+    Tap **ISSUE CITATION** or **SAVE DRAFT**. Signatures are **not captured** in this beta — review the printed form with the violator.
   </Step>
 </Steps>
 
-<Note>Screenshot placeholder: Citation wizard Subject/Vehicle step</Note>
+## Resume, edit, and delete
+
+- **RESUME** / **EDIT** reopen **draft** and **PENDING SYNC** citations in the wizard. The same ticket identity is kept so sync updates the same record.
+- Queued (**PENDING SYNC**) citations stay queued after you save edits. Issue or retry sync when the network is back.
+- **VIEW** / **PRINT** apply to submitted, printed, and accepted citations. Those cannot be edited.
+- **DELETE** is available for **drafts only**, with confirmation. Submitted history cannot be deleted from the MDT.
 
 ## Status labels
+
+<Note>Screenshot placeholder: Citation wizard Subject/Vehicle step</Note>
 
 - **PENDING SYNC** — waiting for network upload
 - **SUBMITTED** — sent to records
 - **PRINTED** — hard copy produced
 
 ## Print
+
+- Open **PDF PREVIEW** from a citation.
+- **PRINT** is available only after the citation is synced (submitted, printed, or accepted). Draft and queued citations show **EDIT** instead.
+- When your agency uses a **state or custom form template**, choose:
+  - **4" THERMAL** — single-strip layout for mobile 4″ printers (Missouri: page 1 and 2 sequential)
+  - **LETTER (FRONT + BACK)** — letter-size page with front and back side-by-side
+- If the agency template is not cached, Missouri agencies can print a clearly labeled **built-in state form**. Other states are blocked until the template downloads — Cadmus will not silently use a generic form.
+- Use **PRINT** from the preview once the form shows correctly (not a blank page).
+- **BACK TO E-CITATIONS** returns to the citation list.
 
 - **PRINT** from preview
 - **BACK TO E-CITATIONS**
@@ -52,8 +74,9 @@ Electronic citations and warnings from the MDT.
 
 ## Offline and sync
 
-- Drafts stored locally on device.
+- Drafts and queued citations stay visible on the device if citation history cannot load. A notice explains that you are seeing local copies.
 - **Auto-Sync Ticket Data** in Settings uploads when online.
+- Sync failures report how many queued citations failed, without raw server traces.
 - See [Connectivity and offline](/mobile/connectivity-offline).
 
 ## Requirements
