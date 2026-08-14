@@ -10,26 +10,30 @@ Work an assigned call from the MDT.
 
 ## Status buttons (on assigned call)
 
-When your unit is on the call:
+When the call is not yet **On Scene**:
 
 | Button | Meaning |
 |--------|---------|
-| **DISPATCHED** | Acknowledge assignment |
-| **EN ROUTE** | En route to scene |
-| **ON SCENE** | Arrived on scene |
-| **CLEAR CALL** | Clear your unit from call |
+| **EN ROUTE** | Your unit is en route to the scene |
+| **ON SCENE** | Your unit has arrived |
+| **CLEAR CALL** | Clear yourself or close the call (see [Close call](/mobile/close-call)) |
+| **UNITS** | Open the units sheet |
+
+When the **call** is already **On Scene**, **EN ROUTE** and **ON SCENE** hide on the action bar so you do not restamp a scene that is already occupied. Use **UNITS** if you are a late unit and still need to mark your own apparatus En Route or On Scene.
 
 Requires network — offline shows **No network connection. Try again when online.**
 
-<Note>Screenshot placeholder: DISPATCHED / EN ROUTE / ON SCENE button row</Note>
+<Note>Screenshot placeholder: EN ROUTE / ON SCENE / CLEAR CALL / UNITS button row</Note>
 
-## Assign yourself
+## UNITS sheet
 
-If not yet assigned:
+**UNITS** always opens a roster of who is on the call (call sign and status).
 
-- **ASSIGN MY UNIT** — success toast **Unit assigned to call**
+- If you are not assigned yet, Cadmus assigns your apparatus first, then opens the sheet (it does not stop at a “Unit assigned to call” toast).
+- **Your** unit can tap **EN ROUTE**, **ON SCENE**, or **CLEAR MYSELF** based on *your* unit’s status — even when another unit is already On Scene.
+- Other units on the roster are read-only.
 
-<Note>Screenshot placeholder: ASSIGN MY UNIT button</Note>
+<Note>Screenshot placeholder: Units on this call sheet</Note>
 
 ## Call sections
 
