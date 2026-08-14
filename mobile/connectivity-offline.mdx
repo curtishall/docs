@@ -25,7 +25,8 @@ Calls screen may show Wi‑Fi dot with queued count — tooltip **Queued message
 
 | Feature | Offline |
 |---------|---------|
-| View cached calls | Often yes |
+| View cached open calls (**MY CALLS** / **ALL CALLS**) | Often yes |
+| **RECENT** tab (not yet opened this session) | No — loads only when online |
 | Evidence capture | Yes (see [Evidence capture](/mobile/evidence-capture)) |
 | View evidence gallery | Yes |
 | Map cached tiles | Partial (see offline maps) |
@@ -36,9 +37,12 @@ Calls screen may show Wi‑Fi dot with queued count — tooltip **Queued message
 |---------|-----------------|
 | Dispatch notes | **Note was not sent.** |
 | Unit status / assign | **Try again when online.** |
+| **RECENT** tab (first open) | List does not load until online |
 | Find a Call search | **Search failed. Check network and try again.** |
 | NCIC queries | Blocked |
 | Close call | Blocked |
+
+The **RECENT** tab on [Calls list](/mobile/calls-list) is not loaded at app start. Opening **RECENT** for the first time requires a network connection to fetch the newest closed calls. **MY CALLS** and **ALL CALLS** may show cached open calls while offline (see below).
 
 <Note>Screenshot placeholder: Offline snackbar on note save</Note>
 

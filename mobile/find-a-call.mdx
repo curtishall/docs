@@ -4,7 +4,7 @@ sidebarTitle: "Find a call (mobile)"
 description: "Search past calls from the MDT — not NCIC."
 ---
 
-Search past calls from the MDT — not NCIC.
+Search the full call archive from the MDT — not NCIC. Use **Find a Call** when you need a closed call older than the **RECENT** tab on [Calls list](/mobile/calls-list) (which shows only the newest 150 closes).
 
 <Note>Screenshot placeholder: Find a Call screen</Note>
 
@@ -24,13 +24,26 @@ Title: **Find a Call** — subtitle **Past calls — not NCIC**
 
 **Search** button runs query.
 
-Results: **N result(s) — page X of Y**
+## Results and pagination
+
+Search returns **50 results per page**.
+
+The footer shows **Previous** and **Next** when another page is available. The app does not show **page X of Y** when the total number of matching calls is unknown — use **Next** until no more results appear.
 
 <Note>Screenshot placeholder: Find a Call search form and results</Note>
 
+## Recent tab vs Find a Call
+
+| Feature | RECENT tab (Calls list) | Find a Call |
+|---------|-------------------------|-------------|
+| **Scope** | Newest 150 closed calls | Full archive search |
+| **Search** | Tab list only | CFS, address, or plate |
+| **Pagination** | None (fixed 150) | 50 results per page |
+| **Best for** | Quick shift lookups | Older CFS numbers and deep history |
+
 ## Open result
 
-Tap result to view call summary (read-only typical for closed calls).
+Tap a result to open call detail. The app loads full call detail when you open a row (loading indicator and automatic retry if needed). Closed calls are typically read-only.
 
 <Note>Screenshot placeholder: Historical call summary from search</Note>
 
@@ -43,6 +56,7 @@ Tap result to view call summary (read-only typical for closed calls).
 - Use CFS number when dispatch radioed it.
 - Address search helps repeat-location checks.
 - This is **not** NCIC — use **NCIC Search** for criminal queries.
+- Start with **RECENT** on the Calls screen for recent closes; open **Find a Call** when you need records beyond that list.
 
 ## Warnings
 

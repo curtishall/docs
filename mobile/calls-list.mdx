@@ -6,7 +6,7 @@ description: "View and manage calls assigned to you or your agency."
 
 View and manage calls assigned to you or your agency.
 
-<Note>Screenshot placeholder: Calls screen with MY CALLS and ALL CALLS tabs</Note>
+<Note>Screenshot placeholder: Calls screen with MY CALLS, ALL CALLS, and RECENT tabs</Note>
 
 ## Navigation
 
@@ -17,37 +17,58 @@ Sidebar **Calls** → **CALLS FOR SERVICE**
 | Tab | Shows |
 |-----|---------|
 | **MY CALLS** | Calls your unit is assigned to |
-| **ALL CALLS** | Broader agency call list |
+| **ALL CALLS** | Open agency calls only (see below) |
+| **RECENT** | Newest closed calls (see below) |
+
+### ALL CALLS — open calls only
+
+**ALL CALLS** lists calls that are still active on the board. Statuses shown:
+
+- **PENDING**, **DISPATCHED**, **ACTIVE**, **EN ROUTE**, **ON SCENE**
+
+**Closed** and **Cancelled** calls do not appear on **ALL CALLS**. When a call closes, it drops off this tab and may appear on **RECENT**.
+
+### RECENT — recently closed
+
+**RECENT** shows the **150 most recently closed** calls for your agency. There is no **Load more** — the list is fixed at those newest closes.
+
+The **RECENT** list loads the first time you open that tab. It is not loaded when the app starts.
+
+For older closed calls beyond those 150, use sidebar **Find a Call** (see [Find a call (mobile)](/mobile/find-a-call)).
 
 ## Call card badges
 
 Status labels on list rows:
 
-- **PENDING**, **DISPATCHED**, **EN ROUTE**, **ON SCENE**
+- **PENDING**, **DISPATCHED**, **ACTIVE**, **EN ROUTE**, **ON SCENE**
 - **ProQA**, **ProQA ALERT**, **RTF** (report to follow) when applicable
 
 <Note>Screenshot placeholder: Call list row with status badges</Note>
 
 ## Empty and load states
 
-- **No active calls.** when nothing matches filter.
-- **Load more calls** at bottom when paginated.
+- **No active calls.** when nothing matches on **MY CALLS** or **ALL CALLS**.
+- **RECENT** may show an empty state when no closed calls are available yet.
 
 ## Open a call
 
-- Tap a row to open call detail (full screen on phone, split panel on desktop).
+- Tap a row from **MY CALLS**, **ALL CALLS**, or **RECENT** to open call detail.
+- The app loads full call detail when you open a row. A loading indicator appears while detail loads; if the first attempt fails, the app retries automatically.
+- Full screen on phone; split panel on desktop/tablet.
 
 <Note>Screenshot placeholder: Call detail split view on tablet/desktop</Note>
 
 ## Pull to refresh
 
-Pull down on list to reload assigned or all calls.
+Pull down on **MY CALLS** or **ALL CALLS** to reload open calls. **RECENT** reloads when you open the tab or pull to refresh on that tab.
 
 ## Tips
 
 - Use **MY CALLS** during patrol for your assignments only.
-- **ALL CALLS** for situational awareness when policy allows.
-- If list is empty after known dispatch, check unit/call sign in profile.
+- **ALL CALLS** for situational awareness when policy allows — open calls only.
+- **RECENT** for today's or this week's closes without searching the full archive.
+- If **ALL CALLS** is empty after a known dispatch, check unit/call sign in profile.
+- For a CFS number older than the **RECENT** list, use **Find a Call**.
 
 ## Warnings
 
