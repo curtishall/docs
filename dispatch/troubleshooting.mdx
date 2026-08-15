@@ -76,6 +76,14 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     </Note>
   </Accordion>
 
+  <Accordion title="Board goes blank after Paper Service or a new call">
+    A **stale-data banner** (for example, last refresh failed, showing previous data) means the board is still drawn from the last good snapshot — use **Reload Data**.
+
+    If the **entire call board disappears or errors** after a field MDT **Paper Service** (or another create with no unit and no coordinates), that is a parse failure, not a forgotten redraw. Reload Data. Cadmus now skips a single unreadable call row so one bad record cannot take down Pending, Dispatched, and Recent together.
+
+    If Reload Data still fails with a server error, contact Cadmus support with the time of the Paper Service create.
+  </Accordion>
+
   <Accordion title="Map or RapidSOS not working">
     If the map view (F4) fails to load or the RapidSOS caller-location feature is unavailable, check the following:
 

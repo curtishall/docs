@@ -48,6 +48,17 @@ Settings are grouped by category and displayed with color-coded labels: **Safety
       Enabling State/NCIC Access here without first configuring an org-level CJIS site causes queries to fail at runtime. Configure CJIS before enabling this toggle.
     </Warning>
   </Tab>
+  <Tab title="Allow a field unit on multiple open calls">
+    - **Category:** Access
+    - **Default:** Off for Law Enforcement and other types; on for Fire and EMS until you save an explicit value
+    - **Effect when on:** The same field unit can be assigned to more than one open call at a time.
+    - **Effect when off:** Assigning a unit that is already on another open call is rejected. MDT prompts the officer to clear or close the first call; Dispatch CAD warns before assign.
+    - **User override:** Not allowed — this setting applies to the entire agency.
+
+    <Note>
+      Agency desks are not limited by this setting. Field MDT still cannot leave a call with no unit; the last unit on a call must close it.
+    </Note>
+  </Tab>
   <Tab title="Separate RMS Report Numbers">
     - **Category:** Features
     - **Default:** Disabled
