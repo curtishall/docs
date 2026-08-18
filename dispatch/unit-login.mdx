@@ -30,7 +30,14 @@ You can open the **Unit Assignment** dialog two ways:
     Click the row for the unit you want to bring on duty.
   </Step>
   <Step title="Assign crew">
-    Click **Logon** and enter or select the officer's name or ID to associate them with the unit.
+    Click **Logon** and search by DSN, name, or callsign. If a person cannot be added, Cadmus shows why:
+
+    - **Crew is full** — a banner at the top of the list (for example, 1/1). Remove someone before adding another, or raise **Max Crew** in Web Admin.
+    - **Already on another unit** — the row explains which unit. Log them off that unit first.
+    - **Already selected** — they are already in this login's selected crew list.
+    - **Max crew is not set** — the unit has Max Crew of 0. Set Max Crew in Web Admin before adding personnel.
+
+    Hover a row for the same explanation as a tooltip.
   </Step>
   <Step title="Confirm">
     Submit the dialog. The unit moves from the Off Duty pool to the **Active Units** sidebar with an **Available** status.
@@ -119,7 +126,7 @@ Units and their agency associations are created and maintained in **Web Admin** 
 
 ## Common Mistakes to Avoid
 
-- **Logging a unit on without assigning to a call** — the call remains in a pending state until a unit is explicitly assigned.
+- **Grey circle on every person in search** — that used to mean the crew was full with no explanation. Cadmus now shows a **crew is full** banner and a per-person reason (already on another unit, already selected, or max crew not set).
 - **Setting a unit off duty while assigned to an open CFS** — Cadmus will block the action, but verify call assignments manually before ending a shift.
 - **Skipping batch login at a major shift change** — logging units on one at a time slows down shift start and can delay MDT availability for officers in the field.
 

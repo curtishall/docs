@@ -33,8 +33,13 @@ Call detail is organized into labeled blocks. Each block focuses on a distinct a
 
 The call summary block shows the current **status**, **priority**, **incident type**, and most recent updates at a glance. From here you can:
 
+- Click **Copy summary** to copy CFS, type, location, units, times, and notes to the clipboard for pasting into an email.
+- Click **PDF / Print** to open the CFS report PDF in your default viewer (print from there).
+- Click **Email PDF** to send the CFS report. Enter one or more addresses, or leave blank to use the agency's default report recipients.
 - Click **Edit Call Details** to update priority, type, location, or narrative without reopening the New CFS form.
 - View **RECENT UPDATES** for a condensed activity feed.
+
+The command-line `EMAIL` command still works on call detail. The buttons above do the same PDF/email work without typing a command.
 
 ### Call type and description
 
@@ -122,6 +127,8 @@ This section is the call's permanent record of everything that happened.
 <Tabs>
   <Tab title="Call Notes">
     Dispatcher-entered narrative notes attached to this call. Call notes are visible in the call record and may appear on reports depending on agency configuration. Click **Add Call Note** to add an entry.
+
+    If you paste a MULES / DOR / NCIC terminal dump into a call note, Cadmus reflows pipes, section headers, and numbered cases onto separate lines so the note is readable. The content is not changed — only spacing. Restricted CJIS responses still display as the confidential placeholder.
   </Tab>
   <Tab title="Audit Logs">
     System-generated log of every change made to the call record — field edits, status updates, unit assignments, and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
