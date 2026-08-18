@@ -33,8 +33,13 @@ Call detail is organized into labeled blocks. Each block focuses on a distinct a
 
 The call summary block shows the current **status**, **priority**, **incident type**, and most recent updates at a glance. From here you can:
 
+- Click **Copy summary** to copy CFS, type, location, units, times, and notes to the clipboard for pasting into an email.
+- Click **PDF / Print** to open the CFS report PDF in your default viewer (print from there).
+- Click **Email PDF** to send the CFS report. Enter one or more addresses, or leave blank to use the agency's default report recipients.
 - Click **Edit Call Details** to update priority, type, location, or narrative without reopening the New CFS form.
 - View **RECENT UPDATES** for a condensed activity feed.
+
+The command-line `EMAIL` command still works on call detail. The buttons above do the same PDF/email work without typing a command.
 
 ### Call type and description
 
@@ -163,7 +168,9 @@ This section is the call's permanent record of everything that happened.
   <Tab title="Call Notes">
     Dispatcher-entered narrative notes attached to this call. Call notes are visible in the call record and may appear on reports depending on agency configuration. Click **Add Call Note** to add an entry.
 
-    **Restricted CJIS notes:** If a dispatcher pastes external query response text that begins with `FROM-MULES`, `FROM-DOC`, `FROM-NCIC`, `FROM-REVENUE`, or `FROM-NLETS`, Cadmus automatically classifies the note as **Restricted / Confidential — Law Enforcement only**. Law Enforcement agencies see the full text; Fire, EMS, and other non-LE agencies see a placeholder message instead of CJIS content. An orange warning may appear while typing or pasting before the note is saved.
+    **Restricted CJIS notes:** If a dispatcher pastes external query response text that begins with `FROM-MULES`, `FROM-DOC`, `FROM-NCIC`, `FROM-REVENUE`, `FROM-NLETS`, or a DOR long response, Cadmus automatically classifies the note as **Restricted / Confidential — Law Enforcement only**. Law Enforcement agencies see the full text; Fire, EMS, and other non-LE agencies see a placeholder message instead of CJIS content. An orange warning may appear while typing or pasting before the note is saved.
+
+    Pasted MULES / DOR / NCIC terminal dumps are also reflowed (pipes, section headers, and numbered cases become separate lines) so the note is readable. The content is not changed — only spacing.
   </Tab>
   <Tab title="Audit Logs">
     System-generated log of every change made to the call record — field edits, status updates, unit assignments, person add/edit/remove (suspect, victim, witness, and other roles), and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
