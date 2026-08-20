@@ -38,6 +38,22 @@ The **Citation** section of the agency settings page contains the citation templ
   Test one citation in your Sandbox organization before enabling the template in your Live organization. This lets you catch formatting issues without creating records in the production system.
 </Tip>
 
+### Citation email delivery
+
+In the **Citation Email Delivery** section of e-citation settings, configure automatic PDF copies after an officer successfully submits from mobile:
+
+| Setting | Purpose |
+|---|---|
+| **Email PDF to Officer** | Sends the citation PDF to the issuing officer's Cadmus email address |
+| **Email PDF to Record Clerk** | Sends the citation PDF to your records staff when an address is configured |
+| **Record Clerk Email** | Comma-separated addresses (for example `records@agency.gov, clerk@agency.gov`) |
+
+Officers still print from the mobile **PDF PREVIEW** screen. Email runs in the background and does not block printing. If SendGrid or recipient addresses are misconfigured, the citation remains submitted — staff can reprint from mobile history.
+
+<Tip>
+  Confirm each officer has a valid email address in Cadmus user management. The backend falls back to the signed-in Clerk email when the user record has no email.
+</Tip>
+
 ## RMS report numbers
 
 How Cadmus assigns report numbers depends on a single agency-level toggle:
