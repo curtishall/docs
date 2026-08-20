@@ -134,6 +134,29 @@ Some agencies use **agency desk** virtual units — for example **MSHP-DESK** �
   Agency desk units are created in **Web Admin** and stay available without batch login at shift change. See [Dispatching units](/dispatch/dispatching-units#agency-desk-assignments) for assignment details.
 </Tip>
 
+## Edit Crew (without a full logout)
+
+When a unit is already on duty and you need to add or change who is riding — for example a second officer joins mid-shift — use **Edit Crew** instead of logging the unit fully off and back on.
+
+<Steps>
+  <Step title="Open the unit menu">
+    In the **Active Units** sidebar, right-click the staffed unit (or open its action menu).
+  </Step>
+  <Step title="Choose Edit Crew">
+    Select **Edit Crew**. The dialog title is **Edit Crew** and is for adding personnel to the active unit.
+  </Step>
+  <Step title="Add crew">
+    Search by DSN, name, or callsign and select who to add. The same full-crew and already-assigned messages from login apply.
+  </Step>
+  <Step title="Confirm">
+    Submit. The unit stays on duty; the Active Units sidebar and field MDTs update with the new crew.
+  </Step>
+</Steps>
+
+<Note>
+  **Edit Crew** needs a matching Cadmus server update for your agency. If the menu item is missing, or changes do not save, ask your supervisor or Cadmus support to confirm the server side is current. Until then, use a full **Log off** and **Log in…** when you must change crew.
+</Note>
+
 ## Unit Context Menu
 
 Right-click any unit row in the sidebar (or click the unit's action menu) to access quick actions without opening a call:
@@ -141,7 +164,7 @@ Right-click any unit row in the sidebar (or click the unit's action menu) to acc
 | Action                | When                          | Effect                                                              |
 | --------------------- | ----------------------------- | ------------------------------------------------------------------- |
 | **Create Call**       | Always                        | Opens a new CFS pre-tied to this unit                               |
-| **Edit Crew**         | Staffed unit                  | Add or remove crew without a full logout / re-login                 |
+| **Edit Crew**         | Staffed unit                  | Add or change crew without a full logout / re-login (see above)     |
 | **Log in…**           | Unstaffed unit                | Opens the single-unit login dialog                                  |
 | **Log off**           | Staffed unit, no active calls | Logs off one officer (single crew) or all crew (multi-crew confirm) |
 | **Log off** (blocked) | Staffed unit on an active CFS | Shows active call references; clear the unit from calls first       |

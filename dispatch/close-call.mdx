@@ -32,7 +32,7 @@ Confirm all three conditions are true before starting the close workflow:
   <Step title="Select Close Call">
     Click **Close Call** in the app bar at the top of call detail, or use the **Close Call** button in the call summary block. The close dialog opens.
 
-    If no units from the primary agency are assigned (desk / paper call), the dialog offers **Close as Desk Call**. Cadmus assigns an organization **Dispatch Desk** unit and completes the normal close workflow (narratives, timestamps, and close side effects).
+    Do not confuse this with **Close Panel** in the quick actions column — that only dismisses the call detail window and leaves the CFS open on the board. See [Close Call vs Close Panel](#close-call-vs-close-panel).
   </Step>
 
   <Step title="Complete the narrative fields">
@@ -53,9 +53,32 @@ Confirm all three conditions are true before starting the close workflow:
   </Step>
 
   <Step title="Confirm close">
-    Review all fields, then click **Confirm** (or the equivalent close button). Cadmus validates the form, records the close timestamp, and moves the call to the **Recent** board tab.
+    Review all fields, then click **Close Call** (or **Close as Desk Call** when no primary-agency field units are assigned). Cadmus validates the form, records the close timestamp, and moves the call to the **Recent** board tab.
   </Step>
 </Steps>
+
+## Close as Desk Call
+
+Use **Close as Desk Call** when you need to finalize a CFS that never had a field unit from the primary agency assigned — for example a desk-handled or paper call.
+
+1. Open call detail and start the normal close workflow (**Close Call**).
+2. When no primary-agency field units are on the call, the confirm button reads **Close as Desk Call** instead of **Close Call**.
+3. Complete the public narrative (and other required fields) as usual, then confirm.
+
+Cadmus records a **Dispatch Desk** unit for your organization on the close so the call still has a proper close record, timestamps, and the same side effects as a normal close.
+
+<Note>
+  Closing desk / paper calls this way needs a matching Cadmus server update. If **Close as Desk Call** does not appear or the close fails with no units assigned, contact Cadmus support or keep a temporary unit assignment until your server is updated.
+</Note>
+
+## Close Call vs Close Panel
+
+| Control | Where | What it does |
+|---------|-------|--------------|
+| **Close Call** / **Close as Desk Call** | App bar or call summary | Finalizes the CFS and moves it off the active board (after you complete the close dialog). |
+| **Close Panel** | Quick actions column on call detail | Closes the call detail window only. The call stays open on the board. |
+
+**Close Panel** used to be labeled **Clear** on some builds. The name changed so it is harder to mistake for closing the CFS.
 
 ## Report to Follow (RTF)
 
