@@ -168,6 +168,8 @@ This section is the call's permanent record of everything that happened.
   <Tab title="Call Notes">
     Dispatcher-entered narrative notes attached to this call. Call notes are visible in the call record and may appear on reports depending on agency configuration. Click **Add Call Note** to add an entry.
 
+    To correct a note after it is posted, use **Edit** on that note. Cadmus keeps the original text for audit: edited notes show an **Edited** marker, and you can open **View original** to see the first posted wording. System and CJIS auto-notes cannot be edited.
+
     **Restricted CJIS notes:** If a dispatcher pastes external query response text that begins with `FROM-MULES`, `FROM-DOC`, `FROM-NCIC`, `FROM-REVENUE`, `FROM-NLETS`, or a DOR long response, Cadmus automatically classifies the note as **Restricted / Confidential — Law Enforcement only**. Law Enforcement agencies see the full text; Fire, EMS, and other non-LE agencies see a placeholder message instead of CJIS content. An orange warning may appear while typing or pasting before the note is saved.
 
     Pasted MULES / DOR / NCIC terminal dumps are also reflowed (pipes, section headers, and numbered cases become separate lines) so the note is readable. The content is not changed — only spacing.
@@ -198,7 +200,7 @@ The quick actions column provides one-click shortcuts to the most common dispatc
 | **Add Log Entry**         | Opens the add-log dialog for a manual narrative entry.         |
 | **Assign Unit**           | Opens the unit search to assign a unit not in the available row. |
 | **Assign Report Number**  | Associates a report or case number with this CFS.              |
-| **Clear Call**            | Marks the call as cleared without a full close workflow.       |
+| **Close Panel**           | Closes the call detail window only. Does **not** close the CFS. |
 
 ## Closed calls
 
