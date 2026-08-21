@@ -102,7 +102,7 @@ This block displays the primary **REPORTING PARTY** and any additional callers.
 
 ### Persons and vehicles
 
-Use this block to document everyone involved in the incident, in addition to the reporting party.
+Use this block to document everyone involved in the incident, in addition to the reporting party. Law Enforcement users may also see cards that Cadmus created automatically when a supported CJIS/MULES/DOR response was pasted into **Call Notes**.
 
 **Person roles available:**
 
@@ -186,7 +186,13 @@ This section is the call's permanent record of everything that happened.
 
     **Restricted CJIS notes:** If a dispatcher pastes external query response text that begins with `FROM-MULES`, `FROM-DOC`, `FROM-NCIC`, `FROM-REVENUE`, `FROM-NLETS`, or a DOR long response, Cadmus automatically classifies the note as **Restricted / Confidential — Law Enforcement only**. Law Enforcement agencies see the full text; Fire, EMS, and other non-LE agencies see a placeholder message instead of CJIS content. An orange warning may appear while typing or pasting before the note is saved.
 
-    Pasted MULES / DOR / NCIC terminal dumps are also reflowed (pipes, section headers, and numbered cases become separate lines) so the note is readable. The content is not changed — only spacing.
+    **Person and vehicle cards from paste:** When Law Enforcement pastes a supported response, Cadmus also tries to create matching **Person** and **Vehicle** cards on the call (for example name, date of birth, license, plate, or VIN). Cards are not duplicated if the same identity is already on the call. Refresh the persons/vehicles list if a new card does not appear immediately after save. Non-LE viewers do not see these note-derived cards.
+
+    Pasted MULES / DOR / NCIC terminal dumps are also reflowed on screen (pipes, section headers, and numbered cases become separate lines) so the note is readable. The saved note keeps the original pasted text for audit.
+
+    <Warning>
+      Treat pasted CJIS responses as restricted. Do not copy them into unrestricted notes, tickets, or unencrypted radio traffic.
+    </Warning>
   </Tab>
   <Tab title="Audit Logs">
     System-generated log of every change made to the call record — field edits, status updates, unit assignments, person add/edit/remove (suspect, victim, witness, and other roles), and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
