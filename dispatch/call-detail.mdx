@@ -122,6 +122,8 @@ This section is the call's permanent record of everything that happened.
 <Tabs>
   <Tab title="Call Notes">
     Dispatcher-entered narrative notes attached to this call. Call notes are visible in the call record and may appear on reports depending on agency configuration. Click **Add Call Note** to add an entry.
+
+    **Restricted CJIS notes:** If a dispatcher pastes external query response text that begins with `FROM-MULES`, `FROM-DOC`, `FROM-NCIC`, `FROM-REVENUE`, or `FROM-NLETS`, Cadmus automatically classifies the note as **Restricted / Confidential — Law Enforcement only**. Law Enforcement agencies see the full text; Fire, EMS, and other non-LE agencies see a placeholder message instead of CJIS content. An orange warning may appear while typing or pasting before the note is saved.
   </Tab>
   <Tab title="Audit Logs">
     System-generated log of every change made to the call record — field edits, status updates, unit assignments, and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.

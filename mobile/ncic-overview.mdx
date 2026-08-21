@@ -1,10 +1,10 @@
 ---
 title: "NCIC overview"
 sidebarTitle: "NCIC overview"
-description: "Run person and vehicle queries from the mobile MDT."
+description: "Run person, vehicle, firearm, article, and boat queries from the mobile MDT."
 ---
 
-Run person and vehicle queries from the mobile MDT.
+Run person, vehicle, firearm, article, and boat queries from the mobile MDT.
 
 <Note>Screenshot placeholder: NCIC Search screen with RESPONSES tab</Note>
 
@@ -12,16 +12,24 @@ Run person and vehicle queries from the mobile MDT.
 
 Sidebar **NCIC Search**
 
+If NCIC is not enabled for your agency or user, **NCIC Search** remains visible but dimmed. Tapping it shows:
+
+`NCIC access is not enabled for either your agency or your user, contact your administrator`
+
+While access is still loading, tapping may show a short “checking access” message instead.
+
+Training mode enables NCIC practice queries without live CJIS access.
+
 ## Tabs
 
 | Tab | Status |
 |-----|--------|
 | **RESPONSES** | Query result history |
-| **PERSON** | Active person query form |
-| **VEHICLE** | Active vehicle query form |
-| **FIREARM** | Coming Soon (typical) |
-| **ARTICLE** | Coming Soon |
-| **BOAT** | Coming Soon |
+| **PERSON** | Person query form |
+| **VEHICLE** | Vehicle query form |
+| **FIREARM** | Firearm serial query |
+| **ARTICLE** | Article / serial number query |
+| **BOAT** | Boat registration or hull ID query |
 
 <Note>Screenshot placeholder: PERSON and VEHICLE query tabs</Note>
 
@@ -43,9 +51,30 @@ Validation: **Last Name or DL Number is required**
 
 - **LICENSE PLATE**, **STATE**, **VIN**
 
-Validation: **License Plate is required**
+Validation: **License Plate is required** (or provide VIN)
 
 <Note>Screenshot placeholder: Vehicle query form</Note>
+
+## Firearm query
+
+**FIREARM QUERY** fields:
+
+- **SERIAL NUMBER** (required)
+
+## Article / serial query
+
+**ARTICLE / SERIAL QUERY** fields:
+
+- **SERIAL NUMBER** (required)
+- **SERIAL NUMBER TYPE** (optional)
+
+## Boat query
+
+**BOAT QUERY** fields:
+
+- **REGISTRATION NUMBER** and/or **HULL ID (HIN)** — at least one required
+
+In training mode, serials or boat identifiers containing `STOLEN` return sample stolen hits; otherwise you get a no-record style response.
 
 ## Responses
 
@@ -66,10 +95,8 @@ Person/vehicle **QUERY** buttons also appear on call detail cards.
 
 ## Requirements
 
-Agency **State/NCIC Access** and user authorization in Web Admin.
+Agency **State/NCIC Access** and user authorization in Web Admin. Criminal history queries are not available on mobile.
 
 ## Warnings
 
 <Warning>CJIS policy applies on mobile same as desktop — official use only.</Warning>
-
-<Warning>**Coming Soon** tabs are not production queries — do not use for real hits.</Warning>
