@@ -40,6 +40,34 @@ When the queue is clear, the board shows **No pending calls**.
   If Priority Pending is not visible for your agency, your administrator may not have priority routing enabled. Check with your supervisor if you expect to see a priority queue.
 </Note>
 
+## Pre-empt / Return to Pending
+
+Sometimes a unit is needed on a higher-priority call, or a call was assigned to the wrong agency by mistake. **Pre-empt** (return to Pending) pulls the last field unit off an active call so the call goes back to the **Pending** board with no units assigned. Any available unit — not only the one that was removed — can then be assigned to finish the call.
+
+### How to pre-empt a call
+
+1. Open the call (or use the unit controls on the call card).
+2. Remove the assigned field unit(s). When you remove the **last field unit**, Cadmus asks you to confirm **Return to Pending**.
+3. Confirm. The call status becomes **Pending**, the unit returns to Available (if it has no other open calls), and the call appears on the Pending board again.
+
+<Note>
+  Field MDT users cannot remove the last unit from a call — only a dispatcher (or admin) can return a call to Pending. Agency desk units do not count as field units for this rule.
+</Note>
+
+### Re-assigning after pre-empt
+
+Drag any unit onto the Pending call, or assign from call detail. The call leaves Pending and shows the newly assigned unit on both the board card and call detail.
+
+### Agency CFS after a wrong-agency assign
+
+If a unit from the wrong agency was assigned, that agency received a CFS number. When you pre-empt and the agency no longer has any units on the call:
+
+- That agency's CFS row is **released** (no longer primary) but **not deleted**, so the same agency can keep the same CFS if it is assigned again.
+- The call's owning agency is reset so the **next** agency you assign becomes primary with its own CFS.
+- CFS numbers are never reused for a different call — releasing a CFS does not put that number back into the pool.
+
+If another agency's desk or field unit remains on the call, that agency's CFS stays in place.
+
 ## Sorting and Density
 
 You can adjust how call cards appear on any board tab:
