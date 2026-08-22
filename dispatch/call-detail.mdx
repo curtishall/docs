@@ -6,6 +6,10 @@ description: "Everything on the Call Detail page — call summary, units, report
 
 The **Call Detail** page is the complete, living record for a single Call for Service. Every piece of information tied to an incident — the location, assigned units, reporting parties, persons, vehicles, notes, and close details — lives here. You use call detail throughout the lifecycle of a CFS: from the moment a call is created through dispatch, scene management, and final closure.
 
+<Info>
+  **Release note:** Call and BOLO attachments now support **PDF** in addition to JPEG, PNG, and GIF (max **10 MB**). Dispatchers can attach files to any call in their organization. Attachments are kept for a limited period (default **365 days**).
+</Info>
+
 ## How to open a call
 
 You can reach call detail from any of three entry points:
@@ -200,14 +204,18 @@ This section is the call's permanent record of everything that happened.
     The History filter defaults to **Call Notes**. Switch to **Audit Logs** or **All** to see person and other system changes.
   </Tab>
   <Tab title="Images">
-    Photos attached to the call appear under **History & Logs**. Use the image icons below the note field:
+    Photos and document attachments appear under **History & Logs**. Use the image icons below the note field:
 
     | Control | Action |
     |---------|--------|
-    | Gallery / upload icons | Open a file picker and attach a JPEG, PNG, or GIF (max 5MB). |
-    | Clipboard icon | Paste a screenshot or image copied to the clipboard, then upload it to the call. |
+    | Gallery / upload icons | Open a file picker and attach a JPEG, PNG, GIF, or PDF (max **10 MB**). |
+    | Clipboard icon | Paste a screenshot or image copied to the clipboard, then upload it to the call (images only). |
 
-    Canceling the file dialog does nothing (it is not an error). If paste finds no image, copy a screenshot first or use upload.
+    PDF attachments show a PDF icon; click to open or download. Dispatchers can attach files to any call in their organization. Canceling the file dialog does nothing (it is not an error). If paste finds no image, copy a screenshot first or use upload.
+
+    <Note>
+      Attachments are retained for a limited period (default **365 days**) and may be removed after that window. Follow your agency's records-retention policy for anything that must be preserved longer.
+    </Note>
   </Tab>
 </Tabs>
 

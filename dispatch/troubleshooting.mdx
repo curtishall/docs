@@ -144,6 +144,19 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     Verification failures mean the staged file did not pass signature checks — the app will not install it. Retry after network conditions improve or ask support to confirm the latest release was published.
   </Accordion>
 
+  <Accordion title="Cannot attach a photo or PDF to a call">
+    If attaching a file on call detail fails:
+
+    1. Confirm the file is **JPEG**, **PNG**, **GIF**, or **PDF**, and is **10 MB or smaller**.
+    2. Confirm you are signed in to the correct organization (Live vs Sandbox) — attachments are org-scoped.
+    3. Update Dispatch CAD to the latest release if the error mentions an unsupported type or "tenant context."
+    4. Read the red error banner carefully — it should name the real problem (file type, size, or permissions) instead of a generic JPEG/PNG/GIF hint.
+
+    <Tip>
+      BOLOs use the same attachment rules. If BOLO upload works but call upload does not, note that in your support ticket with the call number and time.
+    </Tip>
+  </Accordion>
+
 </AccordionGroup>
 
 ## Escalate to Cadmus support
