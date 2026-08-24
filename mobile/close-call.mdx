@@ -10,9 +10,21 @@ Close a call from the field MDT when authorized.
 
 ## Open dialog
 
-From call detail when your role/agency allows close:
+From call detail, tap **CLEAR CALL**.
 
-- **Close call** action opens dialog.
+### Other units attached
+
+If other units are still on the call, Cadmus asks:
+
+> Other units are attached to this call, clear yourself or clear and close the call?
+
+| Choice | What happens |
+|--------|----------------|
+| **Clear myself** | Removes **your** unit only. The call stays open for the remaining units. Success toast **Cleared from call**. |
+| **Clear and close the call** | Opens the close-call dialog and closes the whole incident for everyone. |
+| **Cancel** | No change. |
+
+If you are the **last** unit, Cadmus skips that choice and opens the close dialog. **Clear myself** is refused when you are last — close the call instead.
 
 ## Fields
 
@@ -21,6 +33,12 @@ From call detail when your role/agency allows close:
 | **Public narrative** | Incident summary for record |
 | **Private notes** | Restricted notes when supported |
 | **Report to follow (RTF)** | Flag for records follow-up |
+
+## After the call is closed
+
+From **Find a Call**, tap **Add/Edit CFS notes** on a result to update public narrative and private notes.
+
+Supervisors and administrators see **Supervisor approved CFS** — check when narratives are reviewed and approved for release.
 
 ## Submit
 
@@ -33,7 +51,7 @@ From call detail when your role/agency allows close:
 
 - Match agency SOP for minimum narrative length.
 - Use RTF when report number will be assigned later.
-- Confirm with dispatch before closing multi-unit calls if you are not primary.
+- Confirm with dispatch before choosing **Clear and close the call** on a multi-unit incident if you are not primary.
 
 ## Warnings
 

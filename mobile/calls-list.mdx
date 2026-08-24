@@ -16,8 +16,11 @@ Sidebar **Calls** → **CALLS FOR SERVICE**
 
 | Tab | Shows |
 |-----|---------|
-| **MY CALLS** | Calls your unit is assigned to |
-| **ALL CALLS** | Broader agency call list |
+| **MY CALLS** | Open calls your unit is assigned to (**Pending**, **Dispatched**, **Active**, **En Route**, **On Scene**) |
+| **ALL CALLS** | All open calls for the agency (same statuses). Traffic-stop **On Scene** calls stay here. |
+| **RECENT** | Newest 150 **Closed** calls |
+
+Held-until-login Pending calls stay hidden until the target officer logs in. Closed calls never appear on **MY CALLS** or **ALL CALLS**. A new **Pending** call from dispatch (not held) should show on **ALL CALLS** without waiting for a timeout refresh.
 
 ## Call card badges
 
@@ -36,8 +39,14 @@ Status labels on list rows:
 ## Open a call
 
 - Tap a row to open call detail (full screen on phone, split panel on desktop).
+- **Call details live-update** while open — status, priority, and metadata refresh when dispatch changes the call or when you pull to refresh / WebSocket events arrive.
 
 <Note>Screenshot placeholder: Call detail split view on tablet/desktop</Note>
+
+## Assignment alerts
+
+- **Voice:** Settings → Voice Alerts → incoming call phrase (default: “You have a call.”). First load after sign-in is silent; only **new** assignments announce.
+- **Notification:** If the app is in the background or voice is off, Android shows a **Call Assignments** notification for new assignments.
 
 ## Pull to refresh
 

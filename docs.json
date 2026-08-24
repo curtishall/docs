@@ -47,7 +47,9 @@
             "icon": "phone-call",
             "pages": [
               "dispatch/create-cfs",
+              "dispatch/rapidsos-import-cfs",
               "dispatch/cfs-form-fields",
+              "dispatch/master-names-lookup",
               "dispatch/call-detail",
               "dispatch/close-call",
               "dispatch/find-a-call"
@@ -95,7 +97,8 @@
             "icon": "life-buoy",
             "pages": [
               "dispatch/troubleshooting",
-              "dispatch/admin-manager-guide"
+              "dispatch/admin-manager-guide",
+              "dispatch/release-notes"
             ]
           }
         ]
@@ -128,6 +131,7 @@
             "icon": "settings",
             "pages": [
               "admin/agency-settings",
+              "admin/gis-data-management",
               "admin/citation-report-settings",
               "admin/small-agency-admin"
             ]
@@ -144,7 +148,8 @@
             "group": "Troubleshooting",
             "icon": "triangle-alert",
             "pages": [
-              "admin/troubleshooting-audit"
+              "admin/troubleshooting-audit",
+              "admin/master-names-operations"
             ]
           }
         ]
@@ -191,6 +196,7 @@
             "icon": "shield-check",
             "pages": [
               "mobile/ncic-overview",
+              "mobile/field-interview-reports",
               "mobile/ecitations-overview"
             ]
           },

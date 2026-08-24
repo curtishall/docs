@@ -1,0 +1,154 @@
+---
+title: Master Names operations
+description: Migration, backfill, Oasis sync, keys, and rollout for Cadmus Master Names
+---
+
+# Master Names operations
+
+Internal operations guide for Cadmus Master Names v1.
+
+## Feature flags
+
+| Key | Purpose | Default |
+|-----|---------|---------|
+| `cadmus_master_names` | Enable Cadmus search API | off |
+| `cadmus_master_names_full_ssn` | Allow full SSN reveal when permitted | off |
+| `cadmus_master_names_oasis_sync` | Allow Oasis sync jobs | off |
+
+Env overrides (local/dev):
+
+- `CADMUS_MASTER_NAMES_ENABLED=true|false`
+- `CADMUS_MASTER_NAMES_FULL_SSN_ENABLED=true|false`
+
+## Secrets
+
+Set separately from JWT secrets (never commit):
+
+- `MASTER_NAMES_SSN_ENCRYPTION_KEY` — 64 hex chars (AES-256-GCM)
+- `MASTER_NAMES_SSN_HMAC_KEY` — 64 hex chars (HMAC-SHA256 for match)
+
+Key rotation: bump `SSNEncryptionVersion` on write after deploying a new encryption key; re-encrypt gradually via ops job if needed.
+
+## Migration
+
+```bash
+cd backend
+npm run migrate
+```
+
+Creates: `MasterNames`, `MasterNameSources`, `MasterNameAgencies`, `MasterNameUpsertOutbox`, `MasterNameSyncState`, `MasterNameBackfillCheckpoint`, `SensitiveDataAudit`. Later migrations add `MasterNamePhotos` and `MasterNameVehicles` for attached photos and known vehicles.
+
+## Backfill
+
+```bash
+npm run master-names:backfill -- \
+  --organization-id <uuid> \
+  --batch-size 500 \
+  --resume \
+  --dry-run
+```
+
+Dry-run prints scanned / skipped / insert / update / conflict counts. Always dry-run a pilot org first.
+
+## Outbox recovery
+
+```bash
+npm run master-names:process-outbox -- --limit 50
+```
+
+Person create succeeds even if indexing is delayed; outbox retains work for retry.
+
+## Oasis sync
+
+```bash
+npm run master-names:oasis-sync -- \
+  --organization-id <uuid> \
+  [--agency-id <uuid>] \
+  [--page-size 200] \
+  [--dry-run]
+```
+
+No-op (exit 0) when Oasis env or catalog is missing. Status lives in `MasterNameSyncState`. Cadmus rows are never deleted when Oasis drops a source — source link is marked inactive.
+
+## Cadmus Admin search
+
+CadmusAdmin users can search and edit Cadmus Master Names from **Cadmus Admin → Master Names**.
+
+1. Select a concrete organization in the header (not All).
+2. Ensure `cadmus_master_names` is enabled for that organization.
+3. Search by name (2+ characters on first or last), DOB, SSN last 4 (with another criterion), full SSN, or driver's license + state.
+4. Results show masked SSN by default. Full SSN appears only when `cadmus_master_names_full_ssn` is on and the user has `master_names.view_full_ssn`.
+5. Click **Open** on a result to view the record. Choose **Edit** to change name, address, phone, DL, or SSN fields, then **Save**.
+
+Edits update the Cadmus index only (not Oasis). Leave Full SSN blank while editing to keep the current value, or use **Clear stored SSN**. Dispatcher/MDT lookup remains under Add Person → Search Master Name.
+
+### Photos and known vehicles
+
+On **Open**, Cadmus Admin can:
+
+- Upload and delete **photos** (JPEG/PNG/GIF/WebP, max 5 MB; stored like BOLO images, not in the database as varbinary)
+- Add and remove **known vehicles** (plate, state, year/make/model/color)
+
+Photos and vehicles are **not** loaded on the search results list (keeps search fast). Interactive CAD/MDT search uses a lean Cadmus path (limit 5, no per-row source lookups). Admin search may request up to 50 results with sources.
+
+### Sex from MULES
+
+OneNet MULES/NCIC note parsing captures `SEX/M` or `SEX/F` (and DOR CURRENT NAME sex column). Re-import or run the sex backfill script to fill `MasterNames.Sex` when empty without overwriting existing values.
+
+
+## Rollout checklist
+
+1. Migrate tables
+2. Deploy backend with flags off
+3. Deploy client/mobile UUID parsers
+4. Dry-run backfill → review conflicts
+5. Real backfill for pilot org
+6. Validate SSN search/view + `SensitiveDataAudit`
+7. Oasis sync where configured
+8. Enable `cadmus_master_names` for pilot
+9. Confirm Cadmus Admin → Master Names search for the pilot org
+10. Monitor latency, errors, outbox backlog, conflicts
+11. Expand org by org
+
+## Sensitive audit
+
+`SensitiveDataAudit` stores encrypted SSN payloads for SSN search/view/create/update/deny events. Do not export raw ciphertext in support bundles without redaction.
+
+## Enrich from GoEJail (ops)
+
+One-way batch job reads the local GoEJail database and filestore, then updates Cadmus Master Names for an organization:
+
+- Fills **Phone** and **Emergency contact** only when those fields are empty
+- Creates a Master Name when there is no confident match and the inmate has enough identity (SSN, OLN+state, or name+DOB)
+- Copies **Mugshot** / **Mugshot Side** photos into Master Name photos (link to Cadmus JMS later)
+- Emergency contacts stay as text on the inmate record — they are not created as separate Master Names
+
+```bash
+cd backend
+npm run master-names:enrich-goejail -- \
+  --organization-id <org-uuid> \
+  --filestore /path/to/goejail/filestore \
+  --dry-run --limit 50
+```
+
+Omit `--dry-run` to apply. Use `--skip-photos` to update demographics only.
+
+## Master Name photo storage (Azure Blob)
+
+Photos are stored in **Azure Blob Storage**, not on the API local disk (local disk is wiped on App Service revisions).
+
+- Container: `uploads` (override with `MASTER_NAMES_PHOTO_CONTAINER`)
+- Blob key: `master-names/{organizationId}/{photoId}.jpg`
+- Env: `AZURE_STORAGE_CONNECTION_STRING` (required in production)
+
+Migrate existing local files:
+
+```bash
+cd backend
+export AZURE_STORAGE_CONNECTION_STRING='…'
+npm run master-names:migrate-photos-blob -- --organization-id <org-uuid>
+```
+
+## Photos in Open view
+
+When you open a Master Name, attached photos show as **thumbnails**. Click a thumbnail to view it larger. Upload and delete remain available in the same Photos section.

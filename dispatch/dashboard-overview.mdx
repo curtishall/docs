@@ -6,6 +6,21 @@ description: "Explore every section of the Dispatch CAD dashboard — call board
 
 The Dispatch CAD dashboard is your real-time dispatch surface. It organizes active calls, available units, operational broadcasts, and reference resources into a set of tabbed boards that update live as units change status and new calls come in. Understanding what each section shows — and when to use it — lets you work faster and miss nothing during a busy shift.
 
+## Live Board Status Banners
+
+Cadmus displays a status banner when the dashboard cannot show current live board data. Treat these banners as an operational prompt to verify the board before relying on it:
+
+| Banner | What it means | What to do |
+|---|---|---|
+| **Could not load call board** | The board did not load its call data. | Select **Reload Data**. |
+| **Live connection lost** | The live connection used for board updates has disconnected. | Select **Reload Data** to reconnect and refresh the board. |
+| **Last board refresh failed — showing previous data** | The board remains visible, but it is showing the last successful refresh and may be stale. | Select **Reload Data** and confirm the banner clears. |
+| **Agencies unavailable** | Cadmus could not load the agencies available to your session. | Select **Retry now**. If the message remains, confirm your connection and contact your supervisor or Cadmus support. |
+
+<Warning>
+  A board marked as showing previous data may not include the latest calls or unit changes. Do not treat it as current until a reload succeeds and the banner clears.
+</Warning>
+
 ## Call Board Tabs
 
 The call boards occupy the center of the dashboard. Each tab filters the active call list to a specific discipline or view, so you see exactly what is relevant to your role at any moment.
@@ -18,7 +33,7 @@ The call boards occupy the center of the dashboard. Each tab filters the active 
 | **Fire** | Fire discipline calls |
 | **EMS** | EMS discipline calls |
 | **Recent** | Calls that were recently closed but remain visible on the board |
-| **Status Timers** | Calls with active agency-configured status timers running |
+| **Status Timers** | Calls that need an agency status check while at least one unit for that agency is **on scene**. When at least one timer is active, the stopwatch icon turns red (dark mode) or deep red (light mode) and gently pulses so it stands out—similar attention treatment to the BOLOs tab. |
 | **BOLOs** | Active be-on-the-lookout broadcasts for your agency |
 | **Resources** | Wrecker rotation, utility contacts, emergency contacts, and the operational board |
 
@@ -36,6 +51,22 @@ The **Pending** tab is typically your highest-priority view — it holds calls t
 
 When the queue is clear, the board shows **No pending calls**.
 
+### Search open calls (Pending and Dispatched)
+
+Use the side-rail **Search** control on **Pending** or **Dispatched** to find open calls by person or vehicle identifiers. Filters are applied on the server across your organization.
+
+| Field | Notes |
+|---|---|
+| **Name** | Matches incident persons, reporting party, or additional callers |
+| **SSN** | Partial match (substring) |
+| **DOB** | Partial match (for example `MM/DD/YYYY`) |
+| **Driver license** | Partial match |
+| **Plate** / **VIN** | Vehicle fields on the call |
+
+All filled person fields must match the **same** person record. Vehicle fields apply to the call. Click **Clear** to restore the full open-call boards.
+
+If many matches exist, Cadmus may show only a limited set and display a truncation notice — refine the search or use **Find a Call** for a full paginated list.
+
 <Note>
   If Priority Pending is not visible for your agency, your administrator may not have priority routing enabled. Check with your supervisor if you expect to see a priority queue.
 </Note>
@@ -46,6 +77,33 @@ You can adjust how call cards appear on any board tab:
 
 - **Sort calls** — change the sort order (for example, by time received, priority, or incident type) to match your workflow. Sort settings apply per tab.
 - **Call list density** — toggle between **compact** and **comfortable** card layouts. Compact fits more calls on screen; comfortable gives more detail per card without opening the call.
+- **Font size** — open **Settings & tools** (gear), then under **Display** choose **Font size**: 100%, 110%, 125%, or 150%. Larger sizes enlarge on-screen text (case numbers, call cards, and menus) on this workstation only and stay set until you change them again.
+- **Call preview** — use **Preview on / Preview off** on the side rail to show or hide the reading pane under the call list. Drag the horizontal handle to resize the pane; Cadmus remembers your height preference across sessions.
+
+## Call Preview Pane
+
+Every call board tab (Pending, Patrol, Dispatched, Fire, EMS, Recent, and Status Timers) includes an Outlook-style **preview pane** below the call list. BOLOs and Resources do not use this pane.
+
+| Action | Result |
+|---|---|
+| **Single-click** a call card | Selects the call and fills the preview pane (does not leave the board) |
+| **Double-click** a call card | Opens the full [Call Detail](/dispatch/call-detail) page |
+| **Open details** in the preview | Same as double-click |
+| Drag the resize handle | Makes the preview taller or shorter |
+
+The preview is optimized for a quick dispatcher glance and common actions:
+
+- **Quick note bar at the top** — add a dispatcher note without leaving the board
+- Header (CFS, priority, status, type, address, reporting party)
+- Quick stats chips (on scene / en route / dispatched / safety flags / unit count)
+- Needs-attention banner when status checks are overdue or safety notes exist
+- **Units with status buttons** — change a unit to Available, Dispatched, En Route, or On Scene from the preview
+- Officer safety, access, contacts, and EMS cards (editable when the call is open)
+- Recent activity / latest note and agency status timers (snooze / complete)
+
+<Tip>
+  Use the preview to triage and add notes while keeping the board visible. Open full Call Detail when you need persons, vehicles, citations, or other full-page tools.
+</Tip>
 
 ## Assigning Units from the Board
 
@@ -60,13 +118,17 @@ There are two ways to assign a unit to a call directly from the dashboard:
     </Note>
   </Tab>
   <Tab title="Call Detail">
-    Click the call card to open the full **call detail** panel, then click **Assign Unit**. Select the unit from the list and confirm. This method works regardless of whether drag-and-drop is enabled.
+    Double-click the call card (or click **Open details** in the preview pane) to open the full **call detail** page, then click **Assign Unit**. Select the unit from the list and confirm. This method works regardless of whether drag-and-drop is enabled.
   </Tab>
 </Tabs>
 
 ## Status Timer Alerts
 
+The **Status Timers** tab lists open calls where an agency status timer is active **and** that agency currently has a unit on scene. Calls that are only dispatched or en route (with nobody on scene yet) do not appear on this tab, even if a timer row exists in the system.
+
 When a status timer reaches its threshold, a **Status Timer Alerts** overlay appears globally — it is not limited to the Status Timers tab. The overlay identifies which calls have timers that are due or overdue so you can act immediately without navigating away from your current board.
+
+Quick calls such as **Paper Service** and **Follow-up** create the call with the unit **Dispatched**. The call is not marked On Scene, and status timers do not start, until a unit is placed on scene.
 
 <Warning>
   Do not dismiss a Status Timer Alert without taking action or confirming with the unit. Unanswered timer alerts can indicate a unit that needs a welfare check.
@@ -99,7 +161,7 @@ The **Recent** tab shows calls that have been closed but remain on the board wit
     The Recent tab only shows calls within a short retention window. For anything older than the current shift, use **Find a Call** to search the full archive.
   </Card>
   <Card title="Forgetting an active agency filter" icon="filter">
-    If your boards look unexpectedly empty, an agency filter may be excluding your primary agency. Open **Select Agencies** in the header and verify your selection, or click **All Agencies** to reset.
+    If your boards look unexpectedly empty, an agency filter may be excluding your primary agency — or **Clear** may have left **0** agencies selected. Open **Select Agencies** in the header and verify your selection, or click **All** to show every agency in the organization.
   </Card>
   <Card title="Missing WebSocket updates" icon="rotate">
     If live updates appear to have stopped — units not moving, new calls not appearing — open **Settings & tools** (gear icon) and select **Reload Data** to force a fresh connection.

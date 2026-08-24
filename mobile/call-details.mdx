@@ -10,26 +10,30 @@ Work an assigned call from the MDT.
 
 ## Status buttons (on assigned call)
 
-When your unit is on the call:
+When the call is not yet **On Scene**:
 
 | Button | Meaning |
 |--------|---------|
-| **DISPATCHED** | Acknowledge assignment |
-| **EN ROUTE** | En route to scene |
-| **ON SCENE** | Arrived on scene |
-| **CLEAR CALL** | Clear your unit from call |
+| **EN ROUTE** | Your unit is en route to the scene |
+| **ON SCENE** | Your unit has arrived |
+| **CLEAR CALL** | Clear yourself or close the call (see [Close call](/mobile/close-call)) |
+| **UNITS** | Open the units sheet |
+
+When the **call** is already **On Scene**, **EN ROUTE** and **ON SCENE** hide on the action bar so you do not restamp a scene that is already occupied. Use **UNITS** if you are a late unit and still need to mark your own apparatus En Route or On Scene.
 
 Requires network — offline shows **No network connection. Try again when online.**
 
-<Note>Screenshot placeholder: DISPATCHED / EN ROUTE / ON SCENE button row</Note>
+<Note>Screenshot placeholder: EN ROUTE / ON SCENE / CLEAR CALL / UNITS button row</Note>
 
-## Assign yourself
+## UNITS sheet
 
-If not yet assigned:
+**UNITS** always opens a roster of who is on the call (call sign and status).
 
-- **ASSIGN MY UNIT** — success toast **Unit assigned to call**
+- If you are not assigned yet, Cadmus assigns your apparatus first, then opens the sheet (it does not stop at a “Unit assigned to call” toast).
+- **Your** unit can tap **EN ROUTE**, **ON SCENE**, or **CLEAR MYSELF** based on *your* unit’s status — even when another unit is already On Scene.
+- Other units on the roster are read-only.
 
-<Note>Screenshot placeholder: ASSIGN MY UNIT button</Note>
+<Note>Screenshot placeholder: Units on this call sheet</Note>
 
 ## Call sections
 
@@ -40,17 +44,83 @@ If not yet assigned:
 | **REPORTING PARTY** | Caller info |
 | **PERSONS INVOLVED** | Suspects, victims, witnesses |
 | **VEHICLES INVOLVED** | Vehicle records |
-| **History & Logs** | Notes and audit trail |
+| **Previous calls** | Prior calls at this address and from this caller (last 90 days) |
+| **History & Logs** | Notes and audit trail (inline add + refresh) |
 
 <Note>Screenshot placeholder: REPORTING PARTY and PERSONS INVOLVED sections</Note>
+
+## Previous calls
+
+Below the location card, **Previous calls** has two tabs:
+
+| Tab | What it shows |
+|-----|----------------|
+| **At location** | Other incidents at the same registered location or street address (last 90 days) |
+| **From caller** | Other incidents with the same reporting-party phone number |
+
+Tap a row to open that call in read-only detail. Use **RETRY** if a tab fails to load. GPS-only or incomplete addresses may show no **At location** results until expanded backend search is available.
+
+<Note>Screenshot placeholder: Previous calls section with At location tab</Note>
+
+## History & Logs
+
+Mobile shows one **combined timeline** under **History & Logs** (there is no separate Call Notes / Audit Logs filter like dispatch CAD).
+
+| Badge | Meaning |
+|-------|---------|
+| **CALL NOTE** | Officer or dispatcher narrative you added, or another user's note on the call |
+| **SYSTEM** | System-generated timeline (status changes, unit activity, and similar) |
+| **DISPATCHER** | Dispatcher-originated log line |
+| **RESTRICTED** | CJIS/MULES/NCIC response text visible only to Law Enforcement viewers |
+
+- Scroll to **History & Logs** on call detail (phone) or the detail panel (tablet/desktop).
+- **Add a note** inline (**Add Note**) or use the app bar note icon / **Dialog** link — see [Dispatch notes](/mobile/dispatch-notes).
+- **Refresh** reloads notes and system log lines.
+- Notes need network — offline attempts show **No network connection. Note was not sent.**
+- The detail screen **updates automatically** when dispatch adds notes, changes status, or updates persons/vehicles (WebSocket refresh).
+- Pasting CJIS/MULES/NCIC/NLETS/DOR response text triggers a warning; saved notes may show **RESTRICTED** for non–Law Enforcement viewers.
+
+<Tip>
+  Dispatchers reviewing person add/edit/remove audit entries use the **Audit Logs** filter on [Call Detail (dispatch)](/dispatch/call-detail). On mobile, watch **Persons involved** for live updates and use **Refresh** on History & Logs for the latest timeline.
+</Tip>
+
+<Note>Screenshot placeholder: History & Logs section with note field</Note>
+
+## Android Auto
+
+When connected to Android Auto, **My Calls** shows your assignments with critical/ProQA labels. Call detail shows address, status, **Navigate**, status buttons, and the **latest note** (one short line — not the full timeline).
 
 ## Add persons and vehicles
 
 - **Add Person to Call** / **ADD PERSON**
+- **Scan ID** — opens on the **Scanner** (hardware) tab by default; **Camera** is also available for live PDF417 scanning (torch and continuous read on supported tablets). Scan the **PDF417** barcode on the back of the license; 1D/linear barcodes are ignored. Review parsed fields, choose a person type, and add to the call
 - **Add Vehicle to Call** / **ADD VEHICLE**
 - Required: **First and last name are required**, **License plate is required**
+- When dispatch adds or updates a person or vehicle on the same open call, mobile refreshes the **Persons involved** and **Vehicles involved** sections automatically (and vice versa on the dispatch CAD). You do not need to leave and reopen the call.
 
 <Note>Screenshot placeholder: Add Person dialog</Note>
+
+## Run and review NCIC queries
+
+Authorized officers can start person and vehicle queries from the corresponding cards in call detail. The query is associated with the call, and its feedback appears in **NCIC Search → RESPONSES**.
+
+<Steps>
+  <Step title="Start the query">
+    Select **QUERY** on a person or vehicle card and confirm the required search information.
+  </Step>
+  <Step title="Check the response status">
+    Open **NCIC Search → RESPONSES** to see whether the query is sent, pending, completed with a hit, completed with no hit, timed out, or failed.
+  </Step>
+  <Step title="Open the result">
+    Tap a completed response to review parsed fields and the restricted raw response. A photo view appears when the DOR response includes an available image.
+  </Step>
+</Steps>
+
+<Note>
+  A completed response is not automatically a hit. Read the hit/no-hit label and review license, warrant, and protection-order indicators separately.
+</Note>
+
+If your agency or account does not have State/NCIC access, the query action remains unavailable. See [NCIC overview](/mobile/ncic-overview) for query types, response details, training behavior, and CJIS handling requirements.
 
 ## Map
 
@@ -61,6 +131,10 @@ If not yet assigned:
 ## Close call
 
 See [Close call](/mobile/close-call).
+
+## Find a closed call
+
+From sidebar **Find a Call**, search closed calls and **tap a result row** to open the unified closed-call detail screen (narratives, notes, PDF/email/Public CFS when enabled). Same layout as assigned call detail, without status buttons when your unit is not on the call. See [Find a call (mobile)](/mobile/find-a-call).
 
 ## Related
 
