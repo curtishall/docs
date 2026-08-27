@@ -48,14 +48,14 @@ The Traffic Stop quick call (typically <kbd>F8</kbd>) opens a focused workflow d
   <Step title="Open Traffic Stop">
     Press <kbd>F8</kbd> or click the **Traffic Stop** button in the header.
   </Step>
-  <Step title="Enter the plate">
-    Type the license plate number in the plate entry field.
+  <Step title="Enter the plate and state">
+    Type the license plate number. For **State**, type either the two-letter code (**MO**) or the full name (**Missouri**) — the field is searchable and includes U.S. territories (for example DC and PR). Cadmus stores and queries the two-letter NCIC code. The state field defaults to **MO** for convenience; change it before creating the stop when the plate is from another jurisdiction.
   </Step>
   <Step title="Run the plate (optional)">
-    Click **Run Plate** to send a query before creating the call. The result populates vehicle and registered-owner information automatically when your agency has plate-query integration enabled.
+    Click **Run Plate** to preview registration results before creating the call. Cadmus does **not** run a plate query automatically while you type the plate number.
   </Step>
   <Step title="Create the traffic stop">
-    Click **Create Traffic Stop**. Cadmus creates a new CFS record using the traffic-stop call type template, pre-populated with the plate and any query results.
+    Click **Create Traffic Stop**. Cadmus creates the CFS, attaches a **vehicle** card with the plate and selected state, and runs a linked CJIS/MULES vehicle query when your agency and user have NCIC access. If you already viewed the same plate and state with **Run Plate**, Cadmus still links the query to the call but does not show the result dialog a second time.
   </Step>
 </Steps>
 
@@ -95,7 +95,7 @@ If your agency has configured more than five quick call templates, the extras ap
     Quick calls create normal CFS records. Always confirm the incident location is accurate before submitting — the template does not auto-populate address from GPS unless your agency has that integration active.
   </Card>
   <Card title="Use F3 before F8" icon="magnifying-glass">
-    For traffic stops, run the plate query with <kbd>F3</kbd> (or the in-template **Run Plate** button) before creating the call. Pre-populated vehicle data saves time and improves record accuracy.
+    For traffic stops, enter plate and state, then create the stop so Cadmus runs the linked query with the state you selected. Use **Run Plate** or <kbd>F3</kbd> when you want to preview results before creating the call.
   </Card>
 </CardGroup>
 
