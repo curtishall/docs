@@ -1,0 +1,68 @@
+---
+title: "Search Call History in Web Admin"
+sidebarTitle: "Call History"
+description: "Use Web Admin Call History to search your agency's full archive of closed calls by call type, officer or unit, CFS number, address, date, and person or vehicle details."
+---
+
+Web Admin **Call History** searches your organization's full archive of closed calls. It is not limited to the most recent calls shown on a dispatch board.
+
+## Who can use it
+
+- **Dispatchers** and **organization administrators** can open **Call History** from the Web Admin sidebar.
+- Agency-scoped users see results for agencies they can access.
+
+## Open Call History
+
+1. Sign in to **Web Admin**.
+2. In the sidebar, click **Call History**.
+
+## Search filters
+
+Combine any filters below. Every filter you fill must match (AND).
+
+| Filter | What it matches |
+|--------|-----------------|
+| **Call type** | Exact incident type from your organization's type list. Retired types remain available for older calls. |
+| **Officer / unit** | Officer name, badge or DSN, or unit call sign from historical assignment records. |
+| **Quick search** | Description, notes, and other narrative text. |
+| **CFS #** | Agency CFS number fragment or full number. |
+| **Address** | Street, place name, or location fragment. |
+| **Date range** | Closed-call date window. |
+| **Report Taken only** | Limits results to calls flagged report-to-follow. |
+| **Advanced search** | Name, SSN, DOB, license plate, VIN, and driver license. |
+
+<Tip>
+  Start with **Call type** and **Officer / unit** when you know the nature of the call and who responded. Add a date range if the list is still large.
+</Tip>
+
+## Results and detail
+
+- Results are paginated. Use **Previous** and **Next** to move through pages.
+- Click a row to open call detail, review narratives and notes, and download a PDF when your role allows.
+
+## Historical officer matching
+
+Calls closed **after** this release store durable officer and unit snapshots at assignment time. Older calls may still match primary officer or unit data, but secondary officers who rode a unit are best-effort for legacy records.
+
+## Troubleshooting
+
+| Symptom | What to try |
+|---------|-------------|
+| No results for a known officer | Search by call sign or DSN instead of a nickname. |
+| Call type missing from dropdown | The type may be retired; choose the retired entry or search without a type filter. |
+| Too many matches | Narrow with date range, CFS number, or advanced person/vehicle fields. |
+
+## Release note
+
+**August 2026** — Call History now supports **Call type** and **Officer / unit** filters on full-archive search.
+
+## Related guides
+
+<CardGroup cols={2}>
+  <Card title="Find a Call (Dispatch CAD)" icon="magnifying-glass" href="/dispatch/find-a-call">
+    Full-history search from the dispatch client.
+  </Card>
+  <Card title="Roles and Access" icon="shield" href="/admin/roles-and-access">
+    Who can open Call History and related admin tools.
+  </Card>
+</CardGroup>

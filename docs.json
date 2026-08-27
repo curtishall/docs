@@ -124,6 +124,13 @@
             ]
           },
           {
+            "group": "Operations",
+            "icon": "clock-rotate-left",
+            "pages": [
+              "admin/call-history"
+            ]
+          },
+          {
             "group": "Agency Configuration",
             "icon": "settings",
             "pages": [
