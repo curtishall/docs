@@ -157,6 +157,26 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
     </Tip>
   </Accordion>
 
+
+  <Accordion title="Cadmus opens minimized or will not reopen">
+    If Cadmus Dispatch CAD appears in Task Manager but the window never stays open, or relaunching creates additional frozen processes, local workstation settings may be damaged.
+
+    1. Close every Cadmus process in Task Manager, then launch Cadmus once and wait several seconds.
+    2. Recent Cadmus builds automatically recover damaged local settings and send a privacy-safe diagnostic to Cadmus. You may need to sign in again if settings were reset.
+    3. Do not keep launching Cadmus repeatedly while it is starting — wait for the first window.
+
+    If Cadmus support directs a manual reset:
+
+    1. Fully quit Cadmus.
+    2. In File Explorer, open `%AppData%\Autonomy Today\Cadmus Dispatch CAD` (note the space in **Autonomy Today**).
+    3. Rename that folder (for example, add `.old`), then start Cadmus again.
+
+    <Warning>
+      Renaming this folder signs you out on this workstation and resets local display preferences such as window size and font size. Do not include NCIC/CJIS results or other sensitive call data when sending screenshots or logs to support.
+    </Warning>
+  </Accordion>
+
+
 </AccordionGroup>
 
 ## Escalate to Cadmus support
