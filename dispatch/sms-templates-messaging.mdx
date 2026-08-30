@@ -109,6 +109,47 @@ The **Message** field shows a **160-character** counter in **Dispatch CAD**. Sta
 
 Keep critical info (CFS number, address) in the first segment when possible.
 
+## SMS Call Viewer links
+
+When Call Viewer links are enabled for your deployment, assignment and critical SMS messages can use a **short teaser** plus a secure web link instead of the full multi-line SMS body.
+
+Example shape:
+
+```text
+BURGLARY IN PROGRESS | OCC #2026-0142
+123 Main St, Springfield
+Details: https://go.cadmus-cad.app/c/…
+```
+
+Opening the link on a phone shows an active-call summary page (Cadmus Call Viewer):
+
+- Call type, priority, status, and CFS / OCC number
+- Address with **Open in Maps** when coordinates are available
+- Reporting party name and tap-to-call (when present)
+- Approved general call detail (not Sensitive/Confidential notes; not CJIS returns)
+- Assigned units, statuses, and officers
+- Automatic refresh while the call stays active
+
+The page is for **field speed**, not a full CAD client. Treat the link like the SMS itself — anyone who has the link can open the summary until it expires or the call is closed.
+
+### Fallback and lifecycle
+
+- If link creation fails, Cadmus sends the **legacy full SMS body** so responders are not left with a broken short message.
+- When the call is closed, cancelled, or merged — or when the link expires — the page shows **This call is no longer available**.
+- Reopening a call does not revive an old link; a later SMS mints a new one.
+
+<Frame caption="Cadmus Call Viewer on a phone — fabricated demo layout (sanitized).">
+  <img src="/images/dispatch/sms-call-viewer/mobile-call-viewer.png" alt="Mobile Call Viewer showing call type, address, reporting party, call detail, and assigned units" />
+</Frame>
+
+<Warning>
+  Call Viewer links are not a CJIS channel. Do not expect NCIC returns, confidential notes, or full case content on the public summary page.
+</Warning>
+
+<Warning>
+  Reporting party name and phone may appear on the linked page. Follow agency policy for sharing RP data with mutual-aid or third-party recipients.
+</Warning>
+
 ## Recipients
 
 **Recipients** section with a count badge (e.g. “3 selected”).
