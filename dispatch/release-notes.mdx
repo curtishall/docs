@@ -1,0 +1,45 @@
+---
+title: "Dispatch CAD release notes"
+sidebarTitle: "Release notes"
+description: "Review recent user-facing improvements to Cadmus Dispatch CAD."
+---
+
+Per-build notes also appear in the CAD **Communication Center → Updates** list and on [updates.cadmus-cad.app](https://updates.cadmus-cad.app) when a stable desktop or mobile release is published. This page keeps a curated summary of larger dispatcher-facing changes.
+
+## SMS Call Viewer (field link)
+
+- **Short SMS + web summary** — when enabled for your deployment, assignment and critical texts can include a Cadmus Call Viewer link instead of a long multi-line SMS.
+- Officers open the link on a phone to see type, address, reporting party, approved call detail, and assigned units while the call is active.
+- Closed, cancelled, merged, or expired links show **This call is no longer available**.
+- See [SMS templates and messaging](/dispatch/sms-templates-messaging#sms-call-viewer-links).
+
+## Client v1.0.54 — St. Clair dispatch UX
+
+- **Font size** — Settings & tools → Display → Font size (100%, 110%, 125%, or 150%) enlarges text on this workstation.
+- **Edit Crew** — right-click an on-duty unit to add crew without a full logout. Needs a matching Cadmus server update.
+- **Close as Desk Call** — close a CFS with no primary-agency field units; Cadmus records a Dispatch Desk unit. Needs a matching server update.
+- **Close Panel** — quick action (formerly **Clear**) closes the call detail window only; it does not close the CFS. Use **Close Call** in the app bar to finalize.
+- **Edit call notes** — correct a posted note; Cadmus shows **Edited** and **View original**. Needs a matching server update.
+- **Report a Bug** — no longer opens automatically on every error; send feedback from Settings when you need it.
+
+## Shared workstations, board recovery, and unit vehicles
+
+- **Shared-workstation session isolation** — use **Sign Out** from the user menu between dispatchers on the same Windows login so the prior session and agency filters do not carry forward.
+- **Live-board recovery guidance** — dashboard banners identify when the call board cannot load, the live connection is lost, a prior refresh is being shown, or agencies are unavailable. Use **Reload Data** or **Retry now** as prompted.
+- **Vehicle display for units** — vehicle names appear beneath a unit's callsign in **Login User** (F2) and the **Active Units** sidebar. Search by a vehicle identifier, such as **24-01**, to find its unit.
+
+## CJIS response feedback and result review
+
+Cadmus now provides consistent status feedback and result viewing for authorized CJIS queries in the Query Workspace and call detail.
+
+- Query entries distinguish sent or pending, completed hit, completed no-hit, timeout, and error states.
+- You can reopen completed entries from **Recent Queries** and a call's **CJIS Query History**.
+- Results provide a parsed view and the authoritative raw response. An authorized DOR photo view appears when an image is available.
+- DOR license statuses distinguish suspended, revoked, no operators, valid, and unknown results.
+- Returned warrant and protection-order indicators appear independently from the overall hit/no-hit status.
+- Mobile officers receive the same response feedback and can review parsed, raw, and available photo results from **NCIC Search → RESPONSES**.
+- Mobile spoken summaries use approved high-level statuses and do not read raw CJIS content aloud.
+
+<Note>
+  These improvements do not add a separate Ex Parte or Order of Protection query type. Existing State/NCIC permissions and Law Enforcement restrictions continue to apply.
+</Note>
