@@ -37,8 +37,12 @@ Use the toolbar controls to navigate and customize the map view:
 Every call detail panel includes a **Location details** block where you can manage the incident address without leaving the call.
 
 - Click **Edit address** to correct or update the location as the caller provides more information.
-- Click **Validate and Geocode Address** to resolve the address to verified map coordinates. Revalidate whenever the reporting party verbally corrects their location.
+- Click **Validate and Geocode Address** to resolve the **address fields** (not Call Description) to verified map coordinates. Revalidate whenever the reporting party verbally corrects their location.
 - Click **Copy GPS coordinates** to copy the precise latitude/longitude to your clipboard for radio relay or CAD notes.
+
+<Warning>
+  **Validate and Geocode** uses street, place, and GPS location fields only — never the Call Description / complaint narrative. Results marked **Outside of Immediate Coverage** are shown for review but are **not auto-saved** unless you explicitly allow outside coverage.
+</Warning>
 
 <Warning>
   GPS coordinates are personally identifiable location data. Follow your agency's CJIS and PII policy before sharing coordinates externally or pasting them into unsecured systems.
