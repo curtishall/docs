@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
   "name": "Cadmus",
-  "description": "Documentation for Cadmus Dispatch CAD, Web Admin, and Mobile CAD — public-safety dispatch software for telecommunicators, field responders, supervisors, and agency administrators.",
+  "description": "Documentation for Cadmus Dispatch CAD, Web Admin, and Mobile CAD \u2014 public-safety dispatch software for telecommunicators, field responders, supervisors, and agency administrators.",
   "colors": {
     "primary": "#7c7c7c",
     "light": "#131313",
@@ -16,7 +16,11 @@
     "eyebrows": "breadcrumbs"
   },
   "contextual": {
-    "options": ["copy", "view", "assistant"]
+    "options": [
+      "copy",
+      "view",
+      "assistant"
+    ]
   },
   "navigation": {
     "global": {
@@ -72,7 +76,8 @@
               "dispatch/chat-sms-comms",
               "dispatch/sms-templates-messaging",
               "dispatch/queries-ncic",
-              "dispatch/bolo-greaseboard-wrecker"
+              "dispatch/bolo-greaseboard-wrecker",
+              "dispatch/fuel-logs"
             ]
           },
           {
@@ -131,6 +136,7 @@
             "icon": "settings",
             "pages": [
               "admin/agency-settings",
+              "admin/fuel-logs",
               "admin/gis-data-management",
               "admin/citation-report-settings",
               "admin/small-agency-admin"
