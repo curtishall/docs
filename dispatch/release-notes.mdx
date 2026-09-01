@@ -1,0 +1,13 @@
+---
+title: "Dispatch CAD Release Notes"
+sidebarTitle: "Release Notes"
+description: "Recent dispatcher-facing changes to Cadmus Dispatch CAD."
+---
+
+## August 2026 — Call location validation
+
+- **Validate and Geocode** on call detail now uses **address fields only** — Call Description / complaint narrative is never sent to geocoding.
+- Addresses resolved **outside your organization's immediate coverage** show a warning and are **not auto-saved** to the CFS location unless you explicitly confirm outside coverage.
+- Changing unit status or opening call detail no longer triggers background geocoding of complaint text.
+
+If a map pin jumps unexpectedly after this update, use **Validate and Geocode Address** on the correct street address to restore the local pin.

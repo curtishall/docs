@@ -54,9 +54,17 @@ The call intelligence block provides contextual information organized into three
 
 The location block lets you manage address accuracy after the call is created:
 
-- **Validate and Geocode Address** — re-submit the address to GIS and update the map pin.
-- **Refresh Address Resolution** — pull the latest GIS result without changing the stored address.
+- **Validate and Geocode Address** — re-submit the **address fields** (street, city, common place, or GPS label) to GIS and update the map pin. This does **not** use the Call Description / complaint narrative.
+- **Refresh Address Resolution** — pull the latest GIS result for the stored address fields without changing the saved address.
 - **Copy GPS coordinates** — copy the geocoded latitude/longitude to the clipboard for field communication.
+
+<Warning>
+  **Validate and Geocode** only uses location address fields — not Call Description. Complaint text such as medic narratives is never sent to geocoding.
+</Warning>
+
+<Warning>
+  If validation returns **Outside of Immediate Coverage**, Cadmus shows a warning and **does not automatically save** that far-away pin unless you explicitly confirm outside coverage (for example when creating a call with the outside-coverage option checked).
+</Warning>
 
 <Warning>
   If the initial address was unvalidated, the map pin may be in the wrong location. Use **Validate and Geocode Address** as soon as you correct the address text.
