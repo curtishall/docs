@@ -4,7 +4,7 @@ sidebarTitle: "Voice alerts"
 description: "Voice Alerts lets the MDT app speak important information aloud."
 ---
 
-Voice Alerts lets the MDT app speak important information aloud.
+Voice Alerts lets the MDT app speak important information aloud. When the app is in the background or closed, Cadmus can also send an operating-system **push notification** for new assignments and critical calls.
 
 ## What it can announce
 
@@ -21,11 +21,26 @@ Voice Alerts lets the MDT app speak important information aloud.
 
 ## Incoming call alerts
 
-When enabled:
+When enabled and the app is open:
 
 - The app announces each assigned call as it appears.
 - Default phrase: **"You have a call."**
 - You can change the phrase in Settings (e.g. "New call assigned").
+
+## Push notifications (app in background or closed)
+
+The MDT app can wake the phone when:
+
+- Your **unit is assigned** to a call
+- A call matches a **critical** incident-type policy for your agency
+
+Tap the notification to open that call. Allow notifications when the phone prompts you — denying permission does not block sign-in, but you will not get alerts while the app is closed.
+
+Push is separate from SMS. An administrator can turn SMS off for a user and still leave mobile push on.
+
+<Note>
+  iOS requires the agency's Apple push certificate to be configured for the Cadmus mobile app. If Android works and iPhone does not, contact Cadmus support.
+</Note>
 
 ## CJIS/NCIC result summaries
 
