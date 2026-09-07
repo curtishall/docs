@@ -1,0 +1,70 @@
+---
+title: "Notification health"
+sidebarTitle: "Notification health"
+description: "Check phone notification permission, safety channels, and push registration on the MDT app."
+---
+
+Use **Notification health** when assignment or emergency alerts are missing on Android or iPhone. The screen shows what the phone is allowing, which alert channels are on, and whether this build can register for background push.
+
+Push is a wake-up alert only. It does not replace radio, and it is not the CAD call record.
+
+<Note>Screenshot placeholder: Notification health screen</Note>
+
+## Open notification health
+
+1. Sign in to Mobile CAD.
+2. Open **Settings**.
+3. In **NOTIFICATIONS**, tap **Notification health**.
+
+After sign-in, the app may ask **Allow notifications**. **Not now** does not block sign-in or dispatch. You can allow later from this screen or from the phone's settings.
+
+## What the screen shows
+
+| Item | Meaning |
+|------|---------|
+| **OS permission** | Authorized, provisional (iPhone quiet delivery), denied, unknown, or not supported on this device |
+| **Firebase** | Whether this install includes the files needed for background push |
+| **Token registration** | Whether Cadmus has a push token for this device |
+| **Last registration** | When this device last registered. **Never** means no token has been sent yet |
+| **Channels** | Android alert categories. Safety channels are assignments, status checks, and emergency alerts |
+
+If Firebase configuration is not installed, local banners can still appear while the app is running. Background push will not work until Cadmus support installs a build that includes those files.
+
+## Allow notifications later
+
+1. Open **Notification health**.
+2. Tap **Allow notifications** and accept the phone prompt.
+3. Or tap **Open system settings** and turn notifications on for Cadmus.
+
+Denying permission does not sign you out and does not stop you from seeing assigned calls in the app.
+
+## Safety channels disabled
+
+If a safety channel is off, the screen lists it and offers **Open channel settings**.
+
+Turn these back on or you may miss:
+
+- New call assignments
+- Status checks from dispatch
+- Emergency alerts
+
+Chat messages are not a safety channel.
+
+## Related guides
+
+- [Voice alerts](/mobile/voice-alerts)
+- [Settings and display](/mobile/settings-and-display)
+- [Store listings, Firebase, and secrets](/mobile/native-store-and-secrets)
+- [User notification preferences](/admin/user-notification-preferences)
+
+## Tips
+
+- If Android works and iPhone does not, contact Cadmus support. Apple push still requires the agency's Apple setup.
+- After changing phone notification settings, reopen **Notification health** so the status refreshes.
+- Push and SMS are independent. An administrator can turn SMS off and still leave mobile alerts on.
+
+## Warnings
+
+<Warning>
+A disabled assignment, status-check, or emergency channel can hide alerts while the app is in the background. Do not leave those channels off during a shift.
+</Warning>

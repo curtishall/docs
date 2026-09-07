@@ -188,7 +188,8 @@
               "mobile/unit-chat",
               "mobile/unit-calendar",
               "mobile/evidence-capture",
-              "mobile/voice-alerts"
+              "mobile/voice-alerts",
+              "mobile/notification-health"
             ]
           },
           {
@@ -206,6 +207,7 @@
             "pages": [
               "mobile/connectivity-offline",
               "mobile/settings-and-display",
+              "mobile/native-store-and-secrets",
               "mobile/training-mode"
             ]
           }
