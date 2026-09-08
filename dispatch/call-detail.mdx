@@ -40,6 +40,28 @@ The call summary block shows the current **status**, **priority**, **incident ty
 
 This block displays the structured incident type code alongside the free-text **Call Description**. Use **Edit Incident Type** to change the type after initial create if information from the field warrants a reclassification.
 
+#### Share description with units via SMS call link
+
+When a call is created with real incident details (not an empty placeholder such as **New Call**), Cadmus automatically copies that narrative into a private **Initial details** call note. That note is not shown on the SMS call link (the field Call Viewer PWA) until a dispatcher explicitly shares it.
+
+From the **CALL DESCRIPTION** area on call detail you can:
+
+| Control | When it appears | Effect |
+|---------|-----------------|--------|
+| **Share** | Description exists and is not shared | Shares the Initial details note on the SMS call link (subject to content policy). |
+| **Stop sharing** | Description is currently shared | Removes the Initial details note from the SMS call link. |
+| **Shared (outdated)** + **Update & share** | Shared note text no longer matches the current call description | Re-copies the current description into the note and shares it again. |
+
+<Warning>
+  Anyone with the SMS call link can see this. Please do not share CJIS data via this link
+</Warning>
+
+<Note>
+  Sharing can be blocked when the description contains sensitive or restricted content, or when your role cannot manage SMS call link sharing. Cadmus shows an error message instead of sharing. Creating a call never fails because of a share attempt.
+</Note>
+
+Optional create-time share: on the New CFS form, a **Share description with units via link** checkbox appears under Incident Details when details are filled in. It is **unchecked by default** so create stays fast. Checking it shares the description immediately after create (same policy rules). If you leave it unchecked, share later from call detail.
+
 ### Call intelligence
 
 The call intelligence block provides contextual information organized into three tabs:
@@ -121,7 +143,7 @@ This section is the call's permanent record of everything that happened.
 
 <Tabs>
   <Tab title="Call Notes">
-    Dispatcher-entered narrative notes attached to this call. Call notes are visible in the call record and may appear on reports depending on agency configuration. Click **Add Call Note** to add an entry.
+    Dispatcher-entered narrative notes attached to this call. Call notes are visible in the call record and may appear on reports depending on agency configuration. Click **Add Call Note** to add an entry. Notes tagged **Initial details** are the create-time copy of the call description; use **Share with units** on an individual note, or the Call Description share controls, when units with the SMS call link should see them.
   </Tab>
   <Tab title="Audit Logs">
     System-generated log of every change made to the call record — field edits, status updates, unit assignments, and more. Audit logs are read-only and cannot be deleted. Click **Add Log** to add a manual log entry for events not captured automatically.
