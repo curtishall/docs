@@ -1,0 +1,46 @@
+---
+title: "Fuel Logs in Web Admin"
+sidebarTitle: "Fuel Logs"
+description: "Search, export, and correct vehicle fuel log entries, including beginning and ending pump readings and the dispatcher DSN."
+---
+
+**Web Admin → Fuel Logs** lets supervisors and administrators review fuel fills recorded from Dispatch CAD.
+
+<Note>
+  Screenshot placeholder: Fuel Logs table showing gallons, beginning pump, ending pump, and Entered By with DSN.
+</Note>
+
+## Who can use this page
+
+| Action | Typical roles |
+|---|---|
+| Search, view, export | OrgAdmin, AgencyAdmin, AgencySupervisor, Dispatcher, CadmusAdmin |
+| Edit or delete a log | OrgAdmin, AgencyAdmin, AgencySupervisor, CadmusAdmin |
+
+Dispatchers normally **create** logs in Dispatch CAD. Use Web Admin to audit, correct, or export.
+
+## Search and export
+
+Filter by vehicle number, unit number, agency (when you manage multiple agencies), fuel type, and date range. Use **Export CSV** to download matching rows, including beginning pump, ending pump, and entered-by DSN.
+
+## What each entry shows
+
+- **Date/Time** — when the fill was saved
+- **Vehicle / Unit** — numbers captured on the log
+- **Gallons** — amount entered by the dispatcher
+- **Beginning / Ending pump** — optional station meter readings used to verify gallons mathematically
+- **Entered By** — dispatcher name, with **DSN** when it was on their user profile at save time
+- **Odometer, fuel type, location, notes** — optional details
+
+## Editing a log
+
+Open an entry and choose **Edit** (when your role allows). You can correct gallons, pump readings, odometer, fuel type, location, and notes. Ending pump must be greater than or equal to beginning pump when both are set. Clearing a pump field removes that reading.
+
+## Vehicle detail
+
+Recent fuel fills also appear on a vehicle’s detail view, including pump range and entered-by DSN when present.
+
+## Related
+
+- [Fuel Logs in Dispatch CAD](/dispatch/fuel-logs)
+- [Users Lifecycle](/admin/users-lifecycle) — set DSN on user profiles

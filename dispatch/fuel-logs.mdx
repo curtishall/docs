@@ -1,0 +1,54 @@
+---
+title: "Fuel Logs in Dispatch CAD"
+sidebarTitle: "Fuel Logs"
+description: "Log vehicle fuel fills from Dispatch CAD, including optional beginning and ending pump readings for mathematical verification."
+---
+
+Use **Fuel Log** when a deputy radios a fuel fill. Cadmus records the date and time automatically, associates the fill with a unit or vehicle number, and snapshots the signed-in dispatcher’s **DSN** (when present on their user profile) with their name.
+
+Fuel Log is usually opened from a header shortcut or agency function key (often among **F6–F12**), not as a Call for Service. See [Quick Calls & F-Keys](/dispatch/quick-calls-fkeys).
+
+<Note>
+  Screenshot placeholder: Fuel Log dialog with unit search, beginning pump, ending pump, and gallons fields.
+</Note>
+
+## Who can log fuel
+
+Dispatchers (and other roles with fuel-log create access) can save a fuel log from Dispatch CAD. Supervisors and admins can review or edit entries later in **Web Admin → Fuel Logs**.
+
+## What to enter
+
+<Steps>
+  <Step title="Open Fuel Log">
+    Press the agency Fuel Log shortcut or function key, or open it from the header controls your agency configured.
+  </Step>
+  <Step title="Select the unit or vehicle">
+    Search by call sign, vehicle number, DSN, or officer name, then select the unit that fueled.
+  </Step>
+  <Step title="Enter pump readings (optional)">
+    Type the **beginning pump** and **ending pump** meter readings from the station pump. Cadmus may prefill **beginning pump** from the last ending reading logged for your agency. You can overwrite the prefilled value.
+  </Step>
+  <Step title="Enter gallons">
+    Enter the gallons pumped. Gallons are required even when pump readings are blank.
+  </Step>
+  <Step title="Add optional details">
+    Enter odometer, fuel type, and notes as needed, then **Save**.
+  </Step>
+</Steps>
+
+## Pump difference check
+
+When both pump readings are entered, Cadmus shows the **pump difference** (`ending − beginning`) next to gallons.
+
+- If gallons and the pump difference disagree by more than a small rounding tolerance, Cadmus shows an amber warning.
+- You can still save. The warning is intentional so supervisors can see mismatches later.
+- Ending pump must be greater than or equal to beginning pump, or Cadmus blocks that pair until corrected.
+
+## Who is recorded as entered by
+
+Cadmus stores the signed-in user’s name and, when configured on the user record, their **DSN**. You do not type DSN on the Fuel Log form. If DSN is missing on a saved log, ask an administrator to set **DSN** on the user profile in Web Admin.
+
+## Related
+
+- [Quick Calls & F-Keys](/dispatch/quick-calls-fkeys)
+- [Fuel Logs in Web Admin](/admin/fuel-logs)
