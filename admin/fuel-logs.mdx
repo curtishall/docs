@@ -14,10 +14,12 @@ description: "Search, export, and correct vehicle fuel log entries, including be
 
 | Action | Typical roles |
 |---|---|
-| Search, view, export | OrgAdmin, AgencyAdmin, AgencySupervisor, Dispatcher, CadmusAdmin |
+| Search, view, export | OrgAdmin (all agencies in the organization), AgencyAdmin, AgencySupervisor, Dispatcher, CadmusAdmin |
 | Edit or delete a log | OrgAdmin, AgencyAdmin, AgencySupervisor, CadmusAdmin |
 
 Dispatchers normally **create** logs in Dispatch CAD. Use Web Admin to audit, correct, or export.
+
+OrgAdmins see fuel logs for **every agency** in their organization (not only their primary agency). Use the agency filter when you want one agency’s rows.
 
 ## Search and export
 
@@ -35,6 +37,10 @@ Filter by vehicle number, unit number, agency (when you manage multiple agencies
 ## Editing a log
 
 Open an entry and choose **Edit** (when your role allows). You can correct gallons, pump readings, odometer, fuel type, location, and notes. Ending pump must be greater than or equal to beginning pump when both are set. Clearing a pump field removes that reading.
+
+## Change history
+
+Opening a fuel log shows a **Change history** section. Creates, edits, and deletes are listed with who made the change and when. Edits include field-level before → after values (for example gallons or pump readings).
 
 ## Vehicle detail
 
