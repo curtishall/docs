@@ -4,6 +4,16 @@ sidebarTitle: "Release notes"
 description: "Review recent user-facing improvements to Cadmus Dispatch CAD."
 ---
 
+## Query person fields match MULES
+
+Name / DOR and related person queries now use the same values dispatchers type in MULES:
+
+- Full name is `LAST,FIRST` or `LAST, FIRST` (comma, with or without a space; not underscore)
+- Birth date is `YYYYMMDD`
+- Sex is `M`, `F`, or `U`
+
+See [Queries & NCIC](/dispatch/queries-ncic) and [Query commands](/dispatch/query-commands).
+
 ## Fuel logs — pump readings and dispatcher DSN
 
 Dispatchers can record optional **beginning** and **ending pump** readings when logging fuel. Cadmus can prefill beginning pump from the agency’s last ending reading, shows a gallons-vs-pump-difference hint without blocking save, and snapshots the signed-in dispatcher’s **DSN** with the entry. See [Fuel Logs](/dispatch/fuel-logs).

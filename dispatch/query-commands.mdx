@@ -6,6 +6,7 @@ description: "DL, LP, NAME, AH, UH, and S connect to your agency’s CJIS / Comm
 
 **DL**, **LP**, **NAME**, **AH**, **UH**, and **S** connect to your agency’s **CJIS / Commsys** setup when it is enabled.
 
+- **NAME** uses MULES person-query format: `LAST,FIRST` or `LAST, FIRST`, birth date `YYYYMMDD`, and sex `M` / `F` / `U`. Examples: `NAME SMITH,JOHN 19800115 M`, `NAME SMITH, JOHN 19800115 M`, or `NAME NAM/SMITH, JOHN SEX/M DOB/19800115`.
 - Include **state** when querying out-of-state plates or licenses.
 - Results may open in a side panel, new window, or return asynchronously — behavior follows your integration.
 - All queries should be **policy- and audit-compliant**; access is logged server-side.

@@ -30,6 +30,16 @@ The left rail of the Query Workspace lists every available query type. Select a 
 | **Wanted** | Search wanted-persons records |
 | **Criminal History** | Run a criminal history query |
 
+### Name / DOR field format
+
+Person queries use the same field shape dispatchers already type in MULES:
+
+- **Full name:** `LAST,FIRST` or `LAST, FIRST` (comma, with or without a space). Examples: `SMITH,JOHN` and `SMITH, JOHN`
+- **Birth date:** `YYYYMMDD`. Example: `19800115`
+- **Sex:** `M`, `F`, or `U`
+
+Cadmus still accepts an older underscore name or `MM/DD/YYYY` birth date and converts them before the query is sent.
+
 <Tip>
   When querying out-of-state plates or licenses, always include the **state** in the query fields (two-letter code or full name — Cadmus normalizes to the NCIC code). Omitting the state can return incomplete or incorrect results. On the **Traffic Stop** quick call, enter the correct state before **Create Traffic Stop**; Cadmus runs the linked plate query after the CFS is created using that selected state.
 </Tip>
