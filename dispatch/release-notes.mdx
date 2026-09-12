@@ -1,0 +1,21 @@
+---
+title: "Dispatch CAD Release Notes"
+sidebarTitle: "Release Notes"
+description: "Recent Dispatch CAD improvements for Unit View agency filters and live partner-agency call updates."
+---
+
+## Unit View filters and live partner calls
+
+Dispatch CAD now keeps your call-board and **Active Units** agency selections across ordinary **Reload Data**, and authorized organization-wide boards receive partner-agency call creates live.
+
+### What changed
+
+- **Retained agency filters** — Call-board and Active Units (Unit View) agency picks are saved per signed-in dispatcher and organization. Choosing **All**, clearing to none, or selecting a subset round-trips after restart and after you sign back in on a shared workstation.
+- **Reload Data preserves selections** — Header and recovery-banner **Reload Data** refresh the board and live connection without resetting agency filters to everyone.
+- **Live partner-agency calls** — Dispatchers, Org Admins, Agency Admins, and Cadmus Admins on an organization-wide board see another agency’s new calls appear within seconds over the live connection—no manual refresh required. Agency-only roles stay limited to their own agency.
+
+### What to expect
+
+- Shared workstations keep each dispatcher’s own saved filters; signing out clears the on-screen selection for the next person but does not erase that dispatcher’s saved preference.
+- Switching organizations restores only that organization’s saved filters for the current user.
+- If a partner call still fails to appear while the live connection looks healthy, treat that as unexpected and escalate—do not rely on repeated manual reloads as normal workflow.

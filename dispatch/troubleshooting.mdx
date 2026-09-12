@@ -21,7 +21,7 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
 
     1. Open the **Select Agencies** picker in the header and confirm that the correct agencies are included. If you added or were assigned to an agency recently, it may not be checked.
     2. Verify the organization badge in the header. If you belong to multiple organizations (for example, a Live org and a Sandbox training org), confirm you are signed in to the correct one.
-    3. Select **Reload Units & Dashboard Data** from the header settings menu to force a fresh pull from the server.
+    3. Select **Reload Units & Dashboard Data** from the header settings menu to force a fresh pull from the server. Reload keeps your current agency filter selections; if reload clears filters back to **All Agencies** every time, that is unexpected — note it when escalating.
 
     <Tip>
       If calls reappear after a reload but disappear again within minutes, contact your admin — the issue may be a WebSocket connectivity problem rather than a filter setting.
@@ -91,9 +91,13 @@ Use this guide when something in Dispatch CAD isn't behaving as expected — a b
   <Accordion title="WebSocket updates appear stuck">
     If the call board or unit statuses stop refreshing in real time, the WebSocket connection may have dropped.
 
-    1. Select **Reload Data** from the header settings gear menu. This reconnects the WebSocket and re-fetches all current data.
+    1. Select **Reload Data** from the header settings gear menu. This reconnects the WebSocket and re-fetches all current data without resetting your agency filters.
     2. If the problem persists, open the gear menu and run **Test Connection** to check server reachability.
     3. As a last resort, use **Force Reload** (also in the gear menu) to perform a full page reload without losing your current session.
+
+    <Warning>
+      On an organization-wide dispatch board, partner-agency calls should appear within seconds without manual refresh. Needing a filter reset or repeated **Reload Data** for every new partner call is unexpected behavior — escalate to your admin or Cadmus support rather than treating refresh as normal workflow.
+    </Warning>
 
     <Warning>
       **Clear All Caches** (available in Settings & Tools) may sign you out or reset local preferences. Use it only when directed by Cadmus support.

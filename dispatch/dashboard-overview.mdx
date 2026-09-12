@@ -6,6 +6,8 @@ description: "Explore every section of the Dispatch CAD dashboard — call board
 
 The Dispatch CAD dashboard is your real-time dispatch surface. It organizes active calls, available units, operational broadcasts, and reference resources into a set of tabbed boards that update live as units change status and new calls come in. Understanding what each section shows — and when to use it — lets you work faster and miss nothing during a busy shift.
 
+Authorized organization-wide boards (Dispatcher, Org Admin, Agency Admin, and Cadmus Admin) receive cross-agency call and unit changes live for your organization. Agency filters on the call board and **Active Units** sidebar are remembered per dispatcher and organization; **Reload Data** refreshes the board without clearing those selections.
+
 ## Call Board Tabs
 
 The call boards occupy the center of the dashboard. Each tab filters the active call list to a specific discipline or view, so you see exactly what is relevant to your role at any moment.
@@ -99,10 +101,10 @@ The **Recent** tab shows calls that have been closed but remain on the board wit
     The Recent tab only shows calls within a short retention window. For anything older than the current shift, use **Find a Call** to search the full archive.
   </Card>
   <Card title="Forgetting an active agency filter" icon="filter">
-    If your boards look unexpectedly empty, an agency filter may be excluding your primary agency. Open **Select Agencies** in the header and verify your selection, or click **All Agencies** to reset.
+    If your boards look unexpectedly empty, an agency filter may be excluding your primary agency. Open **Select Agencies** in the header and verify your selection, or click **All Agencies** to reset. Your filter choice is saved for your account and organization; **Reload Data** should not clear it.
   </Card>
   <Card title="Missing WebSocket updates" icon="rotate">
-    If live updates appear to have stopped — units not moving, new calls not appearing — open **Settings & tools** (gear icon) and select **Reload Data** to force a fresh connection.
+    If live updates appear to have stopped — units not moving, new calls not appearing — open **Settings & tools** (gear icon) and select **Reload Data** to force a fresh connection. Reload should keep your agency filter selections. Needing a filter reset or repeated manual refresh after every partner-agency call is unexpected — escalate if that keeps happening.
   </Card>
   <Card title="Drag-and-drop not working" icon="hand">
     If dragging a unit to a call has no effect, drag-and-drop may be disabled for your agency. Use the **Assign Unit** button inside the call detail panel instead.
