@@ -40,6 +40,14 @@ If your agency has more templates than there are function keys, the remaining te
   Learn your agency's specific F8–F12 mappings early — they differ between organizations. Ask your CAD administrator or check **Web Admin → Quick Call Shortcuts** to see your current assignments.
 </Tip>
 
+## Assignment SMS on quick calls
+
+Quick calls that assign a unit when the CFS is created use the same assignment text path as board assign. Eligible deputies receive the SMS as soon as the unit is attached — whether the shortcut starts the unit at **Dispatched**, **Enroute**, or **On Scene**. Closing the call is not required for the text to send.
+
+<Note>
+  Hotfix: officer-initiated **Traffic Stop** quick calls now send assignment SMS immediately when a unit is selected. They still do **not** send an Active911 page.
+</Note>
+
 ## Traffic Stop Quick Call
 
 The Traffic Stop quick call (typically <kbd>F8</kbd>) opens a focused workflow designed for officer-initiated traffic stops:
@@ -59,6 +67,8 @@ The Traffic Stop quick call (typically <kbd>F8</kbd>) opens a focused workflow d
   </Step>
 </Steps>
 
+When a unit is selected on the traffic stop, Cadmus assigns that unit **On Scene** and immediately sends the normal **assignment SMS** to opted-in personnel on the unit (phone number on file, SMS on assign enabled, not in Do Not Disturb). Active911 paging is not triggered for officer-initiated traffic stops.
+
 <Warning>
   The Traffic Stop quick call is only available when **Traffic Stops Allowed** is enabled in your agency's settings in Web Admin. If the button or function key does not appear, contact your CAD administrator to verify the agency configuration.
 </Warning>
@@ -76,7 +86,8 @@ The **Paper Service** quick call (typically <kbd>F10</kbd>) uses a service-of-pr
 
 - Enter the service location and the unit performing the service.
 - The resulting CFS record is typed as a paper-service run for accurate activity reporting.
-- When you assign a unit at create time, the call opens under **Dispatched** (not **Pending**), with that unit shown as Dispatched on the call card.
+- When you assign a unit at create time, the call leaves **Pending** and the unit is set according to the shortcut’s **Unit status when assigned at creation** setting in Web Admin (**Dispatched**, **Enroute**, or **On Scene**).
+- Selecting a unit at create time also sends **assignment SMS** immediately to opted-in personnel on that unit. Choosing **On Scene** does **not** delay the text until the call is closed.
 
 ## More Quick Calls Overflow Menu
 

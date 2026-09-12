@@ -52,7 +52,7 @@ Canonical writing and safety rules for the **cad-docs** Mintlify repo. Cursor ru
 2. Find existing page in `admin/`, `dispatch/`, or `mobile/`
 3. Patch in place; new page only if no fit
 4. Update `docs.json`
-5. Changelog/release note if user-visible
+5. Always add a short entry to the product `release-notes.mdx` for user-facing fixes, hotfixes, and features (Dispatch: `dispatch/release-notes.mdx`)
 6. Verify MDX and links
 
 ## Related monorepo context

@@ -80,7 +80,7 @@ description: "Short description of what the page helps users do"
 3. Update existing pages before creating new ones.
 4. Add new pages only when the topic does not fit an existing page.
 5. Update `docs.json` navigation when adding or moving pages.
-6. Keep changelog or release notes updated when the change affects users.
+6. Always add a short entry to the product `release-notes.mdx` for user-facing fixes, hotfixes, and features (Dispatch: `dispatch/release-notes.mdx`). How-to page updates alone are not enough.
 7. Verify links, headings, frontmatter, and Mintlify MDX syntax.
 8. Do not document speculative features unless clearly marked as planned or beta.
 

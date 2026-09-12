@@ -4,6 +4,16 @@ sidebarTitle: "Release notes"
 description: "Review recent user-facing improvements to Cadmus Dispatch CAD."
 ---
 
+## Quick-call assignment SMS (Traffic Stop hotfix)
+
+Officer-initiated **Traffic Stop** quick calls now text opted-in personnel as soon as a unit is selected. Closing the call is not required.
+
+- Assignment SMS uses the same eligibility rules as board assign (phone on file, SMS on assign enabled, not in Do Not Disturb).
+- Traffic stops still do **not** send an Active911 page.
+- Other quick calls that assign a unit at create time (for example **Paper Service**) already sent assignment SMS immediately, including when the unit starts **On Scene**.
+
+See [Quick Calls & F-Keys](/dispatch/quick-calls-fkeys).
+
 ## Query person fields match MULES
 
 Name / DOR and related person queries now use the same values dispatchers type in MULES:
