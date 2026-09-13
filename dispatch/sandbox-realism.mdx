@@ -1,0 +1,46 @@
+---
+title: "Sandbox Realism & Control Center"
+sidebarTitle: "Sandbox Realism"
+description: "Practice dispatch operations in a server-driven simulation environment using real GIS, CAD ingestion, and WebSocket event pipelines."
+---
+
+# Sandbox Realism
+
+Cadmus provides a server-driven simulation environment for staff training, dispatcher drills, and demonstration exercises known as **Sandbox Realism**.
+
+Unlike simulated or "fake" CAD environments that inject artificial local alerts into the user interface, Sandbox Realism feeds generated traffic through the **same real CAD ingestion pipelines, GIS resolver, and WebSocket event streams used in production**.
+
+<Note>
+Sandbox Realism is only available in organizations designated as **Sandbox**. Live production organizations cannot start simulations or generate simulated events.
+</Note>
+
+## Opening the Sandbox Control Center
+
+1. Look at the top navigation bar. When logged into a Sandbox organization, the top header displays the orange **SANDBOX MODE** badge.
+2. Hovering over the Cadmus Dispatch logo continues to display the software version number without shifting surrounding navigation controls.
+3. Click the **SANDBOX MODE** badge to open the **Sandbox Control Center** side panel.
+
+## Realism Levels
+
+The Control Center offers preset realism speeds:
+
+* **Off**: No unsolicited simulation events are generated.
+* **Quiet**: Suitable for low-stress exploration (events generated roughly every 15–25 minutes).
+* **Normal** *(Default)*: Typical daytime call pace (events generated roughly every 6–12 minutes).
+* **Busy**: High-volume training pace for multi-dispatcher training exercises.
+* **Manual**: Automated background scheduling is paused; dispatchers trigger events manually using the **Generate Event Now** section.
+
+## What is Simulated vs Real
+
+* **Real GIS Resolution**: Calls are placed at real address points, road centerlines, and parcels within your agency's actual coverage jurisdiction.
+* **Real CAD Pipeline**: Generated calls create authentic pending incidents via the production dispatch service and broadcast in real time to all connected dispatchers.
+* **Multi-User Synchronized**: When a supervisor starts Realism, all dispatchers and MDT users logged into that Sandbox organization see the simulated calls and status updates simultaneously.
+* **Zero Production Impact**: Simulations cannot cross into Live organizations, and credentials for production 911 telco, RapidSOS, SMS providers, or CJIS networks are never invoked.
+
+## Generating Events Manually
+
+Supervisors and trainers can generate specific incidents on demand:
+
+* **Generate Law Call**: Dispatches a realistic law enforcement call at a sampled jurisdiction location.
+* **Generate Fire Call**: Creates a priority structure fire incident.
+* **Generate EMS Call**: Generates a high-priority medical emergency call.
