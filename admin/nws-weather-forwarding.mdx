@@ -1,0 +1,60 @@
+---
+title: "NWS weather-call email forwarding"
+sidebarTitle: "NWS weather forwarding"
+description: "Configure Cadmus to email stripped weather CFS reports to the National Weather Service on create and on each new general note."
+---
+
+Cadmus can automatically email the National Weather Service (NWS) when a weather-related call for service is created and when dispatchers add follow-up general notes. Emails go through **Azure Communication Services Email** only. The body contains time, location, incident type, and weather report text — not the full CFS PDF and not caller or unit PII fields.
+
+## What gets sent
+
+Each forward includes:
+
+- CFS number (or incident ID if CFS is not yet assigned)
+- Incident type name
+- Timestamp (UTC)
+- Location address
+- The weather report text (initial description on create, or the new general note on update)
+
+Email subjects are prefixed with the organization name, for example `St. Clair County NWS Weather CFS: …` and `St. Clair County NWS Weather CFS UPDATE: …`.
+
+Cadmus does **not** include reporting-party name/phone, assigned units, vehicles, persons, confidential/CJIS notes, system notes, call-viewer links, or the CFS PDF.
+
+<Warning>
+  Free-text notes are forwarded as typed. Train dispatchers to put **weather facts only** on NWS-forward types (hail size, wind, flooding, trees down). Do not put names, phone numbers, or CJIS/MULES text in those notes.
+</Warning>
+
+## Enable for an organization
+
+<Steps>
+  <Step title="Set the NWS destination email">
+    In Web Admin, open **Settings** and find **NWS Weather Forwarding**. Enter the forecast-office address (for example `contact.sgf@noaa.gov`). Leave blank to disable all NWS forwards for the org.
+  </Step>
+  <Step title="Confirm the Weather Report type">
+    Every agency receives a protected **Weather Report** incident type with NWS forward enabled. It cannot be deleted or renamed. Dispatchers should use this type (or another type you flag below) for weather spotter reports.
+  </Step>
+  <Step title="Optionally flag other weather types">
+    On any other incident type (Tree Down, Flooding, Hail, Wind Damage, and so on), enable **Forward weather calls to NWS**. Those types then use the same org destination email.
+  </Step>
+</Steps>
+
+## When emails send
+
+| Event | Behavior |
+|---|---|
+| Weather CFS created | One create email with time, location, type, and initial description |
+| General note added | One update email with the new note text |
+| Confidential / CJIS / system note | Skipped |
+| NWS email setting empty | Skipped (warn in server logs) |
+| Azure Email not configured | Skipped (warn in server logs; SendGrid is not used) |
+
+## PII and note content
+
+Server-side gates skip confidential, CJIS-classified, and system-generated notes. Free-text general notes are still forwarded as typed — train staff to put **weather facts only** on NWS-forward types.
+
+On **Dispatch CAD**, NCIC/CJIS query actions are hidden for calls whose incident type has NWS forward enabled, and a short weather-facts hint appears on those calls. Mobile CAD is out of scope for this feature.
+
+## Related
+
+- [Integrations overview](/admin/integrations-overview)
+- [User notification preferences](/admin/user-notification-preferences) (internal user alerts — not the NWS partner feed)

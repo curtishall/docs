@@ -1,10 +1,10 @@
 ---
-title: "Integrations: RapidSOS, CJIS, RMS, and ATAK in Cadmus"
+title: "Integrations: RapidSOS, CJIS, RMS, ATAK, and NWS in Cadmus"
 sidebarTitle: "Integrations"
-description: "Overview of all Cadmus integration touchpoints — configure CJIS relay, RMS webhooks, RapidSOS location data, and ATAK at org and agency levels."
+description: "Overview of all Cadmus integration touchpoints — configure CJIS relay, RMS webhooks, RapidSOS location data, ATAK, and NWS weather-call email forwarding at org and agency levels."
 ---
 
-Cadmus integrations operate at two scopes: some settings live at the **organization level** and apply to every agency beneath them, while others toggle on a per-agency basis. Understanding which scope controls which feature is the fastest way to unblock dispatchers and maintain compliance. This page maps every integration touchpoint — CJIS relay, RMS webhooks, RapidSOS location data, and ATAK — so you can find the right setting without hunting through every menu.
+Cadmus integrations operate at two scopes: some settings live at the **organization level** and apply to every agency beneath them, while others toggle on a per-agency basis. Understanding which scope controls which feature is the fastest way to unblock dispatchers and maintain compliance. This page maps every integration touchpoint — CJIS relay, RMS webhooks, RapidSOS location data, ATAK, and NWS weather forwarding — so you can find the right setting without hunting through every menu.
 
 ---
 
@@ -36,6 +36,14 @@ Toggle **Enable Public CFS Report** to allow **Generate Public CFS** on Web Admi
 - When disabled, the button is hidden in the apps and the API returns **403** if called directly.
 
 Full internal PDF and email report workflows are unchanged and always include the complete internal CFS content for authorized users.
+
+### NWS Weather Forwarding
+
+Set **NWS forward email** to your National Weather Service forecast-office address (for example `contact.sgf@noaa.gov`). Cadmus emails stripped weather CFS reports (time, location, type, and general note text) when an NWS-enabled incident type is created and when general notes are added.
+
+- Every agency gets a protected **Weather Report** incident type. Admins can also enable **Forward weather calls to NWS** on other weather-related types.
+- Delivery uses **Azure Communication Services Email**. Leave the address blank to disable.
+- See [NWS weather-call email forwarding](/admin/nws-weather-forwarding) for setup and PII guidance.
 
 ### Clerk Membership & User Sync
 

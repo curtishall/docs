@@ -4,6 +4,16 @@ sidebarTitle: "Release notes"
 description: "Review recent user-facing improvements to Cadmus Dispatch CAD."
 ---
 
+## NWS weather-call email forwarding
+
+Cadmus can email stripped weather CFS reports to the National Weather Service when a weather call is created and when dispatchers add general follow-up notes.
+
+- Use the seeded **Weather Report** type (or enable **Forward weather calls to NWS** on other weather types).
+- Org Settings holds the NWS destination address. Emails use Azure Communication Services Email and include only time, location, type, and weather note text.
+- On Dispatch CAD, CJIS/NCIC query actions are hidden on NWS-forward weather calls, with a weather-facts note hint.
+
+See [NWS weather-call email forwarding](/admin/nws-weather-forwarding).
+
 ## Unit View filters and live partner calls
 
 Dispatch CAD now keeps your call-board and **Active Units** agency selections across ordinary **Reload Data**, and authorized organization-wide boards receive partner-agency call creates live.

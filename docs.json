@@ -147,6 +147,7 @@
             "icon": "plug",
             "pages": [
               "admin/integrations-overview",
+              "admin/nws-weather-forwarding",
               "admin/rapidsos-management"
             ]
           },
