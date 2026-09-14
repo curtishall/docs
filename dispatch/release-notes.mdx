@@ -6,7 +6,13 @@ description: "Review recent user-facing improvements to Cadmus Dispatch CAD."
 
 ## Sandbox Realism & Control Center
 
-Dispatchers in Sandbox organizations can now click the **SANDBOX MODE** badge in the top navigation header to open the **Sandbox Control Center**. Trainers can select simulation presets (Quiet, Normal, Busy, Manual) or generate test calls (Law, Fire, EMS) on demand. Calls are resolved against authentic jurisdiction GIS data and flow through the real CAD and WebSocket pipelines. See [Sandbox Realism](/dispatch/sandbox-realism).
+Dispatchers in Sandbox organizations can now click the **SANDBOX MODE** badge in the top navigation header to open the **Sandbox Control Center**. Trainers can select simulation presets (Quiet, Normal, Busy, Manual) or generate test calls and multi-step scenarios on demand.
+- **Realistic 911 Calls**: Wireline, wireless Phase I/II, and abandoned 911 calls.
+- **RapidSOS Telemetry**: Crash and medical alerts with evolving location uncertainty circles.
+- **Dedicated AVL & Pursuit**: Simulated patrol units navigating road networks, plus officer foot pursuit tracking (`person_pos`).
+- **End-to-End Scenarios**: Multi-step Traffic Accident, Medical Emergency, Domestic Disturbance, and Traffic Stop simulations.
+- **Secondary Integrations**: Virtual citizen SMS threads, external RMS export testing (`ACK`/`NACK`/`TIMEOUT`), sandboxed CJIS `TRAINING` queries, and synthetic NWS polygon alerts.
+Calls and events are resolved against authentic jurisdiction GIS data and flow through the real CAD and WebSocket pipelines. See [Sandbox Realism](/dispatch/sandbox-realism).
 
 ## Fuel logs — pump readings and dispatcher DSN
 
