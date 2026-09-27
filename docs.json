@@ -184,6 +184,7 @@
               "mobile/unit-chat",
               "mobile/unit-calendar",
               "mobile/evidence-capture",
+              "mobile/field-interview-reports",
               "mobile/voice-alerts"
             ]
           },

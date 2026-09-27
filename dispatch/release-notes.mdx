@@ -4,6 +4,15 @@ sidebarTitle: "Release notes"
 description: "Review recent user-facing improvements to Cadmus Dispatch CAD."
 ---
 
+## MDT: field interviews and late units
+
+Two changes to the mobile MDT app.
+
+- **FIELD INTERVIEW** — the dashboard chip previously labeled **CRASH REPORT** is now **FIELD INTERVIEW** and uses the report icon. There is no crash-report form; the chip opens field interview reports, the same list the NCIC **CREATE FIR** button opens.
+- **En Route and On Scene for a late unit** — the call action bar now follows the officer's own unit status instead of the call's status. A second unit joining a call that is already **ON SCENE** still shows **EN ROUTE** and **ON SCENE**; the unit that is already on scene does not. A call with no identified unit still follows the call status, and a **Closed** or **Cancelled** call still closes the bar.
+- **Stacking is unchanged** — a field unit can be assigned to more than one open call. The earlier "clear the other call first" restriction has been removed rather than shipped, so no agency sees a prompt and `assign-unit` never refuses on stacking grounds.
+- **Agency desk assignment routing restored** — `POST /incidents/{incidentId}/assign-unit` again routes `AgencyDesk` units through the authorized desk workflow (CFS allocation included) instead of the generic unit path, and a multi-unit request now assigns every entry instead of only the first.
+
 ## Sandbox Realism & Control Center
 
 Dispatchers in Sandbox organizations can now click the **SANDBOX MODE** badge in the top navigation header to open the **Sandbox Control Center**. Trainers can select simulation presets (Quiet, Normal, Busy, Manual) or generate test calls and multi-step scenarios on demand.
