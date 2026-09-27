@@ -39,7 +39,8 @@
             "pages": [
               "dispatch/introduction",
               "dispatch/getting-started",
-              "dispatch/dashboard-overview"
+              "dispatch/dashboard-overview",
+              "dispatch/sandbox-realism"
             ]
           },
           {
@@ -183,6 +184,7 @@
               "mobile/unit-chat",
               "mobile/unit-calendar",
               "mobile/evidence-capture",
+              "mobile/field-interview-reports",
               "mobile/voice-alerts"
             ]
           },

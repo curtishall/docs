@@ -1,0 +1,70 @@
+---
+title: "Sandbox Realism & Control Center"
+sidebarTitle: "Sandbox Realism"
+description: "Practice dispatch operations in a server-driven simulation environment using real GIS, CAD ingestion, and WebSocket event pipelines."
+---
+
+# Sandbox Realism
+
+Cadmus provides a server-driven simulation environment for staff training, dispatcher drills, and demonstration exercises known as **Sandbox Realism**.
+
+Unlike simulated or "fake" CAD environments that inject artificial local alerts into the user interface, Sandbox Realism feeds generated traffic through the **same real CAD ingestion pipelines, GIS resolver, and WebSocket event streams used in production**.
+
+<Note>
+Sandbox Realism is only available in organizations designated as **Sandbox**. Live production organizations cannot start simulations or generate simulated events.
+</Note>
+
+## Opening the Sandbox Control Center
+
+1. Look at the top navigation bar. When logged into a Sandbox organization, the top header displays the orange **SANDBOX MODE** badge.
+2. Hovering over the Cadmus Dispatch logo continues to display the software version number without shifting surrounding navigation controls.
+3. Click the **SANDBOX MODE** badge to open the **Sandbox Control Center** side panel.
+
+## Realism Levels
+
+The Control Center offers preset realism speeds:
+
+* **Off**: No unsolicited simulation events are generated.
+* **Quiet**: Suitable for low-stress exploration (events generated roughly every 15–25 minutes).
+* **Normal** *(Default)*: Typical daytime call pace (events generated roughly every 6–12 minutes).
+* **Busy**: High-volume training pace for multi-dispatcher training exercises.
+* **Manual**: Automated background scheduling is paused; dispatchers trigger events manually using the **Generate Event Now** section.
+
+## What is Simulated vs Real
+
+* **Real GIS Resolution**: Calls are placed at real address points, road centerlines, and parcels within your agency's actual coverage jurisdiction.
+* **Real CAD Pipeline**: Generated calls create authentic pending incidents via the production dispatch service and broadcast in real time to all connected dispatchers.
+* **Multi-User Synchronized**: When a supervisor starts Realism, all dispatchers and MDT users logged into that Sandbox organization see the simulated calls and status updates simultaneously.
+* **Zero Production Impact**: Simulations cannot cross into Live organizations, and credentials for production 911 telco, RapidSOS, SMS providers, or CJIS networks are never invoked.
+
+## Generating Events Manually
+
+Supervisors and trainers can generate specific incidents and complex scenarios on demand from the Control Center:
+
+### CAD Calls
+* **Generate Law Call**: Dispatches a realistic law enforcement call at a sampled jurisdiction location.
+* **Generate Fire Call**: Creates a priority structure fire incident.
+* **Generate EMS Call**: Generates a high-priority medical emergency call.
+
+### 911 Ingestion (ANI/ALI & RapidSOS)
+* **Generate Wireless 911**: Ingests a simulated Phase I wireless 911 call with cell tower uncertainty, followed by scheduled Phase II updates.
+* **Generate Landline 911**: Ingests a wireline 911 call with exact civic address resolution.
+* **Generate Abandoned 911**: Ingests an abandoned 911 call triggering call-back protocols.
+* **Generate RapidSOS Event**: Replays device-based emergency telemetry (crash detection, telematics, medical data) into the RapidSOS staging queue.
+* **Generate RapidSOS Location Update**: Re-stages tightening uncertainty coordinates for an active device.
+
+### Unit AVL & Telemetry
+* **Move All Units**: Advances simulated patrol units along GIS road centerlines with realistic heading, bearing, and speed.
+* **Start Foot Pursuit**: Places a unit vehicle stationary on-scene, activates pursuit mode, and begins streaming foot pursuit telemetry (`person_pos`) for the responding officer.
+
+### Multi-Step Combined Scenarios
+* **Start Traffic Accident**: Coordinates a full multi-agency scenario from initial 911 WPH1 alert, RapidSOS crash telemetry, Phase II refinement, incident creation, to unit dispatch and scene arrival.
+* **Start Medical Emergency**: Replays an acute health crisis with medical profile data, EMS call routing, and ambulance response.
+* **Start Domestic Disturbance**: Ingests an initial disturbance call, emergency disconnect, abandonment transition, and multi-unit backup dispatch.
+* **Start Traffic Stop**: Officer-initiated vehicle stop scenario that clears back to patrol upon completion.
+
+### Secondary Integrations
+* **NWS Severe T-Storm / Tornado Warning**: Issues synthetic National Weather Service GeoJSON polygon alerts intersecting your agency's verified GIS boundary.
+* **Simulate Inbound SMS**: Delivers virtual two-way citizen SMS text messaging without incurring Twilio or cellular network traffic.
+* **Simulate RMS Export**: Tests incident transfer to external Records Management Systems with selectable `ACK`, `NACK` (validation failure), or `TIMEOUT` behavior.
+* **Run CJIS Training Query**: Simulates NCIC / State queries against a sandboxed `TRAINING` mock with realistic warrant, stolen vehicle, and suspended driver license records.
