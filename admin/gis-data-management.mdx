@@ -1,0 +1,99 @@
+---
+title: "Manage GIS Uploads, Coverage, and Publication"
+sidebarTitle: "GIS Data Management"
+description: "Upload zipped GIS data, load it into an organization dataset, validate results, and publish layers for Dispatch CAD."
+---
+
+Cadmus GIS administration lives in **Web Admin** under **GIS Management**. It is intended for **OrgAdmins** and **CadmusAdmins** who manage organization map and address data used by Dispatch CAD.
+
+<Warning>
+  GIS publication affects address validation, map overlays, and related reads for the selected organization. Confirm the organization picker before you upload or publish.
+</Warning>
+
+## Who can use this
+
+| Role | Access |
+|---|---|
+| **OrgAdmin** | Manage GIS only for their organization |
+| **CadmusAdmin** | Cross-org GIS support and publication across all organizations |
+| **AgencyAdmin / Dispatcher** | No GIS upload or publish access |
+
+## One dataset per type
+
+Each organization has **one GIS dataset per dataset type** (for example, streets, boundaries, or operational locations—whatever types your organization uses). The first successful load for a type creates that dataset. **Uploading again for the same type adds a new version** to that dataset instead of creating a second dataset of the same type.
+
+Dispatch CAD does **not** show the map layer for a dataset until you **Publish**. Uploading, loading, and validating only affect the in-progress candidate until publication.
+
+## Supported upload format
+
+Upload a **single `.zip` archive** that contains the GIS layer files for one version. For Shapefile uploads, include the required sidecar files in the archive:
+
+- `.shp`
+- `.shx`
+- `.dbf`
+- `.prj` when available
+
+## Import workflow
+
+<Steps>
+  <Step title="Upload">
+    In **GIS Management**, confirm the selected organization, then upload your zipped GIS archive.
+  </Step>
+  <Step title="Inspect">
+    Review what Cadmus detected in the archive—layer structure, geometry, feature count, and fields. Stop if the preview does not match the file you intended to upload.
+  </Step>
+  <Step title="Create job">
+    Start an import job for this upload so Cadmus can process it through the rest of the workflow.
+  </Step>
+  <Step title="Choose dataset type">
+    Select which dataset type this upload belongs to. Remember: one dataset exists per type per organization; choosing an existing type prepares a new version for that dataset.
+  </Step>
+  <Step title="Save draft">
+    Map source columns to the fields Cadmus expects for that dataset type, then save your draft configuration.
+  </Step>
+  <Step title="Load dataset">
+    Run **Load dataset** to apply the upload to a **candidate** version for the chosen dataset type. This step does not publish to Dispatch.
+  </Step>
+  <Step title="Review the candidate and issues">
+    Open the candidate version and review feature counts, sample data, and any issues Cadmus reported during the load.
+  </Step>
+  <Step title="Run validation">
+    Run validation **against that candidate** (for example, address or operational-location checks). Fix mapping or source data problems before you publish.
+  </Step>
+  <Step title="Publish">
+    When the candidate and validation results look correct, **Publish** to make that version live for Dispatch CAD and other organization reads.
+  </Step>
+</Steps>
+
+## What dispatchers see
+
+Until you **Publish**, dispatchers **do not** see the new layer on the map or in address-related tools for that dataset type.
+
+After publish, depending on the dataset type and enabled features, dispatchers may see updates to:
+
+- address validation and geocoding
+- common-place and operational-location matching
+- map overlays
+
+Changes apply only to the organization you selected in Web Admin.
+
+## Safe operating rules
+
+- Use **Sandbox** first for new dataset types or mapping changes.
+- Keep the source archive for rollback and comparison.
+- Do not assume a successful upload or load means dispatch is already using the data—confirm **Publish** completed.
+
+## Troubleshooting
+
+| Symptom | Likely cause | Action |
+|---|---|---|
+| Preview or inspect fails | invalid or incomplete zip | rebuild the archive and upload again |
+| Load dataset stuck or slow | large file or processing still running | wait for completion or review reported errors |
+| Validation empty or blocked | draft mapping incomplete | return to **Save draft** and fix required fields |
+| Dispatch still shows old data | candidate not published | publish the validated candidate version |
+
+## Related docs
+
+- [Roles and Access](/admin/roles-and-access)
+- [Troubleshooting & Audit](/admin/troubleshooting-audit)
+- [Map & Location](/dispatch/map-and-location)
